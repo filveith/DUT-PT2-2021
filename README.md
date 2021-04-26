@@ -16,18 +16,26 @@ La démarche est alors la suivante :
 
 # Mise en place de l'environnement technique
 
-Vous devez installer le même environnement technique que pour le module `M2016 BD`
+Vous devez installer le même environnement technique que pour le module "M2016 BD"
 (voir https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_etd/-/blob/master/README.md).
-En particulier on vous demande soit d'utiliser `VDI` avec les ressources du département, soit d'installer `SQL Server`, `SSMS` et `Visual Studio`. On vous recommande alors les versions suivantes :
-- `SQL Server 2019` : https://www.microsoft.com/fr-fr/sql-server/sql-server-downloads .
-- `SSMS 18` : https://docs.microsoft.com/fr-fr/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15 .
-- `Visual Studio 2019` : https://visualstudio.microsoft.com/fr/downloads/ .
+En particulier on vous demande
+- soit d'utiliser `VDI` avec les ressources du département,
+- soit d'installer `SQL Server`, `SSMS` et `Visual Studio`. On vous recommande alors les versions suivantes :
+  - `SQL Server 2019` : https://www.microsoft.com/fr-fr/sql-server/sql-server-downloads .
+  - `SSMS 18` : https://docs.microsoft.com/fr-fr/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15 .
+  - `Visual Studio 2019` : https://visualstudio.microsoft.com/fr/downloads/ .
 
 ***Note 1*** : Concertez-vous dans votre équipe afin de disposer de la même version de `Visual Studio`, du framework `.NET` et du module `Entity Framework`.
 
 ***Note 2*** : Pour `Visual Studio`, il est possible après 30 jours d'utilisation, que le logiciel vous demande de mettre à jour votre licence. Il suffit normalement, dans le menu `aide / enregistrer le produit`, de donner votre compte `Microsoft` (à créer si nécessaire).
 
-Vous allez travailler sur une version modifiée de la base `MusiqueSQL` utilisée dans le module `M2106 BD`. TODO: BD info-joyeux. La procédure pour récupérer cette base est rappelée ici : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/-/blob/master/databases/README.md. Dans le cadre de ce projet, on considère le schéma relationnel suivant :
+Vous allez travailler sur une version modifiée de la base `MusiqueSQL` utilisée dans le module `M2106 BD`.
+- Sur le serveur `info-joyeux`, accessible avec authentification Windows depuis les postes du département ou depuis les machines virtuelles `VDI`, vous trouverez une base de données nommée `x_MusiquePT2` avec `x` une lettre entre `A` et `U` correspondant à votre équipe. Les accès aux tables sont en lecture seule pour les membres de l'équipe, à l'exception des tables `ABONNES` et `EMPRUNTER` pour lesquelles vous avez un accès en lecture/écriture.
+- Une procédure pour récupérer cette base est également donnée ici : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/-/blob/master/databases/README.md.
+
+# Schémas de la base de données
+
+Dans le cadre de ce projet, on considère la base de données `MusiquePT2` avec le schéma relationnel suivant :
 
 ![schema](schema.jpg)
 
@@ -37,8 +45,9 @@ dérivé du schéma conceptuel suivant :
 
 # Organisation en équipes
 
-Vous disposez d'un serveur `Discord` pour le module "M2204/M2106 - Méthodes Agiles et Bases de Données". Une fois que vous serez nommés sous le format "GxEy - Prénom Nom" (avec `x` votre groupe et `y` votre numéro d'équipe dans le groupe) vous serez affectés dans les canaux texte/audio correspondant à votre équipe.
-Vous devez également vous inscrire dans vos équipes sur le cours Moodle de méthodes agiles, cela vous permettra en particulier d'obtenir les consignes pour les rétrospectives et de réaliser un certain nombre de remises.
+Vous disposez d'un serveur `Discord` pour le module "M2204/M2106 - Méthodes Agiles et Bases de Données" (https://discord.gg/8gwu9ZYv). Avec l'aide de la commande '!auth' du bot d'authentification CAS, vous serez nommés sous le format "S2x - Prénom Nom" (avec `x` votre groupe) et vous serez affecté à une équipe `y`, numéro d'équipe dans le groupe. Vous aurez accès à des canaux texte/audio spécifiques à votre équipe.
+
+Vous devez également vous inscrire dans vos équipes sur le cours Moodle de méthodes agiles (https://moodle1.u-bordeaux.fr/course/view.php?id=5598), cela vous permettra en particulier d'obtenir les consignes pour les rétrospectives et de réaliser un certain nombre de remises.
 
 Un glossaire `SCRUM` est disponible ici : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/-/blob/master/supports/SCRUM.pdf
 
@@ -53,6 +62,8 @@ Le `maintainer` doit constituer son équipe :
 -	inviter vos enseignants `B. Mery`, `G. Passault`, `P. Ramet` et `E. Sopena` en tant que `reporter`.
 
 ## Configurer Visual Studio
+
+Depuis l'interface `Visual Studio`, dans le menu gérant les extensions, vous trouverez un `plugin` pour `Gitlab` (https://marketplace.visualstudio.com/items?itemName=MysticBoy.GitLabExtensionforVisualStudio). On vous recommande de l'utiliser. Vous pourrez ainsi visualiser vos branches (crées manuellement ou par `merge-request`) de manière graphique sans passer par une ligne de commande.
 
 1. Installer l’extension `GitLab` (https://marketplace.visualstudio.com/items?itemName=MysticBoy.GitLabExtensionforVisualStudio),
 puis exécuter `GitLab_Extension_for_Visual_Studio_v1.0.189.vsix`,
@@ -120,7 +131,8 @@ Vous pouvez également imposer que votre contribution soit `rebasée` avant d'ê
 Vous trouverez également deux fichiers cachés à la racine de ce dépôt :
 
 - `.gitignore` : pour définir les règles afin d'ignorer les fichiers temporaires Visual Studio,
-- `.gitlab-ci.yml` : pour mettre en place un pipeline d'intégration continue minimal (c.f. https://gitlab-ce.iut.u-bordeaux.fr/PT4/demo-cicd-mstest).
+- `.gitlab-ci.yml` : pour mettre en place un pipeline d'intégration continue minimal.
+Un exemple de pipeline `GitLab CI/CD` avec `.NET Core` et le framework de test `MSTest` est disponible ici https://gitlab-ce.iut.u-bordeaux.fr/PT4/demo-cicd-mstest, ***mais cela dépasse certainement le cadre de ce projet***.
 
 ## Estimation du temps d'une `issue`
 
@@ -141,9 +153,8 @@ La barre de progression du jalon pourra en tenir compte.
 
 # Comment conserver un fichier de configuration privé
 
-Afin de travailler en équipe, on vous demande de versionner votre code sur le `Gitlab` de l'IUT. Depuis l'interface `Visual Studio`, dans le menu gérant les extensions, vous trouverez un `plugin` pour `Gitlab` (https://marketplace.visualstudio.com/items?itemName=MysticBoy.GitLabExtensionforVisualStudio). On vous recommande de l'utiliser. Vous pourrez ainsi visualiser vos branches (crées manuellement ou par `merge-request`) de manière graphique sans passer par une ligne de commande.
-
-Il reste cependant un problème : votre `url` de connexion à la base de données doit rester privée (elle est nécessairement différente pour chaque co-équipier et ne doit pas être versionnée). La solution consiste à "stocker" cette `url` dans un fichier de configuration. Voici alors la ligne de code pour ouvrir une connexion :
+Afin de travailler en équipe, on vous demande de versionner votre code sur le `Gitlab` de l'IUT.
+Il reste cependant un problème : votre `url` de connexion à la base de données doit rester privée (elle peut être différente pour chaque co-équipier et ne doit pas être versionnée). La solution consiste à "stocker" cette `url` dans un fichier de configuration. Voici alors la ligne de code pour ouvrir une connexion :
 ```cs
 using System.Configuration;
 ...
