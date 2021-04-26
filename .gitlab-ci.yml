@@ -1,0 +1,33 @@
+image: bash
+
+stages:
+  - build
+  - test
+  - deploy
+
+build_agile:
+  stage: build
+  script:
+    - echo "your build script"
+  artifacts:
+    paths:
+      - scrum.jpg
+
+test_agile:
+  stage: test
+  dependencies:
+    - build_agile
+  script:
+    - echo "your test script"
+
+pages:
+  stage: deploy
+  dependencies:
+    - build_agile
+  script:
+    - echo "generate your documentation"
+  artifacts:
+    paths:
+    - scrum.jpg
+  only:
+  - master
