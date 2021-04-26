@@ -27,8 +27,7 @@ En particulier on vous demande soit d'utiliser `VDI` avec les ressources du dép
 
 ***Note 2*** : Pour `Visual Studio`, il est possible après 30 jours d'utilisation, que le logiciel vous demande de mettre à jour votre licence. Il suffit normalement, dans le menu `aide / enregistrer le produit`, de donner votre compte `Microsoft` (à créer si nécessaire).
 
-Vous allez travailler sur une version modifiée de la base `MusiqueSQL` utilisée dans le module `M2106 BD`. La procédure pour récupérer cette base est rappelée ici : https://gitlab-ce.i
-ut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/-/blob/master/databases/README.md. Dans le cadre de ce projet, on considère le schéma relationnel suivant :
+Vous allez travailler sur une version modifiée de la base `MusiqueSQL` utilisée dans le module `M2106 BD`. TODO: BD info-joyeux. La procédure pour récupérer cette base est rappelée ici : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/-/blob/master/databases/README.md. Dans le cadre de ce projet, on considère le schéma relationnel suivant :
 
 ![schema](schema.jpg)
 
@@ -205,11 +204,3 @@ Dans le sous répertoire `exemples` vous trouverez :
 - 2 applications `WindowsForms` avec `Entity Framework` :
   - avec la base `MusiqueSQL` - 2 `ListBox` pour afficher les musiciens et leurs oeuvres : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/-/blob/master/exemples/EF_Musiciens_WindowsForms_App/README.md
   - avec la base  `Championnat` - Mise à jour des joueurs : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/-/blob/master/exemples/EF_Championnat_Update_App/README.md
-
-# Quelques ressources complémentaires
-
-- https://makina-corpus.com/blog/metier/2019/gitlab-astuces-projets
-- https://www.youtube.com/watch?v=tv4UM1ruQRs
-- https://www.youtube.com/watch?v=Ddd3dbl4-2w
-- https://docs.gitlab.com/ee/user/project/issue_board.html
-- https://docs.gitlab.com/ee/user/project/milestones/
