@@ -1,4 +1,4 @@
-[![pipeline status](https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_agile/badges/master/pipeline.svg)](https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_agile/pipelines)
+[![pipeline status](https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/badges/master/pipeline.svg)](https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/pipelines)
 
 # Comment dupliquer ce dépôt
 
@@ -18,7 +18,7 @@ La démarche est alors la suivante :
 
 Vous devez installer le même environnement technique que pour le module `M2016 BD`
 (voir https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_etd/-/blob/master/README.md).
-En particulier on vous demande soit d'utiliser `VDI` avec les ressources du départemetn, soit d'installer `SQL Server`, `SSMS` et `Visual Studio`. On vous recommande alors les versions suivantes :
+En particulier on vous demande soit d'utiliser `VDI` avec les ressources du département, soit d'installer `SQL Server`, `SSMS` et `Visual Studio`. On vous recommande alors les versions suivantes :
 - `SQL Server 2019` : https://www.microsoft.com/fr-fr/sql-server/sql-server-downloads .
 - `SSMS 18` : https://docs.microsoft.com/fr-fr/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15 .
 - `Visual Studio 2019` : https://visualstudio.microsoft.com/fr/downloads/ .
@@ -27,16 +27,21 @@ En particulier on vous demande soit d'utiliser `VDI` avec les ressources du dép
 
 ***Note 2*** : Pour `Visual Studio`, il est possible après 30 jours d'utilisation, que le logiciel vous demande de mettre à jour votre licence. Il suffit normalement, dans le menu `aide / enregistrer le produit`, de donner votre compte `Microsoft` (à créer si nécessaire).
 
-Vous allez travailler sur une version modifiée de la base `MusiqueSQL` utilisée dans le module `M2106 BD`. La procédure pour récupérer cette base est rappelée ici : TODO:. Dans le cadre de ce projet, on considère le schéma relationnel suivant :
+Vous allez travailler sur une version modifiée de la base `MusiqueSQL` utilisée dans le module `M2106 BD`. La procédure pour récupérer cette base est rappelée ici : https://gitlab-ce.i
+ut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/-/blob/master/databases/README.md. Dans le cadre de ce projet, on considère le schéma relationnel suivant :
 
 ![schema](schema.jpg)
+
+dérivé du schéma conceptuel suivant :
+
+![mcd](mcd.jpg)
 
 # Organisation en équipes
 
 Vous disposez d'un serveur `Discord` pour le module "M2204/M2106 - Méthodes Agiles et Bases de Données". Une fois que vous serez nommés sous le format "GxEy - Prénom Nom" (avec `x` votre groupe et `y` votre numéro d'équipe dans le groupe) vous serez affectés dans les canaux texte/audio correspondant à votre équipe.
 Vous devez également vous inscrire dans vos équipes sur le cours Moodle de méthodes agiles, cela vous permettra en particulier d'obtenir les consignes pour les rétrospectives et de réaliser un certain nombre de remises.
 
-Un glossaire `SCRUM` est disponible ici : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_agile/-/blob/master/supports/SCRUM.pdf
+Un glossaire `SCRUM` est disponible ici : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/-/blob/master/supports/SCRUM.pdf
 
 # Utilisation de Gitlab pour gérer son projet
 
@@ -178,7 +183,7 @@ Dans le sous répertoire `databases` vous trouverez :
 
 - la base `Championnat` : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/-/blob/master/databases/championnat/Championnat_0_Creation.sql
 - la base `Modules` : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/-/blob/master/databases/modules/Modules_0_Creation.sql
-- la base `MusiqueSQL` : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/-/blob/master/databases/README.md
+- la base `MusiquePT2` : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/-/blob/master/databases/README.md
 
 ## Les supports
 
