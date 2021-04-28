@@ -19,7 +19,7 @@ La démarche est alors la suivante :
 Vous devez installer le même environnement technique que pour le module "M2016 BD"
 (voir https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_etd/-/blob/master/README.md).
 En particulier on vous demande
-- soit d'utiliser `VDI` avec les ressources du département,
+- soit d'utiliser `VDI` avec les ressources du département (**solution recommandée cette année**),
 - soit d'installer `SQL Server`, `SSMS` et `Visual Studio`. On vous recommande alors les versions suivantes :
   - `SQL Server 2019` : https://www.microsoft.com/fr-fr/sql-server/sql-server-downloads .
   - `SSMS 18` : https://docs.microsoft.com/fr-fr/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15 .
@@ -29,9 +29,9 @@ En particulier on vous demande
 
 ***Note 2*** : Pour `Visual Studio`, il est possible après 30 jours d'utilisation, que le logiciel vous demande de mettre à jour votre licence. Il suffit normalement, dans le menu `aide / enregistrer le produit`, de donner votre compte `Microsoft` (à créer si nécessaire).
 
-Vous allez travailler sur une version modifiée de la base `MusiqueSQL` utilisée dans le module `M2106 BD`.
-- Sur le serveur `info-joyeux`, accessible avec authentification Windows depuis les postes du département ou depuis les machines virtuelles `VDI`, vous trouverez une base de données nommée `x_MusiquePT2` avec `x` une lettre entre `A` et `U` correspondant à votre équipe. Les accès aux tables sont en lecture seule pour les membres de l'équipe, à l'exception des tables `ABONNES` et `EMPRUNTER` pour lesquelles vous avez un accès en lecture/écriture.
-- Une procédure pour récupérer cette base est également donnée ici : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/-/blob/master/databases/README.md.
+Vous allez travailler sur une version modifiée de la base `MusiqueSQL` utilisée dans le module `M2106 BD` :
+- sur le serveur `info-joyeux`, accessible avec authentification Windows depuis les postes du département ou depuis les machines virtuelles `VDI`, vous trouverez une base de données nommée `x_MusiquePT2` avec `x` une lettre entre `A` et `U` correspondant à votre équipe. Les accès aux tables sont en lecture seule pour les membres de l'équipe, à l'exception des tables `ABONNES` et `EMPRUNTER` pour lesquelles vous avez un accès en lecture/écriture.
+- une procédure pour récupérer cette base est également donnée ici : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/-/blob/master/databases/README.md.
 
 # Schémas de la base de données
 
@@ -63,8 +63,10 @@ Le `maintainer` doit constituer son équipe :
 
 ## Configurer Visual Studio
 
-Depuis l'interface `Visual Studio`, dans le menu gérant les extensions, vous trouverez un `plugin` pour `Gitlab` (https://marketplace.visualstudio.com/items?itemName=MysticBoy.GitLabExtensionforVisualStudio). On vous recommande de l'utiliser. Vous pourrez ainsi visualiser vos branches (crées manuellement ou par `merge-request`) de manière graphique sans passer par une ligne de commande.
+Depuis la version 2019 de `Visual Studio`, l'expérience `Git` a été grandement améliorée : https://docs.microsoft.com/fr-fr/visualstudio/version-control/git-with-visual-studio?view=vs-2019 .
+Une nouvelle section permet de suivre les modifications `Git` (distincte de la section dédiée à `Team explorer`). L'intégration avec `Github` est bien sur proposée nativement et le `plugin` pour `Gitlab` (https://marketplace.visualstudio.com/items?itemName=MysticBoy.GitLabExtensionforVisualStudio) est toujours disponible. Cependant il n'a pas été complètement mis à jour avec la version 2019 et **on vous recommande de ne pas l'utiliser cette année**.
 
+<!--
 1. Installer l’extension `GitLab` (https://marketplace.visualstudio.com/items?itemName=MysticBoy.GitLabExtensionforVisualStudio),
 puis exécuter `GitLab_Extension_for_Visual_Studio_v1.0.189.vsix`,
 2. Sous `Visual Studio`, menu `Affichage / Team Explorer`,
@@ -73,6 +75,7 @@ puis exécuter `GitLab_Extension_for_Visual_Studio_v1.0.189.vsix`,
 5. Bouton `Home` (fenêtre `Team Explorer`), vous êtes prêt à travailler !
 
 ![gitlab](gitlab.png)
+ -->
 
 ## Définir et affecter une `issue` (ou `user-story`)
 
@@ -81,6 +84,7 @@ Lorsque vous vous apprêtez à prendre une nouvelle tâche (une `issue`), rendez
 Vous pouvez aussi regrouper les `issues` par jalons (ou `milestones`), qui peuvent représenter par exemple des sprints dans une méthodologie agile. Le jalon est terminé lorsque toutes ses `issues` sont `Closed`.
 
 ***Note 1*** : Sous la présentation Gitlab `Board`, on peut déplacer facilement les différentes issues en fonction de leur état d’avancement.
+
 ***Note 2*** : Vous trouverez sur Moodle quelques conseils à suivre lorsque vous vous apprêtez à prendre une nouvelle `issue` dans le board, appuyez-vous sur ces consignes.
 
 ## Créer une `merge request` pour débuter votre contribution
@@ -88,11 +92,11 @@ Vous pouvez aussi regrouper les `issues` par jalons (ou `milestones`), qui peuve
 Une fois assigné, glissez l’`issue` vers la liste `Doing`. Ouvrez ensuite l’`issue` puis cliquez sur `Create Merge Request`. Cette action va créer automatiquement une `merge-request` avec le statut `WIP` (Work In Progress). La branche de travail associée à cette dernière est également créée.
 Dans votre environnement de développement, pensez à faire un `git pull` pour être sûr d’être à jour. La nouvelle branche que vous venez de créer a été synchronisée. Basculez sur cette branche avec un `git switch` (ou `git checkout` si votre `git` n'est pas suffisamment récent).
 
+<!--
 ***Depuis `Visual Studio`*** :
 -	onglet `Team Explorer / synchroniser / validations entrantes / tirer` pour mettre à jour votre copie locale,
 -	puis aller sur `Branches / Remotes`, un double-clic sur la nouvelle branche pour qu’elle soit créée en local et pour pouvoir basculer dessus.
-
-***Note*** : Vous avez toujours accès au dépôt https://gitlab-ce.iut.u-bordeaux.fr/Pierre/DEMO-GIT-PT2 pour un rappel des commandes `git` vues au début du semestre 2.
+-->
 
 ## Passez en mode relecture (ou `review`)
 
@@ -185,7 +189,8 @@ git update-index --skip-worktree path/to/file
 Les supports de cours sont disponibles :
 - sur `Moodle` pour la parte `Agile` : https://moodle1.u-bordeaux.fr/course/view.php?id=5598
 - sur `Moodle` pour la partie `BD` : https://moodle1.u-bordeaux.fr/course/view.php?id=1465
-- et sur le dépôt `Gitlab` : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd
+- sur le dépôt `Gitlab` : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd
+- et vous avez toujours accès au dépôt https://gitlab-ce.iut.u-bordeaux.fr/Pierre/DEMO-GIT-PT2 pour un rappel des commandes `git` vues au début du second semestre.
 
 ## Les bases de données
 
