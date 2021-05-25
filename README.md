@@ -19,8 +19,8 @@ La démarche est alors la suivante :
 Vous devez installer le même environnement technique que pour le module "M2016 BD"
 (voir https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_etd/-/blob/master/README.md).
 En particulier on vous demande
-- soit d'utiliser `VDI` avec les ressources du département (**solution recommandée cette année**),
-- soit d'installer `SQL Server`, `SSMS` et `Visual Studio`. On vous recommande alors les versions suivantes :
+- d'utiliser les postes du département ou les machines virtuelles `VDI` avec les ressources du département (**solution recommandée cette année**),
+- mais vous pouvez éventuellement déployer, sur votre machine personnelle, les outils `SQL Server`, `SSMS` et `Visual Studio`. On vous recommande alors les versions suivantes :
   - `SQL Server 2019` : https://www.microsoft.com/fr-fr/sql-server/sql-server-downloads .
   - `SSMS 18` : https://docs.microsoft.com/fr-fr/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15 .
   - `Visual Studio 2019` : https://visualstudio.microsoft.com/fr/downloads/ .
@@ -30,7 +30,7 @@ En particulier on vous demande
 ***Note 2*** : Pour `Visual Studio`, il est possible après 30 jours d'utilisation, que le logiciel vous demande de mettre à jour votre licence. Il suffit normalement, dans le menu `aide / enregistrer le produit`, de donner votre compte `Microsoft` (à créer si nécessaire).
 
 Vous allez travailler sur une version modifiée de la base `MusiqueSQL` utilisée dans le module `M2106 BD` :
-- sur le serveur `info-joyeux`, accessible avec authentification Windows depuis les postes du département ou depuis les machines virtuelles `VDI`, vous trouverez une base de données nommée `x_MusiquePT2` avec `x` une lettre entre `A` et `U` correspondant à votre équipe. Les accès aux tables sont en lecture seule pour les membres de l'équipe, à l'exception des tables `ABONNES` et `EMPRUNTER` pour lesquelles vous avez un accès en lecture/écriture.
+- sur le serveur `info-dormeur`, accessible avec authentification Windows depuis les postes du département ou depuis les machines virtuelles `VDI`, vous trouverez une base de données nommée `x_MusiquePT2` avec `x` une lettre entre `A` et `U` correspondant à votre équipe. Les accès aux tables sont en lecture seule pour les membres de l'équipe, à l'exception des tables `ABONNES` et `EMPRUNTER` pour lesquelles vous avez un accès en lecture/écriture.
 - une procédure pour récupérer cette base est également donnée ici : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/-/blob/master/databases/README.md.
 
 # Schémas de la base de données
@@ -208,6 +208,7 @@ Dans le sous répertoire `supports` vous trouverez :
 - le support `Transact-SQL` : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/-/blob/master/supports/M2106-2-TSQL.pdf
 - le support `C#` avec `OLEDB` : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/-/blob/master/supports/M2106-3-OLEDB.pdf
 - le support `C#` avec `EF` : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/-/blob/master/supports/M2106-4-EF.pdf
+- le glossaire `SCRUM` : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/-/blob/master/supports/SCRUM.pdf
 
 ## Les exemples de code
 
