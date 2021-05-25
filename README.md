@@ -47,7 +47,9 @@ dérivé du schéma conceptuel suivant :
 
 Vous disposez d'un serveur `Discord` pour le module "M2204/M2106 - Méthodes Agiles et Bases de Données" (https://discord.gg/8gwu9ZYv). Avec l'aide de la commande '!auth' du bot d'authentification CAS, vous serez nommés sous le format "S2x - Prénom Nom" (avec `x` votre groupe) et vous serez affecté à une équipe `y`, numéro d'équipe dans le groupe. Vous aurez accès à des canaux texte/audio spécifiques à votre équipe.
 
+<!--
 Vous devez également vous inscrire dans vos équipes sur le cours Moodle de méthodes agiles (https://moodle1.u-bordeaux.fr/course/view.php?id=5598), cela vous permettra en particulier d'obtenir les consignes pour les rétrospectives et de réaliser un certain nombre de remises.
+-->
 
 Un glossaire `SCRUM` est disponible ici : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/-/blob/master/supports/SCRUM.pdf
 
@@ -83,9 +85,7 @@ Lorsque vous vous apprêtez à prendre une nouvelle tâche (une `issue`), rendez
 
 Vous pouvez aussi regrouper les `issues` par jalons (ou `milestones`), qui peuvent représenter par exemple des sprints dans une méthodologie agile. Le jalon est terminé lorsque toutes ses `issues` sont `Closed`.
 
-***Note 1*** : Sous la présentation Gitlab `Board`, on peut déplacer facilement les différentes issues en fonction de leur état d’avancement.
-
-***Note 2*** : Vous trouverez sur Moodle quelques conseils à suivre lorsque vous vous apprêtez à prendre une nouvelle `issue` dans le board, appuyez-vous sur ces consignes.
+***Note*** : Sous la présentation Gitlab `Board`, on peut déplacer facilement les différentes issues en fonction de leur état d’avancement.
 
 ## Créer une `merge request` pour débuter votre contribution
 
@@ -186,11 +186,9 @@ git update-index --skip-worktree path/to/file
 
 # Ressources du cours
 
-Les supports de cours sont disponibles :
-- sur `Moodle` pour la parte `Agile` : https://moodle1.u-bordeaux.fr/course/view.php?id=5598
-- sur `Moodle` pour la partie `BD` : https://moodle1.u-bordeaux.fr/course/view.php?id=1465
-- sur le dépôt `Gitlab` : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd
-- et vous avez toujours accès au dépôt https://gitlab-ce.iut.u-bordeaux.fr/Pierre/DEMO-GIT-PT2 pour un rappel des commandes `git` vues au début du second semestre.
+Vous avez toujours accès aux dépôts `GitLab` :
+- https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_etd pour le module `M2106_BD`,
+- https://gitlab-ce.iut.u-bordeaux.fr/Pierre/DEMO-GIT-PT2 pour un rappel des commandes `git` vues au début du second semestre.
 
 ## Les bases de données
 
