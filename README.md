@@ -57,6 +57,8 @@ Un glossaire `SCRUM` est disponible ici : https://gitlab-ce.iut.u-bordeaux.fr/Pi
 
 Voici les étapes à suivre pour gérer efficacement votre projet.
 
+Une petite vidéo de démonstration de ce workflow `Gitlab` est disponible ici : https://box.iut.u-bordeaux.fr/f/a9c716978bb448a18d50/
+
 ## Constituer son équipe
 
 Le `maintainer` doit constituer son équipe :
