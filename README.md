@@ -57,7 +57,9 @@ Un glossaire `SCRUM` est disponible ici : https://gitlab-ce.iut.u-bordeaux.fr/Pi
 
 Voici les étapes à suivre pour gérer efficacement votre projet.
 
-Une petite vidéo de démonstration de ce workflow `Gitlab` est disponible ici : https://box.iut.u-bordeaux.fr/f/a9c716978bb448a18d50/
+- Une vidéo de démonstration du workflow `Gitlab` : https://box.iut.u-bordeaux.fr/f/a9c716978bb448a18d50/
+- Une vidéo qui illustre la création de 2 `user-story` (2 branches) conduisant à une situation de conflit : https://u.pcloud.link/publink/show?code=XZKb19XZbwI3jcwQWkJG4wTbeV8hP8AN37H7
+- Une vidéo qui montre comment résoudre un conflit, mis en évidence lors d'une `merge-request`, et en passant par une opération de `rebase` de branche : https://u.pcloud.link/publink/show?code=XZrY19XZEnTclA32bkbpdAFnfsU9e5bf43FX
 
 ## Constituer son équipe
 
