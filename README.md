@@ -45,13 +45,11 @@ dérivé du schéma conceptuel suivant :
 
 # Organisation en équipes
 
-Vous disposez d'un serveur `Discord` pour le module "M2204/M2106 - Méthodes Agiles et Bases de Données" (https://discord.gg/8gwu9ZYv). Avec l'aide de la commande '!auth' du bot d'authentification CAS, vous serez nommés sous le format "S2x - Prénom Nom" (avec `x` votre groupe) et vous serez affecté à une équipe `y`, numéro d'équipe dans le groupe. Vous aurez accès à des canaux texte/audio spécifiques à votre équipe.
+Vous disposez d'un serveur `Discord` pour le module "M2204/M2106 - Méthodes Agiles et Bases de Données" (https://discord.gg/Dv8DpwGV). Avec l'aide de la commande '!auth' du bot d'authentification CAS, vous serez nommés sous le format "S2x - Prénom Nom" (avec `x` votre groupe) et vous serez affecté à une équipe `y`, numéro d'équipe dans le groupe. Vous aurez accès à des canaux texte/audio spécifiques à votre équipe.
 
 <!--
 Vous devez également vous inscrire dans vos équipes sur le cours Moodle de méthodes agiles (https://moodle1.u-bordeaux.fr/course/view.php?id=5598), cela vous permettra en particulier d'obtenir les consignes pour les rétrospectives et de réaliser un certain nombre de remises.
 -->
-
-Un glossaire `SCRUM` est disponible ici : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/-/blob/master/supports/SCRUM.pdf
 
 # Utilisation de Gitlab pour gérer son projet
 
