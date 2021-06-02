@@ -16,7 +16,7 @@ La démarche est alors la suivante :
 
 # Mise en place de l'environnement technique
 
-Vous devez installer le même environnement technique que pour le module "M2016 BD"
+Vous devez installer le même environnement technique que pour le module "M2106 BD"
 (voir https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_etd/-/blob/master/README.md).
 En particulier on vous demande
 - d'utiliser les postes du département ou les machines virtuelles `VDI` avec les ressources du département (**solution recommandée cette année**),
@@ -208,6 +208,8 @@ Dans le sous répertoire `supports` vous trouverez :
 - le support `Transact-SQL` : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/-/blob/master/supports/M2106-2-TSQL.pdf
 - le support `C#` avec `OLEDB` : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/-/blob/master/supports/M2106-3-OLEDB.pdf
 - le support `C#` avec `EF` : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/-/blob/master/supports/M2106-4-EF.pdf
+- le support d'introduction à l'agilité : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/-/blob/master/supports/Introduction-Agilite-VF.pdf
+- le support d'introduction à la gestion de projet : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/-/blob/master/supports/Introduction-Gestion-Projet-VF.pdf
 - le glossaire `SCRUM` : https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/-/blob/master/supports/SCRUM.pdf
 
 ## Les exemples de code
