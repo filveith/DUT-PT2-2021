@@ -1,4 +1,7 @@
+Pipeline disabled
+<!--
 [![pipeline status](https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/badges/master/pipeline.svg)](https://gitlab-ce.iut.u-bordeaux.fr/Pierre/m2106_bd_pt_agile/pipelines)
+-->
 
 # Comment dupliquer ce dépôt
 
