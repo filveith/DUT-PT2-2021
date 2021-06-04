@@ -16,5 +16,11 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
+
+        private void inscription_Click(object sender, EventArgs e)
+        {
+            Utils u = new Utils();
+            u.AfficherAlbumsEnRetardDe10Jours();
+        }
     }
 }
