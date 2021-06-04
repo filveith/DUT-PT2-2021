@@ -60,7 +60,6 @@ namespace WindowsFormsApp1
             this.inscription.TabIndex = 0;
             this.inscription.Text = "Inscription";
             this.inscription.UseVisualStyleBackColor = true;
-            this.inscription.Click += new System.EventHandler(this.inscription_Click);
             // 
             // connexion
             // 
