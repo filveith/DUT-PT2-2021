@@ -16,5 +16,11 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
+
+        private void inscription_Click(object sender, EventArgs e)
+        {
+            InscriptionView view = new InscriptionView();
+            view.Show();
+        }
     }
 }
