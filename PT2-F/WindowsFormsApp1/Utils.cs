@@ -11,6 +11,26 @@ namespace WindowsFormsApp1
     {
         private static MusiquePT2_FEntities Connexion = new MusiquePT2_FEntities();
 
+        public void AfficherAlbumsEnRetardDe10Jours()
+        {
+            var emprunt = from emp in Connexion.EMPRUNTER
+                          where emp.DATE_RETOUR == null && DbFunctions.DiffDays(emp.DATE_RETOUR_ATTENDUE, DateTime.Now) > 10
+                          select emp;
+
+            foreach (EMPRUNTER e in emprunt)
+            {
+
+                ABONNÉS abonne = (from abo in Connexion.ABONNÉS
+                                where abo.CODE_ABONNÉ == e.CODE_ABONNÉ
+                                select abo).First();
+
+                ALBUMS album = (from alb in Connexion.ALBUMS
+                                where alb.CODE_ALBUM == e.CODE_ALBUM
+                                select alb).First();
+                Console.WriteLine(abonne.PRÉNOM_ABONNÉ + " " + abonne.NOM_ABONNÉ + " " + album.TITRE_ALBUM);
+            }
+        }
+
         public static List<EMPRUNTER> AvoirLesEmpruntProlonger()
         {
             List<EMPRUNTER> result = (from emp in Connexion.EMPRUNTER
