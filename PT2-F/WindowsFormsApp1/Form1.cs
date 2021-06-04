@@ -17,9 +17,10 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        private void connexion_Click(object sender, EventArgs e)
+        private void inscription_Click(object sender, EventArgs e)
         {
-            Utils.AvoirAbosPasEmprunteDepuisUnAn();
+            InscriptionView view = new InscriptionView();
+            view.Show();
         }
     }
 }
