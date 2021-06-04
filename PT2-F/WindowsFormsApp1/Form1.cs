@@ -23,10 +23,5 @@ namespace WindowsFormsApp1
             InscriptionView view = new InscriptionView();
             view.Show();
         }
-
-        private void inscription_Click(object sender, EventArgs e)
-        {
-            Utils.suggest(8);
-        }
     }
 }
