@@ -274,5 +274,78 @@ namespace WindowsFormsApp1
 
 
         }
+
+        public static Dictionary<String, double> getPreferences(int codeAbonne)
+        {
+            Dictionary<String, int> allGenre = new Dictionary<String, int>();
+            var emprunts = from emp in Connexion.EMPRUNTER
+                           where emp.CODE_ABONNÉ == codeAbonne
+                           select emp;
+            
+            int nbEmprunts = emprunts.Count();
+
+            Console.WriteLine("On a " + nbEmprunts + " emprunts");
+            foreach(EMPRUNTER e in emprunts)
+            {
+                ALBUMS album = (from al in Connexion.ALBUMS
+                                where al.CODE_ALBUM == e.CODE_ALBUM
+                                select al).First();
+
+                GENRES genreAlbum = (from gen in Connexion.GENRES
+                                     where gen.CODE_GENRE == album.CODE_GENRE
+                                     select gen).First();
+
+                String nomGenre = genreAlbum.LIBELLÉ_GENRE;
+
+                List<String> keys;
+                if (allGenre.Count() > 0)
+                {
+
+                    keys = new List<string>(allGenre.Keys);
+
+
+                    Console.WriteLine("------------------");
+                    foreach (string key in keys)
+                    {
+                        Console.WriteLine(key);
+                    }
+                    Console.WriteLine("------------------");
+
+                    if (allGenre.ContainsKey(nomGenre))
+                    {
+                        allGenre[nomGenre]++;
+                    }
+                    else
+                    {
+                        allGenre.Add(nomGenre, 1);
+                    }
+                    
+                } else
+                {
+                    allGenre.Add(nomGenre, 1);
+                }
+
+                
+            }
+
+            Dictionary<String, double> preferencesByGenre = new Dictionary<string, double>();
+
+            foreach(KeyValuePair<String, int> values in allGenre)
+            {
+                int v = values.Value;
+                Console.WriteLine("AAAAAAAAA " + v + " " + nbEmprunts);
+                double result = (double)v / nbEmprunts * 100;
+                
+                Console.WriteLine(result);
+                preferencesByGenre.Add(values.Key, result);
+            }
+
+            foreach(KeyValuePair<String, double> values in preferencesByGenre)
+            {
+                Console.WriteLine(values.Key + " " + values.Value + "%");
+            }
+
+            return preferencesByGenre;
+        }
     }
 }
