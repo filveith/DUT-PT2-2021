@@ -11,7 +11,7 @@ namespace WindowsFormsApp1
     {
         private static MusiquePT2_FEntities Connexion = new MusiquePT2_FEntities();
 
-        public List<EMPRUNTER> AvoirLesEmpruntProlonger()
+        public static List<EMPRUNTER> AvoirLesEmpruntProlonger()
         {
             List<EMPRUNTER> result = (from emp in Connexion.EMPRUNTER
                           join abo in Connexion.ABONNÉS on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
