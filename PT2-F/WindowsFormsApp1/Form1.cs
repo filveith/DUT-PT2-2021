@@ -19,8 +19,6 @@ namespace WindowsFormsApp1
 
         private void inscription_Click(object sender, EventArgs e)
         {
-            Utils u = new Utils();
-            u.AvoirEmpruntProlonger();
         }
     }
 }
