@@ -78,5 +78,28 @@ namespace WindowsFormsApp1
             }
             Console.WriteLine(i + " rallongement(s) effectué(s)");
         }
+
+        public static Dictionary<EMPRUNTER, ABONNÉS> ConsulterEmprunts(string login)
+        {
+            Dictionary<EMPRUNTER, ABONNÉS> emprunts = new Dictionary<EMPRUNTER, ABONNÉS>();
+            var abonne = (from a in Connexion.ABONNÉS
+                          where a.LOGIN_ABONNÉ == login
+                          select a).First();
+            var emprunt = (from alb in Connexion.ALBUMS
+                           join emp in Connexion.EMPRUNTER on alb.CODE_ALBUM equals emp.CODE_ALBUM
+                           join abo in Connexion.ABONNÉS on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
+                           where abo.CODE_ABONNÉ == abonne.CODE_ABONNÉ
+                           orderby emp.DATE_RETOUR_ATTENDUE ascending
+                           select emp).ToList();
+
+
+
+            foreach (var al in emprunt)
+            {
+                emprunts.Add(al, abonne);
+                //Console.WriteLine(em) ;
+            }
+            return emprunts;
+        }
     }
 }
