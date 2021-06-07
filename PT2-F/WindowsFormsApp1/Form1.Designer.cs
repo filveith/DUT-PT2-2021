@@ -71,7 +71,6 @@ namespace WindowsFormsApp1
             this.connexion.TabIndex = 1;
             this.connexion.Text = "Connexion";
             this.connexion.UseVisualStyleBackColor = true;
-            this.connexion.Click += new System.EventHandler(this.connexion_Click);
             // 
             // Form1
             // 
