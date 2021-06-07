@@ -46,6 +46,7 @@ namespace WindowsFormsApp1
             this.validerButton.Text = "Valider";
             this.validerButton.UseVisualStyleBackColor = true;
             this.validerButton.Click += new System.EventHandler(this.validerButton_Click);
+            this.validerButton.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             // 
             // idTextBox
             // 
@@ -53,6 +54,7 @@ namespace WindowsFormsApp1
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.Size = new System.Drawing.Size(212, 20);
             this.idTextBox.TabIndex = 1;
+            this.idTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             // 
             // passTextBox
             // 
@@ -61,6 +63,7 @@ namespace WindowsFormsApp1
             this.passTextBox.PasswordChar = '*';
             this.passTextBox.Size = new System.Drawing.Size(212, 20);
             this.passTextBox.TabIndex = 2;
+            this.passTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             // 
             // ConnexionText
             // 
@@ -103,6 +106,7 @@ namespace WindowsFormsApp1
             this.Name = "ConnexionView";
             this.Text = "ConnexionView";
             this.Load += new System.EventHandler(this.ConnexionView_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 

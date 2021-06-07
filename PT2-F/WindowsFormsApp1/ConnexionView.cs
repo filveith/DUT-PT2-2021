@@ -25,6 +25,12 @@ namespace WindowsFormsApp1
 
         private void validerButton_Click(object sender, EventArgs e)
         {
+            this.valider();
+
+        }
+
+        private void valider()
+        {
             string login = idTextBox.Text;
             string password = passTextBox.Text;
 
@@ -54,15 +60,13 @@ namespace WindowsFormsApp1
                 {
                     Pop("Votre identifiant n'est pas valide ", "Erreur");
                 }
-                
+
             }
             else
             {
                 Pop("Un de vos champs est vide", "Erreur");
             }
-
         }
-
 
 
 
@@ -140,6 +144,14 @@ namespace WindowsFormsApp1
             }
 
             return admin;
+        }
+
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                this.valider();
+            }
         }
     }
     
