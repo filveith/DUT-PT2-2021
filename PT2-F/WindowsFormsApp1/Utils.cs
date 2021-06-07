@@ -271,9 +271,19 @@ namespace WindowsFormsApp1
             }
 
             return suggestionsFinal;
+        }
 
+        public static List<PAYS> AvoirListeDesPays()
+        {
+            List<PAYS> listPays = new List<PAYS>();
+            var pays = from p in Connexion.PAYS
+                       select p;
 
-
+            foreach(PAYS nom in pays)
+            {
+                listPays.Add(nom);
+            }
+            return listPays;
         }
     }
 }
