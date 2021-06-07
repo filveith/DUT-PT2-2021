@@ -12,45 +12,50 @@ namespace WindowsFormsApp1
 {
     public partial class UserView : Form
     {
-        public UserView()
+        private ABONNÉS Abo;
+
+        public UserView(ABONNÉS a)
         {
             InitializeComponent();
+            Abo = a;
         }
 
         private void mesAlbums_Click(object sender, EventArgs e)
         {
 
             AffichageAbo.Items.Clear();
-            List<EMPRUNTER> mesAlbums = Utils.ConsulterEmprunts(login);
+            var mesEmprunts = Utils.ConsulterEmprunts(Abo.CODE_ABONNÉ).Keys;
 
-            foreach(EMPRUNTER albums in mesAlbums)
+            foreach (EMPRUNTER emprunt in mesEmprunts)
             {
-                AffichageAbo.Items.Add( "Voici vos albums empruntés : "+ albums.CODE_ALBUM);
+                AffichageAbo.Items.Add(emprunt);
             }
 
         }
 
         private void prolongerEmprunt_Click(object sender, EventArgs e)
         {
-            AffichageAbo.Items.Clear();
-            Utils.prolongerEmprunt (codeAbonne, codeAlbumSelected);
-         
+            if (AffichageAbo.SelectedItem is ALBUMS al)
+            {
+                Utils.ProlongerEmprunt(Abo.CODE_ABONNÉ, al.CODE_ALBUM);
+            }
+
         }
 
         private void prolongerToutEmprunt_Click(object sender, EventArgs e)
         {
             AffichageAbo.Items.Clear();
-            Utils.prolongerTousEmprunts(codeAbonne);
+            Utils.ProlongerTousEmprunts(Abo.CODE_ABONNÉ);
         }
 
         private void suggestions_Click(object sender, EventArgs e)
         {
             AffichageAbo.Items.Clear();
-            HashSet<ALBUMS> sugg = Utils.suggest(codeAbonne);
+            HashSet<ALBUMS> sugg = Utils.AvoirSuggestions(Abo.CODE_ABONNÉ);
             foreach (ALBUMS s in sugg)
-                {
-                    AffichageAbo.Items.Add("Voici des albums qui devraient vous plairent : " + s.TITRE_ALBUM);
-                }
+            {
+                AffichageAbo.Items.Add("Voici des albums qui devraient vous plairent : " + s.TITRE_ALBUM.Trim());
             }
+        }
     }
 }
