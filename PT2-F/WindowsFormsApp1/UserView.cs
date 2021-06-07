@@ -26,7 +26,7 @@ namespace WindowsFormsApp1
             AffichageAbo.Items.Clear();
             var mesEmprunts = Utils.ConsulterEmprunts(Abo.CODE_ABONNÉ).Keys;
 
-            foreach(EMPRUNTER emprunt in mesEmprunts)
+            foreach (EMPRUNTER emprunt in mesEmprunts)
             {
                 AffichageAbo.Items.Add(emprunt);
             }
@@ -35,25 +35,27 @@ namespace WindowsFormsApp1
 
         private void prolongerEmprunt_Click(object sender, EventArgs e)
         {
-            AffichageAbo.Items.Clear();
-            Utils.prolongerEmprunt (Abo.CODE_ABONNÉ, codeAlbumSelected);
-         
+            if (AffichageAbo.SelectedItem is ALBUMS al)
+            {
+                Utils.ProlongerEmprunt(Abo.CODE_ABONNÉ, al.CODE_ALBUM);
+            }
+
         }
 
         private void prolongerToutEmprunt_Click(object sender, EventArgs e)
         {
             AffichageAbo.Items.Clear();
-            Utils.prolongerTousEmprunts(codeAbonne);
+            Utils.ProlongerTousEmprunts(Abo.CODE_ABONNÉ);
         }
 
         private void suggestions_Click(object sender, EventArgs e)
         {
             AffichageAbo.Items.Clear();
-            HashSet<ALBUMS> sugg = Utils.suggest(codeAbonne);
+            HashSet<ALBUMS> sugg = Utils.AvoirSuggestions(Abo.CODE_ABONNÉ);
             foreach (ALBUMS s in sugg)
-                {
-                    AffichageAbo.Items.Add("Voici des albums qui devraient vous plairent : " + s.TITRE_ALBUM);
-                }
+            {
+                AffichageAbo.Items.Add("Voici des albums qui devraient vous plairent : " + s.TITRE_ALBUM.Trim());
             }
+        }
     }
 }
