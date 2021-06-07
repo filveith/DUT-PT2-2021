@@ -57,7 +57,7 @@ namespace WindowsFormsApp1
             return liste;
         }
 
-        public static List<ABONNÉS> AvoirAbosPasEmprunteDepuisUnAn()
+        private static List<ABONNÉS> AvoirAbosPasEmprunteDepuisUnAn()
         {
             var abosPasEmprunt = (from a in Connexion.ABONNÉS
                                   join e in Connexion.EMPRUNTER
@@ -73,6 +73,14 @@ namespace WindowsFormsApp1
 
             var abos = abosDejaEmprunt.Union(abosPasEmprunt).ToList();
 
+            return abos;
+        }
+
+        public static List<ABONNÉS> SupprimerAbosPasEmpruntDepuisUnAn()
+        {
+            List<ABONNÉS> abos = AvoirAbosPasEmprunteDepuisUnAn();
+            Connexion.ABONNÉS.RemoveRange(abos);
+            Connexion.SaveChanges();
             return abos;
         }
 
