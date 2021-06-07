@@ -45,12 +45,16 @@ namespace WindowsFormsApp1
                         if (isAdmin(login))
                         {
                             AdminView ad = new AdminView();
-                            ad.Show();
+                            this.Visible = false;
+                            ad.ShowDialog();
+                            this.Visible = true;
                         }
                         else
                         {
                             UserView u = new UserView(a);
-                            u.Show();
+                            this.Visible = false;
+                            u.ShowDialog();
+                            this.Visible = true;
                         }
                     }
                     else Pop("Mot de passe invalide", "Erreur");
