@@ -59,7 +59,7 @@ namespace WindowsFormsApp1
 
             foreach(ALBUMS al in albums)
             {
-                log.Items.Add("L'album " + al.TITRE_ALBUM + " n'a pas été emprunté depuis 1 an");
+                log.Items.Add("L'album " + al.TITRE_ALBUM.Trim() + " n'a pas été emprunté depuis 1 an");
             }
 
         }
@@ -72,14 +72,18 @@ namespace WindowsFormsApp1
 
             foreach(ALBUMS al in top10)
             {
-                log.Items.Add(al.TITRE_ALBUM);
+                log.Items.Add(al.TITRE_ALBUM.Trim());
             } 
         }
 
         private void suppIdleUsersButton_Click(object sender, EventArgs e)
         {
             log.Items.Clear();
-            log.Items.Add("Pas implémenté");
+            foreach(ABONNÉS a in Utils.SupprimerAbosPasEmpruntDepuisUnAn())
+            {
+                log.Items.Add("L'abonné \"" + a.NOM_ABONNÉ.Trim() + " " + a.PRÉNOM_ABONNÉ.Trim() + "\" a été supprimé pour inactivité");
+            }
+            
         }
     }
 }

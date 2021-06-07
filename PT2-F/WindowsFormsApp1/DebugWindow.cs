@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
             switch (s)
             {
                 case "US2":
-                    Utils.ConsulterEmprunts(7);
+                    Utils.ConsulterEmprunts(8);
                     break;
                 case "US3":
                     Utils.ProlongerEmprunt(8, 1);

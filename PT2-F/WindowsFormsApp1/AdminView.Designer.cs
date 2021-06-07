@@ -45,11 +45,11 @@ namespace WindowsFormsApp1
             // 
             // log
             // 
-            this.log.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.log.Dock = System.Windows.Forms.DockStyle.Fill;
             this.log.FormattingEnabled = true;
-            this.log.Location = new System.Drawing.Point(405, 8);
+            this.log.Location = new System.Drawing.Point(403, 3);
             this.log.Name = "log";
-            this.log.Size = new System.Drawing.Size(390, 433);
+            this.log.Size = new System.Drawing.Size(394, 444);
             this.log.TabIndex = 0;
             // 
             // listEmpruntsProlongButton
