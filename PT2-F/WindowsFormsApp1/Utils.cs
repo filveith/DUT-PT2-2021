@@ -120,9 +120,9 @@ namespace WindowsFormsApp1
             return abos;
         }
 
-        
 
-        
+
+
 
         public static List<ALBUMS> AvoirTopAlbum()
         {
@@ -140,68 +140,10 @@ namespace WindowsFormsApp1
             return al;
         }
 
-       
+        
 
-        /// <summary>
-        /// Renvoie 10 suggestions
-        /// </summary>
-        /// <param name="codeAbonne"></param>
-        /// <returns></returns>
-        public static HashSet<ALBUMS> AvoirSuggestions(int codeAbonne)
-        {
-            // On recupère les preferences de l'abonné
-            Dictionary<string, double> preferences = GetPreferences(codeAbonne);
 
-            Random rdm = new Random();
-
-            HashSet<ALBUMS> suggestionsNOTFINAL = new HashSet<ALBUMS>();
-
-            // Pour chaque genre parmi les préférences de l'abonné :
-            foreach (string genre in preferences.Keys)
-            {
-                // On récupère le code du genre et le pourcentage associé
-                int codeGenre = (from g in Connexion.GENRES
-                                 where g.LIBELLÉ_GENRE == genre
-                                 select g.CODE_GENRE).FirstOrDefault();
-
-                double percentage = preferences[genre];
-
-                // Le pourcentage détermine combien de fois des albums de ce genre auront tendance à être choisis pour la sélection finale
-                int nbToTake = (int)percentage;
-                for (int i = 0; i < nbToTake; i++)
-                {
-                    // On choisit un album au hasard et, si il est du bon genre, on le rajoute à la sélection NON FINALE 
-                    ALBUMS currentSugg = Connexion.ALBUMS.OrderBy(r => Guid.NewGuid()).Skip(rdm.Next(1, 10)).FirstOrDefault();
-                    if (currentSugg.CODE_GENRE == codeGenre)
-                    {
-                        suggestionsNOTFINAL.Add(currentSugg);
-                    }
-                }
-            }
-
-            // Les suggestions finales sont conservées dans un HashSet pour éviter les doublons
-            HashSet<ALBUMS> suggestionsFinal = new HashSet<ALBUMS>();
-
-            ALBUMS[] suggArray = suggestionsNOTFINAL.ToArray();
-
-            int stop = 10;
-            if (suggArray.Length < 10)
-            {
-                stop = suggArray.Length;
-            }
-
-            // On récupère 10 suggestions maximum, qui composeront la suggestion finale
-            for (int i = 0; i< stop; i++)
-            {
-                    ALBUMS sugg = suggArray[rdm.Next(0, suggArray.Length)];
-                    suggestionsFinal.Add(sugg);
-                    List<ALBUMS> provisory = new List<ALBUMS>(suggArray);
-                    provisory.Remove(sugg);
-                    suggArray = provisory.ToArray();
-                
-            }
-            return suggestionsFinal;
-        }
+        
 
         public static List<PAYS> AvoirListeDesPays()
         {
