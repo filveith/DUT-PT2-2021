@@ -11,22 +11,15 @@ namespace WindowsFormsApp1
     {
         private static MusiquePT2_FEntities Connexion = new MusiquePT2_FEntities();
 
-        public static void prolongerEmprunt(int codeAbonne, int codeAlbumSelected)
+        public static List<EMPRUNTER> AvoirLesEmpruntProlonger()
         {
+            List<EMPRUNTER> result = (from emp in Connexion.EMPRUNTER
+                          join abo in Connexion.ABONNÉS on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
+                          join alb in Connexion.ALBUMS on emp.CODE_ALBUM equals alb.CODE_ALBUM
+                          where emp.nbRallongements > 0
+                          select emp).ToList();
 
-            EMPRUNTER emprunt = (from emp in Connexion.EMPRUNTER
-                                where emp.CODE_ABONNÉ == codeAbonne && emp.CODE_ALBUM == codeAlbumSelected
-                                select emp).First();
-
-            if (emprunt.nbRallongements != 1)
-            {
-                emprunt.DATE_RETOUR_ATTENDUE = emprunt.DATE_RETOUR_ATTENDUE.AddMonths(1);
-                emprunt.nbRallongements = 1;
-                Console.WriteLine("Rallongement effectué");
-            } else
-            {
-                Console.WriteLine("Vous avez déjà rallonger cet emprunt :/");
-            }
+            return result;
         }
         public static List<ALBUMS> AvoirAlbumsPasEmprunteDepuisUnAn()
         {
