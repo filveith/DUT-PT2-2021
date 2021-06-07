@@ -20,34 +20,42 @@ namespace WindowsFormsApp1
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             string s = (string)comboBox1.SelectedItem;
+            listBox1.Items.Clear();
             switch (s)
             {
                 case "US2":
-                    Utils.ConsulterEmprunts(8);
+                    foreach(EMPRUNTER em in Utils.ConsulterEmprunts(8).Keys)
+                    {
+                        listBox1.Items.Add(em);
+                    }
                     break;
                 case "US3":
-                    Utils.ProlongerEmprunt(8, 1);
+                    
+                    listBox1.Items.Add(Utils.ProlongerEmprunt(8, 1));
                     break;
                 case "US4":
-                    Utils.AvoirLesEmpruntProlonger();
+                    Utils.AvoirLesEmpruntProlonger().ForEach(v => listBox1.Items.Add(v));
                     break;
                 case "US5":
-                    Utils.AvoirAbonneAvecEmpruntRetardDe10Jours();
+                    Utils.AvoirAbonneAvecEmpruntRetardDe10Jours().ForEach(v => listBox1.Items.Add(v));
                     break;
                 case "US6":
-                    Utils.SupprimerAbosPasEmpruntDepuisUnAn();
+                    Utils.SupprimerAbosPasEmpruntDepuisUnAn().ForEach(v => listBox1.Items.Add(v));
                     break;
                 case "US7":
-                    Utils.AvoirTopAlbum();
+                    Utils.AvoirTopAlbum().ForEach(v => listBox1.Items.Add(v));
                     break;
                 case "US8":
-                    Utils.AvoirAlbumsPasEmprunteDepuisUnAn();
+                    Utils.AvoirAlbumsPasEmprunteDepuisUnAn().ForEach(v => listBox1.Items.Add(v));
                     break;
                 case "US9":
-                    Utils.ProlongerTousEmprunts(8);
+                    Utils.ProlongerTousEmprunts(8).ForEach(v => listBox1.Items.Add(v));
                     break;
                 case "US10":
-                    Utils.AvoirSuggestions(8);
+                    foreach(ALBUMS al in Utils.AvoirSuggestions(8))
+                    {
+                        listBox1.Items.Add(al);
+                    }
                     break;
 
             }

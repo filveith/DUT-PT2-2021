@@ -11,8 +11,6 @@ namespace WindowsFormsApp1
     public class Utils
     {
         private static MusiquePT2_FEntities Connexion = new MusiquePT2_FEntities();
-
-
         public static bool RegisterAbo(string nom, string prenom, string login, string mdp, int codePays)
         {
             try
@@ -54,14 +52,10 @@ namespace WindowsFormsApp1
 
             foreach (EMPRUNTER e in emprunt)
             {
-                ABONNÉS abonne = (from abo in Connexion.ABONNÉS
-                                  where abo.CODE_ABONNÉ == e.CODE_ABONNÉ
-                                  select abo).First();
+                ABONNÉS abonne = GetABONNÉ(e.CODE_ABONNÉ);
                 result.Add(abonne);
 
-                ALBUMS album = (from alb in Connexion.ALBUMS
-                                where alb.CODE_ALBUM == e.CODE_ALBUM
-                                select alb).First();
+                ALBUMS album = GetALBUM(e.CODE_ALBUM);
 
                 Console.WriteLine(abonne.PRÉNOM_ABONNÉ + " " + abonne.NOM_ABONNÉ + " " + album.TITRE_ALBUM);
             }
@@ -113,14 +107,14 @@ namespace WindowsFormsApp1
         public static List<ABONNÉS> SupprimerAbosPasEmpruntDepuisUnAn()
         {
             List<ABONNÉS> abos = AvoirAbosPasEmprunteDepuisUnAn();
-            foreach(ABONNÉS a in abos)
+            foreach (ABONNÉS a in abos)
             {
                 var emprunts = (from e in Connexion.EMPRUNTER
                                 where e.CODE_ABONNÉ == a.CODE_ABONNÉ
                                 select e);
                 Connexion.EMPRUNTER.RemoveRange(emprunts);
                 Connexion.ABONNÉS.Remove(a);
-                
+
             }
             Connexion.SaveChanges();
             return abos;
@@ -130,8 +124,7 @@ namespace WindowsFormsApp1
         {
             int i = 0;
             var emprunts = (from emp in Connexion.EMPRUNTER
-                            where emp.CODE_ABONNÉ == codeAbonne
-                            where emp.nbRallongements == 0
+                            where emp.CODE_ABONNÉ == codeAbonne && emp.nbRallongements == 0
                             select emp).ToList();
 
 
@@ -154,9 +147,7 @@ namespace WindowsFormsApp1
         public static Dictionary<EMPRUNTER, ABONNÉS> ConsulterEmprunts(int codeabo)
         {
             Dictionary<EMPRUNTER, ABONNÉS> emprunts = new Dictionary<EMPRUNTER, ABONNÉS>();
-            var abonne = (from a in Connexion.ABONNÉS
-                          where a.CODE_ABONNÉ == codeabo
-                          select a).First();
+            var abonne = GetABONNÉ(codeabo);
             var emprunt = (from alb in Connexion.ALBUMS
                            join emp in Connexion.EMPRUNTER on alb.CODE_ALBUM equals emp.CODE_ALBUM
                            join abo in Connexion.ABONNÉS on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
@@ -226,9 +217,7 @@ namespace WindowsFormsApp1
 
             foreach (EMPRUNTER e in emprunts)
             {
-                ALBUMS album = (from al in Connexion.ALBUMS
-                                where al.CODE_ALBUM == e.CODE_ALBUM
-                                select al).First();
+                ALBUMS album = GetALBUM(e.CODE_ALBUM);
 
                 GENRES genreAlbum = (from gen in Connexion.GENRES
                                      where gen.CODE_GENRE == album.CODE_GENRE
@@ -337,6 +326,20 @@ namespace WindowsFormsApp1
         {
             Connexion.Dispose();
             Connexion = new MusiquePT2_FEntities();
+        }
+
+        public static ABONNÉS GetABONNÉ(int codeAbonne)
+        {
+            return (from a in Connexion.ABONNÉS
+                    where a.CODE_ABONNÉ == codeAbonne
+                    select a).First();
+        }
+
+        public static ALBUMS GetALBUM(int codeAlbum)
+        {
+            return (from al in Connexion.ALBUMS
+                    where al.CODE_ALBUM == codeAlbum
+                    select al).First();
         }
     }
 }
