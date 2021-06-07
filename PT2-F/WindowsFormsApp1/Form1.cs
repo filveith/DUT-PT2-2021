@@ -15,18 +15,12 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
-            Utils.voirTopAlbum();
         }
 
         private void inscription_Click(object sender, EventArgs e)
         {
             InscriptionView view = new InscriptionView();
             view.Show();
-        }
-
-        private void inscription_Click(object sender, EventArgs e)
-        {
-            Utils.suggest(8);
         }
     }
 }
