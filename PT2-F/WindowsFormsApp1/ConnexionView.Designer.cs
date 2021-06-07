@@ -58,6 +58,7 @@ namespace WindowsFormsApp1
             // 
             this.passTextBox.Location = new System.Drawing.Point(288, 212);
             this.passTextBox.Name = "passTextBox";
+            this.passTextBox.PasswordChar = '*';
             this.passTextBox.Size = new System.Drawing.Size(212, 20);
             this.passTextBox.TabIndex = 2;
             // 

@@ -12,9 +12,7 @@ namespace WindowsFormsApp1
 {
     public partial class ConnexionView : Form
     {
-        private static MusiquePT2_FEntities Connexion = new MusiquePT2_FEntities();
-        public static string Login;
-        public static string Password;
+        private static readonly MusiquePT2_FEntities Connexion = Utils.Connexion;
         public ConnexionView()
         {
             InitializeComponent();
@@ -34,14 +32,17 @@ namespace WindowsFormsApp1
             {
                 if (LoginValide(login))
                 {
-                    if (BonMotDePasse(login, password))
+                    ABONNÉS a = Abonne(login, password);
+                    if (a != null)
                     {
                         Pop("vous êtes connectés", "Parfait");
                         if (isAdmin(login))
                         {
-                            Pop("connecté en tant qu'admin", "Attention");
+                            AdminView ad = new AdminView();
+                            ad.Show();
                         }
                     }
+                    else Pop("Mot de passe invalide", "Erreur");
 
                 }
                 else
@@ -103,29 +104,14 @@ namespace WindowsFormsApp1
         /**
          * permet de vérifier si le mot de passe est le bon
          */
-        private static bool BonMotDePasse(string login, string password)
+        private static ABONNÉS Abonne(string login, string password)
         {
-            bool BonMotDePasse = false;
             
             var passQuery = from ab in Connexion.ABONNÉS
-                              where ab.LOGIN_ABONNÉ == login
-                              select ab.PASSWORD_ABONNÉ;
+                              where ab.LOGIN_ABONNÉ == login && ab.PASSWORD_ABONNÉ == password
+                              select ab;
 
-            string pass = passQuery.FirstOrDefault().Trim() ;
-           
-            
-            
-
-            if(password.Equals(pass) || password == pass)
-            {
-                BonMotDePasse = true;
-            }
-            else
-            {
-                Pop("Mauvais mot de passe", "Erreur");
-            }
-
-            return BonMotDePasse;
+            return passQuery.FirstOrDefault();
         }
 
         private static bool isAdmin(string login)
@@ -144,7 +130,7 @@ namespace WindowsFormsApp1
                 if (login.Equals(s.Trim()))
                 {
                     admin = true;
-
+                    break;
                 }
             }
 
