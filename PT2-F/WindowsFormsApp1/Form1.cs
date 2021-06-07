@@ -30,11 +30,14 @@ namespace WindowsFormsApp1
                 DebugWindow d = new DebugWindow();
                 d.Show();
             }
-            if(e.KeyChar == 'a')
-            {
-                AdminView a = new AdminView();
-                a.Show();
-            }
+        }
+
+        private void connexion_Click(object sender, EventArgs e)
+        {
+            ConnexionView c = new ConnexionView();
+            this.Visible = false;
+            c.ShowDialog();
+            this.Visible = true;
         }
     }
 }

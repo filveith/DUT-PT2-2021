@@ -10,7 +10,7 @@ namespace WindowsFormsApp1
 {
     public class Utils
     {
-        private static MusiquePT2_FEntities Connexion = new MusiquePT2_FEntities();
+        public static MusiquePT2_FEntities Connexion = new MusiquePT2_FEntities();
         public static bool RegisterAbo(string nom, string prenom, string login, string mdp, int codePays)
         {
             try
