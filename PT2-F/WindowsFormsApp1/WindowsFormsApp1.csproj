@@ -79,6 +79,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BDDModele.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ConnexionView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConnexionView.Designer.cs">
+      <DependentUpon>ConnexionView.cs</DependentUpon>
+    </Compile>
     <Compile Include="DebugWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils.cs" />
+    <EmbeddedResource Include="ConnexionView.resx">
+      <DependentUpon>ConnexionView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
