@@ -284,7 +284,7 @@ namespace WindowsFormsApp1
             
             int nbEmprunts = emprunts.Count();
 
-            Console.WriteLine("On a " + nbEmprunts + " emprunts");
+            //Console.WriteLine("On a " + nbEmprunts + " emprunts");
             foreach(EMPRUNTER e in emprunts)
             {
                 ALBUMS album = (from al in Connexion.ALBUMS
@@ -304,13 +304,13 @@ namespace WindowsFormsApp1
                     keys = new List<string>(allGenre.Keys);
 
 
-                    Console.WriteLine("------------------");
+                    /*Console.WriteLine("------------------");
                     foreach (string key in keys)
                     {
                         Console.WriteLine(key);
                     }
                     Console.WriteLine("------------------");
-
+                    */
                     if (allGenre.ContainsKey(nomGenre))
                     {
                         allGenre[nomGenre]++;
@@ -333,19 +333,76 @@ namespace WindowsFormsApp1
             foreach(KeyValuePair<String, int> values in allGenre)
             {
                 int v = values.Value;
-                Console.WriteLine("AAAAAAAAA " + v + " " + nbEmprunts);
+                //Console.WriteLine("AAAAAAAAA " + v + " " + nbEmprunts);
                 double result = (double)v / nbEmprunts * 100;
                 
-                Console.WriteLine(result);
+                //Console.WriteLine(result);
                 preferencesByGenre.Add(values.Key, result);
             }
 
-            foreach(KeyValuePair<String, double> values in preferencesByGenre)
+            /*foreach(KeyValuePair<String, double> values in preferencesByGenre)
             {
                 Console.WriteLine(values.Key + " " + values.Value + "%");
-            }
+            }*/
 
             return preferencesByGenre;
+        }
+
+        public static HashSet<ALBUMS> suggest(int codeAbonne) 
+        {
+            Dictionary<String, double> preferences = getPreferences(codeAbonne);
+
+            Random rdm = new Random();
+
+            HashSet<ALBUMS> suggestionsNOTFINAL = new HashSet<ALBUMS>();
+
+            foreach(String genre in preferences.Keys)
+            {
+                int codeGenre = (from g in Connexion.GENRES
+                                 where g.LIBELLÉ_GENRE == genre
+                                 select g.CODE_GENRE).First();
+
+                double percentage = preferences[genre];
+
+                int nbToTake = (int)percentage;
+
+                for (int i = 0; i < nbToTake; i++)
+                {
+                    ALBUMS currentSugg = Connexion.ALBUMS.OrderBy(r => Guid.NewGuid()).Skip(rdm.Next(1, 10)).Take(1).First();
+
+                    if (currentSugg.CODE_GENRE == codeGenre)
+                    {
+                        suggestionsNOTFINAL.Add(currentSugg);
+                    }
+                }
+
+
+            }
+
+            
+
+            ALBUMS[] suggArray = suggestionsNOTFINAL.ToArray();
+
+            HashSet<ALBUMS> suggestionsFinal = new HashSet<ALBUMS>();
+
+            for (int i = 0; i < 10; i++)
+            {
+                ALBUMS sugg = suggArray[rdm.Next(0, suggArray.Length)];
+                suggestionsFinal.Add(sugg);
+                List<ALBUMS> provisory = new List<ALBUMS>(suggArray);
+                provisory.Remove(sugg);
+                suggArray = provisory.ToArray();
+            }
+
+            /*foreach (ALBUMS al in suggestionsFinal)
+            {
+                Console.WriteLine(al.TITRE_ALBUM + " " + al.CODE_GENRE);
+            }*/
+
+            return suggestionsFinal;
+
+
+
         }
     }
 }
