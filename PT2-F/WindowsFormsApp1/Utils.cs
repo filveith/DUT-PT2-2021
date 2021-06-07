@@ -108,7 +108,15 @@ namespace WindowsFormsApp1
         public static List<ABONNÉS> SupprimerAbosPasEmpruntDepuisUnAn()
         {
             List<ABONNÉS> abos = AvoirAbosPasEmprunteDepuisUnAn();
-            Connexion.ABONNÉS.RemoveRange(abos);
+            foreach(ABONNÉS a in abos)
+            {
+                var emprunts = (from e in Connexion.EMPRUNTER
+                                where e.CODE_ABONNÉ == a.CODE_ABONNÉ
+                                select e);
+                Connexion.EMPRUNTER.RemoveRange(emprunts);
+                Connexion.ABONNÉS.Remove(a);
+                
+            }
             Connexion.SaveChanges();
             return abos;
         }

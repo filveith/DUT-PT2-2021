@@ -30,6 +30,11 @@ namespace WindowsFormsApp1
                 DebugWindow d = new DebugWindow();
                 d.Show();
             }
+            if(e.KeyChar == 'a')
+            {
+                AdminView a = new AdminView();
+                a.Show();
+            }
         }
     }
 }
