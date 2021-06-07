@@ -46,9 +46,7 @@ namespace WindowsFormsApp1
             return result;
         }
         public static List<ALBUMS> AvoirAlbumsPasEmprunteDepuisUnAn()
-        {
-
-                
+        {                
             List<ALBUMS> liste = (from a in Connexion.ALBUMS
                                   join e in Connexion.EMPRUNTER
                                   on a.CODE_ALBUM equals e.CODE_ALBUM into empDept
@@ -119,6 +117,26 @@ namespace WindowsFormsApp1
                 //Console.WriteLine(em) ;
             }
             return emprunts;
+        }
+
+        public static bool prolongerEmprunt(int codeAbonne, int codeAlbumSelected)
+        {
+            EMPRUNTER emprunt = (from emp in Connexion.EMPRUNTER
+                                 where emp.CODE_ABONNÉ == codeAbonne && emp.CODE_ALBUM == codeAlbumSelected
+                                 select emp).First();
+
+            if (emprunt.nbRallongements != 1)
+            {
+                emprunt.DATE_RETOUR_ATTENDUE = emprunt.DATE_RETOUR_ATTENDUE.AddMonths(1);
+                emprunt.nbRallongements = 1;
+                Console.WriteLine("Rallongement effectué");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Vous avez déjà rallonger cet emprunt :/");
+                return false;
+            }
         }
     }
 }
