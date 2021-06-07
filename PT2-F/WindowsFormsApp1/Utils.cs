@@ -40,6 +40,11 @@ namespace WindowsFormsApp1
                 return false;
             }
         }
+
+        /// <summary>
+        /// Retourne une liste des abonnes avec des emrpunts en retard de plus de 10jours
+        /// </summary>
+        /// <returns></returns>
         public static List<ABONNÉS> AvoirAbonneAvecEmpruntRetardDe10Jours()
         {
             List<ABONNÉS> result = new List<ABONNÉS>();
@@ -141,6 +146,11 @@ namespace WindowsFormsApp1
             return emprunts;
         }
 
+        /// <summary>
+        /// Retourne un dictionnary avec la liste des emprunt et la nom de l'abonne correspondant
+        /// </summary>
+        /// <param name="codeabo"></param>
+        /// <returns></returns>
         public static Dictionary<EMPRUNTER, ABONNÉS> ConsulterEmprunts(int codeabo)
         {
             Dictionary<EMPRUNTER, ABONNÉS> emprunts = new Dictionary<EMPRUNTER, ABONNÉS>();
