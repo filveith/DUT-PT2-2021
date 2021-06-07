@@ -30,7 +30,11 @@ namespace WindowsFormsApp1
                         Console.WriteLine("ok");
                         this.Close();
                     }
-                    else PopupErreurOK("Erreur login identique", "Erreur");
+                    else
+                    {
+                        Utils.RefreshDatabase();
+                        PopupErreurOK("Erreur login identique", "Erreur");
+                    }
 
                 }
                 else PopupErreurOK("Erreur mot de passe", "Erreur");
