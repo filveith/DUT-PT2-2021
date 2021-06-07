@@ -112,6 +112,9 @@
     <Compile Include="InscriptionView.Designer.cs">
       <DependentUpon>InscriptionView.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyAbonnes.cs" />
+    <Compile Include="MyAlbum.cs" />
+    <Compile Include="MyEmprunt.cs" />
     <Compile Include="PAYS.cs">
       <DependentUpon>BDDModele.tt</DependentUpon>
     </Compile>
