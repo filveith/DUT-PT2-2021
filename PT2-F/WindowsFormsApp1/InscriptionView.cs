@@ -22,32 +22,33 @@ namespace WindowsFormsApp1
         {
             try
             {
-                // les contrôles sont remplis ?
-                if (textBoxNom.TextLength != 0 && textBoxPrenom.TextLength != 0 && textBoxID.TextLength != 0 && textBoxMdp.TextLength != 0 && textBoxCoMdp.TextLength != 0)
-                {
-
-                    if (textBoxCoMdp.Text == textBoxMdp.Text)
+                    // les contrôles sont remplis ?
+                    if (textBoxNom.TextLength != 0 && textBoxPrenom.TextLength != 0 && textBoxID.TextLength != 0 && textBoxMdp.TextLength != 0 && textBoxCoMdp.TextLength != 0 && comboBoxPays.SelectedItem != null)
                     {
-                        // on crée un nouveau Abonné
-                        ABONNÉS a = new ABONNÉS();
-                        a.NOM_ABONNÉ = textBoxNom.Text.Substring(0, Math.Min(textBoxNom.Text.Length, 32));
-                        a.PRÉNOM_ABONNÉ = textBoxPrenom.Text.Substring(0, Math.Min(textBoxPrenom.Text.Length, 32));
-                        a.LOGIN_ABONNÉ = textBoxID.Text.Substring(0, Math.Min(textBoxID.Text.Length, 32));
-                        a.PASSWORD_ABONNÉ = textBoxMdp.Text.Substring(0, Math.Min(textBoxMdp.Text.Length, 32));
-                        a.creationDate = DateTime.Now;
+                        if (textBoxCoMdp.Text == textBoxMdp.Text)
+                        {
+                            // on crée un nouveau Abonné
+                            ABONNÉS a = new ABONNÉS();
+                            a.CODE_PAYS = comboBoxPays.SelectedIndex+1;
+                            a.NOM_ABONNÉ = textBoxNom.Text.Substring(0, Math.Min(textBoxNom.Text.Length, 32));
+                            a.PRÉNOM_ABONNÉ = textBoxPrenom.Text.Substring(0, Math.Min(textBoxPrenom.Text.Length, 32));
+                            a.LOGIN_ABONNÉ = textBoxID.Text.Substring(0, Math.Min(textBoxID.Text.Length, 32));
+                            a.PASSWORD_ABONNÉ = textBoxMdp.Text.Substring(0, Math.Min(textBoxMdp.Text.Length, 32));
+                            a.creationDate = DateTime.Now;
 
 
-                        // ajout du nouveau Abonné
-                        Connexion.ABONNÉS.Add(a);
-                        Connexion.SaveChanges();
+                            // ajout du nouveau Abonné
+                            Connexion.ABONNÉS.Add(a);
+                            Connexion.SaveChanges();
 
-                        Console.WriteLine("ok");
+                            Console.WriteLine("ok");
+                            this.Close();
+                        }
+                        else PopupErreurOK("Erreur mot de passe", "Erreur");
+
                     }
-                    else PopupErreurOK("Erreur mot de passe", "Erreur");
-
-                }
-                else PopupErreurOK("Tous les champs doivent être remplis", "Erreur");
-                this.Close();
+                    else PopupErreurOK("Tous les champs doivent être remplis", "Erreur");
+                
             }catch(Exception i)
             {
                 PopupErreurOK("L'identifiant est déjà utilisé ", "Erreur");
@@ -62,7 +63,15 @@ namespace WindowsFormsApp1
 
         private void InscriptionView_Load(object sender, EventArgs e)
         {
+            List<PAYS> pays = Utils.AvoirListeDesPays();
+            foreach (PAYS p in pays)
+            {
+                comboBoxPays.Items.Add(p.NOM_PAYS);
+            }
+        }
 
+        private void comboBoxPays_SelectedIndexChanged(object sender, EventArgs e)
+        {
         }
     }
 }

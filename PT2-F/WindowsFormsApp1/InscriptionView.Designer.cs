@@ -41,6 +41,8 @@ namespace WindowsFormsApp1
             this.textBoxMdp = new System.Windows.Forms.TextBox();
             this.textBoxCoMdp = new System.Windows.Forms.TextBox();
             this.ValiderInscription = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.comboBoxPays = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -122,6 +124,7 @@ namespace WindowsFormsApp1
             // 
             this.textBoxMdp.Location = new System.Drawing.Point(352, 237);
             this.textBoxMdp.Name = "textBoxMdp";
+            this.textBoxMdp.PasswordChar = '*';
             this.textBoxMdp.Size = new System.Drawing.Size(100, 20);
             this.textBoxMdp.TabIndex = 9;
             // 
@@ -129,6 +132,7 @@ namespace WindowsFormsApp1
             // 
             this.textBoxCoMdp.Location = new System.Drawing.Point(352, 282);
             this.textBoxCoMdp.Name = "textBoxCoMdp";
+            this.textBoxCoMdp.PasswordChar = '*';
             this.textBoxCoMdp.Size = new System.Drawing.Size(100, 20);
             this.textBoxCoMdp.TabIndex = 10;
             // 
@@ -142,11 +146,31 @@ namespace WindowsFormsApp1
             this.ValiderInscription.UseVisualStyleBackColor = true;
             this.ValiderInscription.Click += new System.EventHandler(this.ValiderInscription_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(301, 330);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(29, 13);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "pays";
+            // 
+            // comboBoxPays
+            // 
+            this.comboBoxPays.FormattingEnabled = true;
+            this.comboBoxPays.Location = new System.Drawing.Point(352, 322);
+            this.comboBoxPays.Name = "comboBoxPays";
+            this.comboBoxPays.Size = new System.Drawing.Size(100, 21);
+            this.comboBoxPays.TabIndex = 13;
+            this.comboBoxPays.SelectedIndexChanged += new System.EventHandler(this.comboBoxPays_SelectedIndexChanged);
+            // 
             // InscriptionView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.comboBoxPays);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.ValiderInscription);
             this.Controls.Add(this.textBoxCoMdp);
             this.Controls.Add(this.textBoxMdp);
@@ -181,5 +205,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TextBox textBoxMdp;
         private System.Windows.Forms.TextBox textBoxCoMdp;
         private System.Windows.Forms.Button ValiderInscription;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox comboBoxPays;
     }
 }
