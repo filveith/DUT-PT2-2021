@@ -22,5 +22,11 @@ namespace WindowsFormsApp1
             InscriptionView view = new InscriptionView();
             view.Show();
         }
+
+        private void connexion_Click(object sender, EventArgs e)
+        {
+            AdminView view = new AdminView();
+            view.Show();
+        }
     }
 }
