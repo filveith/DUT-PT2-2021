@@ -12,20 +12,23 @@ namespace WindowsFormsApp1
 {
     public partial class UserView : Form
     {
-        public UserView()
+        private ABONNÉS Abo;
+
+        public UserView(ABONNÉS a)
         {
             InitializeComponent();
+            Abo = a;
         }
 
         private void mesAlbums_Click(object sender, EventArgs e)
         {
 
             AffichageAbo.Items.Clear();
-            List<EMPRUNTER> mesAlbums = Utils.ConsulterEmprunts(login);
+            var mesEmprunts = Utils.ConsulterEmprunts(Abo.CODE_ABONNÉ).Keys;
 
-            foreach(EMPRUNTER albums in mesAlbums)
+            foreach(EMPRUNTER emprunt in mesEmprunts)
             {
-                AffichageAbo.Items.Add( "Voici vos albums empruntés : "+ albums.CODE_ALBUM);
+                AffichageAbo.Items.Add(emprunt);
             }
 
         }
@@ -33,7 +36,7 @@ namespace WindowsFormsApp1
         private void prolongerEmprunt_Click(object sender, EventArgs e)
         {
             AffichageAbo.Items.Clear();
-            Utils.prolongerEmprunt (codeAbonne, codeAlbumSelected);
+            Utils.prolongerEmprunt (Abo.CODE_ABONNÉ, codeAlbumSelected);
          
         }
 
