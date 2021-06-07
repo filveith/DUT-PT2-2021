@@ -29,12 +29,43 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.SuspendLayout();
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "US2",
+            "US3",
+            "US4",
+            "US5",
+            "US6",
+            "US7",
+            "US8",
+            "US9",
+            "US10"});
+            this.comboBox1.Location = new System.Drawing.Point(327, 192);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 0;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // DebugWindow
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.comboBox1);
+            this.Name = "DebugWindow";
             this.Text = "DebugWindow";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

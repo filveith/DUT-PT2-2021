@@ -78,8 +78,10 @@ namespace WindowsFormsApp1
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

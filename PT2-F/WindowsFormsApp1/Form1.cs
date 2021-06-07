@@ -22,5 +22,14 @@ namespace WindowsFormsApp1
             InscriptionView view = new InscriptionView();
             view.Show();
         }
+
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == 'd')
+            {
+                DebugWindow d = new DebugWindow();
+                d.Show();
+            }
+        }
     }
 }
