@@ -20,7 +20,9 @@ namespace WindowsFormsApp1
         private void inscription_Click(object sender, EventArgs e)
         {
             InscriptionView view = new InscriptionView();
-            view.Show();
+            this.Visible = false;
+            view.ShowDialog();
+            this.Visible = true;
         }
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
