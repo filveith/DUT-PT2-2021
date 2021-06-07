@@ -60,5 +60,10 @@ namespace WindowsFormsApp1
 
             }
         }
+
+        private void DebugWindow_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
