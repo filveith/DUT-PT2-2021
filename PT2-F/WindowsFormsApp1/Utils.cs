@@ -175,10 +175,10 @@ namespace WindowsFormsApp1
                        group alb by alb.CODE_ALBUM into groupés
                        orderby groupés.Count() descending
                        select groupés).Take(10);
+            List<ALBUMS> al = new List<ALBUMS>();
+            top.ToList().ForEach(v => al.Add(v.First()));
 
-            var liste = top.SelectMany(group => group).ToList().Distinct().ToList();
-
-            return liste;
+            return al;
         }
 
         public static bool ProlongerEmprunt(int codeAbonne, int codeAlbumSelected)
@@ -192,6 +192,7 @@ namespace WindowsFormsApp1
                 {
                     emprunt.DATE_RETOUR_ATTENDUE = emprunt.DATE_RETOUR_ATTENDUE.AddMonths(1);
                     emprunt.nbRallongements = 1;
+                    Connexion.SaveChanges();
                     Console.WriteLine("Rallongement effectué");
                     return true;
                 }
@@ -313,17 +314,16 @@ namespace WindowsFormsApp1
             HashSet<ALBUMS> suggestionsFinal = new HashSet<ALBUMS>();
 
             ALBUMS[] suggArray = suggestionsNOTFINAL.ToArray();
-            if (suggArray.Length > 0)
+
+            // On récupère 10 suggestions, qui composeront la suggestion finale
+            for (int i = suggArray.Length; i > 0; i--)
             {
-                // On récupère 10 suggestions, qui composeront la suggestion finale
-                for (int i = 0; i < 10; i++)
-                {
                     ALBUMS sugg = suggArray[rdm.Next(0, suggArray.Length)];
                     suggestionsFinal.Add(sugg);
                     List<ALBUMS> provisory = new List<ALBUMS>(suggArray);
                     provisory.Remove(sugg);
                     suggArray = provisory.ToArray();
-                }
+                
             }
             return suggestionsFinal;
         }

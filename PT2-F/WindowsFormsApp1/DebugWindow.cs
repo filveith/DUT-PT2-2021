@@ -24,14 +24,14 @@ namespace WindowsFormsApp1
             switch (s)
             {
                 case "US2":
-                    foreach(EMPRUNTER em in Utils.ConsulterEmprunts(8).Keys)
+                    foreach(EMPRUNTER em in Utils.ConsulterEmprunts(64).Keys)
                     {
                         listBox1.Items.Add(em);
                     }
                     break;
                 case "US3":
                     
-                    listBox1.Items.Add(Utils.ProlongerEmprunt(8, 1));
+                    listBox1.Items.Add(Utils.ProlongerEmprunt(71, 377));
                     break;
                 case "US4":
                     Utils.AvoirLesEmpruntProlonger().ForEach(v => listBox1.Items.Add(v));
@@ -49,10 +49,10 @@ namespace WindowsFormsApp1
                     Utils.AvoirAlbumsPasEmprunteDepuisUnAn().ForEach(v => listBox1.Items.Add(v));
                     break;
                 case "US9":
-                    Utils.ProlongerTousEmprunts(8).ForEach(v => listBox1.Items.Add(v));
+                    Utils.ProlongerTousEmprunts(65).ForEach(v => listBox1.Items.Add(v));
                     break;
                 case "US10":
-                    foreach(ALBUMS al in Utils.AvoirSuggestions(8))
+                    foreach(ALBUMS al in Utils.AvoirSuggestions(64))
                     {
                         listBox1.Items.Add(al);
                     }
