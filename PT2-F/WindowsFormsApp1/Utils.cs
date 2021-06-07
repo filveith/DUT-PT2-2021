@@ -84,7 +84,7 @@ namespace WindowsFormsApp1
             return abos;
         }
 
-        public static List<EMPRUNTER> prolongerTousEmprunts(int codeAbonne)
+        public static List<EMPRUNTER> ProlongerTousEmprunts(int codeAbonne)
         {
             int i = 0;
             var emprunts = (from emp in Connexion.EMPRUNTER
@@ -104,16 +104,16 @@ namespace WindowsFormsApp1
             return emprunts;
         }
 
-        public static Dictionary<EMPRUNTER, ABONNÉS> ConsulterEmprunts(string login)
+        public static Dictionary<EMPRUNTER, ABONNÉS> ConsulterEmprunts(int codeabo)
         {
             Dictionary<EMPRUNTER, ABONNÉS> emprunts = new Dictionary<EMPRUNTER, ABONNÉS>();
             var abonne = (from a in Connexion.ABONNÉS
-                          where a.LOGIN_ABONNÉ == login
+                          where a.CODE_ABONNÉ == codeabo
                           select a).First();
             var emprunt = (from alb in Connexion.ALBUMS
                            join emp in Connexion.EMPRUNTER on alb.CODE_ALBUM equals emp.CODE_ALBUM
                            join abo in Connexion.ABONNÉS on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
-                           where abo.LOGIN_ABONNÉ == login
+                           where abo.CODE_ABONNÉ == codeabo
                            orderby emp.DATE_RETOUR_ATTENDUE ascending
                            select new { emprunt = emp, abonne = abo }).ToList();
 
@@ -143,7 +143,7 @@ namespace WindowsFormsApp1
             return liste;
         }
 
-        public static bool prolongerEmprunt(int codeAbonne, int codeAlbumSelected)
+        public static bool ProlongerEmprunt(int codeAbonne, int codeAlbumSelected)
         {
             EMPRUNTER emprunt = (from emp in Connexion.EMPRUNTER
                                  where emp.CODE_ABONNÉ == codeAbonne && emp.CODE_ALBUM == codeAlbumSelected
@@ -168,7 +168,7 @@ namespace WindowsFormsApp1
         /// </summary>
         /// <param name="codeAbonne"></param>
         /// <returns></returns>
-        private static Dictionary<string, double> getPreferences(int codeAbonne)
+        private static Dictionary<string, double> GetPreferences(int codeAbonne)
         {
             Dictionary<string, int> allGenre = new Dictionary<string, int>();
             var emprunts = from emp in Connexion.EMPRUNTER
@@ -229,9 +229,9 @@ namespace WindowsFormsApp1
         /// </summary>
         /// <param name="codeAbonne"></param>
         /// <returns></returns>
-        public static HashSet<ALBUMS> suggest(int codeAbonne)
+        public static HashSet<ALBUMS> AvoirSuggestions(int codeAbonne)
         {
-            Dictionary<string, double> preferences = getPreferences(codeAbonne);
+            Dictionary<string, double> preferences = GetPreferences(codeAbonne);
 
             Random rdm = new Random();
 
@@ -249,7 +249,7 @@ namespace WindowsFormsApp1
 
                 for (int i = 0; i < nbToTake; i++)
                 {
-                    ALBUMS currentSugg = Connexion.ALBUMS.OrderBy(r => Guid.NewGuid()).Skip(rdm.Next(1, 10)).Take(1).First();
+                    ALBUMS currentSugg = Connexion.ALBUMS.OrderBy(r => Guid.NewGuid()).Skip(rdm.Next(1, 10)).First();
 
                     if (currentSugg.CODE_GENRE == codeGenre)
                     {
