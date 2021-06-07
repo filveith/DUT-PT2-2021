@@ -12,7 +12,6 @@ namespace WindowsFormsApp1
 {
     public partial class InscriptionView : Form
     {
-        private static MusiquePT2_FEntities Connexion = new MusiquePT2_FEntities();
         public InscriptionView()
         {
             InitializeComponent();
@@ -20,39 +19,24 @@ namespace WindowsFormsApp1
 
         private void ValiderInscription_Click(object sender, EventArgs e)
         {
-            try
+
+            // les contrôles sont remplis ?
+            if (textBoxNom.TextLength != 0 && textBoxPrenom.TextLength != 0 && textBoxID.TextLength != 0 && textBoxMdp.TextLength != 0 && textBoxCoMdp.TextLength != 0 && comboBoxPays.SelectedItem != null)
             {
-                    // les contrôles sont remplis ?
-                    if (textBoxNom.TextLength != 0 && textBoxPrenom.TextLength != 0 && textBoxID.TextLength != 0 && textBoxMdp.TextLength != 0 && textBoxCoMdp.TextLength != 0 && comboBoxPays.SelectedItem != null)
+                if (textBoxCoMdp.Text == textBoxMdp.Text)
+                {
+                    Utils.RefreshDatabase();
+                    if (Utils.RegisterAbo(textBoxNom.Text, textBoxPrenom.Text, textBoxID.Text, textBoxMdp.Text, comboBoxPays.SelectedIndex))
                     {
-                        if (textBoxCoMdp.Text == textBoxMdp.Text)
-                        {
-                            // on crée un nouveau Abonné
-                            ABONNÉS a = new ABONNÉS();
-                            a.CODE_PAYS = comboBoxPays.SelectedIndex+1;
-                            a.NOM_ABONNÉ = textBoxNom.Text.Substring(0, Math.Min(textBoxNom.Text.Length, 32));
-                            a.PRÉNOM_ABONNÉ = textBoxPrenom.Text.Substring(0, Math.Min(textBoxPrenom.Text.Length, 32));
-                            a.LOGIN_ABONNÉ = textBoxID.Text.Substring(0, Math.Min(textBoxID.Text.Length, 32));
-                            a.PASSWORD_ABONNÉ = textBoxMdp.Text.Substring(0, Math.Min(textBoxMdp.Text.Length, 32));
-                            a.creationDate = DateTime.Now;
-
-
-                            // ajout du nouveau Abonné
-                            Connexion.ABONNÉS.Add(a);
-                            Connexion.SaveChanges();
-
-                            Console.WriteLine("ok");
-                            this.Close();
-                        }
-                        else PopupErreurOK("Erreur mot de passe", "Erreur");
-
+                        Console.WriteLine("ok");
+                        this.Close();
                     }
-                    else PopupErreurOK("Tous les champs doivent être remplis", "Erreur");
-                
-            }catch(Exception i)
-            {
-                PopupErreurOK("L'identifiant est déjà utilisé ", "Erreur");
+                    else PopupErreurOK("Erreur login identique", "Erreur");
+
+                }
+                else PopupErreurOK("Erreur mot de passe", "Erreur");
             }
+            else PopupErreurOK("Tous les champs doivent être remplis", "Erreur");
         }
 
         private void PopupErreurOK(string message, string caption)
@@ -64,10 +48,13 @@ namespace WindowsFormsApp1
         private void InscriptionView_Load(object sender, EventArgs e)
         {
             List<PAYS> pays = Utils.AvoirListeDesPays();
+            comboBoxPays.Items.Clear();
+            comboBoxPays.Items.Add("Autre");
             foreach (PAYS p in pays)
             {
-                comboBoxPays.Items.Add(p.NOM_PAYS);
+                comboBoxPays.Items.Add(p.NOM_PAYS.Trim());
             }
+            comboBoxPays.SelectedIndex = 0;
         }
 
         private void comboBoxPays_SelectedIndexChanged(object sender, EventArgs e)
