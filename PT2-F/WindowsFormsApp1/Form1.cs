@@ -35,7 +35,9 @@ namespace WindowsFormsApp1
         private void connexion_Click(object sender, EventArgs e)
         {
             ConnexionView c = new ConnexionView();
-            c.Show();
+            this.Visible = false;
+            c.ShowDialog();
+            this.Visible = true;
         }
     }
 }
