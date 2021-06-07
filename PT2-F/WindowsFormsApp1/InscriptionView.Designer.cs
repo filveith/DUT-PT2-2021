@@ -162,7 +162,6 @@ namespace WindowsFormsApp1
             this.comboBoxPays.Name = "comboBoxPays";
             this.comboBoxPays.Size = new System.Drawing.Size(100, 21);
             this.comboBoxPays.TabIndex = 13;
-            this.comboBoxPays.SelectedIndexChanged += new System.EventHandler(this.comboBoxPays_SelectedIndexChanged);
             // 
             // InscriptionView
             // 
