@@ -79,6 +79,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BDDModele.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DebugWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DebugWindow.Designer.cs">
+      <DependentUpon>DebugWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="EDITEURS.cs">
       <DependentUpon>BDDModele.tt</DependentUpon>
     </Compile>
