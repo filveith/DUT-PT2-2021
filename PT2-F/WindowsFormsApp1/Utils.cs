@@ -162,5 +162,229 @@ namespace WindowsFormsApp1
                 return false;
             }
         }
+
+        /// <summary>
+        /// Retourne les genres avec pourcentage de prefs de l'abo
+        /// </summary>
+        /// <param name="codeAbonne"></param>
+        /// <returns></returns>
+        private static Dictionary<string, double> getPreferences(int codeAbonne)
+        {
+            Dictionary<string, int> allGenre = new Dictionary<string, int>();
+            var emprunts = from emp in Connexion.EMPRUNTER
+                           where emp.CODE_ABONNÉ == codeAbonne
+                           select emp;
+            
+            int nbEmprunts = emprunts.Count();
+
+            foreach(EMPRUNTER e in emprunts)
+            {
+                ALBUMS album = (from al in Connexion.ALBUMS
+                                where al.CODE_ALBUM == e.CODE_ALBUM
+                                select al).First();
+
+                GENRES genreAlbum = (from gen in Connexion.GENRES
+                                     where gen.CODE_GENRE == album.CODE_GENRE
+                                     select gen).First();
+
+                string nomGenre = genreAlbum.LIBELLÉ_GENRE;
+
+                List<string> keys;
+                if (allGenre.Count() > 0)
+                {
+
+                    keys = new List<string>(allGenre.Keys);
+                    if (allGenre.ContainsKey(nomGenre))
+                    {
+                        allGenre[nomGenre]++;
+                    }
+                    else
+                    {
+                        allGenre.Add(nomGenre, 1);
+                    }
+                    
+                } else
+                {
+                    allGenre.Add(nomGenre, 1);
+                }
+
+                
+            }
+
+            Dictionary<string, double> preferencesByGenre = new Dictionary<string, double>();
+
+            foreach(KeyValuePair<string, int> values in allGenre)
+            {
+                int v = values.Value;
+                double result = (double)v / nbEmprunts * 100;
+                preferencesByGenre.Add(values.Key, result);
+            }
+
+            return preferencesByGenre;
+        }
+
+        /// <summary>
+        /// Renvoie 10 suggestions
+        /// </summary>
+        /// <param name="codeAbonne"></param>
+        /// <returns></returns>
+        public static HashSet<ALBUMS> suggest(int codeAbonne) 
+        {
+            Dictionary<string, double> preferences = getPreferences(codeAbonne);
+
+            Random rdm = new Random();
+
+            HashSet<ALBUMS> suggestionsNOTFINAL = new HashSet<ALBUMS>();
+
+            foreach(string genre in preferences.Keys)
+            {
+                int codeGenre = (from g in Connexion.GENRES
+                                 where g.LIBELLÉ_GENRE == genre
+                                 select g.CODE_GENRE).First();
+
+                double percentage = preferences[genre];
+
+                int nbToTake = (int)percentage;
+
+                for (int i = 0; i < nbToTake; i++)
+                {
+                    ALBUMS currentSugg = Connexion.ALBUMS.OrderBy(r => Guid.NewGuid()).Skip(rdm.Next(1, 10)).Take(1).First();
+
+                    if (currentSugg.CODE_GENRE == codeGenre)
+                    {
+                        suggestionsNOTFINAL.Add(currentSugg);
+                    }
+                }
+            }
+            ALBUMS[] suggArray = suggestionsNOTFINAL.ToArray();
+
+            HashSet<ALBUMS> suggestionsFinal = new HashSet<ALBUMS>();
+
+            for (int i = 0; i < 10; i++)
+            {
+                ALBUMS sugg = suggArray[rdm.Next(0, suggArray.Length)];
+                suggestionsFinal.Add(sugg);
+                List<ALBUMS> provisory = new List<ALBUMS>(suggArray);
+                provisory.Remove(sugg);
+                suggArray = provisory.ToArray();
+            }
+
+            return suggestionsFinal;
+
+
+
+        }
+
+        /// <summary>
+        /// Retourne les genres avec pourcentage de prefs de l'abo
+        /// </summary>
+        /// <param name="codeAbonne"></param>
+        /// <returns></returns>
+        private static Dictionary<string, double> getPreferences(int codeAbonne)
+        {
+            Dictionary<string, int> allGenre = new Dictionary<string, int>();
+            var emprunts = from emp in Connexion.EMPRUNTER
+                           where emp.CODE_ABONNÉ == codeAbonne
+                           select emp;
+            
+            int nbEmprunts = emprunts.Count();
+
+            foreach(EMPRUNTER e in emprunts)
+            {
+                ALBUMS album = (from al in Connexion.ALBUMS
+                                where al.CODE_ALBUM == e.CODE_ALBUM
+                                select al).First();
+
+                GENRES genreAlbum = (from gen in Connexion.GENRES
+                                     where gen.CODE_GENRE == album.CODE_GENRE
+                                     select gen).First();
+
+                string nomGenre = genreAlbum.LIBELLÉ_GENRE;
+
+                List<string> keys;
+                if (allGenre.Count() > 0)
+                {
+
+                    keys = new List<string>(allGenre.Keys);
+                    if (allGenre.ContainsKey(nomGenre))
+                    {
+                        allGenre[nomGenre]++;
+                    }
+                    else
+                    {
+                        allGenre.Add(nomGenre, 1);
+                    }
+                    
+                } else
+                {
+                    allGenre.Add(nomGenre, 1);
+                }
+
+                
+            }
+
+            Dictionary<string, double> preferencesByGenre = new Dictionary<string, double>();
+
+            foreach(KeyValuePair<string, int> values in allGenre)
+            {
+                int v = values.Value;
+                double result = (double)v / nbEmprunts * 100;
+                preferencesByGenre.Add(values.Key, result);
+            }
+
+            return preferencesByGenre;
+        }
+
+        /// <summary>
+        /// Renvoie 10 suggestions
+        /// </summary>
+        /// <param name="codeAbonne"></param>
+        /// <returns></returns>
+        public static HashSet<ALBUMS> suggest(int codeAbonne) 
+        {
+            Dictionary<string, double> preferences = getPreferences(codeAbonne);
+
+            Random rdm = new Random();
+
+            HashSet<ALBUMS> suggestionsNOTFINAL = new HashSet<ALBUMS>();
+
+            foreach(string genre in preferences.Keys)
+            {
+                int codeGenre = (from g in Connexion.GENRES
+                                 where g.LIBELLÉ_GENRE == genre
+                                 select g.CODE_GENRE).First();
+
+                double percentage = preferences[genre];
+
+                int nbToTake = (int)percentage;
+
+                for (int i = 0; i < nbToTake; i++)
+                {
+                    ALBUMS currentSugg = Connexion.ALBUMS.OrderBy(r => Guid.NewGuid()).Skip(rdm.Next(1, 10)).Take(1).First();
+
+                    if (currentSugg.CODE_GENRE == codeGenre)
+                    {
+                        suggestionsNOTFINAL.Add(currentSugg);
+                    }
+                }
+            }
+            ALBUMS[] suggArray = suggestionsNOTFINAL.ToArray();
+
+            HashSet<ALBUMS> suggestionsFinal = new HashSet<ALBUMS>();
+
+            for (int i = 0; i < 10; i++)
+            {
+                ALBUMS sugg = suggArray[rdm.Next(0, suggArray.Length)];
+                suggestionsFinal.Add(sugg);
+                List<ALBUMS> provisory = new List<ALBUMS>(suggArray);
+                provisory.Remove(sugg);
+                suggArray = provisory.ToArray();
+            }
+
+            return suggestionsFinal;
+
+
+
+        }
     }
 }
