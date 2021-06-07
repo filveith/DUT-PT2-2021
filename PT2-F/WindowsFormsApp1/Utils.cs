@@ -101,5 +101,23 @@ namespace WindowsFormsApp1
             }
             return emprunts;
         }
+
+        public static List<ALBUMS> AvoirTopAlbum()
+        {
+            var nbEmprunt = (from emp in Connexion.EMPRUNTER
+                             select emp.CODE_ALBUM).Count();
+
+            var top = (from alb in Connexion.ALBUMS
+                       join emp in Connexion.EMPRUNTER on alb.CODE_ALBUM equals emp.CODE_ALBUM
+                       group alb by alb.CODE_ALBUM into groupés
+                       orderby groupés.Count() descending
+                       select groupés);
+
+            var test = top.Take(10);
+
+            var test2 = test.SelectMany(group => group).ToList().Distinct().ToList();
+            
+            return test2;
+        }
     }
 }

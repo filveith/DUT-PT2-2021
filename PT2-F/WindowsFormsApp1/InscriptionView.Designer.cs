@@ -142,7 +142,7 @@ namespace WindowsFormsApp1
             this.ValiderInscription.UseVisualStyleBackColor = true;
             this.ValiderInscription.Click += new System.EventHandler(this.ValiderInscription_Click);
             // 
-            // inscription
+            // InscriptionView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -159,8 +159,9 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "inscription";
+            this.Name = "InscriptionView";
             this.Text = "inscription";
+            this.Load += new System.EventHandler(this.InscriptionView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
