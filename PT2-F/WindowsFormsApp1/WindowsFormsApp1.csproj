@@ -71,7 +71,7 @@
       <DependentUpon>AdminView.cs</DependentUpon>
     </Compile>
     <Compile Include="UserView.Designer.cs">
-      <DependentUpon>AdminView.cs</DependentUpon>
+      <DependentUpon>UserView.cs</DependentUpon>
     </Compile>
     <Compile Include="ALBUMS.cs">
       <DependentUpon>BDDModele.tt</DependentUpon>
