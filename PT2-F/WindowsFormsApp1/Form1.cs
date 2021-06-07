@@ -15,6 +15,7 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
+            Utils.voirTopAlbum();
         }
 
         private void inscription_Click(object sender, EventArgs e)
