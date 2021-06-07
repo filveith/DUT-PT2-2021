@@ -41,6 +41,11 @@ namespace WindowsFormsApp1
                             AdminView ad = new AdminView();
                             ad.Show();
                         }
+                        else
+                        {
+                            UserView u = new UserView(a);
+                            u.Show();
+                        }
                     }
                     else Pop("Mot de passe invalide", "Erreur");
 
