@@ -163,16 +163,20 @@ namespace WindowsFormsApp1
             }
         }
 
-        public static Dictionary<String, double> getPreferences(int codeAbonne)
+        /// <summary>
+        /// Retourne les genres avec pourcentage de prefs de l'abo
+        /// </summary>
+        /// <param name="codeAbonne"></param>
+        /// <returns></returns>
+        private static Dictionary<string, double> getPreferences(int codeAbonne)
         {
-            Dictionary<String, int> allGenre = new Dictionary<String, int>();
+            Dictionary<string, int> allGenre = new Dictionary<string, int>();
             var emprunts = from emp in Connexion.EMPRUNTER
                            where emp.CODE_ABONNÉ == codeAbonne
                            select emp;
             
             int nbEmprunts = emprunts.Count();
 
-            //Console.WriteLine("On a " + nbEmprunts + " emprunts");
             foreach(EMPRUNTER e in emprunts)
             {
                 ALBUMS album = (from al in Connexion.ALBUMS
@@ -183,22 +187,13 @@ namespace WindowsFormsApp1
                                      where gen.CODE_GENRE == album.CODE_GENRE
                                      select gen).First();
 
-                String nomGenre = genreAlbum.LIBELLÉ_GENRE;
+                string nomGenre = genreAlbum.LIBELLÉ_GENRE;
 
-                List<String> keys;
+                List<string> keys;
                 if (allGenre.Count() > 0)
                 {
 
                     keys = new List<string>(allGenre.Keys);
-
-
-                    /*Console.WriteLine("------------------");
-                    foreach (string key in keys)
-                    {
-                        Console.WriteLine(key);
-                    }
-                    Console.WriteLine("------------------");
-                    */
                     if (allGenre.ContainsKey(nomGenre))
                     {
                         allGenre[nomGenre]++;
@@ -216,35 +211,32 @@ namespace WindowsFormsApp1
                 
             }
 
-            Dictionary<String, double> preferencesByGenre = new Dictionary<string, double>();
+            Dictionary<string, double> preferencesByGenre = new Dictionary<string, double>();
 
-            foreach(KeyValuePair<String, int> values in allGenre)
+            foreach(KeyValuePair<string, int> values in allGenre)
             {
                 int v = values.Value;
-                //Console.WriteLine("AAAAAAAAA " + v + " " + nbEmprunts);
                 double result = (double)v / nbEmprunts * 100;
-                
-                //Console.WriteLine(result);
                 preferencesByGenre.Add(values.Key, result);
             }
-
-            /*foreach(KeyValuePair<String, double> values in preferencesByGenre)
-            {
-                Console.WriteLine(values.Key + " " + values.Value + "%");
-            }*/
 
             return preferencesByGenre;
         }
 
+        /// <summary>
+        /// Renvoie 10 suggestions
+        /// </summary>
+        /// <param name="codeAbonne"></param>
+        /// <returns></returns>
         public static HashSet<ALBUMS> suggest(int codeAbonne) 
         {
-            Dictionary<String, double> preferences = getPreferences(codeAbonne);
+            Dictionary<string, double> preferences = getPreferences(codeAbonne);
 
             Random rdm = new Random();
 
             HashSet<ALBUMS> suggestionsNOTFINAL = new HashSet<ALBUMS>();
 
-            foreach(String genre in preferences.Keys)
+            foreach(string genre in preferences.Keys)
             {
                 int codeGenre = (from g in Connexion.GENRES
                                  where g.LIBELLÉ_GENRE == genre
@@ -263,12 +255,7 @@ namespace WindowsFormsApp1
                         suggestionsNOTFINAL.Add(currentSugg);
                     }
                 }
-
-
             }
-
-            
-
             ALBUMS[] suggArray = suggestionsNOTFINAL.ToArray();
 
             HashSet<ALBUMS> suggestionsFinal = new HashSet<ALBUMS>();
@@ -281,11 +268,6 @@ namespace WindowsFormsApp1
                 provisory.Remove(sugg);
                 suggArray = provisory.ToArray();
             }
-
-            /*foreach (ALBUMS al in suggestionsFinal)
-            {
-                Console.WriteLine(al.TITRE_ALBUM + " " + al.CODE_GENRE);
-            }*/
 
             return suggestionsFinal;
 
