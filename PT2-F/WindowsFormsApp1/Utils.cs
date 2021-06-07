@@ -127,6 +127,22 @@ namespace WindowsFormsApp1
             return emprunts;
         }
 
+        public static List<ALBUMS> AvoirTopAlbum()
+        {
+            var nbEmprunt = (from emp in Connexion.EMPRUNTER
+                             select emp.CODE_ALBUM).Count();
+
+            var top = (from alb in Connexion.ALBUMS
+                       join emp in Connexion.EMPRUNTER on alb.CODE_ALBUM equals emp.CODE_ALBUM
+                       group alb by alb.CODE_ALBUM into groupés
+                       orderby groupés.Count() descending
+                       select groupés).Take(10);
+
+            var liste = top.SelectMany(group => group).ToList().Distinct().ToList();
+            
+            return liste;
+        }
+
         public static bool prolongerEmprunt(int codeAbonne, int codeAlbumSelected)
         {
             EMPRUNTER emprunt = (from emp in Connexion.EMPRUNTER

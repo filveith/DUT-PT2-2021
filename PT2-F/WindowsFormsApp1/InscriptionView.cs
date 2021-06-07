@@ -59,5 +59,10 @@ namespace WindowsFormsApp1
             MessageBoxButtons buttons = MessageBoxButtons.OK;
             MessageBox.Show(message, caption, buttons);
         }
+
+        private void InscriptionView_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
