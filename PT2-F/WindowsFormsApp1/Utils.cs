@@ -315,8 +315,14 @@ namespace WindowsFormsApp1
 
             ALBUMS[] suggArray = suggestionsNOTFINAL.ToArray();
 
-            // On récupère 10 suggestions, qui composeront la suggestion finale
-            for (int i = suggArray.Length; i > 0; i--)
+            int stop = 10;
+            if (suggArray.Length < 10)
+            {
+                stop = suggArray.Length;
+            }
+
+            // On récupère 10 suggestions maximum, qui composeront la suggestion finale
+            for (int i = 0; i< stop; i++)
             {
                     ALBUMS sugg = suggArray[rdm.Next(0, suggArray.Length)];
                     suggestionsFinal.Add(sugg);
