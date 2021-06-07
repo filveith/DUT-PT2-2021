@@ -185,20 +185,23 @@ namespace WindowsFormsApp1
         {
             EMPRUNTER emprunt = (from emp in Connexion.EMPRUNTER
                                  where emp.CODE_ABONNÉ == codeAbonne && emp.CODE_ALBUM == codeAlbumSelected
-                                 select emp).First();
-
-            if (emprunt.nbRallongements != 1)
+                                 select emp).FirstOrDefault();
+            if (emprunt != null)
             {
-                emprunt.DATE_RETOUR_ATTENDUE = emprunt.DATE_RETOUR_ATTENDUE.AddMonths(1);
-                emprunt.nbRallongements = 1;
-                Console.WriteLine("Rallongement effectué");
-                return true;
+                if (emprunt.nbRallongements != 1)
+                {
+                    emprunt.DATE_RETOUR_ATTENDUE = emprunt.DATE_RETOUR_ATTENDUE.AddMonths(1);
+                    emprunt.nbRallongements = 1;
+                    Console.WriteLine("Rallongement effectué");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Vous avez déjà rallonger cet emprunt :/");
+                    return false;
+                }
             }
-            else
-            {
-                Console.WriteLine("Vous avez déjà rallonger cet emprunt :/");
-                return false;
-            }
+            return false;
         }
 
         /// <summary>
@@ -225,11 +228,11 @@ namespace WindowsFormsApp1
 
                 GENRES genreAlbum = (from gen in Connexion.GENRES
                                      where gen.CODE_GENRE == album.CODE_GENRE
-                                     select gen).First();
+                                     select gen).FirstOrDefault();
 
                 string nomGenre = genreAlbum.LIBELLÉ_GENRE;
 
-                
+
                 if (allGenre.Count() > 0)
                 {
                     // Si ce genre d'album a déjà été rencontré, on incremente sa valeur
@@ -289,7 +292,7 @@ namespace WindowsFormsApp1
                 // On récupère le code du genre et le pourcentage associé
                 int codeGenre = (from g in Connexion.GENRES
                                  where g.LIBELLÉ_GENRE == genre
-                                 select g.CODE_GENRE).First();
+                                 select g.CODE_GENRE).FirstOrDefault();
 
                 double percentage = preferences[genre];
 
@@ -298,7 +301,7 @@ namespace WindowsFormsApp1
                 for (int i = 0; i < nbToTake; i++)
                 {
                     // On choisit un album au hasard et, si il est du bon genre, on le rajoute à la sélection NON FINALE 
-                    ALBUMS currentSugg = Connexion.ALBUMS.OrderBy(r => Guid.NewGuid()).Skip(rdm.Next(1, 10)).First();
+                    ALBUMS currentSugg = Connexion.ALBUMS.OrderBy(r => Guid.NewGuid()).Skip(rdm.Next(1, 10)).FirstOrDefault();
                     if (currentSugg.CODE_GENRE == codeGenre)
                     {
                         suggestionsNOTFINAL.Add(currentSugg);
@@ -310,17 +313,18 @@ namespace WindowsFormsApp1
             HashSet<ALBUMS> suggestionsFinal = new HashSet<ALBUMS>();
 
             ALBUMS[] suggArray = suggestionsNOTFINAL.ToArray();
-
-            // On récupère 10 suggestions, qui composeront la suggestion finale
-            for (int i = 0; i < 10; i++)
+            if (suggArray.Length > 0)
             {
-                ALBUMS sugg = suggArray[rdm.Next(0, suggArray.Length)];
-                suggestionsFinal.Add(sugg);
-                List<ALBUMS> provisory = new List<ALBUMS>(suggArray);
-                provisory.Remove(sugg);
-                suggArray = provisory.ToArray();
+                // On récupère 10 suggestions, qui composeront la suggestion finale
+                for (int i = 0; i < 10; i++)
+                {
+                    ALBUMS sugg = suggArray[rdm.Next(0, suggArray.Length)];
+                    suggestionsFinal.Add(sugg);
+                    List<ALBUMS> provisory = new List<ALBUMS>(suggArray);
+                    provisory.Remove(sugg);
+                    suggArray = provisory.ToArray();
+                }
             }
-
             return suggestionsFinal;
         }
 
@@ -347,14 +351,14 @@ namespace WindowsFormsApp1
         {
             return (from a in Connexion.ABONNÉS
                     where a.CODE_ABONNÉ == codeAbonne
-                    select a).First();
+                    select a).FirstOrDefault();
         }
 
         public static ALBUMS GetALBUM(int codeAlbum)
         {
             return (from al in Connexion.ALBUMS
                     where al.CODE_ALBUM == codeAlbum
-                    select al).First();
+                    select al).FirstOrDefault();
         }
     }
 }

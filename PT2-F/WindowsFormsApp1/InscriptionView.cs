@@ -25,7 +25,6 @@ namespace WindowsFormsApp1
             {
                 if (textBoxCoMdp.Text == textBoxMdp.Text)
                 {
-                    Utils.RefreshDatabase();
                     if (Utils.RegisterAbo(textBoxNom.Text, textBoxPrenom.Text, textBoxID.Text, textBoxMdp.Text, comboBoxPays.SelectedIndex))
                     {
                         Console.WriteLine("ok");

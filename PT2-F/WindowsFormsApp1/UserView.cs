@@ -52,9 +52,16 @@ namespace WindowsFormsApp1
         {
             AffichageAbo.Items.Clear();
             HashSet<ALBUMS> sugg = Utils.AvoirSuggestions(Abo.CODE_ABONNÉ);
-            foreach (ALBUMS s in sugg)
+            if (sugg.Count > 0)
             {
-                AffichageAbo.Items.Add("Voici des albums qui devraient vous plairent : " + s.TITRE_ALBUM.Trim());
+                foreach (ALBUMS s in sugg)
+                {
+                    AffichageAbo.Items.Add("Voici des albums qui devraient vous plairent : " + s.TITRE_ALBUM.Trim());
+                }
+            }
+            else
+            {
+                AffichageAbo.Items.Add("Vous n'avez rien emprunté...");
             }
         }
     }
