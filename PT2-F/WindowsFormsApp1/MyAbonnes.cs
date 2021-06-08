@@ -61,19 +61,18 @@ namespace WindowsFormsApp1
         public Dictionary<EMPRUNTER, ALBUMS> ConsulterEmprunts()
         {
             Dictionary<EMPRUNTER, ALBUMS> emprunts = new Dictionary<EMPRUNTER, ALBUMS>();
-            var emprunt = (from alb in Utils.Connexion.ALBUMS
+            var emprunt = from alb in Utils.Connexion.ALBUMS
                            join emp in Utils.Connexion.EMPRUNTER on alb.CODE_ALBUM equals emp.CODE_ALBUM
                            join abo in Utils.Connexion.ABONNÉS on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
                            where abo.CODE_ABONNÉ == this.CODE_ABONNÉ
                            orderby emp.DATE_RETOUR_ATTENDUE ascending
-                           select new { emprunt = emp, album = alb }).ToList();
+                           select new { emprunt = emp, album = alb };
 
 
 
             foreach (var al in emprunt)
             {
                 emprunts.Add(al.emprunt, al.album);
-                //Console.WriteLine(em) ;
             }
             return emprunts;
         }
@@ -201,7 +200,6 @@ namespace WindowsFormsApp1
                 for (int i = 0; i < nbToTake; i++)
                 {
                     // On choisit un album au hasard et, si il est du bon genre, on le rajoute à la sélection NON FINALE 
-
                     ALBUMS currentSugg = Utils.Connexion.ALBUMS.OrderBy(r => Guid.NewGuid()).Skip(rdm.Next(1, 10)).FirstOrDefault();
                     if (currentSugg != null)
                     {

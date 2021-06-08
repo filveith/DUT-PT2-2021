@@ -12,7 +12,8 @@ namespace WindowsFormsApp1
 {
     public class Utils
     {
-        public static MusiquePT2_FEntities Connexion { get; private set; } = new MusiquePT2_FEntities();
+        public static MusiquePT2_FEntities Connexion = new MusiquePT2_FEntities();
+
         public static bool RegisterAbo(string nom, string prenom, string login, string mdp, int codePays)
         {
             try
@@ -48,19 +49,19 @@ namespace WindowsFormsApp1
         public static IQueryable<ABONNÉS> AvoirAbonneAvecEmpruntRetardDe10Jours()
         {
             var emprunt = (from emp in Connexion.EMPRUNTER
-                          join abo in Connexion.ABONNÉS on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
-                          where emp.DATE_RETOUR == null && DbFunctions.DiffDays(emp.DATE_RETOUR_ATTENDUE, DateTime.Now) > 10
-                          select abo).GroupBy(x => x.CODE_ABONNÉ).Select(y => y.FirstOrDefault());
+                           join abo in Connexion.ABONNÉS on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
+                           where emp.DATE_RETOUR == null && DbFunctions.DiffDays(emp.DATE_RETOUR_ATTENDUE, DateTime.Now) > 10
+                           select abo).GroupBy(x => x.CODE_ABONNÉ).Select(y => y.FirstOrDefault());
             return emprunt;
         }
 
-        public static List<EMPRUNTER> AvoirLesEmpruntProlonger()
+        public static IQueryable<EMPRUNTER> AvoirLesEmpruntProlonger()
         {
-            List<EMPRUNTER> result = (from emp in Connexion.EMPRUNTER
-                                      join abo in Connexion.ABONNÉS on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
-                                      join alb in Connexion.ALBUMS on emp.CODE_ALBUM equals alb.CODE_ALBUM
-                                      where emp.nbRallongements > 0
-                                      select emp).ToList();
+            IQueryable<EMPRUNTER> result = (from emp in Connexion.EMPRUNTER
+                                            join abo in Connexion.ABONNÉS on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
+                                            join alb in Connexion.ALBUMS on emp.CODE_ALBUM equals alb.CODE_ALBUM
+                                            where emp.nbRallongements > 0
+                                            select emp);
 
 
             return result;
@@ -165,32 +166,11 @@ namespace WindowsFormsApp1
             return returnImage;
         }
 
-
-        public static List<ABONNÉS> getListAbonnes()
+        public static IQueryable<ABONNÉS> GetAllAbonnes()
         {
-            List<ABONNÉS> allAbonnes = new List<ABONNÉS>();
             var abos = from ab in Connexion.ABONNÉS
                        select ab;
-
-            foreach(ABONNÉS a in abos)
-            {
-                allAbonnes.Add(a);
-            }
-            return allAbonnes;
-        }
-
-        public static List<ABONNÉS> getAllAbonnes()
-        {
-            List<ABONNÉS> allAbos = new List<ABONNÉS>();
-
-            var abos = from ab in Connexion.ABONNÉS
-                       select ab;
-
-            foreach(ABONNÉS a in abos)
-            {
-                allAbos.Add(a);
-            }
-            return allAbos;
+            return abos;
         }
 
     }

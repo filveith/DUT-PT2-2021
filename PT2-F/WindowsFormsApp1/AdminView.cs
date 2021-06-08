@@ -20,7 +20,7 @@ namespace WindowsFormsApp1
         private void listEmpruntsProlongButton_Click(object sender, EventArgs e)
         {
             log.Items.Clear();
-            List<EMPRUNTER> empruntsProlongés = Utils.AvoirLesEmpruntProlonger();
+            IQueryable<EMPRUNTER> empruntsProlongés = Utils.AvoirLesEmpruntProlonger();
 
             foreach (EMPRUNTER emprunt in empruntsProlongés)
             {
