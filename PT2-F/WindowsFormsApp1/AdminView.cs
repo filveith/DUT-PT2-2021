@@ -89,7 +89,7 @@ namespace WindowsFormsApp1
         private void listerAbonner_Click(object sender, EventArgs e)
         {
             log.Items.Clear();
-            List<ABONNÉS> toutLesAbonner = Utils.getAllAbonnes();
+            IQueryable<ABONNÉS> toutLesAbonner = Utils.GetAllAbonnes();
             log.Items.Add("Voici la liste de tout les abonnés :");
             foreach (ABONNÉS abo in toutLesAbonner)
             {

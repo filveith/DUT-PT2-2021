@@ -80,7 +80,7 @@ namespace WindowsFormsApp1
             this.passTextBox.Name = "passTextBox";
             this.passTextBox.PasswordChar = '*';
             this.passTextBox.Size = new System.Drawing.Size(212, 36);
-            this.passTextBox.TabIndex = 7;
+            this.passTextBox.TabIndex = 2;
             this.passTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             // 
             // idTextBox
@@ -92,7 +92,7 @@ namespace WindowsFormsApp1
             this.idTextBox.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.Size = new System.Drawing.Size(212, 32);
-            this.idTextBox.TabIndex = 8;
+            this.idTextBox.TabIndex = 1;
             this.idTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             // 
             // label4
@@ -129,7 +129,7 @@ namespace WindowsFormsApp1
             this.button2.Location = new System.Drawing.Point(217, 426);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(249, 82);
-            this.button2.TabIndex = 8;
+            this.button2.TabIndex = 3;
             this.button2.Text = "Valider";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.validerButton_Click);

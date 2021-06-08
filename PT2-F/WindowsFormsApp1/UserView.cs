@@ -12,8 +12,8 @@ namespace WindowsFormsApp1
 {
     public partial class UserView : Form
     {
-        private ABONNÉS Abo;
-
+        public static ABONNÉS Abo;
+        public static UserView2 u2 = new UserView2(Abo);
         public UserView(ABONNÉS a)
         {
             InitializeComponent();
@@ -21,49 +21,83 @@ namespace WindowsFormsApp1
             Task.Run(() => CachedElements.RefreshSuggestions(a));
         }
 
+        private void UserView_Load(object sender, EventArgs e)
+        {
+            this.suggestions();
+
+            filtres.Items.Clear();
+            filtres.Items.Add("genre");
+            filtres.Items.Add("titre");
+            filtres.Items.Add("vide");
+
+            this.recherche();
+        }
         private void mesAlbums_Click(object sender, EventArgs e)
         {
 
-            AffichageAbo.Items.Clear();
-            var mesEmprunts = Abo.ConsulterEmprunts().Keys;
-
-            foreach (EMPRUNTER emprunt in mesEmprunts)
-            {
-                AffichageAbo.Items.Add(emprunt);
-            }
+            this.Visible = false;
+            u2.ShowDialog();
+            this.Visible = true;
 
         }
 
-        private void prolongerEmprunt_Click(object sender, EventArgs e)
-        {
-            if (AffichageAbo.SelectedItem is ALBUMS al)
-            {
-                Abo.ProlongerEmprunt(Utils.GetALBUM(al.CODE_ALBUM));
-            }
 
-        }
-
-        private void prolongerToutEmprunt_Click(object sender, EventArgs e)
-        {
-            AffichageAbo.Items.Clear();
-            Abo.ProlongerTousEmprunts();
-        }
-
-        private void suggestions_Click(object sender, EventArgs e)
+        private void suggestions()
         {
             AffichageAbo.Items.Clear();
             HashSet<ALBUMS> sugg = CachedElements.suggestionsParAbo[Abo];
             if (sugg.Count > 0)
             {
+                AffichageAbo.Items.Add("Voici des albums qui devraient vous plairent : ");
                 foreach (ALBUMS s in sugg)
                 {
-                    AffichageAbo.Items.Add("Voici des albums qui devraient vous plairent : " + s.TITRE_ALBUM.Trim());
+                    AffichageAbo.Items.Add(s.ToString());
                 }
             }
             else
             {
-                AffichageAbo.Items.Add("Vous n'avez rien emprunté...");
+                AffichageAbo.Items.Add("Pas de suggestions, vous n'avez rien emprunté...");
             }
         }
+
+        private void recherche()
+        {
+            string filtre = filtres.Text;
+            string objet = searchBox.Text;
+            AffichageAbo.Items.Clear();
+            if (filtre.Equals("titre"))
+            {
+                var recherce = from t in Utils.Connexion.ALBUMS
+                               where t.TITRE_ALBUM.Contains(objet)
+                               select t.TITRE_ALBUM;
+
+                foreach (string a in recherce)
+                {
+                    AffichageAbo.Items.Add(a);
+                }
+            }
+            else if (filtre.Equals("genre"))
+            {
+                var recherche = from t in Utils.Connexion.ALBUMS
+                                join g in Utils.Connexion.GENRES on t.CODE_GENRE equals g.CODE_GENRE
+                                where g.LIBELLÉ_GENRE.Contains(objet)
+                                select t.TITRE_ALBUM;
+
+                foreach (string a in recherche)
+                {
+                    AffichageAbo.Items.Add(a);
+                }
+            }
+
+        }
+
+        private void userView_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                this.recherche();
+            }
+        }
+
     }
 }
