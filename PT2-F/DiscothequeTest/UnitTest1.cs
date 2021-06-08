@@ -49,7 +49,7 @@ namespace DiscothequeTest
         }*/
 
         [TestMethod]
-        public void TestUS3()
+        public async void TestUS3()
         {
             Random rand = new Random();
 
@@ -63,7 +63,7 @@ namespace DiscothequeTest
             }
 
             // On crée un abonné pour nos tests
-            Utils.RegisterAbo("Test", "US3", "tus3", "mdpStrong", 45);            
+            await Utils.RegisterAbo("Test", "US3", "tus3", "mdpStrong", 45);            
 
             Assert.IsTrue(abo != null);
 
@@ -72,7 +72,7 @@ namespace DiscothequeTest
             ALBUMS alToTake = (from ab in Utils.Connexion.ALBUMS
                                where ab.CODE_ALBUM == ind
                                select ab).FirstOrDefault();
-            
+
             abo.Emprunter(alToTake);
 
 
@@ -111,7 +111,7 @@ namespace DiscothequeTest
 
         private static void AddAboForTests(string nom, string prenom, string login, string mdp, int codePays)
         {
-            Utils.RegisterAbo(nom, prenom, login, mdp, codePays);
+            _ = Utils.RegisterAbo(nom, prenom, login, mdp, codePays);
         }
 
         private static void SuppAboAfterTests(ABONNÉS abo)
