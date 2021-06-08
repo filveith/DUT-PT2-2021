@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -73,19 +75,19 @@ namespace WindowsFormsApp1
 
             return result;
         }
-        public static List<ALBUMS> AvoirAlbumsPasEmprunteDepuisUnAn()
+        public static Task<List<ALBUMS>> AvoirAlbumsPasEmprunteDepuisUnAn()
         {
-            List<ALBUMS> liste = (from a in Connexion.ALBUMS
-                                  join e in Connexion.EMPRUNTER
-                                  on a.CODE_ALBUM equals e.CODE_ALBUM into empDept
-                                  from ed in empDept.DefaultIfEmpty()
-                                  where empDept.Count() == 0 || DbFunctions.DiffDays(ed.DATE_EMPRUNT, DateTime.Now) > 365
-                                  select a).ToList().Distinct().ToList();
+            var liste = (from a in Connexion.ALBUMS
+                         join e in Connexion.EMPRUNTER
+                         on a.CODE_ALBUM equals e.CODE_ALBUM into empDept
+                         from ed in empDept.DefaultIfEmpty()
+                         where empDept.Count() == 0 || DbFunctions.DiffDays(ed.DATE_EMPRUNT, DateTime.Now) > 365
+                         select a).ToListAsync();
 
             return liste;
         }
 
-        private static List<ABONNÉS> AvoirAbosPasEmprunteDepuisUnAn()
+        private static IEnumerable<ABONNÉS> AvoirAbosPasEmprunteDepuisUnAn()
         {
             var abosPasEmprunt = (from a in Connexion.ABONNÉS
                                   join e in Connexion.EMPRUNTER
@@ -97,16 +99,16 @@ namespace WindowsFormsApp1
                                    join e in Connexion.EMPRUNTER
                                    on a.CODE_ABONNÉ equals e.CODE_ABONNÉ
                                    where DbFunctions.DiffDays(e.DATE_EMPRUNT, DateTime.Now) > 365
-                                   select a).Union(abosPasEmprunt).ToList().Distinct();
+                                   select a).Union(abosPasEmprunt);
 
-            var abos = abosDejaEmprunt.Union(abosPasEmprunt).ToList();
+            var abos = new List<ABONNÉS>(abosDejaEmprunt).Distinct();
 
             return abos;
         }
 
-        public static List<ABONNÉS> SupprimerAbosPasEmpruntDepuisUnAn()
+        public static IEnumerable<ABONNÉS> SupprimerAbosPasEmpruntDepuisUnAn()
         {
-            List<ABONNÉS> abos = AvoirAbosPasEmprunteDepuisUnAn();
+            var abos = AvoirAbosPasEmprunteDepuisUnAn();
             foreach (ABONNÉS a in abos)
             {
                 var emprunts = (from e in Connexion.EMPRUNTER
@@ -119,10 +121,6 @@ namespace WindowsFormsApp1
             Connexion.SaveChanges();
             return abos;
         }
-
-
-
-
 
         public static List<ALBUMS> AvoirTopAlbum()
         {
@@ -139,11 +137,6 @@ namespace WindowsFormsApp1
 
             return al;
         }
-
-        
-
-
-        
 
         public static List<PAYS> AvoirListeDesPays()
         {
@@ -176,5 +169,13 @@ namespace WindowsFormsApp1
                     where al.CODE_ALBUM == codeAlbum
                     select al).FirstOrDefault();
         }
+
+        public static Image byteArrayToImage(byte[] byteArrayIn)
+        {
+            MemoryStream ms = new MemoryStream(byteArrayIn);
+            Image returnImage = Image.FromStream(ms);
+            return returnImage;
+        }
+
     }
 }
