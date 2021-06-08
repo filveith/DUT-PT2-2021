@@ -154,7 +154,7 @@ namespace DiscothequeTest
         }
 
         [TestMethod]
-        public async void TestUS3()
+        public void TestUS3()
         {
             Random rand = new Random();
 
@@ -206,7 +206,7 @@ namespace DiscothequeTest
             ALBUMS al = emprunts.ElementAt(randIndex).Value;
             EMPRUNTER emprunt = emprunts.ElementAt(randIndex).Key;
 
-
+            
             // On vérifie que la date avant changement est differente de celle après changement, d'exactement 1 mois
             DateTime dateAvantProlong = emprunt.DATE_RETOUR_ATTENDUE;
 
