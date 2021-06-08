@@ -55,7 +55,7 @@ namespace WindowsFormsApp1
         private void notEmprunterSinceAYear_Click(object sender, EventArgs e)
         {
             log.Items.Clear();
-            List<ALBUMS> albums = Utils.AvoirAlbumsPasEmprunteDepuisUnAn();
+            var albums = CachedElements.albumsPasEmpruntes;
 
             foreach(ALBUMS al in albums)
             {
