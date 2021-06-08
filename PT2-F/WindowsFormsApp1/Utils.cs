@@ -14,12 +14,13 @@ namespace WindowsFormsApp1
     {
         public static MusiquePT2_FEntities Connexion = new MusiquePT2_FEntities();
 
-        public static async Task<bool> RegisterAbo(string nom, string prenom, string login, string mdp, int codePays)
+        public static async Task<ABONNÉS> RegisterAbo(string nom, string prenom, string login, string mdp, int codePays)
         {
+            ABONNÉS a = new ABONNÉS();
             try
             {
                 // on crée un nouveau Abonné
-                ABONNÉS a = new ABONNÉS();
+
                 if (codePays > 0)
                 {
                     a.CODE_PAYS = codePays;
@@ -34,11 +35,11 @@ namespace WindowsFormsApp1
                 // ajout du nouveau Abonné
                 Connexion.ABONNÉS.Add(a);
                 await Connexion.SaveChanges();
-                return true;
+                return a;
             }
             catch (DbUpdateException)
             {
-                return false;
+                return a;
             }
         }
 

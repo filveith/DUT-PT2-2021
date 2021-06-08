@@ -15,7 +15,7 @@ namespace DiscothequeTest
     {
 
         [TestMethod]
-        public async void TestUS3()
+        public void TestUS3()
         {
             Random rand = new Random();
 
@@ -25,35 +25,45 @@ namespace DiscothequeTest
                            select ab).FirstOrDefault();
             if (abo != null)
             {
-                Utils.Connexion.ABONNÉS.Remove(abo);
+                SuppAboAfterTests(abo);
             }
 
+            Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
+
             // On crée un abonné pour nos tests
-            await Utils.RegisterAbo("Test", "US3", "tus3", "mdpStrong", 45);            
+            abo = Utils.RegisterAbo("Test", "US3", "tus3", "mdpStrong", 45).GetAwaiter().GetResult();
 
             Assert.IsTrue(abo != null);
 
-            int ind = rand.Next(1, 50);
+
             // On effectue une dizaines d'emprunts tests
-            ALBUMS alToTake = (from ab in Utils.Connexion.ALBUMS
-                               where ab.CODE_ALBUM == ind
-                               select ab).FirstOrDefault();
+            for (int i = 86; i < 106; i++)
+            {
+                ALBUMS alToTake = (from ab in Utils.Connexion.ALBUMS
+                                   where ab.CODE_ALBUM == i
+                                   select ab).FirstOrDefault();
 
-            await abo.Emprunter(alToTake);
+                Assert.IsTrue(alToTake != null);
 
 
-            /*
+                EMPRUNTER e = abo.Emprunter(alToTake).GetAwaiter().GetResult();
+            }
+            
+           
+
+            
             // On recupère ses emprunts, et on choisit un emprunt et l'album à prolonger au hasard
             Dictionary<EMPRUNTER, ALBUMS> emprunts = abo.ConsulterEmprunts();
             int randIndex = rand.Next(0, emprunts.Count);
+            Console.WriteLine(emprunts.ElementAt(randIndex));
             ALBUMS al = emprunts.ElementAt(randIndex).Value;
             EMPRUNTER emprunt = emprunts.ElementAt(randIndex).Key;
 
-
+            
             // On vérifie que la date avant changement est differente de celle après changement, d'exactement 1 mois
             DateTime dateAvantProlong = emprunt.DATE_RETOUR_ATTENDUE;
 
-            abo.ProlongerEmprunt(al);
+            abo.ProlongerEmprunt(al).GetAwaiter().GetResult();
 
             DateTime dateApresProlong = emprunt.DATE_RETOUR_ATTENDUE;
 
@@ -62,13 +72,13 @@ namespace DiscothequeTest
 
             // On vérifie qu'on ne peut pas prolonger un emprunt déjà emprunté
 
-            abo.ProlongerEmprunt(al);
+            abo.ProlongerEmprunt(al).GetAwaiter().GetResult();
 
             DateTime dateApresSecondProlong = emprunt.DATE_RETOUR_ATTENDUE;
 
             Assert.IsFalse(dateApresProlong != dateApresSecondProlong);
 
-            Assert.IsTrue(abo != null);*/
+            Assert.IsTrue(abo != null);
 
             /*suppAboAfterTests(abo);*/
 
