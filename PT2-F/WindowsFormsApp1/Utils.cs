@@ -190,5 +190,20 @@ namespace WindowsFormsApp1
             }
             return allAbonnes;
         }
+
+        public static List<ABONNÉS> getAllAbonnes()
+        {
+            List<ABONNÉS> allAbos = new List<ABONNÉS>();
+
+            var abos = from ab in Connexion.ABONNÉS
+                       select ab;
+
+            foreach(ABONNÉS a in abos)
+            {
+                allAbos.Add(a);
+            }
+            return allAbos;
+        }
+
     }
 }
