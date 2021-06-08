@@ -45,5 +45,7 @@ namespace WindowsFormsApp1
             c.ShowDialog();
             this.Visible = true;
         }
+
+        
     }
 }
