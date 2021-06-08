@@ -47,5 +47,6 @@ namespace DiscothequeTest
             //On verifie avec la base de données si il existe bien
             Assert.IsTrue(Utils.GetABONNÉ(result.FirstOrDefault()).LOGIN_ABONNÉ.Equals("TestRegister"));
         }
+        
     }
 }
