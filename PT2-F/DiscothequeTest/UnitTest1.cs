@@ -168,14 +168,17 @@ namespace DiscothequeTest
             }
 
             // On crée un abonné pour nos tests
-            AddAboForTests("Test", "US3", "tus3", "mdpstrong", 22);
-            
+            Utils.RegisterAbo("Test", "US3", "tus3", "mdpStrong", 45);            
 
             Assert.IsTrue(abo != null);
 
+            int ind = rand.Next(1, 50);
             // On effectue une dizaines d'emprunts tests
+            ALBUMS alToTake = (from ab in Utils.Connexion.ALBUMS
+                               where ab.CODE_ALBUM == ind
+                               select ab).FirstOrDefault();
             
-            //abo.Emprunter(Utils.Connexion.ALBUMS.OrderBy(r => Guid.NewGuid()).Skip(rand.Next(1, Utils.Connexion.ALBUMS.Count())).Take(1).First());
+            abo.Emprunter(alToTake);
 
 
             /*
