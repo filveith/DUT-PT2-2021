@@ -15,7 +15,9 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
-            CachedElements.RefreshCache();
+            ABONNÉS a = Utils.GetABONNÉ(65);
+            Task.Factory.StartNew(async () => { await CachedElements.RefreshSuggestions(a); await CachedElements.RefreshCache(); });
+            
         }
 
         private void inscription_Click(object sender, EventArgs e)
@@ -28,7 +30,7 @@ namespace WindowsFormsApp1
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar == 'd')
+            if (e.KeyChar == 'd')
             {
                 DebugWindow d = new DebugWindow();
                 d.Show();

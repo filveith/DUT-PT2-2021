@@ -11,9 +11,29 @@ namespace WindowsFormsApp1
 
         public static List<ALBUMS> albumsPasEmpruntes { get; private set; }
 
-        public async static void RefreshCache()
+        public static Dictionary<ABONNÉS, HashSet<ALBUMS>> suggestionsParAbo { get; private set; } = new Dictionary<ABONNÉS, HashSet<ALBUMS>>();
+
+        public async static Task RefreshCache()
         {
-            albumsPasEmpruntes = await Utils.AvoirAlbumsPasEmprunteDepuisUnAn(); 
+            albumsPasEmpruntes = await Utils.AvoirAlbumsPasEmprunteDepuisUnAn();
+
+        }
+
+        public async static Task RefreshSuggestions(ABONNÉS a)
+        {
+            try
+            {
+                var test = await Task.Run(a.AvoirSuggestions);
+                if (!suggestionsParAbo.ContainsKey(a))
+                {
+                    suggestionsParAbo.Add(a, test);
+                }
+                else
+                {
+                    suggestionsParAbo[a] = test;
+                }
+            }
+            catch (InvalidOperationException) { }
         }
     }
 }

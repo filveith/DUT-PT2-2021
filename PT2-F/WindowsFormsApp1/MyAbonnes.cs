@@ -67,13 +67,13 @@ namespace WindowsFormsApp1
                            join abo in Utils.Connexion.ABONNÉS on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
                            where abo.CODE_ABONNÉ == this.CODE_ABONNÉ
                            orderby emp.DATE_RETOUR_ATTENDUE ascending
-                           select new { emprunt = emp, abonne = this }).ToList();
+                           select emp);
 
 
 
             foreach (var al in emprunt)
             {
-                emprunts.Add(al.emprunt, al.abonne);
+                emprunts.Add(al, this);
                 //Console.WriteLine(em) ;
             }
             return emprunts;
@@ -169,6 +169,7 @@ namespace WindowsFormsApp1
             }
 
             return preferencesByGenre;
+
         }
 
         /// <summary>
@@ -178,6 +179,7 @@ namespace WindowsFormsApp1
         /// <returns></returns>
         public HashSet<ALBUMS> AvoirSuggestions()
         {
+
             // On recupère les preferences de l'abonné
             Dictionary<string, double> preferences = GetPreferences();
 
@@ -200,10 +202,18 @@ namespace WindowsFormsApp1
                 for (int i = 0; i < nbToTake; i++)
                 {
                     // On choisit un album au hasard et, si il est du bon genre, on le rajoute à la sélection NON FINALE 
+
                     ALBUMS currentSugg = Utils.Connexion.ALBUMS.OrderBy(r => Guid.NewGuid()).Skip(rdm.Next(1, 10)).FirstOrDefault();
-                    if (currentSugg.CODE_GENRE == codeGenre)
+                    if (currentSugg != null)
                     {
-                        suggestionsNOTFINAL.Add(currentSugg);
+                        if (currentSugg.CODE_GENRE == codeGenre)
+                        {
+                            suggestionsNOTFINAL.Add(currentSugg);
+                        }
+                    }
+                    else
+                    {
+                        i--;
                     }
                 }
             }
