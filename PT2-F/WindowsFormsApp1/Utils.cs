@@ -366,5 +366,23 @@ namespace WindowsFormsApp1
                     where al.CODE_ALBUM == codeAlbum
                     select al).FirstOrDefault();
         }
+
+        public static List<ABONNÉS> getListAbonnes()
+        {
+            List<ABONNÉS> allAbonnes = new List<ABONNÉS>();
+            var abos = from ab in Connexion.ABONNÉS
+                       select ab;
+
+            foreach(ABONNÉS a in abos)
+            {
+                allAbonnes.Add(a);
+            }
+            return allAbonnes;
+        }
+
+        public static bool FaireEmprunt(int codeAbo, ALBUMS alb)
+        {
+
+        }
     }
 }
