@@ -16,8 +16,9 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             ABONNÉS a = Utils.GetABONNÉ(65);
-            Task.Factory.StartNew(async () => { await CachedElements.RefreshSuggestions(a); await CachedElements.RefreshCache(); });
-            
+            Task.Run(async () => { await CachedElements.RefreshCache(); await CachedElements.RefreshSuggestions(Utils.GetABONNÉ(65)); });
+
+
         }
 
         private void inscription_Click(object sender, EventArgs e)

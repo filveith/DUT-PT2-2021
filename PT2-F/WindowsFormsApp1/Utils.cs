@@ -12,8 +12,9 @@ namespace WindowsFormsApp1
 {
     public class Utils
     {
-        public static MusiquePT2_FEntities Connexion { get; private set; } = new MusiquePT2_FEntities();
-        public static bool RegisterAbo(string nom, string prenom, string login, string mdp, int codePays)
+        public static MusiquePT2_FEntities Connexion = new MusiquePT2_FEntities();
+
+        public static async Task<bool> RegisterAbo(string nom, string prenom, string login, string mdp, int codePays)
         {
             try
             {
@@ -32,7 +33,7 @@ namespace WindowsFormsApp1
 
                 // ajout du nouveau Abonné
                 Connexion.ABONNÉS.Add(a);
-                Connexion.SaveChanges();
+                await Connexion.SaveChanges();
                 return true;
             }
             catch (DbUpdateException)
@@ -45,44 +46,34 @@ namespace WindowsFormsApp1
         /// Retourne une liste des abonnes avec des emrpunts en retard de plus de 10jours
         /// </summary>
         /// <returns></returns>
-        public static List<ABONNÉS> AvoirAbonneAvecEmpruntRetardDe10Jours()
+        public static IQueryable<ABONNÉS> AvoirAbonneAvecEmpruntRetardDe10Jours()
         {
-            List<ABONNÉS> result = new List<ABONNÉS>();
-            var emprunt = from emp in Connexion.EMPRUNTER
-                          where emp.DATE_RETOUR == null && DbFunctions.DiffDays(emp.DATE_RETOUR_ATTENDUE, DateTime.Now) > 10
-                          select emp;
-
-            foreach (EMPRUNTER e in emprunt)
-            {
-                ABONNÉS abonne = GetABONNÉ(e.CODE_ABONNÉ);
-                result.Add(abonne);
-
-                ALBUMS album = GetALBUM(e.CODE_ALBUM);
-
-                Console.WriteLine(abonne.PRÉNOM_ABONNÉ + " " + abonne.NOM_ABONNÉ + " " + album.TITRE_ALBUM);
-            }
-            return result;
+            var emprunt = (from emp in Connexion.EMPRUNTER
+                           join abo in Connexion.ABONNÉS on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
+                           where emp.DATE_RETOUR == null && DbFunctions.DiffDays(emp.DATE_RETOUR_ATTENDUE, DateTime.Now) > 10
+                           select abo).GroupBy(x => x.CODE_ABONNÉ).Select(y => y.FirstOrDefault());
+            return emprunt;
         }
 
-        public static List<EMPRUNTER> AvoirLesEmpruntProlonger()
+        public static IQueryable<EMPRUNTER> AvoirLesEmpruntProlonger()
         {
-            List<EMPRUNTER> result = (from emp in Connexion.EMPRUNTER
-                                      join abo in Connexion.ABONNÉS on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
-                                      join alb in Connexion.ALBUMS on emp.CODE_ALBUM equals alb.CODE_ALBUM
-                                      where emp.nbRallongements > 0
-                                      select emp).ToList();
+            IQueryable<EMPRUNTER> result = (from emp in Connexion.EMPRUNTER
+                                            join abo in Connexion.ABONNÉS on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
+                                            join alb in Connexion.ALBUMS on emp.CODE_ALBUM equals alb.CODE_ALBUM
+                                            where emp.nbRallongements > 0
+                                            select emp);
 
 
             return result;
         }
-        public static Task<List<ALBUMS>> AvoirAlbumsPasEmprunteDepuisUnAn()
+        public static IQueryable<ALBUMS> AvoirAlbumsPasEmprunteDepuisUnAn()
         {
             var liste = (from a in Connexion.ALBUMS
                          join e in Connexion.EMPRUNTER
                          on a.CODE_ALBUM equals e.CODE_ALBUM into empDept
                          from ed in empDept.DefaultIfEmpty()
                          where empDept.Count() == 0 || DbFunctions.DiffDays(ed.DATE_EMPRUNT, DateTime.Now) > 365
-                         select a).GroupBy(x => x.CODE_ALBUM).Select(y => y.FirstOrDefault()).ToListAsync();
+                         select a).GroupBy(x => x.CODE_ALBUM).Select(y => y.FirstOrDefault());
 
             return liste;
         }
@@ -106,7 +97,7 @@ namespace WindowsFormsApp1
             return abos;
         }
 
-        public static IEnumerable<ABONNÉS> SupprimerAbosPasEmpruntDepuisUnAn()
+        public async static Task<IEnumerable<ABONNÉS>> SupprimerAbosPasEmpruntDepuisUnAn()
         {
             var abos = AvoirAbosPasEmprunteDepuisUnAn();
             foreach (ABONNÉS a in abos)
@@ -118,7 +109,7 @@ namespace WindowsFormsApp1
                 Connexion.ABONNÉS.Remove(a);
 
             }
-            Connexion.SaveChanges();
+            await Connexion.SaveChanges();
             return abos;
         }
 
@@ -133,22 +124,20 @@ namespace WindowsFormsApp1
                        orderby groupés.Count() descending
                        select groupés).Take(10);
             List<ALBUMS> al = new List<ALBUMS>();
-            top.ToList().ForEach(v => al.Add(v.First()));
+            foreach (var v in top)
+            {
+                al.Add(v.First());
+            }
 
             return al;
         }
 
-        public static List<PAYS> AvoirListeDesPays()
+        public static IQueryable<PAYS> AvoirListeDesPays()
         {
-            List<PAYS> listPays = new List<PAYS>();
             var pays = from p in Connexion.PAYS
+                       orderby p.CODE_PAYS ascending
                        select p;
-
-            foreach (PAYS nom in pays)
-            {
-                listPays.Add(nom);
-            }
-            return listPays;
+            return pays;
         }
 
         public static void RefreshDatabase()
@@ -177,32 +166,11 @@ namespace WindowsFormsApp1
             return returnImage;
         }
 
-
-        public static List<ABONNÉS> getListAbonnes()
+        public static IQueryable<ABONNÉS> GetAllAbonnes()
         {
-            List<ABONNÉS> allAbonnes = new List<ABONNÉS>();
             var abos = from ab in Connexion.ABONNÉS
                        select ab;
-
-            foreach(ABONNÉS a in abos)
-            {
-                allAbonnes.Add(a);
-            }
-            return allAbonnes;
-        }
-
-        public static List<ABONNÉS> getAllAbonnes()
-        {
-            List<ABONNÉS> allAbos = new List<ABONNÉS>();
-
-            var abos = from ab in Connexion.ABONNÉS
-                       select ab;
-
-            foreach(ABONNÉS a in abos)
-            {
-                allAbos.Add(a);
-            }
-            return allAbos;
+            return abos;
         }
 
     }
