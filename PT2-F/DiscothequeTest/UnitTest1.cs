@@ -219,7 +219,61 @@ namespace DiscothequeTest
 
             Assert.IsTrue(abo != null);
 
-            /*suppAboAfterTests(abo);*/
+        }*/
+
+        [TestMethod]
+        public void TestUS4()
+        {
+            Random rand = new Random();
+
+            // si l'abonné existe deja, on le supprime
+            ABONNÉS abo = (from ab in Utils.Connexion.ABONNÉS
+                           where ab.LOGIN_ABONNÉ.Equals("tus4")
+                           select ab).FirstOrDefault();
+            if (abo != null)
+            {
+                SuppAboAfterTests(abo);
+            }
+
+            Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
+
+            // On crée un abonné pour nos tests
+            abo = Utils.RegisterAbo("Test", "US4", "tus4", "mdpStrong", 45).GetAwaiter().GetResult();
+
+            Assert.IsTrue(abo != null);
+
+            // On emprunte un album au hasard 
+            int i = rand.Next(80, 150);
+
+            ALBUMS alToTake = (from ab in Utils.Connexion.ALBUMS
+                               where ab.CODE_ALBUM == i
+                               select ab).FirstOrDefault();
+
+            Assert.IsTrue(alToTake != null);
+
+
+            EMPRUNTER e = abo.Emprunter(alToTake).GetAwaiter().GetResult();
+
+            // On recupère tout les emprunts prolongés 
+            IQueryable<EMPRUNTER> prolongésBefore = Utils.AvoirLesEmpruntProlonger();
+
+            foreach(EMPRUNTER em in prolongésBefore)
+            {
+                Console.WriteLine(em);
+            }
+
+            // On verifie que ce nouvel emprunt n'y es pas
+            Assert.IsFalse(prolongésBefore.Contains(e));
+
+            // On prolonge l'emprunt
+            bool prolong = abo.ProlongerEmprunt(alToTake).GetAwaiter().GetResult();
+
+            Assert.IsTrue(prolong);
+
+            // On vérifie qu'il fait mtn partie des emprunts prolongés
+            IQueryable<EMPRUNTER> prolongésAfter = Utils.AvoirLesEmpruntProlonger();
+            Assert.IsTrue(prolongésAfter.Contains(e));
+
 
         }
 
