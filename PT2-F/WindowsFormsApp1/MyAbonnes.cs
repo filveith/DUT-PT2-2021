@@ -55,25 +55,24 @@ namespace WindowsFormsApp1
         }
 
         /// <summary>
-        /// Retourne un dictionnary avec la liste des emprunt et la nom de l'abonne correspondant
+        /// Retourne un dictionnary avec la liste des emprunt et l'album correspondant
         /// </summary>
-        /// <param name="codeabo"></param>
         /// <returns></returns>
-        public Dictionary<EMPRUNTER, ABONNÉS> ConsulterEmprunts()
+        public Dictionary<EMPRUNTER, ALBUMS> ConsulterEmprunts()
         {
-            Dictionary<EMPRUNTER, ABONNÉS> emprunts = new Dictionary<EMPRUNTER, ABONNÉS>();
+            Dictionary<EMPRUNTER, ALBUMS> emprunts = new Dictionary<EMPRUNTER, ALBUMS>();
             var emprunt = (from alb in Utils.Connexion.ALBUMS
                            join emp in Utils.Connexion.EMPRUNTER on alb.CODE_ALBUM equals emp.CODE_ALBUM
                            join abo in Utils.Connexion.ABONNÉS on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
                            where abo.CODE_ABONNÉ == this.CODE_ABONNÉ
                            orderby emp.DATE_RETOUR_ATTENDUE ascending
-                           select emp);
+                           select new { emprunt = emp, album = alb }).ToList();
 
 
 
             foreach (var al in emprunt)
             {
-                emprunts.Add(al, this);
+                emprunts.Add(al.emprunt, al.album);
                 //Console.WriteLine(em) ;
             }
             return emprunts;
