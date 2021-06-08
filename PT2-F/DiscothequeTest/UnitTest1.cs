@@ -154,7 +154,7 @@ namespace DiscothequeTest
         }
 
         [TestMethod]
-        public void TestUS3()
+        public async void TestUS3()
         {
             Random rand = new Random();
 
