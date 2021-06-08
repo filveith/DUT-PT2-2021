@@ -176,6 +176,10 @@ namespace DiscothequeTest
             AddAboForTests("Test", "US3", "tus3", "mdpstrong", 22);
             
 
+            // On crée un abonné pour nos tests
+            AddAboForTests("Test", "US3", "tus3", "mdpstrong", 22);
+            
+
             Assert.IsTrue(abo != null);
 
 
