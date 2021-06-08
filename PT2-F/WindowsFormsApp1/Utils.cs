@@ -177,5 +177,18 @@ namespace WindowsFormsApp1
             return returnImage;
         }
 
+
+        public static List<ABONNÉS> getListAbonnes()
+        {
+            List<ABONNÉS> allAbonnes = new List<ABONNÉS>();
+            var abos = from ab in Connexion.ABONNÉS
+                       select ab;
+
+            foreach(ABONNÉS a in abos)
+            {
+                allAbonnes.Add(a);
+            }
+            return allAbonnes;
+        }
     }
 }
