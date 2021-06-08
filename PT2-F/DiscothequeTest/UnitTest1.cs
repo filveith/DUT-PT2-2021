@@ -178,7 +178,7 @@ namespace DiscothequeTest
                                where ab.CODE_ALBUM == ind
                                select ab).FirstOrDefault();
 
-            abo.Emprunter(alToTake);
+            await abo.Emprunter(alToTake);
 
 
             /*
