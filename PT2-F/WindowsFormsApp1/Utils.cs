@@ -113,7 +113,7 @@ namespace WindowsFormsApp1
                                 where e.CODE_ABONNÉ == a.CODE_ABONNÉ
                                 select e);
                 Connexion.EMPRUNTER.RemoveRange(emprunts);
-                Connexion.ABONNÉS.Remove(a);
+                SuppAbo(a);
 
             }
             Connexion.SaveChanges();
@@ -365,6 +365,11 @@ namespace WindowsFormsApp1
             return (from al in Connexion.ALBUMS
                     where al.CODE_ALBUM == codeAlbum
                     select al).FirstOrDefault();
+        }
+
+        public static void SuppAbo(ABONNÉS abo)
+        {
+            Connexion.ABONNÉS.Remove(abo);
         }
     }
 }
