@@ -9,13 +9,13 @@ namespace WindowsFormsApp1
     public class CachedElements
     {
 
-        public static List<ALBUMS> albumsPasEmpruntes { get; private set; }
+        public static IQueryable<ALBUMS> albumsPasEmpruntes { get; private set; }
 
         public static Dictionary<ABONNÉS, HashSet<ALBUMS>> suggestionsParAbo { get; private set; } = new Dictionary<ABONNÉS, HashSet<ALBUMS>>();
 
         public async static Task RefreshCache()
         {
-            albumsPasEmpruntes = await Utils.AvoirAlbumsPasEmprunteDepuisUnAn();
+            albumsPasEmpruntes = await Task.Run(() => Utils.AvoirAlbumsPasEmprunteDepuisUnAn());
 
         }
 
