@@ -47,6 +47,45 @@ namespace DiscothequeTest
             //On verifie avec la base de données si il existe bien
             Assert.IsTrue(Utils.GetABONNÉ(result.FirstOrDefault()).LOGIN_ABONNÉ.Equals("TestRegister"));
         }
-        
+
+        [TestMethod]
+        public void TestUS3()
+        {
+            Random rand = new Random();
+
+            // On recupère l'abonné de test
+            ABONNÉS abo = (from ab in Utils.Connexion.ABONNÉS
+                           where ab.LOGIN_ABONNÉ == "TestRegister"
+                           select ab).FirstOrDefault();
+
+            Assert.IsTrue(abo != null);
+
+            // On recupère ses emprunts, et on choisit un emprunt et l'album à prolonger au hasard
+            Dictionary<EMPRUNTER, ALBUMS> emprunts = abo.ConsulterEmprunts();
+            int randIndex = rand.Next(0, emprunts.Count);
+            ALBUMS al = emprunts.ElementAt(randIndex).Value;
+            EMPRUNTER emprunt = emprunts.ElementAt(randIndex).Key;
+
+            DateTime dateAvantProlong = emprunt.DATE_RETOUR_ATTENDUE;
+
+            abo.ProlongerEmprunt(al);
+
+            DateTime dateApresProlong = emprunt.DATE_RETOUR_ATTENDUE;
+
+            Assert.IsTrue(dateAvantProlong != dateApresProlong);
+            Assert.IsTrue(dateApresProlong == dateAvantProlong.AddMonths(1));
+            
+
+            Assert.IsTrue(al != null);
+
+            
+
+
+
+
+
+
+        }
+
     }
 }
