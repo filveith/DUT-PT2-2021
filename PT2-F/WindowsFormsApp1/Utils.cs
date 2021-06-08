@@ -28,10 +28,11 @@ namespace WindowsFormsApp1
         /// <returns> Retourne vrai si on ajoute un abonné, faux sinon </returns>
         public static async Task<bool> RegisterAbo(string nom, string prenom, string login, string mdp, int codePays)
         {
+            ABONNÉS a = new ABONNÉS();
             try
             {
                 // on crée un nouveau Abonné
-                ABONNÉS a = new ABONNÉS();
+
                 if (codePays > 0)
                 {
                     a.CODE_PAYS = codePays;
@@ -46,11 +47,11 @@ namespace WindowsFormsApp1
                 // ajout du nouveau Abonné
                 Connexion.ABONNÉS.Add(a);
                 await Connexion.SaveChanges();
-                return true;
+                return a;
             }
             catch (DbUpdateException)
             {
-                return false;
+                return a;
             }
         }
 
