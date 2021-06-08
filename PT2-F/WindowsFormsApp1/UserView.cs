@@ -18,6 +18,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             Abo = a;
+            Task.Run(() => CachedElements.RefreshSuggestions(a));
         }
 
         private void mesAlbums_Click(object sender, EventArgs e)
@@ -51,7 +52,7 @@ namespace WindowsFormsApp1
         private void suggestions_Click(object sender, EventArgs e)
         {
             AffichageAbo.Items.Clear();
-            HashSet<ALBUMS> sugg = Abo.AvoirSuggestions();
+            HashSet<ALBUMS> sugg = CachedElements.suggestionsParAbo[Abo];
             if (sugg.Count > 0)
             {
                 foreach (ALBUMS s in sugg)
