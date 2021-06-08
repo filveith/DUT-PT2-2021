@@ -8,11 +8,10 @@ namespace WindowsFormsApp1
 {
     partial class MusiquePT2_FEntities
     {
-        public override int SaveChanges()
+        public new async Task SaveChanges()
         {
             int n = base.SaveChanges();
-            Task.Run(() => CachedElements.RefreshCache());
-            return n;
+            await Task.Run(() => CachedElements.RefreshCache());
         }
     }
 }

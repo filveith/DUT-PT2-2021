@@ -14,7 +14,7 @@ namespace WindowsFormsApp1
     {
         public static MusiquePT2_FEntities Connexion = new MusiquePT2_FEntities();
 
-        public static bool RegisterAbo(string nom, string prenom, string login, string mdp, int codePays)
+        public static async Task<bool> RegisterAbo(string nom, string prenom, string login, string mdp, int codePays)
         {
             try
             {
@@ -33,7 +33,7 @@ namespace WindowsFormsApp1
 
                 // ajout du nouveau Abonné
                 Connexion.ABONNÉS.Add(a);
-                Connexion.SaveChanges();
+                await Connexion.SaveChanges();
                 return true;
             }
             catch (DbUpdateException)
@@ -97,7 +97,7 @@ namespace WindowsFormsApp1
             return abos;
         }
 
-        public static IEnumerable<ABONNÉS> SupprimerAbosPasEmpruntDepuisUnAn()
+        public async static Task<IEnumerable<ABONNÉS>> SupprimerAbosPasEmpruntDepuisUnAn()
         {
             var abos = AvoirAbosPasEmprunteDepuisUnAn();
             foreach (ABONNÉS a in abos)
@@ -109,7 +109,7 @@ namespace WindowsFormsApp1
                 Connexion.ABONNÉS.Remove(a);
 
             }
-            Connexion.SaveChanges();
+            await Connexion.SaveChanges();
             return abos;
         }
 

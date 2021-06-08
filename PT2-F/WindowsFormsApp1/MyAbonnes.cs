@@ -14,7 +14,7 @@ namespace WindowsFormsApp1
             return this.NOM_ABONNÉ.Trim() + " " + this.PRÉNOM_ABONNÉ.Trim();
         }
 
-        public EMPRUNTER Emprunter(ALBUMS a)
+        public async Task<EMPRUNTER> Emprunter(ALBUMS a)
         {
             try
             {
@@ -25,7 +25,7 @@ namespace WindowsFormsApp1
                 DateTime retour = DateTime.Now.AddDays(delai);
                 EMPRUNTER e = new EMPRUNTER { CODE_ABONNÉ = this.CODE_ABONNÉ, CODE_ALBUM = a.CODE_ALBUM, DATE_EMPRUNT = DateTime.Now, DATE_RETOUR_ATTENDUE = retour };
                 Utils.Connexion.EMPRUNTER.Add(e);
-                Utils.Connexion.SaveChanges();
+                await Utils.Connexion.SaveChanges();
                 return e;
             }
             catch (DbUpdateException)
@@ -35,7 +35,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        public List<EMPRUNTER> ProlongerTousEmprunts()
+        public async Task<List<EMPRUNTER>> ProlongerTousEmprunts()
         {
             int i = 0;
             var emprunts = (from emp in Utils.Connexion.EMPRUNTER
@@ -49,7 +49,7 @@ namespace WindowsFormsApp1
                 e.DATE_RETOUR_ATTENDUE = e.DATE_RETOUR_ATTENDUE.AddMonths(1);
                 e.nbRallongements = 1;
             }
-            Utils.Connexion.SaveChanges();
+            await Utils.Connexion.SaveChanges();
             Console.WriteLine(i + " rallongement(s) effectué(s)");
             return emprunts;
         }
@@ -77,7 +77,7 @@ namespace WindowsFormsApp1
             return emprunts;
         }
 
-        public bool ProlongerEmprunt(ALBUMS al)
+        public async Task<bool> ProlongerEmprunt(ALBUMS al)
         {
             EMPRUNTER emprunt = (from emp in Utils.Connexion.EMPRUNTER
                                  where emp.CODE_ABONNÉ == this.CODE_ABONNÉ && emp.CODE_ALBUM == al.CODE_ALBUM
@@ -88,7 +88,7 @@ namespace WindowsFormsApp1
                 {
                     emprunt.DATE_RETOUR_ATTENDUE = emprunt.DATE_RETOUR_ATTENDUE.AddMonths(1);
                     emprunt.nbRallongements = 1;
-                    Utils.Connexion.SaveChanges();
+                    await Utils.Connexion.SaveChanges();
                     Console.WriteLine("Rallongement effectué");
                     return true;
                 }

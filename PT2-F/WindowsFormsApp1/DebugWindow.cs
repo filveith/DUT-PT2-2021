@@ -52,7 +52,7 @@ namespace WindowsFormsApp1
                     }
                     break;
                 case "US6":
-                    foreach (var v in Utils.SupprimerAbosPasEmpruntDepuisUnAn())
+                    foreach (var v in Utils.SupprimerAbosPasEmpruntDepuisUnAn().GetAwaiter().GetResult())
                     {
                         listBox1.Items.Add(v);
                     }
@@ -67,7 +67,7 @@ namespace WindowsFormsApp1
                     }
                     break;
                 case "US9":
-                    Utils.GetABONNÉ(65).ProlongerTousEmprunts().ForEach(v => listBox1.Items.Add(v));
+                    Utils.GetABONNÉ(65).ProlongerTousEmprunts().GetAwaiter().GetResult().ForEach(v => listBox1.Items.Add(v));
                     break;
                 case "US10":
                     foreach (ALBUMS al in CachedElements.suggestionsParAbo[Utils.GetABONNÉ(65)])

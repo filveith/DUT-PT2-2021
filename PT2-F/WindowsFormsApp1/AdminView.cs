@@ -79,7 +79,7 @@ namespace WindowsFormsApp1
         private void suppIdleUsersButton_Click(object sender, EventArgs e)
         {
             log.Items.Clear();
-            foreach (ABONNÉS a in Utils.SupprimerAbosPasEmpruntDepuisUnAn())
+            foreach (ABONNÉS a in Utils.SupprimerAbosPasEmpruntDepuisUnAn().GetAwaiter().GetResult())
             {
                 log.Items.Add("L'abonné \"" + a.NOM_ABONNÉ.Trim() + " " + a.PRÉNOM_ABONNÉ.Trim() + "\" a été supprimé pour inactivité");
             }
