@@ -322,7 +322,7 @@ namespace WindowsFormsApp1
             }
 
             // On récupère 10 suggestions maximum, qui composeront la suggestion finale
-            for (int i = 0; i< stop; i++)
+            for (int i = 0; i < stop; i++)
             {
                     ALBUMS sugg = suggArray[rdm.Next(0, suggArray.Length)];
                     suggestionsFinal.Add(sugg);
