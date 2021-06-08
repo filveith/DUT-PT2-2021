@@ -153,17 +153,44 @@ namespace DiscothequeTest
             Utils.RegisterAbo(nom, prenom, login, mdp, codePays);
         }
 
-        private static void SuppAboAfterTests(ABONNÉS abo)
+        [TestMethod]
+        public void TestUS3()
         {
-            foreach (EMPRUNTER emprunt in Utils.Connexion.EMPRUNTER)
-            {
-                if (emprunt.CODE_ABONNÉ == abo.CODE_ABONNÉ)
-                {
-                    Utils.Connexion.EMPRUNTER.Remove(emprunt);
-                }
-            }
-            Utils.Connexion.ABONNÉS.Remove(abo);
-            Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
+            Random rand = new Random();
+
+            // On recupère l'abonné de test
+            ABONNÉS abo = (from ab in Utils.Connexion.ABONNÉS
+                           where ab.LOGIN_ABONNÉ == "TestRegister"
+                           select ab).FirstOrDefault();
+
+            Assert.IsTrue(abo != null);
+
+            // On recupère ses emprunts, et on choisit un emprunt et l'album à prolonger au hasard
+            Dictionary<EMPRUNTER, ALBUMS> emprunts = abo.ConsulterEmprunts();
+            int randIndex = rand.Next(0, emprunts.Count);
+            ALBUMS al = emprunts.ElementAt(randIndex).Value;
+            EMPRUNTER emprunt = emprunts.ElementAt(randIndex).Key;
+
+            DateTime dateAvantProlong = emprunt.DATE_RETOUR_ATTENDUE;
+
+            abo.ProlongerEmprunt(al);
+
+            DateTime dateApresProlong = emprunt.DATE_RETOUR_ATTENDUE;
+
+            Assert.IsTrue(dateAvantProlong != dateApresProlong);
+            Assert.IsTrue(dateApresProlong == dateAvantProlong.AddMonths(1));
+            
+
+            Assert.IsTrue(al != null);
+
+            
+
+
+
+
+
+
         }
+
     }
 }
