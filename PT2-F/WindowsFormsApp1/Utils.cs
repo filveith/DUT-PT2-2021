@@ -12,7 +12,7 @@ namespace WindowsFormsApp1
 {
     public class Utils
     {
-        public static MusiquePT2_FEntities Connexion = new MusiquePT2_FEntities();
+        public static MusiquePT2_FEntities Connexion { get; private set; } = new MusiquePT2_FEntities();
         public static bool RegisterAbo(string nom, string prenom, string login, string mdp, int codePays)
         {
             try
@@ -82,7 +82,7 @@ namespace WindowsFormsApp1
                          on a.CODE_ALBUM equals e.CODE_ALBUM into empDept
                          from ed in empDept.DefaultIfEmpty()
                          where empDept.Count() == 0 || DbFunctions.DiffDays(ed.DATE_EMPRUNT, DateTime.Now) > 365
-                         select a).ToListAsync();
+                         select a).GroupBy(x => x.CODE_ALBUM).Select(y => y.FirstOrDefault()).ToListAsync();
 
             return liste;
         }

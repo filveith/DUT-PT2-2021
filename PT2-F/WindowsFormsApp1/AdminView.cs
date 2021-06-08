@@ -22,7 +22,7 @@ namespace WindowsFormsApp1
             log.Items.Clear();
             List<EMPRUNTER> empruntsProlongés = Utils.AvoirLesEmpruntProlonger();
 
-            foreach(EMPRUNTER emprunt in empruntsProlongés)
+            foreach (EMPRUNTER emprunt in empruntsProlongés)
             {
                 log.Items.Add("L'abonné " + emprunt.CODE_ABONNÉ + " a prolongé l'album " + emprunt.CODE_ALBUM);
             }
@@ -34,7 +34,7 @@ namespace WindowsFormsApp1
             log.Items.Clear();
             List<ABONNÉS> abonnésEnRetard = Utils.AvoirAbonneAvecEmpruntRetardDe10Jours();
 
-            foreach(ABONNÉS abo in abonnésEnRetard)
+            foreach (ABONNÉS abo in abonnésEnRetard)
             {
                 log.Items.Add("L'abonné " + abo.CODE_ABONNÉ + " est en retard sur un retour");
             }
@@ -57,7 +57,7 @@ namespace WindowsFormsApp1
             log.Items.Clear();
             var albums = CachedElements.albumsPasEmpruntes;
 
-            foreach(ALBUMS al in albums)
+            foreach (ALBUMS al in albums)
             {
                 log.Items.Add("L'album " + al.TITRE_ALBUM.Trim() + " n'a pas été emprunté depuis 1 an");
             }
@@ -70,20 +70,22 @@ namespace WindowsFormsApp1
 
             List<ALBUMS> top10 = Utils.AvoirTopAlbum();
 
-            foreach(ALBUMS al in top10)
+            foreach (ALBUMS al in top10)
             {
                 log.Items.Add(al.TITRE_ALBUM.Trim());
-            } 
+            }
         }
 
         private void suppIdleUsersButton_Click(object sender, EventArgs e)
         {
             log.Items.Clear();
-            foreach(ABONNÉS a in Utils.SupprimerAbosPasEmpruntDepuisUnAn())
+            foreach (ABONNÉS a in Utils.SupprimerAbosPasEmpruntDepuisUnAn())
             {
                 log.Items.Add("L'abonné \"" + a.NOM_ABONNÉ.Trim() + " " + a.PRÉNOM_ABONNÉ.Trim() + "\" a été supprimé pour inactivité");
             }
-            
+
         }
+
+        
     }
 }
