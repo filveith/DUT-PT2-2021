@@ -59,9 +59,6 @@ namespace WindowsFormsApp1
             }
             comboBoxPays.SelectedIndex = 0;
         }
-
-        private void comboBoxPays_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
+       
     }
 }
