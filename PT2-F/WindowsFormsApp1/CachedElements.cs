@@ -14,17 +14,16 @@ namespace WindowsFormsApp1
 
         public static Dictionary<ABONNÉS, HashSet<ALBUMS>> suggestionsParAbo { get; private set; } = new Dictionary<ABONNÉS, HashSet<ALBUMS>>();
 
-        public async static Task RefreshCache()
+        public static Task RefreshCache()
         {
-            albumsPasEmpruntes = await Task.Run(() => Utils.AvoirAlbumsPasEmprunteDepuisUnAn());
-
+            return Task.Run(() => albumsPasEmpruntes = Utils.AvoirAlbumsPasEmprunteDepuisUnAn());
         }
 
-        public async static Task RefreshSuggestions(ABONNÉS a)
+        public static Task RefreshSuggestions(ABONNÉS a)
         {
-            try
+            return Task.Run(() =>
             {
-                var test = await Task.Run(a.AvoirSuggestions);
+                var test = a.AvoirSuggestions();
                 if (!suggestionsParAbo.ContainsKey(a))
                 {
                     suggestionsParAbo.Add(a, test);
@@ -33,9 +32,9 @@ namespace WindowsFormsApp1
                 {
                     suggestionsParAbo[a] = test;
                 }
-            }
-            catch (EntityException) { }
-            catch (InvalidOperationException) { }
+            });
         }
+
     }
 }
+
