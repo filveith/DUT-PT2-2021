@@ -45,23 +45,13 @@ namespace WindowsFormsApp1
         /// Retourne une liste des abonnes avec des emrpunts en retard de plus de 10jours
         /// </summary>
         /// <returns></returns>
-        public static List<ABONNÉS> AvoirAbonneAvecEmpruntRetardDe10Jours()
+        public static IQueryable<ABONNÉS> AvoirAbonneAvecEmpruntRetardDe10Jours()
         {
-            List<ABONNÉS> result = new List<ABONNÉS>();
-            var emprunt = from emp in Connexion.EMPRUNTER
+            var emprunt = (from emp in Connexion.EMPRUNTER
+                          join abo in Connexion.ABONNÉS on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
                           where emp.DATE_RETOUR == null && DbFunctions.DiffDays(emp.DATE_RETOUR_ATTENDUE, DateTime.Now) > 10
-                          select emp;
-
-            foreach (EMPRUNTER e in emprunt)
-            {
-                ABONNÉS abonne = GetABONNÉ(e.CODE_ABONNÉ);
-                result.Add(abonne);
-
-                ALBUMS album = GetALBUM(e.CODE_ALBUM);
-
-                Console.WriteLine(abonne.PRÉNOM_ABONNÉ + " " + abonne.NOM_ABONNÉ + " " + album.TITRE_ALBUM);
-            }
-            return result;
+                          select abo).GroupBy(x => x.CODE_ABONNÉ).Select(y => y.FirstOrDefault());
+            return emprunt;
         }
 
         public static List<EMPRUNTER> AvoirLesEmpruntProlonger()
@@ -75,14 +65,14 @@ namespace WindowsFormsApp1
 
             return result;
         }
-        public static Task<List<ALBUMS>> AvoirAlbumsPasEmprunteDepuisUnAn()
+        public static IQueryable<ALBUMS> AvoirAlbumsPasEmprunteDepuisUnAn()
         {
             var liste = (from a in Connexion.ALBUMS
                          join e in Connexion.EMPRUNTER
                          on a.CODE_ALBUM equals e.CODE_ALBUM into empDept
                          from ed in empDept.DefaultIfEmpty()
                          where empDept.Count() == 0 || DbFunctions.DiffDays(ed.DATE_EMPRUNT, DateTime.Now) > 365
-                         select a).GroupBy(x => x.CODE_ALBUM).Select(y => y.FirstOrDefault()).ToListAsync();
+                         select a).GroupBy(x => x.CODE_ALBUM).Select(y => y.FirstOrDefault());
 
             return liste;
         }
@@ -133,22 +123,20 @@ namespace WindowsFormsApp1
                        orderby groupés.Count() descending
                        select groupés).Take(10);
             List<ALBUMS> al = new List<ALBUMS>();
-            top.ToList().ForEach(v => al.Add(v.First()));
+            foreach (var v in top)
+            {
+                al.Add(v.First());
+            }
 
             return al;
         }
 
-        public static List<PAYS> AvoirListeDesPays()
+        public static IQueryable<PAYS> AvoirListeDesPays()
         {
-            List<PAYS> listPays = new List<PAYS>();
             var pays = from p in Connexion.PAYS
+                       orderby p.CODE_PAYS ascending
                        select p;
-
-            foreach (PAYS nom in pays)
-            {
-                listPays.Add(nom);
-            }
-            return listPays;
+            return pays;
         }
 
         public static void RefreshDatabase()

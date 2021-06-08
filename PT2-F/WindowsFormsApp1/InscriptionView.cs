@@ -50,7 +50,7 @@ namespace WindowsFormsApp1
 
         private void InscriptionView_Load(object sender, EventArgs e)
         {
-            List<PAYS> pays = Utils.AvoirListeDesPays();
+            IQueryable<PAYS> pays = Utils.AvoirListeDesPays();
             comboBoxPays.Items.Clear();
             comboBoxPays.Items.Add("Autre");
             foreach (PAYS p in pays)

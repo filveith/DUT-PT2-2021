@@ -32,7 +32,7 @@ namespace WindowsFormsApp1
         private void listRetardButton_Click(object sender, EventArgs e)
         {
             log.Items.Clear();
-            List<ABONNÉS> abonnésEnRetard = Utils.AvoirAbonneAvecEmpruntRetardDe10Jours();
+            IQueryable<ABONNÉS> abonnésEnRetard = Utils.AvoirAbonneAvecEmpruntRetardDe10Jours();
 
             foreach (ABONNÉS abo in abonnésEnRetard)
             {

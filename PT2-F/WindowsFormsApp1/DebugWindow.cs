@@ -16,6 +16,7 @@ namespace WindowsFormsApp1
         public DebugWindow()
         {
             InitializeComponent();
+            Task.Factory.StartNew(() => CachedElements.RefreshCache());
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -39,7 +40,10 @@ namespace WindowsFormsApp1
                     Utils.AvoirLesEmpruntProlonger().ForEach(v => listBox1.Items.Add(v));
                     break;
                 case "US5":
-                    Utils.AvoirAbonneAvecEmpruntRetardDe10Jours().ForEach(v => listBox1.Items.Add(v));
+                    foreach(var v in Utils.AvoirAbonneAvecEmpruntRetardDe10Jours())
+                    {
+                        listBox1.Items.Add(v);
+                    }
                     break;
                 case "US6":
                     foreach (var v in Utils.SupprimerAbosPasEmpruntDepuisUnAn())
@@ -105,7 +109,10 @@ namespace WindowsFormsApp1
                         Utils.AvoirLesEmpruntProlonger().ForEach(v => listBox1.Items.Add(v));
                         break;
                     case "US5":
-                        Utils.AvoirAbonneAvecEmpruntRetardDe10Jours().ForEach(v => listBox1.Items.Add(v));
+                        foreach (var v in Utils.AvoirAbonneAvecEmpruntRetardDe10Jours())
+                        {
+                            listBox1.Items.Add(v);
+                        }
                         break;
                     case "US6":
                         foreach (var v in Utils.SupprimerAbosPasEmpruntDepuisUnAn())
