@@ -11,7 +11,7 @@ namespace WindowsFormsApp1
         public override int SaveChanges()
         {
             int n = base.SaveChanges();
-            Task.Run(() => CachedElements.RefreshCache());
+            Task.Factory.StartNew(() => CachedElements.RefreshCache());
             return n;
         }
     }
