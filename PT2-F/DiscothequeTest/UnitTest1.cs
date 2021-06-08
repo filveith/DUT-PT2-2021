@@ -39,7 +39,7 @@ namespace DiscothequeTest
 
             //On regarde si il a bien etait cree
             Assert.IsTrue(t);
-            
+
             var result = from data in Utils.Connexion.ABONNÉS
                        where data.LOGIN_ABONNÉ.Equals("TestRegister")
                        select data.CODE_ABONNÉ;
