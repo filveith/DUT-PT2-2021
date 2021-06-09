@@ -12,7 +12,7 @@ namespace WindowsFormsApp1
     {
         private ListBox page;
         private int ItemsPerPage;
-        public int CurrentPage { get; set; } = 0;
+        public int CurrentPage { get; private set; } = 0;
         private List<object> allItems = new List<object>();
         private bool currentPageHandled = false;
 
@@ -28,6 +28,7 @@ namespace WindowsFormsApp1
                 Control parent = page.Parent;
                 parent.Controls.Remove(page);
                 parent.Controls.Add(this);
+                this.Dock = page.Dock;
 
             }
             Controls.Add(page);
@@ -43,9 +44,22 @@ namespace WindowsFormsApp1
             base.OnPaint(e);
         }
 
+        public void Clear()
+        {
+            allItems.Clear();
+            ResetItemsForCurrentPage();
+        }
+
         public void AddItem(object o)
         {
             allItems.Add(o);
+            ResetItemsForCurrentPage();
+        }
+
+        public void RemoveItem(object o)
+        {
+            allItems.Remove(o);
+            ResetItemsForCurrentPage();
         }
 
         public bool NextPage()

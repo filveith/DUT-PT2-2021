@@ -14,11 +14,13 @@ namespace WindowsFormsApp1
     {
         public static ABONNÉS Abo;
         public static UserView2 u2 = new UserView2(Abo);
+        PagedListbox AffichageAbo;
         public UserView(ABONNÉS a)
         {
             InitializeComponent();
             Abo = a;
             Task.Run(() => CachedElements.RefreshSuggestions(a));
+            AffichageAbo = new PagedListbox(TAffichageAbo);
         }
 
         private void UserView_Load(object sender, EventArgs e)
@@ -45,20 +47,20 @@ namespace WindowsFormsApp1
 
         private void suggestions()
         {
-            AffichageAbo.Items.Clear();
+            AffichageAbo.Clear();
             HashSet<ALBUMS> sugg;
             CachedElements.suggestionsParAbo.TryGetValue(Abo, out sugg);
             if (sugg != null && sugg.Count > 0)
             {
-                AffichageAbo.Items.Add("Voici des albums qui devraient vous plairent : ");
+                AffichageAbo.AddItem("Voici des albums qui devraient vous plairent : ");
                 foreach (ALBUMS s in sugg)
                 {
-                    AffichageAbo.Items.Add(s);
+                    AffichageAbo.AddItem(s);
                 }
             }
             else
             {
-                AffichageAbo.Items.Add("Pas de suggestions");
+                AffichageAbo.AddItem("Pas de suggestions");
             }
         }
 
@@ -66,7 +68,7 @@ namespace WindowsFormsApp1
         {
             string filtre = filtres.Text;
             string objet = searchBox.Text;
-            AffichageAbo.Items.Clear();
+            AffichageAbo.Clear();
             if (filtre.Equals("titre"))
             {
                 var recherce = from t in Utils.Connexion.ALBUMS
@@ -75,7 +77,7 @@ namespace WindowsFormsApp1
 
                 foreach (string a in recherce)
                 {
-                    AffichageAbo.Items.Add(a);
+                    AffichageAbo.AddItem(a);
                 }
             }
             else if (filtre.Equals("genre"))
@@ -87,7 +89,7 @@ namespace WindowsFormsApp1
 
                 foreach (string a in recherche)
                 {
-                    AffichageAbo.Items.Add(a);
+                    AffichageAbo.AddItem(a);
                 }
             }
             else
