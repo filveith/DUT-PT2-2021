@@ -25,15 +25,14 @@ namespace WindowsFormsApp1
                 DateTime retour = DateTime.Now.AddDays(delai);
                 EMPRUNTER e = new EMPRUNTER { CODE_ABONNÉ = this.CODE_ABONNÉ, CODE_ALBUM = a.CODE_ALBUM, DATE_EMPRUNT = DateTime.Now, DATE_RETOUR_ATTENDUE = retour };
                 Utils.Connexion.EMPRUNTER.Add(e);
-                Console.WriteLine("ALED3");
-                await Utils.Connexion.SaveChanges();
-                Console.WriteLine("ALED4");
+                Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
                 return e;
             }
             catch (DbUpdateException e)
             {
                 Console.WriteLine("erreur : " + e);
                 Utils.RefreshDatabase();
+                Console.WriteLine(e);
                 return null;
             }
         }

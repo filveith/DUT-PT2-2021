@@ -25,7 +25,7 @@ namespace WindowsFormsApp1
             {
                 if (textBoxCoMdp.Text == textBoxMdp.Text)
                 {
-                    if (Utils.RegisterAbo(textBoxNom.Text, textBoxPrenom.Text, textBoxID.Text, textBoxMdp.Text, comboBoxPays.SelectedIndex).GetAwaiter().GetResult())
+                    if (Utils.RegisterAbo(textBoxNom.Text, textBoxPrenom.Text, textBoxID.Text, textBoxMdp.Text, comboBoxPays.SelectedIndex).GetAwaiter().GetResult() != null)
                     {
                         Console.WriteLine("ok");
                         this.Close();
