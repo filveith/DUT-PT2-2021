@@ -41,7 +41,7 @@ namespace WindowsFormsApp1
                     ABONNÉS a = Abonne(login, password);
                     if (a != null)
                     {
-                        Pop("vous êtes connectés", "Parfait");
+                        
                         if (isAdmin(login))
                         {
                             AdminView ad = new AdminView();

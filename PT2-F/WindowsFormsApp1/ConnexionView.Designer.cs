@@ -63,10 +63,11 @@ namespace WindowsFormsApp1
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label5.Location = new System.Drawing.Point(121, 125);
+            this.label5.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(48)))), ((int)(((byte)(15)))));
+            this.label5.Location = new System.Drawing.Point(93, 126);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(113, 21);
+            this.label5.Size = new System.Drawing.Size(141, 19);
             this.label5.TabIndex = 11;
             this.label5.Text = "Mot de passe";
             // 
@@ -74,12 +75,12 @@ namespace WindowsFormsApp1
             // 
             this.passTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.passTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.passTextBox.Font = new System.Drawing.Font("Miriam Libre", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passTextBox.Location = new System.Drawing.Point(287, 117);
+            this.passTextBox.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passTextBox.Location = new System.Drawing.Point(287, 120);
             this.passTextBox.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
             this.passTextBox.Name = "passTextBox";
             this.passTextBox.PasswordChar = '*';
-            this.passTextBox.Size = new System.Drawing.Size(212, 36);
+            this.passTextBox.Size = new System.Drawing.Size(212, 31);
             this.passTextBox.TabIndex = 2;
             this.passTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             // 
@@ -87,11 +88,11 @@ namespace WindowsFormsApp1
             // 
             this.idTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.idTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.idTextBox.Font = new System.Drawing.Font("Miriam Libre", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idTextBox.Location = new System.Drawing.Point(287, 29);
+            this.idTextBox.Font = new System.Drawing.Font("NSimSun", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.idTextBox.Location = new System.Drawing.Point(287, 31);
             this.idTextBox.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
             this.idTextBox.Name = "idTextBox";
-            this.idTextBox.Size = new System.Drawing.Size(212, 32);
+            this.idTextBox.Size = new System.Drawing.Size(212, 28);
             this.idTextBox.TabIndex = 1;
             this.idTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             // 
@@ -99,10 +100,11 @@ namespace WindowsFormsApp1
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label4.Location = new System.Drawing.Point(134, 34);
+            this.label4.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(48)))), ((int)(((byte)(15)))));
+            this.label4.Location = new System.Drawing.Point(104, 35);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 21);
+            this.label4.Size = new System.Drawing.Size(130, 19);
             this.label4.TabIndex = 10;
             this.label4.Text = "Identifiant";
             // 
@@ -110,21 +112,22 @@ namespace WindowsFormsApp1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Miriam Libre", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(161, 51);
+            this.label1.Font = new System.Drawing.Font("NSimSun", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(48)))), ((int)(((byte)(15)))));
+            this.label1.Location = new System.Drawing.Point(179, 61);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(362, 84);
+            this.label1.Size = new System.Drawing.Size(325, 64);
             this.label1.TabIndex = 4;
             this.label1.Text = "Connexion";
             // 
             // button2
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Miriam Libre", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.button2.Font = new System.Drawing.Font("NSimSun", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button2.Location = new System.Drawing.Point(217, 426);
             this.button2.Name = "button2";
@@ -156,7 +159,7 @@ namespace WindowsFormsApp1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Silver;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(684, 561);
             this.Controls.Add(this.tableLayoutPanel2);
             this.MaximumSize = new System.Drawing.Size(1000, 800);

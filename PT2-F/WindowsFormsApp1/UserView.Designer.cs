@@ -31,13 +31,14 @@ namespace WindowsFormsApp1
         {
             this.mesAlbums = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.AffichageAbo = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.aboLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.searchBox = new System.Windows.Forms.TextBox();
             this.filtres = new System.Windows.Forms.ComboBox();
+            this.AffichageAbo = new System.Windows.Forms.ListBox();
+            this.emprunter = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -47,10 +48,10 @@ namespace WindowsFormsApp1
             // mesAlbums
             // 
             this.mesAlbums.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.mesAlbums.BackColor = System.Drawing.Color.Black;
+            this.mesAlbums.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
             this.mesAlbums.FlatAppearance.BorderSize = 0;
             this.mesAlbums.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.mesAlbums.Font = new System.Drawing.Font("Miriam Libre", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mesAlbums.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mesAlbums.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.mesAlbums.Location = new System.Drawing.Point(1045, 50);
             this.mesAlbums.Margin = new System.Windows.Forms.Padding(3, 50, 30, 3);
@@ -69,9 +70,10 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel1.Controls.Add(this.AffichageAbo, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.mesAlbums, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.AffichageAbo, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.emprunter, 1, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
@@ -79,21 +81,6 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 62.52046F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1260, 537);
             this.tableLayoutPanel1.TabIndex = 2;
-            // 
-            // AffichageAbo
-            // 
-            this.AffichageAbo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.AffichageAbo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.AffichageAbo.Font = new System.Drawing.Font("Miriam CLM", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.AffichageAbo.FormattingEnabled = true;
-            this.AffichageAbo.ItemHeight = 21;
-            this.AffichageAbo.Location = new System.Drawing.Point(3, 204);
-            this.AffichageAbo.Margin = new System.Windows.Forms.Padding(3, 3, 20, 20);
-            this.AffichageAbo.Name = "AffichageAbo";
-            this.AffichageAbo.Size = new System.Drawing.Size(859, 294);
-            this.AffichageAbo.TabIndex = 3;
             // 
             // tableLayoutPanel2
             // 
@@ -132,10 +119,12 @@ namespace WindowsFormsApp1
             // 
             this.aboLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.aboLabel.AutoSize = true;
-            this.aboLabel.Font = new System.Drawing.Font("Miriam Libre", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.aboLabel.Location = new System.Drawing.Point(360, 13);
+            this.aboLabel.BackColor = System.Drawing.Color.Transparent;
+            this.aboLabel.Font = new System.Drawing.Font("NSimSun", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aboLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(48)))), ((int)(((byte)(15)))));
+            this.aboLabel.Location = new System.Drawing.Point(387, 23);
             this.aboLabel.Name = "aboLabel";
-            this.aboLabel.Size = new System.Drawing.Size(497, 84);
+            this.aboLabel.Size = new System.Drawing.Size(444, 64);
             this.aboLabel.TabIndex = 0;
             this.aboLabel.Text = "Espace Abonné";
             // 
@@ -160,28 +149,63 @@ namespace WindowsFormsApp1
             // 
             this.searchBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.searchBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.searchBox.Font = new System.Drawing.Font("Miriam Libre", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchBox.Location = new System.Drawing.Point(3, 18);
+            this.searchBox.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(48)))), ((int)(((byte)(15)))));
+            this.searchBox.Location = new System.Drawing.Point(3, 20);
             this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(451, 36);
+            this.searchBox.Size = new System.Drawing.Size(451, 31);
             this.searchBox.TabIndex = 1;
             this.searchBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.userView_KeyPress);
             // 
             // filtres
             // 
             this.filtres.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.filtres.Font = new System.Drawing.Font("Miriam Libre", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filtres.Font = new System.Drawing.Font("NSimSun", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filtres.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(48)))), ((int)(((byte)(15)))));
             this.filtres.FormattingEnabled = true;
-            this.filtres.Location = new System.Drawing.Point(525, 23);
+            this.filtres.Location = new System.Drawing.Point(525, 25);
             this.filtres.Name = "filtres";
-            this.filtres.Size = new System.Drawing.Size(154, 25);
+            this.filtres.Size = new System.Drawing.Size(154, 21);
             this.filtres.TabIndex = 2;
+            this.filtres.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.userView_KeyPress);
+            // 
+            // AffichageAbo
+            // 
+            this.AffichageAbo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AffichageAbo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.AffichageAbo.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AffichageAbo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(48)))), ((int)(((byte)(15)))));
+            this.AffichageAbo.FormattingEnabled = true;
+            this.AffichageAbo.ItemHeight = 19;
+            this.AffichageAbo.Location = new System.Drawing.Point(3, 204);
+            this.AffichageAbo.Margin = new System.Windows.Forms.Padding(3, 3, 20, 20);
+            this.AffichageAbo.Name = "AffichageAbo";
+            this.AffichageAbo.Size = new System.Drawing.Size(859, 304);
+            this.AffichageAbo.TabIndex = 3;
+            // 
+            // emprunter
+            // 
+            this.emprunter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
+            this.emprunter.FlatAppearance.BorderSize = 0;
+            this.emprunter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.emprunter.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emprunter.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.emprunter.Location = new System.Drawing.Point(932, 251);
+            this.emprunter.Margin = new System.Windows.Forms.Padding(50, 50, 30, 3);
+            this.emprunter.Name = "emprunter";
+            this.emprunter.Size = new System.Drawing.Size(185, 83);
+            this.emprunter.TabIndex = 4;
+            this.emprunter.Text = "Emprunter";
+            this.emprunter.UseVisualStyleBackColor = false;
+            this.emprunter.Click += new System.EventHandler(this.emprunter_Click);
             // 
             // UserView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Silver;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1284, 561);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MaximumSize = new System.Drawing.Size(1400, 700);
@@ -210,5 +234,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.ListBox AffichageAbo;
         private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.ComboBox filtres;
+        private System.Windows.Forms.Button emprunter;
     }
 }

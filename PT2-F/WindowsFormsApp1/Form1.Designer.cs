@@ -44,11 +44,11 @@ namespace WindowsFormsApp1
             // connexion
             // 
             this.connexion.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.connexion.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.connexion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
             this.connexion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.connexion.FlatAppearance.BorderSize = 0;
             this.connexion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.connexion.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.connexion.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.connexion.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.connexion.Location = new System.Drawing.Point(539, 74);
             this.connexion.Name = "connexion";
@@ -61,11 +61,11 @@ namespace WindowsFormsApp1
             // inscription
             // 
             this.inscription.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.inscription.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.inscription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
             this.inscription.Cursor = System.Windows.Forms.Cursors.Hand;
             this.inscription.FlatAppearance.BorderSize = 0;
             this.inscription.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inscription.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inscription.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inscription.ForeColor = System.Drawing.SystemColors.Control;
             this.inscription.Location = new System.Drawing.Point(133, 74);
             this.inscription.Name = "inscription";
@@ -87,7 +87,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 222F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 208F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(813, 208);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
@@ -110,11 +110,12 @@ namespace WindowsFormsApp1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Miriam Libre", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("NSimSun", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(48)))), ((int)(((byte)(15)))));
             this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Location = new System.Drawing.Point(168, 49);
+            this.label1.Location = new System.Drawing.Point(161, 60);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(477, 46);
+            this.label1.Size = new System.Drawing.Size(490, 35);
             this.label1.TabIndex = 0;
             this.label1.Text = "Bienvenue sur Dédisclasik";
             // 
@@ -129,7 +130,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 126F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(813, 126);
             this.tableLayoutPanel3.TabIndex = 4;
             // 
@@ -137,10 +138,11 @@ namespace WindowsFormsApp1
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Miriam Mono CLM", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label2.Location = new System.Drawing.Point(181, 52);
+            this.label2.Font = new System.Drawing.Font("NSimSun", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(48)))), ((int)(((byte)(15)))));
+            this.label2.Location = new System.Drawing.Point(182, 53);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(450, 21);
+            this.label2.Size = new System.Drawing.Size(449, 19);
             this.label2.TabIndex = 0;
             this.label2.Text = "La musique se vend pas, elle se partage ";
             // 
@@ -148,7 +150,7 @@ namespace WindowsFormsApp1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Silver;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(837, 465);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.tableLayoutPanel2);

@@ -27,7 +27,7 @@ namespace WindowsFormsApp1
             {
                 foreach (KeyValuePair<EMPRUNTER, ALBUMS> emprunt in emprunts)
                 {
-                    AffichageAbo.Items.Add("Titre : " + emprunt.Value.ToString() + " | emprunté le     " + emprunt.Key.DATE_EMPRUNT + " | à rendre le " + emprunt.Key.DATE_RETOUR_ATTENDUE);
+                    AffichageAbo.Items.Add(emprunt.Value.ToString() + " | emprunté le     " + emprunt.Key.DATE_EMPRUNT + " | à rendre le " + emprunt.Key.DATE_RETOUR_ATTENDUE);
                 }
             }
         }
@@ -39,10 +39,22 @@ namespace WindowsFormsApp1
 
         private void prolongerEmprunt_Click(object sender, EventArgs e)
         {
-            if (AffichageAbo.SelectedItem is ALBUMS al)
+            int position = AffichageAbo.SelectedItem.ToString().IndexOf("|");
+            string titreAlbum = AffichageAbo.SelectedItem.ToString().Substring(0, position - 1);
+
+            ALBUMS obtAlbum = (from a in Utils.Connexion.ALBUMS
+                               where a.TITRE_ALBUM.ToString() == titreAlbum
+                               select a).FirstOrDefault();
+
+            if (obtAlbum is ALBUMS al)
             {
+                AffichageAbo.Items.Remove(AffichageAbo.SelectedItem);
                 UserView.Abo.ProlongerEmprunt(Utils.GetALBUM(al.CODE_ALBUM)).GetAwaiter().GetResult();
                 ConnexionView.Pop("Emprunt prolongé de 1 mois !", "Attention");
+            }
+            else
+            {
+                ConnexionView.Pop("ce n'est pas un album", "Erreur");
             }
 
         }

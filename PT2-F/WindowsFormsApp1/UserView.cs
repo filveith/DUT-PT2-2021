@@ -23,14 +23,15 @@ namespace WindowsFormsApp1
 
         private void UserView_Load(object sender, EventArgs e)
         {
-            this.suggestions();
+            
 
             filtres.Items.Clear();
             filtres.Items.Add("genre");
             filtres.Items.Add("titre");
-            filtres.Items.Add("vide");
 
             this.recherche();
+
+            this.suggestions();
         }
         private void mesAlbums_Click(object sender, EventArgs e)
         {
@@ -45,8 +46,9 @@ namespace WindowsFormsApp1
         private void suggestions()
         {
             AffichageAbo.Items.Clear();
-            HashSet<ALBUMS> sugg = CachedElements.suggestionsParAbo[Abo];
-            if (sugg.Count > 0)
+            HashSet<ALBUMS> sugg;
+            CachedElements.suggestionsParAbo.TryGetValue(Abo, out sugg);
+            if (sugg != null && sugg.Count > 0)
             {
                 AffichageAbo.Items.Add("Voici des albums qui devraient vous plairent : ");
                 foreach (ALBUMS s in sugg)
@@ -56,7 +58,7 @@ namespace WindowsFormsApp1
             }
             else
             {
-                AffichageAbo.Items.Add("Pas de suggestions, vous n'avez rien emprunté...");
+                AffichageAbo.Items.Add("Pas de suggestions");
             }
         }
 
@@ -88,6 +90,10 @@ namespace WindowsFormsApp1
                     AffichageAbo.Items.Add(a);
                 }
             }
+            else
+            {
+                this.suggestions();
+            }
 
         }
 
@@ -99,5 +105,57 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void emprunter_Click(object sender, EventArgs e)
+        {
+            string titreAlbum = AffichageAbo.SelectedItem.ToString().Trim();
+
+            ALBUMS obtAlbum = (from a in Utils.Connexion.ALBUMS
+                               where a.TITRE_ALBUM.ToString() == titreAlbum
+                               select a).FirstOrDefault();
+
+
+
+
+
+            if (obtAlbum is ALBUMS al)
+            {
+                if (!dejaEmprunté(obtAlbum))
+                {
+                    Abo.Emprunter(obtAlbum).GetAwaiter().GetResult();
+                    ConnexionView.Pop("Emprunt Réussi !", "Attention");
+                }
+                else
+                {
+                    ConnexionView.Pop("Vous avez déja emprunté cet Album", "Erreur");
+                }
+                
+            }
+            else
+            {
+                ConnexionView.Pop("ce n'est pas un album", "Erreur");
+            }
+        }
+
+        private static bool dejaEmprunté(ALBUMS alb)
+        {
+            bool dejaEmprunte = false;
+            int codeAlbumAEmprunté = alb.CODE_ALBUM;
+
+            var mesEmprunts = from e in Utils.Connexion.EMPRUNTER
+                              join a in Utils.Connexion.ABONNÉS on e.CODE_ABONNÉ equals a.CODE_ABONNÉ
+                              where a.LOGIN_ABONNÉ == Abo.LOGIN_ABONNÉ
+                              select e.CODE_ALBUM;
+
+            foreach(int code in mesEmprunts)
+            {
+                if(code == codeAlbumAEmprunté)
+                {
+                    dejaEmprunte = true;
+                }
+            }
+            
+
+            return dejaEmprunte;
+        }
     }
 }

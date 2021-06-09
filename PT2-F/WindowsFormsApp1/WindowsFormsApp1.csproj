@@ -183,6 +183,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserView2.resx">
+      <DependentUpon>UserView2.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="BDDModele.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BDDModele.Designer.cs</LastGenOutput>

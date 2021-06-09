@@ -70,12 +70,12 @@ namespace WindowsFormsApp1
             this.buttons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.buttons.Controls.Add(this.listEmpruntsProlongButton, 0, 0);
             this.buttons.Controls.Add(this.listRetardButton, 1, 0);
-            this.buttons.Controls.Add(this.addAlbumButton, 0, 1);
             this.buttons.Controls.Add(this.notEmprunterSinceAYear, 1, 1);
             this.buttons.Controls.Add(this.removeAlbumButton, 0, 2);
             this.buttons.Controls.Add(this.top10Button, 1, 2);
             this.buttons.Controls.Add(this.suppIdleUsersButton, 0, 3);
             this.buttons.Controls.Add(this.listerAbonner, 1, 3);
+            this.buttons.Controls.Add(this.addAlbumButton, 0, 1);
             this.buttons.Location = new System.Drawing.Point(54, 37);
             this.buttons.Name = "buttons";
             this.buttons.RowCount = 4;
@@ -90,14 +90,14 @@ namespace WindowsFormsApp1
             // listEmpruntsProlongButton
             // 
             this.listEmpruntsProlongButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.listEmpruntsProlongButton.BackColor = System.Drawing.Color.Black;
+            this.listEmpruntsProlongButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
             this.listEmpruntsProlongButton.FlatAppearance.BorderSize = 0;
             this.listEmpruntsProlongButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.listEmpruntsProlongButton.Font = new System.Drawing.Font("Miriam Libre", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listEmpruntsProlongButton.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listEmpruntsProlongButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.listEmpruntsProlongButton.Location = new System.Drawing.Point(26, 38);
+            this.listEmpruntsProlongButton.Location = new System.Drawing.Point(24, 33);
             this.listEmpruntsProlongButton.Name = "listEmpruntsProlongButton";
-            this.listEmpruntsProlongButton.Size = new System.Drawing.Size(110, 60);
+            this.listEmpruntsProlongButton.Size = new System.Drawing.Size(113, 69);
             this.listEmpruntsProlongButton.TabIndex = 1;
             this.listEmpruntsProlongButton.Text = "Lister Emprunts Prolongés";
             this.listEmpruntsProlongButton.UseVisualStyleBackColor = false;
@@ -106,14 +106,14 @@ namespace WindowsFormsApp1
             // listRetardButton
             // 
             this.listRetardButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.listRetardButton.BackColor = System.Drawing.Color.Black;
+            this.listRetardButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
             this.listRetardButton.FlatAppearance.BorderSize = 0;
             this.listRetardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.listRetardButton.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listRetardButton.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listRetardButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.listRetardButton.Location = new System.Drawing.Point(188, 38);
+            this.listRetardButton.Location = new System.Drawing.Point(185, 36);
             this.listRetardButton.Name = "listRetardButton";
-            this.listRetardButton.Size = new System.Drawing.Size(110, 60);
+            this.listRetardButton.Size = new System.Drawing.Size(115, 64);
             this.listRetardButton.TabIndex = 2;
             this.listRetardButton.Text = "Lister Retards";
             this.listRetardButton.UseVisualStyleBackColor = false;
@@ -122,14 +122,14 @@ namespace WindowsFormsApp1
             // addAlbumButton
             // 
             this.addAlbumButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.addAlbumButton.BackColor = System.Drawing.Color.Black;
+            this.addAlbumButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
             this.addAlbumButton.FlatAppearance.BorderSize = 0;
             this.addAlbumButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addAlbumButton.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.addAlbumButton.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addAlbumButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.addAlbumButton.Location = new System.Drawing.Point(26, 174);
+            this.addAlbumButton.Location = new System.Drawing.Point(23, 153);
             this.addAlbumButton.Name = "addAlbumButton";
-            this.addAlbumButton.Size = new System.Drawing.Size(110, 60);
+            this.addAlbumButton.Size = new System.Drawing.Size(116, 102);
             this.addAlbumButton.TabIndex = 3;
             this.addAlbumButton.Text = "Ajouter Albums";
             this.addAlbumButton.UseVisualStyleBackColor = false;
@@ -138,14 +138,14 @@ namespace WindowsFormsApp1
             // notEmprunterSinceAYear
             // 
             this.notEmprunterSinceAYear.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.notEmprunterSinceAYear.BackColor = System.Drawing.Color.Black;
+            this.notEmprunterSinceAYear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
             this.notEmprunterSinceAYear.FlatAppearance.BorderSize = 0;
             this.notEmprunterSinceAYear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.notEmprunterSinceAYear.Font = new System.Drawing.Font("Miriam Libre", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.notEmprunterSinceAYear.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.notEmprunterSinceAYear.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.notEmprunterSinceAYear.Location = new System.Drawing.Point(188, 174);
+            this.notEmprunterSinceAYear.Location = new System.Drawing.Point(183, 152);
             this.notEmprunterSinceAYear.Name = "notEmprunterSinceAYear";
-            this.notEmprunterSinceAYear.Size = new System.Drawing.Size(110, 60);
+            this.notEmprunterSinceAYear.Size = new System.Drawing.Size(120, 104);
             this.notEmprunterSinceAYear.TabIndex = 4;
             this.notEmprunterSinceAYear.Text = "Albums pas empruntés depuis 1 an";
             this.notEmprunterSinceAYear.UseVisualStyleBackColor = false;
@@ -154,14 +154,14 @@ namespace WindowsFormsApp1
             // removeAlbumButton
             // 
             this.removeAlbumButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.removeAlbumButton.BackColor = System.Drawing.Color.Black;
+            this.removeAlbumButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
             this.removeAlbumButton.FlatAppearance.BorderSize = 0;
             this.removeAlbumButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.removeAlbumButton.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.removeAlbumButton.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.removeAlbumButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.removeAlbumButton.Location = new System.Drawing.Point(26, 300);
+            this.removeAlbumButton.Location = new System.Drawing.Point(19, 300);
             this.removeAlbumButton.Name = "removeAlbumButton";
-            this.removeAlbumButton.Size = new System.Drawing.Size(110, 60);
+            this.removeAlbumButton.Size = new System.Drawing.Size(123, 60);
             this.removeAlbumButton.TabIndex = 5;
             this.removeAlbumButton.Text = "Supprimer Albums";
             this.removeAlbumButton.UseVisualStyleBackColor = false;
@@ -170,14 +170,14 @@ namespace WindowsFormsApp1
             // top10Button
             // 
             this.top10Button.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.top10Button.BackColor = System.Drawing.Color.Black;
+            this.top10Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
             this.top10Button.FlatAppearance.BorderSize = 0;
             this.top10Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.top10Button.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.top10Button.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.top10Button.ForeColor = System.Drawing.SystemColors.Control;
-            this.top10Button.Location = new System.Drawing.Point(188, 300);
+            this.top10Button.Location = new System.Drawing.Point(184, 300);
             this.top10Button.Name = "top10Button";
-            this.top10Button.Size = new System.Drawing.Size(110, 60);
+            this.top10Button.Size = new System.Drawing.Size(118, 60);
             this.top10Button.TabIndex = 6;
             this.top10Button.Text = "Top 10 Albums Empruntés";
             this.top10Button.UseVisualStyleBackColor = false;
@@ -186,14 +186,14 @@ namespace WindowsFormsApp1
             // suppIdleUsersButton
             // 
             this.suppIdleUsersButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.suppIdleUsersButton.BackColor = System.Drawing.Color.Black;
+            this.suppIdleUsersButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
             this.suppIdleUsersButton.FlatAppearance.BorderSize = 0;
             this.suppIdleUsersButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.suppIdleUsersButton.Font = new System.Drawing.Font("Miriam Libre", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.suppIdleUsersButton.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.suppIdleUsersButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.suppIdleUsersButton.Location = new System.Drawing.Point(26, 412);
+            this.suppIdleUsersButton.Location = new System.Drawing.Point(23, 400);
             this.suppIdleUsersButton.Name = "suppIdleUsersButton";
-            this.suppIdleUsersButton.Size = new System.Drawing.Size(110, 60);
+            this.suppIdleUsersButton.Size = new System.Drawing.Size(116, 84);
             this.suppIdleUsersButton.TabIndex = 7;
             this.suppIdleUsersButton.Text = "Supprimer Utilisateurs Inactifs";
             this.suppIdleUsersButton.UseVisualStyleBackColor = false;
@@ -202,14 +202,14 @@ namespace WindowsFormsApp1
             // listerAbonner
             // 
             this.listerAbonner.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.listerAbonner.BackColor = System.Drawing.Color.Black;
+            this.listerAbonner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
             this.listerAbonner.FlatAppearance.BorderSize = 0;
             this.listerAbonner.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.listerAbonner.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listerAbonner.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listerAbonner.ForeColor = System.Drawing.SystemColors.Control;
-            this.listerAbonner.Location = new System.Drawing.Point(188, 412);
+            this.listerAbonner.Location = new System.Drawing.Point(185, 406);
             this.listerAbonner.Name = "listerAbonner";
-            this.listerAbonner.Size = new System.Drawing.Size(110, 60);
+            this.listerAbonner.Size = new System.Drawing.Size(115, 72);
             this.listerAbonner.TabIndex = 8;
             this.listerAbonner.Text = "Lister les abonnés";
             this.listerAbonner.UseVisualStyleBackColor = false;
@@ -220,21 +220,24 @@ namespace WindowsFormsApp1
             this.log.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.log.BackColor = System.Drawing.SystemColors.Window;
             this.log.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.log.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.log.FormattingEnabled = true;
             this.log.HorizontalScrollbar = true;
-            this.log.Location = new System.Drawing.Point(442, 57);
+            this.log.ItemHeight = 19;
+            this.log.Location = new System.Drawing.Point(442, 66);
             this.log.Name = "log";
-            this.log.Size = new System.Drawing.Size(415, 455);
+            this.log.Size = new System.Drawing.Size(415, 437);
             this.log.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Miriam Libre", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(224, 7);
+            this.label1.Font = new System.Drawing.Font("NSimSun", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(48)))), ((int)(((byte)(15)))));
+            this.label1.Location = new System.Drawing.Point(226, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(418, 46);
+            this.label1.Size = new System.Drawing.Size(414, 35);
             this.label1.TabIndex = 0;
             this.label1.Text = "Espace administrateur";
             // 
@@ -258,7 +261,7 @@ namespace WindowsFormsApp1
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScrollMargin = new System.Drawing.Size(1, 1);
-            this.BackColor = System.Drawing.Color.Silver;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(891, 661);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
