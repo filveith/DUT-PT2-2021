@@ -104,8 +104,8 @@ namespace WindowsFormsApp1
         protected override void OnResize(EventArgs eventargs)
         {
             base.OnResize(eventargs);
-            ItemsPerPage = Height / page.Font.Height;
-            currentPageHandled = false;
+            ItemsPerPage = page.Height / page.Font.Height;
+            ResetItemsForCurrentPage();
             if (allItems.Count > 0)
             {
                 int ItemsInAllPages = ItemsPerPage * CurrentPage + ItemsPerPage;

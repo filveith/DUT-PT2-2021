@@ -655,6 +655,60 @@ namespace DiscothequeTest
                 p.AddItem(i);
                 Assert.IsFalse(p.NextPage());
             }
+            p.AddItem(4);
+            Assert.IsTrue(p.NextPage());
+            Assert.IsFalse(p.NextPage());
+        }
+
+        [TestMethod, TestCategory("US13")]
+        public void TestPreviousPage()
+        {
+            ListBox l = new ListBox();
+            PagedListbox p = new PagedListbox(l);
+            p.Height = 600;
+            int ItemsPerPage = 600 / l.Font.Height;
+            Assert.IsFalse(p.PreviousPage());
+            for (int i = 0; i < ItemsPerPage; i++)
+            {
+                p.AddItem(i);
+                Assert.IsFalse(p.PreviousPage());
+            }
+            p.AddItem(4);
+            Assert.IsFalse(p.PreviousPage());
+            p.NextPage();
+            Assert.IsTrue(p.PreviousPage());
+        }
+
+        [TestMethod, TestCategory("US13")]
+        public void TestResetItems()
+        {
+            ListBox l = new ListBox();
+            PagedListbox p = new PagedListbox(l);
+            p.Height = 600;
+            int ItemsPerPage = 600 / l.Font.Height;
+            List<int> iList = new List<int>();
+            for (int i = 0; i < ItemsPerPage; i++)
+            {
+                p.AddItem(i);
+                iList.Add(i);
+                CollectionAssert.AreEqual(iList, l.Items);
+            }
+            p.AddItem("test");
+            CollectionAssert.DoesNotContain(l.Items, "test");
+            p.NextPage();
+            List<string> test = new List<string>();
+            test.Add("test");
+            CollectionAssert.AreNotEqual(iList, l.Items);
+            CollectionAssert.AreEqual(test, l.Items);
+            p.AddItem("omegaBrain");
+            test.Add("omegaBrain");
+            CollectionAssert.AreEqual(test, l.Items);
+            p.PreviousPage();
+            CollectionAssert.AreNotEqual(test, l.Items);
+            CollectionAssert.AreEqual(iList, l.Items);
+            p.Size = new System.Drawing.Size(p.Width, 600 - l.Font.Height);
+            CollectionAssert.AreNotEqual(iList, l.Items);
+            CollectionAssert.AreEqual(iList.TakeWhile(i => i != iList.Last()).ToList(), l.Items);
         }
 
         #endregion
