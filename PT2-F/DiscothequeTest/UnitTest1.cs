@@ -13,13 +13,57 @@ namespace DiscothequeTest
     [TestClass]
     public class UnitTest1
     {
+
+        [TestMethod]
+        public void TestUS2()
+        {
+            Random rand = new Random();
+
+            // si l'abonné existe deja, on le supprime
+            ABONNÉS abo = (from ab in Utils.Connexion.ABONNÉS
+                           where ab.LOGIN_ABONNÉ.Equals("tus2")
+                           select ab).FirstOrDefault();
+            if (abo != null)
+            {
+                SuppAboAfterTests(abo);
+            }
+
+            Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
+
+            // On crée un abonné pour nos tests
+            abo = Utils.RegisterAbo("Test", "US2", "tus2", "mdpGIGAStrong", 45).GetAwaiter().GetResult();
+
+            Assert.IsTrue(abo != null);
+
+            // On effectue une dizaines d'emprunts tests
+            for (int i = 50; i <= 80; i++)
+            {
+                ALBUMS alToTake = (from ab in Utils.Connexion.ALBUMS
+                                   where ab.CODE_ALBUM == i
+                                   select ab).FirstOrDefault();
+
+                Assert.IsTrue(alToTake != null);
+
+
+                EMPRUNTER e = abo.Emprunter(alToTake).GetAwaiter().GetResult();
+            }
+
+            // On recupère ses emprunts, et on vérifie que tout les emprunts fait precedemment sont là
+            Dictionary<EMPRUNTER, ALBUMS> emprunts = abo.ConsulterEmprunts();
+
+            for (int i = 50; i <= 80; i++)
+            {
+                Assert.IsTrue(emprunts.Values.Any(album => (album.CODE_ALBUM == i)));
+            }
+        }
+
         
         [TestMethod]
         public void TestUS3()
         {
             Random rand = new Random();
 
-
+            // si l'abonné existe deja, on le supprime
             ABONNÉS abo = (from ab in Utils.Connexion.ABONNÉS
                            where ab.LOGIN_ABONNÉ.Equals("tus3")
                            select ab).FirstOrDefault();
