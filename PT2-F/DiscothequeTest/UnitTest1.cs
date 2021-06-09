@@ -568,10 +568,33 @@ namespace DiscothequeTest
             Assert.IsTrue(abo != null);
 
 
+            // On effectue quelques emprunts tests
+            for (int i = 200; i < 220; i++)
+            {
+                ALBUMS alToTake = (from ab in Utils.Connexion.ALBUMS
+                                   where ab.CODE_ALBUM == i
+                                   select ab).FirstOrDefault();
+
+                Assert.IsTrue(alToTake != null);
 
 
+                EMPRUNTER e = abo.Emprunter(alToTake).GetAwaiter().GetResult();
+            }
+
+            // On vérifie que aucun des emprunts du nouvel abonné ne sont prolongés
+            IQueryable<EMPRUNTER> beforeProlonges = Utils.AvoirLesEmpruntProlonger();
+            Assert.IsFalse(beforeProlonges.Any(emp => emp.CODE_ABONNÉ == abo.CODE_ABONNÉ));
+
+            // On prolonge tout ses emprunts
+            abo.ProlongerTousEmprunts().GetAwaiter().GetResult();
+
+            // On vérifie maintenant que tout les emprunts de l'abonné sont prolongés
+            // On vérifie que aucun des emprunts du nouvel abonné ne sont prolongés
+            IQueryable<EMPRUNTER> afterProlonges = Utils.AvoirLesEmpruntProlonger();
+            Assert.IsFalse(!afterProlonges.Any(emp => emp.CODE_ABONNÉ == abo.CODE_ABONNÉ));
 
 
+            SuppAboAfterTests(abo);
 
         }
 
