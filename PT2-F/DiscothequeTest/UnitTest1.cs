@@ -441,6 +441,27 @@ namespace DiscothequeTest
 
         }
 
+
+        [TestMethod]
+        public void TestUS9()
+        {
+            // si l'abonné existe deja, on le supprime
+            ABONNÉS abo = (from ab in Utils.Connexion.ABONNÉS
+                           where ab.LOGIN_ABONNÉ.Equals("tus9")
+                           select ab).FirstOrDefault();
+            if (abo != null)
+            {
+                SuppAboAfterTests(abo);
+            }
+
+            Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
+
+            // On crée un abonné pour nos tests
+            abo = Utils.RegisterAbo("Test", "US9", "tus9", "mdpStrong", 45).GetAwaiter().GetResult();
+
+            Assert.IsTrue(abo != null);
+        }
+
         private static void AddAboForTests(string nom, string prenom, string login, string mdp, int codePays)
         {
             Utils.RegisterAbo(nom, prenom, login, mdp, codePays).GetAwaiter().GetResult();
