@@ -15,7 +15,9 @@ namespace DiscothequeTest
     {
         private int idAboTest = 0;
         
-
+        /// <summary>
+        /// US1
+        /// </summary>
         [TestMethod]
         public void TestAjoutAbonnée()
         { 
@@ -81,8 +83,13 @@ namespace DiscothequeTest
             //On verifie avec la base de données si il existe bien
             Assert.IsTrue(aboFinal.LOGIN_ABONNÉ == "TestRegister");
             idAboTest = aboFinal.CODE_ABONNÉ;
+
+            SuppAboAfterTests(Utils.GetABONNÉ(aboFinal.CODE_ABONNÉ));
         }
 
+        /// <summary>
+        /// US1
+        /// </summary>
         [TestMethod]
         public void TestAjoutEmprunt()
         {
@@ -90,13 +97,17 @@ namespace DiscothequeTest
                         where aboGetId.LOGIN_ABONNÉ=="TestRegister"
                         select aboGetId.CODE_ABONNÉ;
 
+            if(aboId.Count() == 0)
+            {
+                bool t = Utils.RegisterAbo("Test", "Register", "TestRegister", "123456", 1).GetAwaiter().GetResult();
+                Assert.IsTrue(t);
+            }
+
             idAboTest = Utils.GetABONNÉ(aboId.FirstOrDefault()).CODE_ABONNÉ;
 
             var initState = from em in Utils.Connexion.EMPRUNTER
                             where em.CODE_ABONNÉ == idAboTest
                             select em;
-
-            
 
             foreach (EMPRUNTER em in initState)
             {
@@ -128,13 +139,14 @@ namespace DiscothequeTest
                 Assert.IsTrue(e.CODE_ALBUM==i);
             }
 
-            
             var abonneSup = from aboGetId in Utils.Connexion.ABONNÉS
                         where aboGetId.LOGIN_ABONNÉ == "TestRegister"
                         select aboGetId.CODE_ABONNÉ;
 
             SuppAboAfterTests(Utils.GetABONNÉ(abonneSup.FirstOrDefault()));
         }
+
+       
 
         private static void AddAboForTests(string nom, string prenom, string login, string mdp, int codePays)
         {
