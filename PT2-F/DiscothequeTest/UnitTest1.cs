@@ -14,13 +14,13 @@ namespace DiscothequeTest
     public class UnitTest1
     {
         private int idAboTest = 0;
-        
+
         /// <summary>
         /// US1
         /// </summary>
         [TestMethod]
         public void TestAjoutAbonnée()
-        { 
+        {
             /*AddAboForTests("Register", "Test", "TestRegister", "123456", 1);
 
             var finalState = from user in Utils.Connexion.ABONNÉS
@@ -58,7 +58,7 @@ namespace DiscothequeTest
 
                 Utils.Connexion.EMPRUNTER.RemoveRange(emprunts);
                 Utils.Connexion.ABONNÉS.Remove(abo);
-                Utils.Connexion.SaveChanges();
+                Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
 
                 var result = from data in Utils.Connexion.ABONNÉS
                              where data.LOGIN_ABONNÉ == "TestRegister"
@@ -69,10 +69,10 @@ namespace DiscothequeTest
             }
 
             //On ajoute un abonné
-            bool t = Utils.RegisterAbo("Test", "Register", "TestRegister", "123456", 1).GetAwaiter().GetResult();
+            ABONNÉS abonne = Utils.RegisterAbo("Test", "Register", "TestRegister", "123456", 1).GetAwaiter().GetResult();
 
             //On regarde si il a bien etait crée
-            Assert.IsTrue(t);
+            Assert.IsTrue(abonne != null);
 
             var finalResult = from data in Utils.Connexion.ABONNÉS
                               where data.LOGIN_ABONNÉ.Equals("TestRegister")
@@ -94,12 +94,12 @@ namespace DiscothequeTest
         public void TestAjoutEmprunt()
         {
             var aboId = from aboGetId in Utils.Connexion.ABONNÉS
-                        where aboGetId.LOGIN_ABONNÉ=="TestRegister"
+                        where aboGetId.LOGIN_ABONNÉ == "TestRegister"
                         select aboGetId.CODE_ABONNÉ;
 
-            if(aboId.Count() == 0)
+            if (aboId.Count() == 0)
             {
-                bool t = Utils.RegisterAbo("Test", "Register", "TestRegister", "123456", 1).GetAwaiter().GetResult();
+                bool t = Utils.RegisterAbo("Test", "Register", "TestRegister", "123456", 1).GetAwaiter().GetResult() != null;
                 Assert.IsTrue(t);
             }
 
@@ -136,21 +136,21 @@ namespace DiscothequeTest
                 Assert.IsNotNull(e);
                 //Console.WriteLine(e);
 
-                Assert.IsTrue(e.CODE_ALBUM==i);
+                Assert.IsTrue(e.CODE_ALBUM == i);
             }
 
             var abonneSup = from aboGetId in Utils.Connexion.ABONNÉS
-                        where aboGetId.LOGIN_ABONNÉ == "TestRegister"
-                        select aboGetId.CODE_ABONNÉ;
+                            where aboGetId.LOGIN_ABONNÉ == "TestRegister"
+                            select aboGetId.CODE_ABONNÉ;
 
             SuppAboAfterTests(Utils.GetABONNÉ(abonneSup.FirstOrDefault()));
         }
 
-       
+
 
         private static void AddAboForTests(string nom, string prenom, string login, string mdp, int codePays)
         {
-            Utils.RegisterAbo(nom, prenom, login, mdp, codePays);
+            Utils.RegisterAbo(nom, prenom, login, mdp, codePays).GetAwaiter().GetResult();
         }
 
         [TestMethod]
@@ -187,10 +187,10 @@ namespace DiscothequeTest
 
                 EMPRUNTER e = abo.Emprunter(alToTake).GetAwaiter().GetResult();
             }
-            
-           
 
-            
+
+
+
             // On recupère ses emprunts, et on choisit un emprunt et l'album à prolonger au hasard
             Dictionary<EMPRUNTER, ALBUMS> emprunts = abo.ConsulterEmprunts();
             int randIndex = rand.Next(0, emprunts.Count);
@@ -198,7 +198,7 @@ namespace DiscothequeTest
             ALBUMS al = emprunts.ElementAt(randIndex).Value;
             EMPRUNTER emprunt = emprunts.ElementAt(randIndex).Key;
 
-            
+
             // On vérifie que la date avant changement est differente de celle après changement, d'exactement 1 mois
             DateTime dateAvantProlong = emprunt.DATE_RETOUR_ATTENDUE;
 
@@ -219,7 +219,7 @@ namespace DiscothequeTest
 
             Assert.IsTrue(abo != null);
 
-        }*/
+        }
 
         [TestMethod]
         public void TestUS4()
@@ -257,7 +257,7 @@ namespace DiscothequeTest
             // On recupère tout les emprunts prolongés 
             IQueryable<EMPRUNTER> prolongésBefore = Utils.AvoirLesEmpruntProlonger();
 
-            foreach(EMPRUNTER em in prolongésBefore)
+            foreach (EMPRUNTER em in prolongésBefore)
             {
                 Console.WriteLine(em);
             }
@@ -277,12 +277,6 @@ namespace DiscothequeTest
 
         }
 
-
-        private static void AddAboForTests(string nom, string prenom, string login, string mdp, int codePays)
-        {
-            _ = Utils.RegisterAbo(nom, prenom, login, mdp, codePays);
-        }
-
         private static void SuppAboAfterTests(ABONNÉS abo)
         {
             foreach (EMPRUNTER emprunt in Utils.Connexion.EMPRUNTER)
@@ -296,120 +290,6 @@ namespace DiscothequeTest
             Utils.Connexion.ABONNÉS.Remove(abo);
         }
 
-        [TestMethod]
-        public void TestUS3()
-        {
-            Random rand = new Random();
-
-
-            ABONNÉS abo = (from ab in Utils.Connexion.ABONNÉS
-                           where ab.LOGIN_ABONNÉ.Equals("tus3")
-                           select ab).FirstOrDefault();
-            if (abo != null)
-            {
-                Utils.Connexion.ABONNÉS.Remove(abo);
-            }
-
-            // On crée un abonné pour nos tests
-            AddAboForTests("Test", "US3", "tus3", "mdpstrong", 22);
-            
-
-            Assert.IsTrue(abo != null);
-
-            // On effectue une dizaines d'emprunts tests
-            
-            //abo.Emprunter(Utils.Connexion.ALBUMS.OrderBy(r => Guid.NewGuid()).Skip(rand.Next(1, Utils.Connexion.ALBUMS.Count())).Take(1).First());
-
-
-            /*
-            // On recupère ses emprunts, et on choisit un emprunt et l'album à prolonger au hasard
-            Dictionary<EMPRUNTER, ALBUMS> emprunts = abo.ConsulterEmprunts();
-            int randIndex = rand.Next(0, emprunts.Count);
-            ALBUMS al = emprunts.ElementAt(randIndex).Value;
-            EMPRUNTER emprunt = emprunts.ElementAt(randIndex).Key;
-
-
-            // On vérifie que la date avant changement est differente de celle après changement, d'exactement 1 mois
-            DateTime dateAvantProlong = emprunt.DATE_RETOUR_ATTENDUE;
-
-            abo.ProlongerEmprunt(al);
-
-            DateTime dateApresProlong = emprunt.DATE_RETOUR_ATTENDUE;
-
-            Assert.IsTrue(dateAvantProlong != dateApresProlong);
-            Assert.IsTrue(dateApresProlong == dateAvantProlong.AddMonths(1));
-
-            // On vérifie qu'on ne peut pas prolonger un emprunt déjà emprunté
-
-            abo.ProlongerEmprunt(al);
-
-            DateTime dateApresSecondProlong = emprunt.DATE_RETOUR_ATTENDUE;
-
-            Assert.IsFalse(dateApresProlong != dateApresSecondProlong);
-
-            Assert.IsTrue(abo != null);*/
-
-            /*suppAboAfterTests(abo);*/
-
-        }
-
-
-        private static void AddAboForTests(string nom, string prenom, string login, string mdp, int codePays)
-        {
-            Utils.RegisterAbo(nom, prenom, login, mdp, codePays);
-        }
-
-        private static void SuppAboAfterTests(ABONNÉS abo)
-        {
-            foreach (EMPRUNTER emprunt in Utils.Connexion.EMPRUNTER)
-            {
-                if (emprunt.CODE_ABONNÉ == abo.CODE_ABONNÉ)
-                {
-                    Utils.Connexion.EMPRUNTER.Remove(emprunt);
-                }
-            }
-
-            Utils.Connexion.ABONNÉS.Remove(abo);
-        }
-
-        [TestMethod]
-        public void TestUS3()
-        {
-            Random rand = new Random();
-
-            // On recupère l'abonné de test
-            ABONNÉS abo = (from ab in Utils.Connexion.ABONNÉS
-                           where ab.LOGIN_ABONNÉ == "TestRegister"
-                           select ab).FirstOrDefault();
-
-            Assert.IsTrue(abo != null);
-
-            // On recupère ses emprunts, et on choisit un emprunt et l'album à prolonger au hasard
-            Dictionary<EMPRUNTER, ALBUMS> emprunts = abo.ConsulterEmprunts();
-            int randIndex = rand.Next(0, emprunts.Count);
-            ALBUMS al = emprunts.ElementAt(randIndex).Value;
-            EMPRUNTER emprunt = emprunts.ElementAt(randIndex).Key;
-
-            DateTime dateAvantProlong = emprunt.DATE_RETOUR_ATTENDUE;
-
-            abo.ProlongerEmprunt(al);
-
-            DateTime dateApresProlong = emprunt.DATE_RETOUR_ATTENDUE;
-
-            Assert.IsTrue(dateAvantProlong != dateApresProlong);
-            Assert.IsTrue(dateApresProlong == dateAvantProlong.AddMonths(1));
-            
-
-            Assert.IsTrue(al != null);
-
-            
-
-
-
-
-
-
-        }
 
     }
 }

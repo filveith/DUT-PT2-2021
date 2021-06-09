@@ -26,7 +26,7 @@ namespace WindowsFormsApp1
         /// <param name="mdp"> Mot de passe </param>
         /// <param name="codePays"> Code de pays d'où il vient </param>
         /// <returns> Retourne vrai si on ajoute un abonné, faux sinon </returns>
-        public static async Task<bool> RegisterAbo(string nom, string prenom, string login, string mdp, int codePays)
+        public static async Task<ABONNÉS> RegisterAbo(string nom, string prenom, string login, string mdp, int codePays)
         {
             ABONNÉS a = new ABONNÉS();
             try
