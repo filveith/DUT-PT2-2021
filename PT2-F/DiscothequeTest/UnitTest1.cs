@@ -610,24 +610,6 @@ namespace DiscothequeTest
             }
         }
 
-        private static void AddAboForTests(string nom, string prenom, string login, string mdp, int codePays)
-        {
-            Utils.RegisterAbo(nom, prenom, login, mdp, codePays).GetAwaiter().GetResult();
-        }
-
-        private static void SuppAboAfterTests(ABONNÉS abo)
-        {
-            foreach (EMPRUNTER emprunt in Utils.Connexion.EMPRUNTER)
-            {
-                if (emprunt.CODE_ABONNÉ == abo.CODE_ABONNÉ)
-                {
-                    Utils.Connexion.EMPRUNTER.Remove(emprunt);
-                }
-            }
-            Utils.Connexion.ABONNÉS.Remove(abo);
-            Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
-        }
-
         #region Test PagedListbox
         [TestMethod, TestCategory("US13")]
         public void TestConstructeur()
@@ -712,5 +694,25 @@ namespace DiscothequeTest
         }
 
         #endregion
+
+        private static void AddAboForTests(string nom, string prenom, string login, string mdp, int codePays)
+        {
+            Utils.RegisterAbo(nom, prenom, login, mdp, codePays).GetAwaiter().GetResult();
+        }
+
+        private static void SuppAboAfterTests(ABONNÉS abo)
+        {
+            foreach (EMPRUNTER emprunt in Utils.Connexion.EMPRUNTER)
+            {
+                if (emprunt.CODE_ABONNÉ == abo.CODE_ABONNÉ)
+                {
+                    Utils.Connexion.EMPRUNTER.Remove(emprunt);
+                }
+            }
+            Utils.Connexion.ABONNÉS.Remove(abo);
+            Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
+        }
+
+
     }
 }
