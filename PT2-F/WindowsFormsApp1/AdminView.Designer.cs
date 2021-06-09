@@ -348,16 +348,6 @@ namespace WindowsFormsApp1
             this.nextPage.UseVisualStyleBackColor = false;
             this.nextPage.Click += new System.EventHandler(this.nextPage_Click);
             // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Image = global::WindowsFormsApp1.Properties.Resources.logo_small_3_;
-            this.label2.Location = new System.Drawing.Point(679, 8);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(185, 45);
-            this.label2.TabIndex = 1;
-            // 
             // AdminView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
