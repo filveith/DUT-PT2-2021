@@ -16,7 +16,7 @@ namespace DiscothequeTest
         private int idAboTest = 0;
 
         /// <summary>
-        /// US1
+        /// US1 ajout abo
         /// </summary>
         [TestMethod]
         public void TestAjoutAbonnée()
@@ -70,7 +70,7 @@ namespace DiscothequeTest
         }
 
         /// <summary>
-        /// US1
+        /// US1 ajout emrpunt
         /// </summary>
         [TestMethod]
         public void TestAjoutEmprunt()
@@ -320,6 +320,9 @@ namespace DiscothequeTest
 
         }
 
+        /// <summary>
+        /// US5
+        /// </summary>
         [TestMethod]
         public void TestUS5()
         {
@@ -375,8 +378,6 @@ namespace DiscothequeTest
 
             SuppAboAfterTests(abo);
         }
-
-
 
         /// <summary>
         /// US6 Purge les abonées qui ont pas emprunté depuis un an
@@ -466,10 +467,9 @@ namespace DiscothequeTest
             }
         }
 
-
-
-
-
+        /// <summary>
+        /// US9
+        /// </summary>
         [TestMethod]
         public void TestUS9()
         {
