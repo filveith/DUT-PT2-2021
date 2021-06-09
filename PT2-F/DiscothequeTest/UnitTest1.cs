@@ -377,6 +377,7 @@ namespace DiscothequeTest
         }
 
 
+
         /// <summary>
         /// US6 Purge les abonées qui ont pas emprunté depuis un an
         /// </summary>
@@ -467,6 +468,57 @@ namespace DiscothequeTest
 
 
 
+
+
+        [TestMethod]
+        public void TestUS9()
+        {
+            // si l'abonné existe deja, on le supprime
+            ABONNÉS abo = (from ab in Utils.Connexion.ABONNÉS
+                           where ab.LOGIN_ABONNÉ.Equals("tus9")
+                           select ab).FirstOrDefault();
+            if (abo != null)
+            {
+                SuppAboAfterTests(abo);
+            }
+
+            Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
+
+            // On crée un abonné pour nos tests
+            abo = Utils.RegisterAbo("Test", "US9", "tus9", "mdpVERYStrong", 45).GetAwaiter().GetResult();
+
+            Assert.IsTrue(abo != null);
+
+
+            // On effectue quelques emprunts tests
+            for (int i = 200; i < 220; i++)
+            {
+                ALBUMS alToTake = (from ab in Utils.Connexion.ALBUMS
+                                   where ab.CODE_ALBUM == i
+                                   select ab).FirstOrDefault();
+
+                Assert.IsTrue(alToTake != null);
+
+
+                EMPRUNTER e = abo.Emprunter(alToTake).GetAwaiter().GetResult();
+            }
+
+            // On vérifie que aucun des emprunts du nouvel abonné ne sont prolongés
+            IQueryable<EMPRUNTER> beforeProlonges = Utils.AvoirLesEmpruntProlonger();
+            Assert.IsFalse(beforeProlonges.Any(emp => emp.CODE_ABONNÉ == abo.CODE_ABONNÉ));
+
+            // On prolonge tout ses emprunts
+            abo.ProlongerTousEmprunts().GetAwaiter().GetResult();
+
+            // On vérifie maintenant que tout les emprunts de l'abonné sont prolongés
+            // On vérifie que aucun des emprunts du nouvel abonné ne sont prolongés
+            IQueryable<EMPRUNTER> afterProlonges = Utils.AvoirLesEmpruntProlonger();
+            Assert.IsFalse(!afterProlonges.Any(emp => emp.CODE_ABONNÉ == abo.CODE_ABONNÉ));
+
+
+            SuppAboAfterTests(abo);
+
+        }
 
         private static void AddAboForTests(string nom, string prenom, string login, string mdp, int codePays)
         {
