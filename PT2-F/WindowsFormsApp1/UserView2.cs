@@ -49,7 +49,6 @@ namespace WindowsFormsApp1
 
         private void prolongerToutEmprunt_Click(object sender, EventArgs e)
         {
-            AffichageAbo.Items.Clear();
             UserView.Abo.ProlongerTousEmprunts().GetAwaiter().GetResult();
             ConnexionView.Pop("Tous vos emprunts ont bien étés prolongés !", "Attention");
         }
