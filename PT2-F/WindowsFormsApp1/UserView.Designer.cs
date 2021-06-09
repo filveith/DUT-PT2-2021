@@ -39,8 +39,8 @@ namespace WindowsFormsApp1
             this.filtres = new System.Windows.Forms.ComboBox();
             this.AffichageAbo = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.emprunter = new System.Windows.Forms.Button();
             this.suggest = new System.Windows.Forms.Button();
+            this.emprunter = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -204,23 +204,6 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel5.Size = new System.Drawing.Size(372, 330);
             this.tableLayoutPanel5.TabIndex = 4;
             // 
-            // emprunter
-            // 
-            this.emprunter.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.emprunter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
-            this.emprunter.FlatAppearance.BorderSize = 0;
-            this.emprunter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.emprunter.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emprunter.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.emprunter.Location = new System.Drawing.Point(93, 41);
-            this.emprunter.Margin = new System.Windows.Forms.Padding(0);
-            this.emprunter.Name = "emprunter";
-            this.emprunter.Size = new System.Drawing.Size(185, 83);
-            this.emprunter.TabIndex = 5;
-            this.emprunter.Text = "Emprunter";
-            this.emprunter.UseVisualStyleBackColor = false;
-            this.emprunter.Click += new System.EventHandler(this.emprunter_Click);
-            // 
             // suggest
             // 
             this.suggest.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -237,6 +220,23 @@ namespace WindowsFormsApp1
             this.suggest.Text = "Mes Suggestions";
             this.suggest.UseVisualStyleBackColor = false;
             this.suggest.Click += new System.EventHandler(this.suggest_Click);
+            // 
+            // emprunter
+            // 
+            this.emprunter.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.emprunter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
+            this.emprunter.FlatAppearance.BorderSize = 0;
+            this.emprunter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.emprunter.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emprunter.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.emprunter.Location = new System.Drawing.Point(93, 41);
+            this.emprunter.Margin = new System.Windows.Forms.Padding(0);
+            this.emprunter.Name = "emprunter";
+            this.emprunter.Size = new System.Drawing.Size(185, 83);
+            this.emprunter.TabIndex = 5;
+            this.emprunter.Text = "Emprunter";
+            this.emprunter.UseVisualStyleBackColor = false;
+            this.emprunter.Click += new System.EventHandler(this.emprunter_Click);
             // 
             // UserView
             // 
