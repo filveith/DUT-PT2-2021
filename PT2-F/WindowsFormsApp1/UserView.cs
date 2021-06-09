@@ -14,13 +14,11 @@ namespace WindowsFormsApp1
     {
         public static ABONNÉS Abo;
         public static UserView2 u2 = new UserView2(Abo);
-        PagedListbox AffichageAbo;
         public UserView(ABONNÉS a)
         {
             InitializeComponent();
             Abo = a;
             Task.Run(() => CachedElements.RefreshSuggestions(a));
-            AffichageAbo = new PagedListbox(TAffichageAbo);
         }
 
         private void UserView_Load(object sender, EventArgs e)
@@ -47,20 +45,20 @@ namespace WindowsFormsApp1
 
         private void suggestions()
         {
-            AffichageAbo.Clear();
+            AffichageAbo.Items.Clear();
             HashSet<ALBUMS> sugg;
             CachedElements.suggestionsParAbo.TryGetValue(Abo, out sugg);
             if (sugg != null && sugg.Count > 0)
             {
-                AffichageAbo.AddItem("Voici des albums qui devraient vous plairent : ");
+                AffichageAbo.Items.Add("Voici des albums qui devraient vous plairent : ");
                 foreach (ALBUMS s in sugg)
                 {
-                    AffichageAbo.AddItem(s);
+                    AffichageAbo.Items.Add(s);
                 }
             }
             else
             {
-                AffichageAbo.AddItem("Pas de suggestions");
+                AffichageAbo.Items.Add("Pas de suggestions");
             }
         }
 
@@ -68,16 +66,16 @@ namespace WindowsFormsApp1
         {
             string filtre = filtres.Text;
             string objet = searchBox.Text;
-            AffichageAbo.Clear();
+            AffichageAbo.Items.Clear();
             if (filtre.Equals("titre"))
             {
                 var recherce = from t in Utils.Connexion.ALBUMS
                                where t.TITRE_ALBUM.Contains(objet)
-                               select t;
+                               select t.TITRE_ALBUM;
 
-                foreach (var a in recherce)
+                foreach (string a in recherce)
                 {
-                    AffichageAbo.AddItem(a);
+                    AffichageAbo.Items.Add(a);
                 }
             }
             else if (filtre.Equals("genre"))
@@ -85,11 +83,11 @@ namespace WindowsFormsApp1
                 var recherche = from t in Utils.Connexion.ALBUMS
                                 join g in Utils.Connexion.GENRES on t.CODE_GENRE equals g.CODE_GENRE
                                 where g.LIBELLÉ_GENRE.Contains(objet)
-                                select t;
+                                select t.TITRE_ALBUM;
 
-                foreach (var a in recherche)
+                foreach (string a in recherche)
                 {
-                    AffichageAbo.AddItem(a);
+                    AffichageAbo.Items.Add(a);
                 }
             }
             else
