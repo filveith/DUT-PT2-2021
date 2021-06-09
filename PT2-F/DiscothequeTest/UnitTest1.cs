@@ -599,6 +599,20 @@ namespace DiscothequeTest
 
         }
 
+
+        /// <summary>
+        /// US12
+        /// </summary>
+        [TestMethod]
+        public void TestListerToutLesAbos()
+        {
+            var abo = Utils.GetAllAbonnes();
+            foreach(ABONNÉS a in abo)
+            {
+                Console.WriteLine("Login abo = "+a.LOGIN_ABONNÉ);
+            }
+        }
+
         private static void AddAboForTests(string nom, string prenom, string login, string mdp, int codePays)
         {
             Utils.RegisterAbo(nom, prenom, login, mdp, codePays).GetAwaiter().GetResult();
