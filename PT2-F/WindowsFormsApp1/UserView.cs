@@ -73,9 +73,9 @@ namespace WindowsFormsApp1
             {
                 var recherce = from t in Utils.Connexion.ALBUMS
                                where t.TITRE_ALBUM.Contains(objet)
-                               select t.TITRE_ALBUM;
+                               select t;
 
-                foreach (string a in recherce)
+                foreach (var a in recherce)
                 {
                     AffichageAbo.AddItem(a);
                 }
@@ -85,9 +85,9 @@ namespace WindowsFormsApp1
                 var recherche = from t in Utils.Connexion.ALBUMS
                                 join g in Utils.Connexion.GENRES on t.CODE_GENRE equals g.CODE_GENRE
                                 where g.LIBELLÉ_GENRE.Contains(objet)
-                                select t.TITRE_ALBUM;
+                                select t;
 
-                foreach (string a in recherche)
+                foreach (var a in recherche)
                 {
                     AffichageAbo.AddItem(a);
                 }
