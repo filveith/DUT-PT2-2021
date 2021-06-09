@@ -25,7 +25,7 @@ namespace WindowsFormsApp1
                 DateTime retour = DateTime.Now.AddDays(delai);
                 EMPRUNTER e = new EMPRUNTER { CODE_ABONNÉ = this.CODE_ABONNÉ, CODE_ALBUM = a.CODE_ALBUM, DATE_EMPRUNT = DateTime.Now, DATE_RETOUR_ATTENDUE = retour };
                 Utils.Connexion.EMPRUNTER.Add(e);
-                Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
+                await Utils.Connexion.SaveChanges();
                 return e;
             }
             catch (DbUpdateException e)
