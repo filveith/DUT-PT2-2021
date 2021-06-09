@@ -12,94 +12,115 @@ namespace WindowsFormsApp1
 {
     public partial class AdminView : Form
     {
+        private PagedListbox pagedListbox;
         public AdminView()
         {
             InitializeComponent();
+            pagedListbox = new PagedListbox(log);
         }
 
         private void listEmpruntsProlongButton_Click(object sender, EventArgs e)
         {
-            log.Items.Clear();
+            pagedListbox.Clear();
             IQueryable<EMPRUNTER> empruntsProlongés = Utils.AvoirLesEmpruntProlonger();
 
             foreach (EMPRUNTER emprunt in empruntsProlongés)
             {
-                log.Items.Add("L'abonné " + emprunt.CODE_ABONNÉ + " a prolongé l'album " + emprunt.CODE_ALBUM);
+                pagedListbox.Add("L'abonné " + emprunt.CODE_ABONNÉ + " a prolongé l'album " + emprunt.CODE_ALBUM);
             }
+            nextPage.Visible = pagedListbox?.isOnLastPage == false;
+            previousPage.Visible = pagedListbox?.CurrentPage > 0;
 
         }
 
         private void listRetardButton_Click(object sender, EventArgs e)
         {
-            log.Items.Clear();
+            pagedListbox.Clear();
             IQueryable<ABONNÉS> abonnésEnRetard = Utils.AvoirAbonneAvecEmpruntRetardDe10Jours();
 
             foreach (ABONNÉS abo in abonnésEnRetard)
             {
-                log.Items.Add("L'abonné " + abo.CODE_ABONNÉ + " est en retard sur un retour");
+                pagedListbox.Add("L'abonné " + abo.CODE_ABONNÉ + " est en retard sur un retour");
             }
         }
 
         private void addAlbumButton_Click(object sender, EventArgs e)
         {
-            log.Items.Clear();
-            log.Items.Add("Pas implémenté");
+            pagedListbox.Clear();
+            pagedListbox.Add("Pas implémenté");
         }
 
         private void removeAlbumButton_Click(object sender, EventArgs e)
         {
-            log.Items.Clear();
-            log.Items.Add("Pas implémenté");
+            pagedListbox.Clear();
+            pagedListbox.Add("Pas implémenté");
         }
 
         private void notEmprunterSinceAYear_Click(object sender, EventArgs e)
         {
-            log.Items.Clear();
+            pagedListbox.Clear();
             var albums = CachedElements.albumsPasEmpruntes;
-
+            List<string> allStrings = new List<string>();
             foreach (ALBUMS al in albums)
             {
-                log.Items.Add("L'album " + al.TITRE_ALBUM.Trim() + " n'a pas été emprunté depuis 1 an");
+                allStrings.Add("L'album " + al.TITRE_ALBUM.Trim() + " n'a pas été emprunté depuis 1 an");
             }
+            pagedListbox.AddRange(allStrings);
+            nextPage.Visible = pagedListbox?.isOnLastPage == false;
+            previousPage.Visible = pagedListbox?.CurrentPage > 0;
 
         }
 
         private void top10Button_Click(object sender, EventArgs e)
         {
-            log.Items.Clear();
+            pagedListbox.Clear();
 
             List<ALBUMS> top10 = Utils.AvoirTopAlbum();
 
             foreach (ALBUMS al in top10)
             {
-                log.Items.Add(al.TITRE_ALBUM.Trim());
+                pagedListbox.Add(al.TITRE_ALBUM.Trim());
             }
+            nextPage.Visible = pagedListbox?.isOnLastPage == false;
+            previousPage.Visible = pagedListbox?.CurrentPage > 0;
         }
 
         private void suppIdleUsersButton_Click(object sender, EventArgs e)
         {
-            log.Items.Clear();
+            pagedListbox.Clear();
             foreach (ABONNÉS a in Utils.SupprimerAbosPasEmpruntDepuisUnAn().GetAwaiter().GetResult())
             {
-                log.Items.Add("L'abonné \"" + a.NOM_ABONNÉ.Trim() + " " + a.PRÉNOM_ABONNÉ.Trim() + "\" a été supprimé pour inactivité");
+                pagedListbox.Add("L'abonné \"" + a.NOM_ABONNÉ.Trim() + " " + a.PRÉNOM_ABONNÉ.Trim() + "\" a été supprimé pour inactivité");
             }
-
+            nextPage.Visible = pagedListbox?.isOnLastPage == false;
+            previousPage.Visible = pagedListbox?.CurrentPage > 0;
         }
 
         private void listerAbonner_Click(object sender, EventArgs e)
         {
-            log.Items.Clear();
+            pagedListbox.Clear();
             IQueryable<ABONNÉS> toutLesAbonner = Utils.GetAllAbonnes();
-            log.Items.Add("Voici la liste de tout les abonnés :");
+            pagedListbox.Add("Voici la liste de tout les abonnés :");
             foreach (ABONNÉS abo in toutLesAbonner)
             {
-                log.Items.Add(abo.NOM_ABONNÉ + abo.PRÉNOM_ABONNÉ +"date d'abonnement: " + abo.creationDate  );
+                pagedListbox.Add(abo.NOM_ABONNÉ.Trim() + " " + abo.PRÉNOM_ABONNÉ.Trim() + " date d'abonnement: " + abo.creationDate  );
             }
+            nextPage.Visible = pagedListbox?.isOnLastPage == false;
+            previousPage.Visible = pagedListbox?.CurrentPage > 0;
         }
 
-        private void AdminView_Load(object sender, EventArgs e)
+        private void nextPage_Click(object sender, EventArgs e)
         {
+            pagedListbox.NextPage();
+            nextPage.Visible = pagedListbox?.isOnLastPage == false;
+            previousPage.Visible = pagedListbox?.CurrentPage > 0;
+        }
 
+        private void previousPage_Click(object sender, EventArgs e)
+        {
+            pagedListbox.PreviousPage();
+            nextPage.Visible = pagedListbox?.isOnLastPage == false;
+            previousPage.Visible = pagedListbox?.CurrentPage > 0;
         }
     }
 }

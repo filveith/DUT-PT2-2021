@@ -8,11 +8,14 @@ namespace WindowsFormsApp1
 {
     public partial class EMPRUNTER
     {
+        ALBUMS album;
         public override string ToString()
         {
-            ABONNÉS a = Utils.GetABONNÉ(this.CODE_ABONNÉ);
-            ALBUMS al = Utils.GetALBUM(this.CODE_ALBUM);
-            return "Emprunt de l'album \"" + al + "\" par l'abonné \"" + a + "\""; 
+            if(album == null)
+            {
+                album = Utils.GetALBUM(this.CODE_ALBUM);
+            }
+            return album.ToString() + " | emprunté le \"" + DATE_EMPRUNT + "\" | à rendre le " + DATE_RETOUR_ATTENDUE;
         }
     }
 }
