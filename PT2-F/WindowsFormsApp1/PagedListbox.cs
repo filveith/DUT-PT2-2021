@@ -23,7 +23,13 @@ namespace WindowsFormsApp1
             this.page = page;
             ItemsPerPage = Height / page.Font.Height;
             page.Dock = DockStyle.Fill;
-            page.Parent?.Controls.Remove(page);
+            if (page.Parent != null)
+            {
+                Control parent = page.Parent;
+                parent.Controls.Remove(page);
+                parent.Controls.Add(this);
+
+            }
             Controls.Add(page);
         }
 
