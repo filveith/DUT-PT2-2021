@@ -19,7 +19,7 @@ namespace DiscothequeTest
         /// <summary>
         /// US1 ajout abo
         /// </summary>
-        [TestMethod]
+        [TestMethod, TestCategory("US1")]
         public void TestAjoutAbonnée()
         {
             var initState = (from data in Utils.Connexion.ABONNÉS
@@ -73,7 +73,7 @@ namespace DiscothequeTest
         /// <summary>
         /// US1 ajout emrpunt
         /// </summary>
-        [TestMethod]
+        [TestMethod, TestCategory("US1")]
         public void TestAjoutEmprunt()
         {
             var aboId = from aboGetId in Utils.Connexion.ABONNÉS
@@ -132,7 +132,7 @@ namespace DiscothequeTest
         /// <summary>
         /// US2
         /// </summary>
-        [TestMethod]
+        [TestMethod, TestCategory("US2")]
         public void TestUS2()
         {
             Random rand = new Random();
@@ -180,7 +180,7 @@ namespace DiscothequeTest
         /// <summary>
         /// US3
         /// </summary>
-        [TestMethod]
+        [TestMethod, TestCategory("US3")]
         public void TestUS3()
         {
             Random rand = new Random();
@@ -249,7 +249,7 @@ namespace DiscothequeTest
         /// <summary>
         /// US4
         /// </summary>
-        [TestMethod]
+        [TestMethod, TestCategory("US4")]
         public void TestUS4()
         {
             Random rand = new Random();
@@ -324,7 +324,7 @@ namespace DiscothequeTest
         /// <summary>
         /// US5
         /// </summary>
-        [TestMethod]
+        [TestMethod, TestCategory("US5")]
         public void TestUS5()
         {
             // si l'abonné existe deja, on le supprime
@@ -384,7 +384,7 @@ namespace DiscothequeTest
         /// <summary>
         /// US6 Purge les abonées qui ont pas emprunté depuis un an
         /// </summary>
-        [TestMethod]
+        [TestMethod, TestCategory("US6")]
         public void TestPurgerAbonneInactif()
         {
             //DEPART DE PREP POUR PURGER ABO
@@ -457,25 +457,25 @@ namespace DiscothequeTest
         /// <summary>
         /// US8
         /// </summary>
-        //[TestMethod]
+        [TestMethod, TestCategory("US8")]
         public void TestAlbumPasEmprunterDepuis1An()
         {
             //Recupere la liste des tout les emprunt de l'album 10
-            EMPRUNTER removeEmprunt = ((EMPRUNTER)(from em in Utils.Connexion.EMPRUNTER
+            var removeEmprunt = (from em in Utils.Connexion.EMPRUNTER
                                 where em.CODE_ALBUM == 10
-                                select em));
+                                select em);
 
             //Si il existe des emrpunts on les supprime
-            if(removeEmprunt != null)
+            foreach(EMPRUNTER em in removeEmprunt)
             {
-                Utils.Connexion.EMPRUNTER.Remove(removeEmprunt);
+                Utils.Connexion.EMPRUNTER.Remove(em);
             }
             
             //On recup la liste des albums non emrpunté depuis un an
-            List<EMPRUNTER> emprunt = (List<EMPRUNTER>)Utils.AvoirAlbumsPasEmprunteDepuisUnAn();
+            var emprunt = Utils.AvoirAlbumsPasEmprunteDepuisUnAn();
             
             //On verifie qu'il y a bien l'album 10 dans la liste des albums non emprunté depuis un an
-            foreach(EMPRUNTER em in emprunt)
+            foreach(ALBUMS em in emprunt)
             {
                 if(em.CODE_ALBUM == 10)
                 {
@@ -487,7 +487,7 @@ namespace DiscothequeTest
         /// <summary>
         /// US9
         /// </summary>
-        [TestMethod]
+        [TestMethod, TestCategory("US9")]
         public void TestUS9()
         {
             // si l'abonné existe deja, on le supprime
@@ -539,7 +539,7 @@ namespace DiscothequeTest
         /// <summary>
         /// US10
         /// </summary>
-        [TestMethod]
+        [TestMethod, TestCategory("US10")]
         public void TestUS10()
         {
             // si l'abonné existe deja, on le supprime
@@ -615,7 +615,7 @@ namespace DiscothequeTest
         /// <summary>
         /// US12
         /// </summary>
-        [TestMethod]
+        [TestMethod, TestCategory("US12")]
         public void TestListerToutLesAbos()
         {
             var abo = Utils.GetAllAbonnes();
