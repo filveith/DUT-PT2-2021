@@ -16,12 +16,7 @@ namespace WindowsFormsApp1
         public TestForm()
         {
             InitializeComponent();
-            pagedListbox = new PagedListbox { Parent = this, Dock = DockStyle.Fill };
-            pagedListbox.AddListBox(new ListBox() { Font = new Font("Times New Roman", 20) });
-            for(int i = 0; i<19; i++)
-            {
-                pagedListbox.AddListBox(new ListBox());
-            }
+            pagedListbox = new PagedListbox(new ListBox() { Font = new Font("Times New Roman", 20) }) { Parent = this, Dock = DockStyle.Fill };
             tableLayoutPanel1.Controls.Add(pagedListbox);
             for(int i = 0; i<1000; i++)
             {
