@@ -115,16 +115,15 @@ namespace WindowsFormsApp1
             // à un int (combien d'album de ce genre on été emprunté par l'abonné)
             Dictionary<string, int> allGenre = new Dictionary<string, int>();
 
-            var emprunts = from emp in Utils.Connexion.EMPRUNTER
-                           where emp.CODE_ABONNÉ == this.CODE_ABONNÉ
-                           select emp;
+            var emprunts = ConsulterEmprunts();
+            
 
             int nbEmprunts = emprunts.Count();
 
             // Pour chaque emprunt :
-            foreach (EMPRUNTER e in emprunts)
+            foreach (EMPRUNTER e in emprunts.Keys)
             {
-                ALBUMS album = Utils.GetALBUM(e.CODE_ALBUM);
+                ALBUMS album = emprunts[e];
 
                 GENRES genreAlbum = (from gen in Utils.Connexion.GENRES
                                      where gen.CODE_GENRE == album.CODE_GENRE
@@ -200,10 +199,11 @@ namespace WindowsFormsApp1
 
                 // Le pourcentage détermine combien de fois des albums de ce genre auront tendance à être choisis pour la sélection finale
                 int nbToTake = (int)percentage;
+                List<ALBUMS> allAlbums = Utils.Connexion.ALBUMS.ToList();
                 for (int i = 0; i < nbToTake; i++)
                 {
                     // On choisit un album au hasard et, si il est du bon genre, on le rajoute à la sélection NON FINALE 
-                    ALBUMS currentSugg = Utils.Connexion.ALBUMS.OrderBy(r => Guid.NewGuid()).Skip(rdm.Next(1, 10)).FirstOrDefault();
+                    ALBUMS currentSugg = allAlbums.OrderBy(r => Guid.NewGuid()).Skip(rdm.Next(1, 10)).FirstOrDefault();
                     if (currentSugg != null)
                     {
                         if (currentSugg.CODE_GENRE == codeGenre)
