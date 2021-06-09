@@ -198,7 +198,6 @@ namespace DiscothequeTest
             // On crée un abonné pour nos tests
             abo = Utils.RegisterAbo("Test", "US3", "tus3", "mdpStrong", 45).GetAwaiter().GetResult();
 
-
             Assert.IsTrue(abo != null);
 
 

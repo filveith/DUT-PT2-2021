@@ -16,22 +16,35 @@ namespace WindowsFormsApp1
         public TestForm()
         {
             InitializeComponent();
-            pagedListbox = new PagedListbox(new ListBox() { Font = new Font("Times New Roman", 20) }) { Parent = this, Dock = DockStyle.Fill };
+            pagedListbox = new PagedListbox(new ListBox()) { Parent = this, Dock = DockStyle.Fill };
             tableLayoutPanel1.Controls.Add(pagedListbox);
             for(int i = 0; i<1000; i++)
             {
                 pagedListbox.AddItem(i);
             }
+            button1.Visible = !pagedListbox.isOnLastPage;
+            button2.Visible = pagedListbox.CurrentPage > 0;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             pagedListbox.NextPage();
+            button1.Visible = !pagedListbox.isOnLastPage;
+            button2.Visible = pagedListbox.CurrentPage > 0;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             pagedListbox.PreviousPage();
+            button1.Visible = !pagedListbox.isOnLastPage;
+            button2.Visible = pagedListbox.CurrentPage > 0;
+        }
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            button1.Visible = pagedListbox?.isOnLastPage == false;
+            button2.Visible = pagedListbox?.CurrentPage > 0;
         }
     }
 }

@@ -15,6 +15,7 @@ namespace WindowsFormsApp1
         public int CurrentPage { get; private set; } = 0;
         private List<object> allItems = new List<object>();
         private bool currentPageHandled = false;
+        public bool isOnLastPage { get; private set; } = false;
 
         public object SelectedItem => page.SelectedItem;
 
@@ -91,11 +92,12 @@ namespace WindowsFormsApp1
             int ItemsBeforePage = ItemsPerPage * CurrentPage;
             for (int i = ItemsBeforePage; (i - ItemsBeforePage) < ItemsPerPage; i++)
             {
-                if (i < allItems.Count)
+                if (i < allItems.Count && i > 0)
                 {
                     page.Items.Add(allItems[i]);
                 }
             }
+            isOnLastPage = ItemsBeforePage + ItemsPerPage >= allItems.Count;
 
         }
 
@@ -104,6 +106,14 @@ namespace WindowsFormsApp1
             base.OnResize(eventargs);
             ItemsPerPage = Height / page.Font.Height;
             currentPageHandled = false;
+            if (allItems.Count > 0)
+            {
+                int ItemsInAllPages = ItemsPerPage * CurrentPage + ItemsPerPage;
+                if (ItemsInAllPages >= allItems.Count)
+                {
+                    CurrentPage = ((allItems.Count - ItemsPerPage) / ItemsPerPage)+1;
+                }
+            }
         }
     }
 }
