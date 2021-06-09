@@ -37,7 +37,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.searchBox = new System.Windows.Forms.TextBox();
             this.filtres = new System.Windows.Forms.ComboBox();
-            this.AffichageAbo = new System.Windows.Forms.ListBox();
+            this.TAffichageAbo = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.suggest = new System.Windows.Forms.Button();
             this.emprunter = new System.Windows.Forms.Button();
@@ -74,7 +74,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.AffichageAbo, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.TAffichageAbo, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.mesAlbums, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 1, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
@@ -172,21 +172,21 @@ namespace WindowsFormsApp1
             this.filtres.TabIndex = 2;
             this.filtres.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.userView_KeyPress);
             // 
-            // AffichageAbo
+            // TAffichageAbo
             // 
-            this.AffichageAbo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.TAffichageAbo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.AffichageAbo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.AffichageAbo.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AffichageAbo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(48)))), ((int)(((byte)(15)))));
-            this.AffichageAbo.FormattingEnabled = true;
-            this.AffichageAbo.ItemHeight = 19;
-            this.AffichageAbo.Location = new System.Drawing.Point(3, 204);
-            this.AffichageAbo.Margin = new System.Windows.Forms.Padding(3, 3, 20, 20);
-            this.AffichageAbo.Name = "AffichageAbo";
-            this.AffichageAbo.Size = new System.Drawing.Size(859, 304);
-            this.AffichageAbo.TabIndex = 3;
+            this.TAffichageAbo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TAffichageAbo.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TAffichageAbo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(48)))), ((int)(((byte)(15)))));
+            this.TAffichageAbo.FormattingEnabled = true;
+            this.TAffichageAbo.ItemHeight = 19;
+            this.TAffichageAbo.Location = new System.Drawing.Point(3, 204);
+            this.TAffichageAbo.Margin = new System.Windows.Forms.Padding(3, 3, 20, 20);
+            this.TAffichageAbo.Name = "TAffichageAbo";
+            this.TAffichageAbo.Size = new System.Drawing.Size(859, 304);
+            this.TAffichageAbo.TabIndex = 3;
             // 
             // tableLayoutPanel5
             // 
@@ -269,7 +269,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label aboLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.ListBox AffichageAbo;
+        private System.Windows.Forms.ListBox TAffichageAbo;
         private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.ComboBox filtres;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
