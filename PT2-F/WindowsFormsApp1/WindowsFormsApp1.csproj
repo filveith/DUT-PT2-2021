@@ -219,6 +219,9 @@
       <DependentUpon>BDDModele.edmx</DependentUpon>
       <LastGenOutput>BDDModele.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\logo_small_icon_only%281%29.png" />
+    <None Include="Resources\logo_small%283%29.png" />
+    <None Include="Resources\logo_small%281%29.png" />
     <None Include="Resources\buttonRetourAuMenu.png" />
     <None Include="Resources\buttonSuggestions.png" />
     <None Include="Resources\buttonEmprunté.png" />

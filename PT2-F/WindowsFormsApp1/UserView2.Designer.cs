@@ -31,15 +31,16 @@ namespace WindowsFormsApp1
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.AffichageAbo = new System.Windows.Forms.ListBox();
+            this.MenuPrincipal = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.aboLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.prolongerAllEmpruntButton = new System.Windows.Forms.Button();
             this.prolongerEmpruntButton = new System.Windows.Forms.Button();
-            this.MenuPrincipal = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -85,6 +86,25 @@ namespace WindowsFormsApp1
             this.AffichageAbo.Size = new System.Drawing.Size(859, 304);
             this.AffichageAbo.TabIndex = 3;
             // 
+            // MenuPrincipal
+            // 
+            this.MenuPrincipal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MenuPrincipal.BackColor = System.Drawing.Color.Transparent;
+            this.MenuPrincipal.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonRetourAuMenu;
+            this.MenuPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.MenuPrincipal.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MenuPrincipal.FlatAppearance.BorderSize = 0;
+            this.MenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MenuPrincipal.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MenuPrincipal.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.MenuPrincipal.Location = new System.Drawing.Point(981, 50);
+            this.MenuPrincipal.Margin = new System.Windows.Forms.Padding(3, 50, 30, 3);
+            this.MenuPrincipal.Name = "MenuPrincipal";
+            this.MenuPrincipal.Size = new System.Drawing.Size(249, 50);
+            this.MenuPrincipal.TabIndex = 1;
+            this.MenuPrincipal.UseVisualStyleBackColor = false;
+            this.MenuPrincipal.Click += new System.EventHandler(this.mesAlbums_Click);
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -111,6 +131,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel3.Controls.Add(this.aboLabel, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
@@ -129,6 +150,14 @@ namespace WindowsFormsApp1
             this.aboLabel.Size = new System.Drawing.Size(358, 64);
             this.aboLabel.TabIndex = 0;
             this.aboLabel.Text = "Mes Albums";
+            // 
+            // label1
+            // 
+            this.label1.Image = global::WindowsFormsApp1.Properties.Resources.logo_small_3_;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(342, 75);
+            this.label1.TabIndex = 1;
             // 
             // tableLayoutPanel4
             // 
@@ -209,25 +238,6 @@ namespace WindowsFormsApp1
             this.prolongerEmpruntButton.UseVisualStyleBackColor = false;
             this.prolongerEmpruntButton.Click += new System.EventHandler(this.prolongerEmprunt_Click);
             // 
-            // MenuPrincipal
-            // 
-            this.MenuPrincipal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.MenuPrincipal.BackColor = System.Drawing.Color.Transparent;
-            this.MenuPrincipal.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonRetourAuMenu;
-            this.MenuPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.MenuPrincipal.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.MenuPrincipal.FlatAppearance.BorderSize = 0;
-            this.MenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MenuPrincipal.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MenuPrincipal.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.MenuPrincipal.Location = new System.Drawing.Point(974, 50);
-            this.MenuPrincipal.Margin = new System.Windows.Forms.Padding(3, 50, 30, 3);
-            this.MenuPrincipal.Name = "MenuPrincipal";
-            this.MenuPrincipal.Size = new System.Drawing.Size(256, 64);
-            this.MenuPrincipal.TabIndex = 1;
-            this.MenuPrincipal.UseVisualStyleBackColor = false;
-            this.MenuPrincipal.Click += new System.EventHandler(this.mesAlbums_Click);
-            // 
             // UserView2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -264,5 +274,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Button prolongerAllEmpruntButton;
         private System.Windows.Forms.Button prolongerEmpruntButton;
+        private System.Windows.Forms.Label label1;
     }
 }
