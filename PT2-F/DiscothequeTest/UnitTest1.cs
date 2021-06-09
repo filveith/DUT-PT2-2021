@@ -320,6 +320,62 @@ namespace DiscothequeTest
 
         }
 
+        [TestMethod]
+        public void TestUS5()
+        {
+            // si l'abonné existe deja, on le supprime
+            ABONNÉS abo = (from ab in Utils.Connexion.ABONNÉS
+                           where ab.LOGIN_ABONNÉ.Equals("tus5")
+                           select ab).FirstOrDefault();
+            if (abo != null)
+            {
+                SuppAboAfterTests(abo);
+            }
+
+            Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
+
+            // On crée un abonné pour nos tests
+            abo = Utils.RegisterAbo("Test", "US5", "tus5", "mdpTRESStrong", 45).GetAwaiter().GetResult();
+
+            Assert.IsTrue(abo != null);
+
+            // On effectue quelques emprunts tests
+            for (int i = 110; i < 120; i++)
+            {
+                ALBUMS alToTake = (from ab in Utils.Connexion.ALBUMS
+                                   where ab.CODE_ALBUM == i
+                                   select ab).FirstOrDefault();
+
+                Assert.IsTrue(alToTake != null);
+
+
+                EMPRUNTER e = abo.Emprunter(alToTake).GetAwaiter().GetResult();
+            }
+
+            // On vérifie que l'abonné n'est pas pour l'instant en retard
+            IQueryable<ABONNÉS> abonnesEnRetard = Utils.AvoirAbonneAvecEmpruntRetardDe10Jours();
+            Assert.IsFalse(abonnesEnRetard.Any(abonne => abonne.CODE_ABONNÉ == abo.CODE_ABONNÉ));
+
+            // On fait un emprunt pour l'abonné avec une date de retour qui correspondra forcement à un retard
+            ALBUMS alb = (from ab in Utils.Connexion.ALBUMS
+                          where ab.CODE_ALBUM == 125
+                          select ab).FirstOrDefault();
+
+            Assert.IsTrue(alb != null);
+
+            EMPRUNTER emp = abo.Emprunter(alb).GetAwaiter().GetResult();
+
+            Assert.IsNotNull(emp);
+
+            emp.DATE_RETOUR_ATTENDUE = DateTime.Now.AddDays(-100);
+
+            // On vérifie maintenant que l'abonné fait partie des abonnés en retard 
+            IQueryable<ABONNÉS> abonnesEnRetardApres = Utils.AvoirAbonneAvecEmpruntRetardDe10Jours();
+            Assert.IsFalse(abonnesEnRetardApres.Any(abonne => abonne.CODE_ABONNÉ == abo.CODE_ABONNÉ));
+
+            SuppAboAfterTests(abo);
+        }
+
 
         /// <summary>
         /// US6 Purge les abonées qui ont pas emprunté depuis un an

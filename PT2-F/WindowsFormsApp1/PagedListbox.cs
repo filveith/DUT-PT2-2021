@@ -12,9 +12,10 @@ namespace WindowsFormsApp1
     {
         private ListBox page;
         private int ItemsPerPage;
-        public int CurrentPage { get; set; } = 0;
+        public int CurrentPage { get; private set; } = 0;
         private List<object> allItems = new List<object>();
         private bool currentPageHandled = false;
+        public bool isOnLastPage { get; private set; } = false;
 
         public object SelectedItem => page.SelectedItem;
 
@@ -28,6 +29,7 @@ namespace WindowsFormsApp1
                 Control parent = page.Parent;
                 parent.Controls.Remove(page);
                 parent.Controls.Add(this);
+                this.Dock = page.Dock;
 
             }
             Controls.Add(page);
@@ -43,9 +45,22 @@ namespace WindowsFormsApp1
             base.OnPaint(e);
         }
 
+        public void Clear()
+        {
+            allItems.Clear();
+            ResetItemsForCurrentPage();
+        }
+
         public void AddItem(object o)
         {
             allItems.Add(o);
+            ResetItemsForCurrentPage();
+        }
+
+        public void RemoveItem(object o)
+        {
+            allItems.Remove(o);
+            ResetItemsForCurrentPage();
         }
 
         public bool NextPage()
@@ -77,11 +92,12 @@ namespace WindowsFormsApp1
             int ItemsBeforePage = ItemsPerPage * CurrentPage;
             for (int i = ItemsBeforePage; (i - ItemsBeforePage) < ItemsPerPage; i++)
             {
-                if (i < allItems.Count)
+                if (i < allItems.Count && i > 0)
                 {
                     page.Items.Add(allItems[i]);
                 }
             }
+            isOnLastPage = ItemsBeforePage + ItemsPerPage >= allItems.Count;
 
         }
 
@@ -90,6 +106,14 @@ namespace WindowsFormsApp1
             base.OnResize(eventargs);
             ItemsPerPage = Height / page.Font.Height;
             currentPageHandled = false;
+            if (allItems.Count > 0)
+            {
+                int ItemsInAllPages = ItemsPerPage * CurrentPage + ItemsPerPage;
+                if (ItemsInAllPages >= allItems.Count)
+                {
+                    CurrentPage = ((allItems.Count - ItemsPerPage) / ItemsPerPage)+1;
+                }
+            }
         }
     }
 }
