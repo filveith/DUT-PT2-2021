@@ -65,7 +65,7 @@ namespace WindowsFormsApp1
 
         public bool NextPage()
         {
-            if (ItemsPerPage * CurrentPage < allItems.Count)
+            if (ItemsPerPage * (CurrentPage+1) < allItems.Count)
             {
                 CurrentPage++;
                 ResetItemsForCurrentPage();
@@ -92,7 +92,7 @@ namespace WindowsFormsApp1
             int ItemsBeforePage = ItemsPerPage * CurrentPage;
             for (int i = ItemsBeforePage; (i - ItemsBeforePage) < ItemsPerPage; i++)
             {
-                if (i < allItems.Count && i > 0)
+                if (i < allItems.Count && i >= 0)
                 {
                     page.Items.Add(allItems[i]);
                 }

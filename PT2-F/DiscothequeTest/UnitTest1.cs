@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using WindowsFormsApp1;
 
 namespace DiscothequeTest
@@ -626,5 +627,36 @@ namespace DiscothequeTest
             Utils.Connexion.ABONNÉS.Remove(abo);
             Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
         }
+
+        #region Test PagedListbox
+        [TestMethod, TestCategory("US13")]
+        public void TestConstructeur()
+        {
+            ListBox l = new ListBox() { Dock = DockStyle.Fill };
+            DockStyle d = l.Dock;
+            Form f = new Form();
+            f.Controls.Add(l);
+            PagedListbox p = new PagedListbox(l);
+            Assert.AreEqual(d, p.Dock);
+            Assert.AreEqual(p, l.Parent);
+            CollectionAssert.DoesNotContain(f.Controls, l);
+            CollectionAssert.Contains(p.Controls, l);
+        }
+
+        [TestMethod, TestCategory("US13")]
+        public void TestNextPage()
+        {
+            ListBox l = new ListBox();
+            PagedListbox p = new PagedListbox(l);
+            p.Height = 600;
+            int ItemsPerPage = 600 / l.Font.Height;
+            for(int i = 0; i<ItemsPerPage; i++)
+            {
+                p.AddItem(i);
+                Assert.IsFalse(p.NextPage());
+            }
+        }
+
+        #endregion
     }
 }
