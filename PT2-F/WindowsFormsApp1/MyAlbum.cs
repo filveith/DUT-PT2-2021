@@ -9,6 +9,7 @@ namespace WindowsFormsApp1
 {
     public partial class ALBUMS
     {
+
         public override string ToString()
         {
             return this.TITRE_ALBUM.Trim();
@@ -18,5 +19,7 @@ namespace WindowsFormsApp1
         {
             return Utils.byteArrayToImage(POCHETTE);
         }
+
+       
     }
 }

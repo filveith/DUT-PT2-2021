@@ -119,12 +119,13 @@ namespace WindowsFormsApp1
 
             int nbEmprunts = emprunts.Count();
 
+            List<GENRES> genres = Utils.Connexion.GENRES.ToList();
             // Pour chaque emprunt :
             foreach (EMPRUNTER e in emprunts.Keys)
             {
                 ALBUMS album = emprunts[e];
 
-                GENRES genreAlbum = (from gen in Utils.Connexion.GENRES
+                GENRES genreAlbum = (from gen in genres
                                      where gen.CODE_GENRE == album.CODE_GENRE
                                      select gen).FirstOrDefault();
 
@@ -185,6 +186,7 @@ namespace WindowsFormsApp1
             Random rdm = new Random();
 
             HashSet<ALBUMS> suggestionsNOTFINAL = new HashSet<ALBUMS>();
+            List<ALBUMS> allAlbums = Utils.Connexion.ALBUMS.ToList();
 
             // Pour chaque genre parmi les préférences de l'abonné :
             foreach (string genre in preferences.Keys)
@@ -198,12 +200,12 @@ namespace WindowsFormsApp1
 
                 // Le pourcentage détermine combien de fois des albums de ce genre auront tendance à être choisis pour la sélection finale
                 int nbToTake = (int)percentage;
-                List<ALBUMS> allAlbums = Utils.Connexion.ALBUMS.ToList();
+                
                 
                 for (int i = 0; i < nbToTake; i++)
                 {
                     // On choisit un album au hasard et, si il est du bon genre, on le rajoute à la sélection NON FINALE 
-                    ALBUMS currentSugg = allAlbums.OrderBy(r => Guid.NewGuid()).Skip(rdm.Next(1, 10)).FirstOrDefault();
+                    ALBUMS currentSugg = allAlbums.Skip(rdm.Next(1, 10)).FirstOrDefault();
                     if (currentSugg != null)
                     {
                         if (currentSugg.CODE_GENRE == codeGenre)
@@ -220,6 +222,11 @@ namespace WindowsFormsApp1
 
             // Les suggestions finales sont conservées dans un HashSet pour éviter les doublons
             HashSet<ALBUMS> suggestionsFinal = new HashSet<ALBUMS>();
+
+            // LE LAG EST JUSTE AVANT
+            // LE LAG EST JUSTE AVANT
+            // LE LAG EST JUSTE AVANT
+            // LE LAG EST JUSTE AVANT
 
             ALBUMS[] suggArray = suggestionsNOTFINAL.ToArray();
 
