@@ -373,6 +373,8 @@ namespace DiscothequeTest
             // On vérifie maintenant que l'abonné fait partie des abonnés en retard 
             IQueryable<ABONNÉS> abonnesEnRetardApres = Utils.AvoirAbonneAvecEmpruntRetardDe10Jours();
             Assert.IsFalse(abonnesEnRetardApres.Any(abonne => abonne.CODE_ABONNÉ == abo.CODE_ABONNÉ));
+
+            SuppAboAfterTests(abo);
         }
 
 
