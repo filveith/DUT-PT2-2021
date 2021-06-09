@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
 
         private void UserView_Load(object sender, EventArgs e)
         {
-            
+
 
             filtres.Items.Clear();
             filtres.Items.Add("genre");
@@ -31,7 +31,7 @@ namespace WindowsFormsApp1
 
             this.recherche();
 
-            this.suggestions();
+
         }
         private void mesAlbums_Click(object sender, EventArgs e)
         {
@@ -53,7 +53,7 @@ namespace WindowsFormsApp1
                 AffichageAbo.Items.Add("Voici des albums qui devraient vous plairent : ");
                 foreach (ALBUMS s in sugg)
                 {
-                    AffichageAbo.Items.Add(s.ToString());
+                    AffichageAbo.Items.Add(s);
                 }
             }
             else
@@ -107,28 +107,18 @@ namespace WindowsFormsApp1
 
         private void emprunter_Click(object sender, EventArgs e)
         {
-            string titreAlbum = AffichageAbo.SelectedItem.ToString().Trim();
-
-            ALBUMS obtAlbum = (from a in Utils.Connexion.ALBUMS
-                               where a.TITRE_ALBUM.ToString() == titreAlbum
-                               select a).FirstOrDefault();
-
-
-
-
-
-            if (obtAlbum is ALBUMS al)
+            if (AffichageAbo.SelectedItem is ALBUMS al)
             {
-                if (!dejaEmprunté(obtAlbum))
+                if (!dejaEmprunté(al))
                 {
-                    Abo.Emprunter(obtAlbum).GetAwaiter().GetResult();
+                    Abo.Emprunter(al).GetAwaiter().GetResult();
                     ConnexionView.Pop("Emprunt Réussi !", "Attention");
                 }
                 else
                 {
                     ConnexionView.Pop("Vous avez déja emprunté cet Album", "Erreur");
                 }
-                
+
             }
             else
             {
@@ -146,16 +136,21 @@ namespace WindowsFormsApp1
                               where a.LOGIN_ABONNÉ == Abo.LOGIN_ABONNÉ
                               select e.CODE_ALBUM;
 
-            foreach(int code in mesEmprunts)
+            foreach (int code in mesEmprunts)
             {
-                if(code == codeAlbumAEmprunté)
+                if (code == codeAlbumAEmprunté)
                 {
                     dejaEmprunte = true;
                 }
             }
-            
+
 
             return dejaEmprunte;
+        }
+
+        private void suggest_Click(object sender, EventArgs e)
+        {
+            this.suggestions();
         }
     }
 }

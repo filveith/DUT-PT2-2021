@@ -38,11 +38,14 @@ namespace WindowsFormsApp1
             this.searchBox = new System.Windows.Forms.TextBox();
             this.filtres = new System.Windows.Forms.ComboBox();
             this.AffichageAbo = new System.Windows.Forms.ListBox();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.emprunter = new System.Windows.Forms.Button();
+            this.suggest = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // mesAlbums
@@ -70,10 +73,10 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel1.Controls.Add(this.mesAlbums, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.AffichageAbo, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.emprunter, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.mesAlbums, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 1, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
@@ -185,21 +188,55 @@ namespace WindowsFormsApp1
             this.AffichageAbo.Size = new System.Drawing.Size(859, 304);
             this.AffichageAbo.TabIndex = 3;
             // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 1;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel5.Controls.Add(this.suggest, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.emprunter, 0, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(885, 204);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 2;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(372, 330);
+            this.tableLayoutPanel5.TabIndex = 4;
+            // 
             // emprunter
             // 
+            this.emprunter.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.emprunter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
             this.emprunter.FlatAppearance.BorderSize = 0;
             this.emprunter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.emprunter.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.emprunter.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.emprunter.Location = new System.Drawing.Point(932, 251);
-            this.emprunter.Margin = new System.Windows.Forms.Padding(50, 50, 30, 3);
+            this.emprunter.Location = new System.Drawing.Point(93, 41);
+            this.emprunter.Margin = new System.Windows.Forms.Padding(0);
             this.emprunter.Name = "emprunter";
             this.emprunter.Size = new System.Drawing.Size(185, 83);
-            this.emprunter.TabIndex = 4;
+            this.emprunter.TabIndex = 5;
             this.emprunter.Text = "Emprunter";
             this.emprunter.UseVisualStyleBackColor = false;
             this.emprunter.Click += new System.EventHandler(this.emprunter_Click);
+            // 
+            // suggest
+            // 
+            this.suggest.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.suggest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
+            this.suggest.FlatAppearance.BorderSize = 0;
+            this.suggest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.suggest.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.suggest.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.suggest.Location = new System.Drawing.Point(93, 206);
+            this.suggest.Margin = new System.Windows.Forms.Padding(0);
+            this.suggest.Name = "suggest";
+            this.suggest.Size = new System.Drawing.Size(185, 83);
+            this.suggest.TabIndex = 6;
+            this.suggest.Text = "Mes Suggestions";
+            this.suggest.UseVisualStyleBackColor = false;
+            this.suggest.Click += new System.EventHandler(this.suggest_Click);
             // 
             // UserView
             // 
@@ -220,6 +257,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
+            this.tableLayoutPanel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -234,6 +272,8 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.ListBox AffichageAbo;
         private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.ComboBox filtres;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.Button suggest;
         private System.Windows.Forms.Button emprunter;
     }
 }
