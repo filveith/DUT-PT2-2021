@@ -359,7 +359,6 @@ namespace WindowsFormsApp1
             this.MinimumSize = new System.Drawing.Size(900, 740);
             this.Name = "AdminView";
             this.Text = "AdminView";
-            this.Load += new System.EventHandler(this.AdminView_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.buttons.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
