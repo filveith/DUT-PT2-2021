@@ -388,13 +388,16 @@ namespace DiscothequeTest
         public void TestPurgerAbonneInactif()
         {
             //DEPART DE PREP POUR PURGER ABO
+            //Ajout d'un abo
             AddAboForTests("Register", "Test", "TestRegister", "123456", 1);
+
             var initState = from getAboNew in Utils.Connexion.ABONNÉS
                             where getAboNew.LOGIN_ABONNÉ == "TestRegister"
                             select getAboNew.CODE_ABONNÉ;
 
             ABONNÉS abonne = Utils.GetABONNÉ(initState.FirstOrDefault());
 
+            //on change la date de creation de l'abonné de -400
             abonne.creationDate = DateTime.Now.AddDays(-400);
             abonne.CODE_PAYS = 5;
             idAboTest = abonne.CODE_ABONNÉ;
@@ -410,18 +413,24 @@ namespace DiscothequeTest
                           where ab.CODE_ALBUM == 20
                           select ab).FirstOrDefault();
 
+            //on verifie que l'album existe bien
             Assert.IsTrue(alb != null);
 
+            //on l'emprunte
             EMPRUNTER e = abonne.Emprunter(alb).GetAwaiter().GetResult();
 
+            //on verifie que l'emprunt a bien fonctionner
             Assert.IsNotNull(e);
 
+            //On chnage la date de son dernier emprunt a plus d'un an
             e.DATE_EMPRUNT = DateTime.Now.AddDays(-390);
             Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
             //FIN DE PREP
 
+            //On recupere la liste des abo inactifs supprimer
             var abo = Utils.SupprimerAbosPasEmpruntDepuisUnAn().GetAwaiter().GetResult();
 
+            //On verifie que l'abonne "TestRegister" à bien etait supprimé
             foreach (ABONNÉS a in abo)
             {
                 ABONNÉS aboneSupp = Utils.GetABONNÉ(a.CODE_ABONNÉ);
@@ -432,6 +441,8 @@ namespace DiscothequeTest
                 }
 
             }
+
+            //On supprime l'abo si jamais il a pas etait supprimé
             try
             {
                 SuppAboAfterTests(abonne);
@@ -449,17 +460,21 @@ namespace DiscothequeTest
         //[TestMethod]
         public void TestAlbumPasEmprunterDepuis1An()
         {
+            //Recupere la liste des tout les emprunt de l'album 10
             EMPRUNTER removeEmprunt = ((EMPRUNTER)(from em in Utils.Connexion.EMPRUNTER
                                 where em.CODE_ALBUM == 10
                                 select em));
 
+            //Si il existe des emrpunts on les supprime
             if(removeEmprunt != null)
             {
                 Utils.Connexion.EMPRUNTER.Remove(removeEmprunt);
             }
             
+            //On recup la liste des albums non emrpunté depuis un an
             List<EMPRUNTER> emprunt = (List<EMPRUNTER>)Utils.AvoirAlbumsPasEmprunteDepuisUnAn();
             
+            //On verifie qu'il y a bien l'album 10 dans la liste des albums non emprunté depuis un an
             foreach(EMPRUNTER em in emprunt)
             {
                 if(em.CODE_ALBUM == 10)
@@ -606,6 +621,7 @@ namespace DiscothequeTest
             var abo = Utils.GetAllAbonnes();
             foreach(ABONNÉS a in abo)
             {
+                //Affiche la liste de tout les abonnés 
                 Console.WriteLine("Login abo = "+a.LOGIN_ABONNÉ);
             }
         }
@@ -695,11 +711,17 @@ namespace DiscothequeTest
 
         #endregion
 
+        //Ajoute un abonné a la bd
         private static void AddAboForTests(string nom, string prenom, string login, string mdp, int codePays)
         {
+            //ajoute un abonné à la base 
             Utils.RegisterAbo(nom, prenom, login, mdp, codePays).GetAwaiter().GetResult();
         }
 
+        /// <summary>
+        /// Supprime les abonnés et leurs emprunt
+        /// </summary>
+        /// <param name="abo"></param>
         private static void SuppAboAfterTests(ABONNÉS abo)
         {
             foreach (EMPRUNTER emprunt in Utils.Connexion.EMPRUNTER)
