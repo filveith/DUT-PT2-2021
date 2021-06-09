@@ -10,11 +10,21 @@ namespace WindowsFormsApp1
 {
     public class PagedListbox : Panel
     {
-        private Dictionary<ListBox, int> listBoxesWithItemsPerPage = new Dictionary<ListBox, int>();
-        private List<ListBox> listBoxes = new List<ListBox>();
+        private ListBox page;
+        private int ItemsPerPage;
         public int CurrentPage { get; set; } = 0;
         private List<object> allItems = new List<object>();
         private bool currentPageHandled = false;
+
+        public object SelectedItem => page.SelectedItem;
+
+        public PagedListbox(ListBox page)
+        {
+            this.page = page;
+            ItemsPerPage = Height / page.Font.Height;
+            page.Dock = DockStyle.Fill;
+            Controls.Add(page);
+        }
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -31,38 +41,24 @@ namespace WindowsFormsApp1
             allItems.Add(o);
         }
 
-        public void AddListBox(ListBox l)
-        {
-            l.Dock = DockStyle.Fill;
-            Controls.Add(l);
-            listBoxesWithItemsPerPage.Add(l, Height / l.Font.Height);
-            listBoxes.Add(l);
-            l.Visible = listBoxes.Count == 1;
-        }
-
-        public void RemoveListBox(ListBox l)
-        {
-            Controls.Remove(l);
-            if (listBoxes[CurrentPage] == l)
-            {
-                if (!NextPage())
-                {
-                    PreviousPage();
-                }
-                currentPageHandled = false;
-            }
-            listBoxes.Remove(l);
-            listBoxesWithItemsPerPage.Remove(l);
-        }
-
         public bool NextPage()
         {
-            if (CurrentPage + 1 <= listBoxes.Count - 1)
+            if (ItemsPerPage * CurrentPage < allItems.Count)
             {
-                listBoxes[CurrentPage].Visible = false;
                 CurrentPage++;
-                listBoxes[CurrentPage].Visible = true;
                 ResetItemsForCurrentPage();
+                return true;
+            }
+            return false;
+        }
+
+        public bool PreviousPage()
+        {
+            if (CurrentPage - 1 >= 0)
+            {
+                CurrentPage--;
+                ResetItemsForCurrentPage();
+
                 return true;
             }
             return false;
@@ -70,58 +66,23 @@ namespace WindowsFormsApp1
 
         private void ResetItemsForCurrentPage()
         {
-            if (CurrentPage < listBoxes.Count() && CurrentPage >= 0)
+            page.Items.Clear();
+            int ItemsBeforePage = ItemsPerPage * CurrentPage;
+            for (int i = ItemsBeforePage; (i - ItemsBeforePage) < ItemsPerPage; i++)
             {
-                listBoxes[CurrentPage].Items.Clear();
-                int ItemsBeforePage = NumberOfItemsBeforePage(CurrentPage);
-                for (int i = ItemsBeforePage; (i - ItemsBeforePage) < listBoxesWithItemsPerPage[listBoxes[CurrentPage]]; i++)
+                if (i < allItems.Count)
                 {
-                    if (i < allItems.Count)
-                    {
-                        listBoxes[CurrentPage].Items.Add(allItems[i]);
-                    }
+                    page.Items.Add(allItems[i]);
                 }
             }
-        }
 
-        public bool PreviousPage()
-        {
-            if (CurrentPage - 1 >= 0)
-            {
-                listBoxes[CurrentPage].Visible = false;
-                CurrentPage--;
-                listBoxes[CurrentPage].Visible = true;
-                ResetItemsForCurrentPage();
-
-                return true;
-            }
-            return false;
         }
 
         protected override void OnResize(EventArgs eventargs)
         {
             base.OnResize(eventargs);
-            foreach (var v in listBoxes)
-            {
-                listBoxesWithItemsPerPage[v] = Height / v.Font.Height;
-            }
+            ItemsPerPage = Height / page.Font.Height;
             currentPageHandled = false;
-        }
-
-        private int NumberOfItemsBeforePage(int pageNumber)
-        {
-            int sum = 0;
-            for (int i = 0; i < pageNumber; i++)
-            {
-                sum += listBoxesWithItemsPerPage[listBoxes[i]];
-            }
-            return sum;
-        }
-
-        protected override void OnGotFocus(EventArgs e)
-        {
-            base.OnGotFocus(e);
-            ResetItemsForCurrentPage();
         }
     }
 }
