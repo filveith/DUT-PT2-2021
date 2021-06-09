@@ -198,14 +198,6 @@ namespace DiscothequeTest
             // On crée un abonné pour nos tests
             abo = Utils.RegisterAbo("Test", "US3", "tus3", "mdpStrong", 45).GetAwaiter().GetResult();
 
-            // On crée un abonné pour nos tests
-            AddAboForTests("Test", "US3", "tus3", "mdpstrong", 22);
-
-
-            // On crée un abonné pour nos tests
-            AddAboForTests("Test", "US3", "tus3", "mdpstrong", 22);
-
-
             Assert.IsTrue(abo != null);
 
 
@@ -327,7 +319,6 @@ namespace DiscothequeTest
             SuppAboAfterTests(abo);
 
         }
-
 
 
         /// <summary>
@@ -468,6 +459,35 @@ namespace DiscothequeTest
 
 
         }
+
+        /// <summary>
+        /// US8
+        /// </summary>
+        //[TestMethod]
+        public void TestAlbumPasEmprunterDepuis1An()
+        {
+            EMPRUNTER removeEmprunt = ((EMPRUNTER)(from em in Utils.Connexion.EMPRUNTER
+                                where em.CODE_ALBUM == 10
+                                select em));
+
+            if(removeEmprunt != null)
+            {
+                Utils.Connexion.EMPRUNTER.Remove(removeEmprunt);
+            }
+            
+            List<EMPRUNTER> emprunt = (List<EMPRUNTER>)Utils.AvoirAlbumsPasEmprunteDepuisUnAn();
+            
+            foreach(EMPRUNTER em in emprunt)
+            {
+                if(em.CODE_ALBUM == 10)
+                {
+                    Assert.AreEqual(em.CODE_ALBUM, 10);
+                }
+            }
+        }
+
+
+
 
         private static void AddAboForTests(string nom, string prenom, string login, string mdp, int codePays)
         {
