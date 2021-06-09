@@ -380,6 +380,7 @@ namespace DiscothequeTest
             SuppAboAfterTests(abo);
         }
 
+
         /// <summary>
         /// US6 Purge les abonées qui ont pas emprunté depuis un an
         /// </summary>
