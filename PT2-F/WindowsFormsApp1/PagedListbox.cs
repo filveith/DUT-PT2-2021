@@ -10,82 +10,118 @@ namespace WindowsFormsApp1
 {
     public class PagedListbox : Panel
     {
+        private Dictionary<ListBox, int> listBoxesWithItemsPerPage = new Dictionary<ListBox, int>();
         private List<ListBox> listBoxes = new List<ListBox>();
         public int CurrentPage { get; set; } = 0;
-
         private List<object> allItems = new List<object>();
+        private bool currentPageHandled = false;
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            listBoxes[CurrentPage].BringToFront();
+            if (!currentPageHandled)
+            {
+                ResetItemsForCurrentPage();
+                currentPageHandled = true;
+            }
             base.OnPaint(e);
         }
 
         public void AddItem(object o)
         {
-            AddItem(o, true);
-        }
-
-        private void AddItem(object o, bool addToList)
-        {
-            int p = 0;
-            while (p < listBoxes.Count)
-            {
-                if ((listBoxes[p].Items.Count + 1) * listBoxes[p].Font.Height <= listBoxes[p].Height)
-                {
-                    listBoxes[p].Items.Add(o);
-                    if (addToList)
-                    {
-                        allItems.Add(o);
-                    }
-                    break;
-                }
-                else
-                {
-                    p++;
-                }
-            }
+            allItems.Add(o);
         }
 
         public void AddListBox(ListBox l)
         {
             l.Dock = DockStyle.Fill;
             Controls.Add(l);
+            listBoxesWithItemsPerPage.Add(l, Height / l.Font.Height);
             listBoxes.Add(l);
+            l.Visible = listBoxes.Count == 1;
         }
 
         public void RemoveListBox(ListBox l)
         {
             Controls.Remove(l);
+            if (listBoxes[CurrentPage] == l)
+            {
+                if (!NextPage())
+                {
+                    PreviousPage();
+                }
+                currentPageHandled = false;
+            }
             listBoxes.Remove(l);
+            listBoxesWithItemsPerPage.Remove(l);
         }
 
-        public void NextPage()
+        public bool NextPage()
         {
             if (CurrentPage + 1 <= listBoxes.Count - 1)
             {
-                listBoxes[CurrentPage].SendToBack();
+                listBoxes[CurrentPage].Visible = false;
                 CurrentPage++;
+                listBoxes[CurrentPage].Visible = true;
+                ResetItemsForCurrentPage();
+                return true;
+            }
+            return false;
+        }
+
+        private void ResetItemsForCurrentPage()
+        {
+            if (CurrentPage < listBoxes.Count() && CurrentPage >= 0)
+            {
+                listBoxes[CurrentPage].Items.Clear();
+                int ItemsBeforePage = NumberOfItemsBeforePage(CurrentPage);
+                for (int i = ItemsBeforePage; (i - ItemsBeforePage) < listBoxesWithItemsPerPage[listBoxes[CurrentPage]]; i++)
+                {
+                    if (i < allItems.Count)
+                    {
+                        listBoxes[CurrentPage].Items.Add(allItems[i]);
+                    }
+                }
             }
         }
 
-        public void PreviousPage()
+        public bool PreviousPage()
         {
             if (CurrentPage - 1 >= 0)
             {
-                listBoxes[CurrentPage].SendToBack();
+                listBoxes[CurrentPage].Visible = false;
                 CurrentPage--;
+                listBoxes[CurrentPage].Visible = true;
+                ResetItemsForCurrentPage();
+
+                return true;
             }
+            return false;
         }
 
         protected override void OnResize(EventArgs eventargs)
         {
             base.OnResize(eventargs);
-            foreach (var l in listBoxes)
+            foreach (var v in listBoxes)
             {
-                l.Items.Clear();
+                listBoxesWithItemsPerPage[v] = Height / v.Font.Height;
             }
-            allItems.ForEach(o => AddItem(o, false));
+            currentPageHandled = false;
+        }
+
+        private int NumberOfItemsBeforePage(int pageNumber)
+        {
+            int sum = 0;
+            for (int i = 0; i < pageNumber; i++)
+            {
+                sum += listBoxesWithItemsPerPage[listBoxes[i]];
+            }
+            return sum;
+        }
+
+        protected override void OnGotFocus(EventArgs e)
+        {
+            base.OnGotFocus(e);
+            ResetItemsForCurrentPage();
         }
     }
 }
