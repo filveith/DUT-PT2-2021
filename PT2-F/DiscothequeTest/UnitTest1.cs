@@ -714,5 +714,91 @@ namespace DiscothequeTest
         }
 
 
+
+
+        [TestMethod]
+        public void TestUS7()
+        {
+            // si l'abonné existe déjà, on le supprime
+            ABONNÉS abo = (from ab in Utils.Connexion.ABONNÉS
+                           where ab.LOGIN_ABONNÉ.Equals("tus7")
+                           select ab).FirstOrDefault();
+            if (abo != null)
+            {
+                SuppAboAfterTests(abo);
+            }
+
+            Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
+
+            // On crée un abonné pour nos tests
+            abo = Utils.RegisterAbo("Test", "US47", "tus7", "mdp", 7).GetAwaiter().GetResult();
+
+            Assert.IsTrue(abo != null);
+
+            // on récupère les albums les plus empruntés
+            List<ALBUMS> topAlbums = Utils.AvoirTopAlbum();
+
+            // on récupère l'album le plus emprunté
+            ALBUMS premier = topAlbums.FirstOrDefault();
+
+            //on emprunte cette album encore une fois
+            abo.Emprunter(premier).GetAwaiter().GetResult();
+
+            Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
+
+            //on vérifie que l'album est encore le plus emprunté
+            Assert.IsTrue(premier.Equals(Utils.AvoirTopAlbum().FirstOrDefault()));
+
+
+
+            //on emprunte un album au hasard 50 fois
+            Random rand = new Random();
+
+            int i = rand.Next(80, 150);
+
+            ALBUMS alToTake = (from ab in Utils.Connexion.ALBUMS
+                               where ab.CODE_ALBUM == i
+                               select ab).FirstOrDefault();
+
+            Assert.IsTrue(alToTake != null);
+
+            for (int a = 0; a < 50; a++)
+            {
+                ABONNÉS abonne = (from ab in Utils.Connexion.ABONNÉS
+                                  where ab.LOGIN_ABONNÉ.Equals("tus7." + a)
+                                  select ab).FirstOrDefault();
+                if (abonne != null)
+                {
+                    SuppAboAfterTests(abonne);
+                }
+
+                Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
+
+                abonne = Utils.RegisterAbo("Test", "US7", "tus7." + a, "mdp", 7).GetAwaiter().GetResult();
+
+                Assert.IsTrue(abo != null);
+
+                abonne.Emprunter(alToTake).GetAwaiter().GetResult();
+            }
+
+            //on vérifie que l'album emprunté est maintenant n°1
+            topAlbums = Utils.AvoirTopAlbum();
+            premier = topAlbums.FirstOrDefault();
+            Assert.IsTrue(premier.Equals(alToTake));
+
+
+
+            //on supprime les abonnés
+            for (int z = 0; z < 50; z++)
+            {
+                ABONNÉS abonne = (from ab in Utils.Connexion.ABONNÉS
+                                  where ab.LOGIN_ABONNÉ.Equals("tus7." + z)
+                                  select ab).FirstOrDefault();
+                if (abonne != null)
+                {
+                    SuppAboAfterTests(abonne);
+                }
+            }
+        }
     }
 }

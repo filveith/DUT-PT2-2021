@@ -97,5 +97,9 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void AdminView_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

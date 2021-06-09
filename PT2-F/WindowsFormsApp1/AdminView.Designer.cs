@@ -33,12 +33,12 @@ namespace WindowsFormsApp1
             this.buttons = new System.Windows.Forms.TableLayoutPanel();
             this.listEmpruntsProlongButton = new System.Windows.Forms.Button();
             this.listRetardButton = new System.Windows.Forms.Button();
-            this.addAlbumButton = new System.Windows.Forms.Button();
             this.notEmprunterSinceAYear = new System.Windows.Forms.Button();
             this.removeAlbumButton = new System.Windows.Forms.Button();
             this.top10Button = new System.Windows.Forms.Button();
             this.suppIdleUsersButton = new System.Windows.Forms.Button();
             this.listerAbonner = new System.Windows.Forms.Button();
+            this.addAlbumButton = new System.Windows.Forms.Button();
             this.log = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -118,22 +118,6 @@ namespace WindowsFormsApp1
             this.listRetardButton.Text = "Lister Retards";
             this.listRetardButton.UseVisualStyleBackColor = false;
             this.listRetardButton.Click += new System.EventHandler(this.listRetardButton_Click);
-            // 
-            // addAlbumButton
-            // 
-            this.addAlbumButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.addAlbumButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
-            this.addAlbumButton.FlatAppearance.BorderSize = 0;
-            this.addAlbumButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addAlbumButton.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addAlbumButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.addAlbumButton.Location = new System.Drawing.Point(23, 153);
-            this.addAlbumButton.Name = "addAlbumButton";
-            this.addAlbumButton.Size = new System.Drawing.Size(116, 102);
-            this.addAlbumButton.TabIndex = 3;
-            this.addAlbumButton.Text = "Ajouter Albums";
-            this.addAlbumButton.UseVisualStyleBackColor = false;
-            this.addAlbumButton.Click += new System.EventHandler(this.addAlbumButton_Click);
             // 
             // notEmprunterSinceAYear
             // 
@@ -215,6 +199,22 @@ namespace WindowsFormsApp1
             this.listerAbonner.UseVisualStyleBackColor = false;
             this.listerAbonner.Click += new System.EventHandler(this.listerAbonner_Click);
             // 
+            // addAlbumButton
+            // 
+            this.addAlbumButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.addAlbumButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
+            this.addAlbumButton.FlatAppearance.BorderSize = 0;
+            this.addAlbumButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addAlbumButton.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addAlbumButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.addAlbumButton.Location = new System.Drawing.Point(23, 153);
+            this.addAlbumButton.Name = "addAlbumButton";
+            this.addAlbumButton.Size = new System.Drawing.Size(116, 102);
+            this.addAlbumButton.TabIndex = 3;
+            this.addAlbumButton.Text = "Ajouter Albums";
+            this.addAlbumButton.UseVisualStyleBackColor = false;
+            this.addAlbumButton.Click += new System.EventHandler(this.addAlbumButton_Click);
+            // 
             // log
             // 
             this.log.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -268,6 +268,7 @@ namespace WindowsFormsApp1
             this.MinimumSize = new System.Drawing.Size(900, 700);
             this.Name = "AdminView";
             this.Text = "AdminView";
+            this.Load += new System.EventHandler(this.AdminView_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.buttons.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
