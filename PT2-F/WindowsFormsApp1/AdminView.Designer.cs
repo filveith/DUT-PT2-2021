@@ -42,6 +42,7 @@ namespace WindowsFormsApp1
             this.log = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.buttons.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -231,11 +232,11 @@ namespace WindowsFormsApp1
             // 
             // label1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("NSimSun", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(48)))), ((int)(((byte)(15)))));
-            this.label1.Location = new System.Drawing.Point(226, 13);
+            this.label1.Location = new System.Drawing.Point(224, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(414, 35);
             this.label1.TabIndex = 0;
@@ -244,17 +245,27 @@ namespace WindowsFormsApp1
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.94327F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.05673F));
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label2, 1, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 61F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(867, 61);
             this.tableLayoutPanel2.TabIndex = 9;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Image = global::WindowsFormsApp1.Properties.Resources.logo_small_3_;
+            this.label2.Location = new System.Drawing.Point(679, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(185, 45);
+            this.label2.TabIndex = 1;
             // 
             // AdminView
             // 
@@ -292,5 +303,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button listerAbonner;
+        private System.Windows.Forms.Label label2;
     }
 }

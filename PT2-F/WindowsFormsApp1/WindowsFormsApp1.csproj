@@ -182,6 +182,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UserView2.resx">
       <DependentUpon>UserView2.cs</DependentUpon>
@@ -218,6 +219,16 @@
       <DependentUpon>BDDModele.edmx</DependentUpon>
       <LastGenOutput>BDDModele.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\logo_small_icon_only%281%29.png" />
+    <None Include="Resources\logo_small%283%29.png" />
+    <None Include="Resources\logo_small%281%29.png" />
+    <None Include="Resources\buttonRetourAuMenu.png" />
+    <None Include="Resources\buttonSuggestions.png" />
+    <None Include="Resources\buttonEmprunté.png" />
+    <None Include="Resources\buttonAlbums.png" />
+    <None Include="Resources\buttonValider.png" />
+    <None Include="Resources\buttonConnexion.png" />
+    <None Include="Resources\buttonInscription.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
