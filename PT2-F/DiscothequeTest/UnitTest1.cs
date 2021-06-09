@@ -133,6 +133,7 @@ namespace DiscothequeTest
             Assert.IsTrue(dateApresProlong == dateAvantProlong.AddMonths(1));
 
             // On vérifie qu'on ne peut pas prolonger un emprunt déjà emprunté
+            // et que rien n'est changé
 
             abo.ProlongerEmprunt(al).GetAwaiter().GetResult();
 
@@ -141,8 +142,6 @@ namespace DiscothequeTest
             Assert.IsTrue(dateApresProlong == dateApresSecondProlong);
 
             Assert.IsTrue(abo != null);
-
-            //SuppAboAfterTests(abo);
 
 
         }
@@ -218,6 +217,8 @@ namespace DiscothequeTest
             SuppAboAfterTests(abo);
 
         }
+
+
 
         private static void SuppAboAfterTests(ABONNÉS abo)
         {
