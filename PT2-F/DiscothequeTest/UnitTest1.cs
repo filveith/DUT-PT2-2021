@@ -23,50 +23,58 @@ namespace DiscothequeTest
         {
             /*AddAboForTests("Register", "Test", "TestRegister", "123456", 1);
 
-            var finalState = from user in Utils.Connexion.ABONNÉS
-                             where user.LOGIN_ABONNÉ == "TestRegister"
-                             select user.CODE_ABONNÉ;
 
-            Console.WriteLine(finalState.FirstOrDefault());
-
-            ABONNÉS abo = Utils.GetABONNÉ(finalState.FirstOrDefault());
-
-            Console.WriteLine(abo.LOGIN_ABONNÉ + "         " + abo.CODE_ABONNÉ);
-
-            Assert.IsTrue(abo.LOGIN_ABONNÉ.Trim().Equals("TestRegister"));
-
-            Utils.Connexion.SaveChanges();*/
-
-
-
-            var initState = (from data in Utils.Connexion.ABONNÉS
-                             where data.LOGIN_ABONNÉ.Equals("TestRegister")
-                             select data.CODE_ABONNÉ);
-
-            //On passse si l'abonné TestRegister n'existe pas
-            if (initState.Count() != 0)
+            ABONNÉS abo = (from ab in Utils.Connexion.ABONNÉS
+                           where ab.LOGIN_ABONNÉ.Equals("tus3")
+                           select ab).FirstOrDefault();
+            if (abo != null)
             {
-                Console.WriteLine("abo existe pas");
+                SuppAboAfterTests(abo);
+            }
 
-                //Create an ABONNE object
-                ABONNÉS abo = Utils.GetABONNÉ(initState.FirstOrDefault());
+            Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
 
-                //On supprime l'abonné si il existe 
-                var emprunts = (from e in Utils.Connexion.EMPRUNTER
-                                where e.CODE_ABONNÉ == abo.CODE_ABONNÉ
-                                select e);
+            // On crée un abonné pour nos tests
+            abo = Utils.RegisterAbo("Test", "US3", "tus3", "mdpStrong", 45).GetAwaiter().GetResult();
+
+            Assert.IsTrue(abo != null);
+
+
+            // On effectue une dizaines d'emprunts tests
+            for (int i = 86; i < 106; i++)
+            {
+                ALBUMS alToTake = (from ab in Utils.Connexion.ALBUMS
+                                   where ab.CODE_ALBUM == i
+                                   select ab).FirstOrDefault();
+
+                Assert.IsTrue(alToTake != null);
+
+
+                EMPRUNTER e = abo.Emprunter(alToTake).GetAwaiter().GetResult();
+            }
+            
+           
+
+            
+            // On recupère ses emprunts, et on choisit un emprunt et l'album à prolonger au hasard
+            Dictionary<EMPRUNTER, ALBUMS> emprunts = abo.ConsulterEmprunts();
+            int randIndex = rand.Next(0, emprunts.Count);
+            Console.WriteLine(emprunts.ElementAt(randIndex));
+            ALBUMS al = emprunts.ElementAt(randIndex).Value;
+            EMPRUNTER emprunt = emprunts.ElementAt(randIndex).Key;
+
+            
+            // On vérifie que la date avant changement est differente de celle après changement, d'exactement 1 mois
+            DateTime dateAvantProlong = emprunt.DATE_RETOUR_ATTENDUE;
 
                 Utils.Connexion.EMPRUNTER.RemoveRange(emprunts);
                 Utils.Connexion.ABONNÉS.Remove(abo);
                 Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
 
-                var result = from data in Utils.Connexion.ABONNÉS
-                             where data.LOGIN_ABONNÉ == "TestRegister"
-                             select data.CODE_ABONNÉ;
+            DateTime dateApresProlong = emprunt.DATE_RETOUR_ATTENDUE;
 
-                //Assert.IsFalse(Utils.GetABONNÉ(result.FirstOrDefault()).CODE_ABONNÉ==abo.CODE_ABONNÉ);
-                Assert.IsTrue(result.FirstOrDefault() == 0);
-            }
+            Assert.IsTrue(dateAvantProlong != dateApresProlong);
+            Assert.IsTrue(dateApresProlong == dateAvantProlong.AddMonths(1));
 
             //On ajoute un abonné
             ABONNÉS abonne = Utils.RegisterAbo("Test", "Register", "TestRegister", "123456", 1).GetAwaiter().GetResult();
@@ -74,24 +82,16 @@ namespace DiscothequeTest
             //On regarde si il a bien etait crée
             Assert.IsTrue(abonne != null);
 
-            var finalResult = from data in Utils.Connexion.ABONNÉS
-                              where data.LOGIN_ABONNÉ.Equals("TestRegister")
-                              select data.CODE_ABONNÉ;
+            DateTime dateApresSecondProlong = emprunt.DATE_RETOUR_ATTENDUE;
 
-            ABONNÉS aboFinal = Utils.GetABONNÉ(finalResult.FirstOrDefault());
+            Assert.IsFalse(dateApresProlong != dateApresSecondProlong);
 
-            //On verifie avec la base de données si il existe bien
-            Assert.IsTrue(aboFinal.LOGIN_ABONNÉ == "TestRegister");
-            idAboTest = aboFinal.CODE_ABONNÉ;
+            Assert.IsTrue(abo != null);
 
-            SuppAboAfterTests(Utils.GetABONNÉ(aboFinal.CODE_ABONNÉ));
         }
 
-        /// <summary>
-        /// US1
-        /// </summary>
         [TestMethod]
-        public void TestAjoutEmprunt()
+        public void TestUS4()
         {
             var aboId = from aboGetId in Utils.Connexion.ABONNÉS
                         where aboGetId.LOGIN_ABONNÉ == "TestRegister"
@@ -103,38 +103,39 @@ namespace DiscothequeTest
                 Assert.IsTrue(t);
             }
 
-            idAboTest = Utils.GetABONNÉ(aboId.FirstOrDefault()).CODE_ABONNÉ;
+            Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
 
-            var initState = from em in Utils.Connexion.EMPRUNTER
-                            where em.CODE_ABONNÉ == idAboTest
-                            select em;
+            // On crée un abonné pour nos tests
+            abo = Utils.RegisterAbo("Test", "US4", "tus4", "mdpStrong", 45).GetAwaiter().GetResult();
 
-            foreach (EMPRUNTER em in initState)
-            {
-                var emprunts = (from emp in Utils.Connexion.EMPRUNTER
-                                where emp.CODE_ABONNÉ == idAboTest
-                                select emp);
-                Utils.Connexion.EMPRUNTER.RemoveRange(emprunts);
-            }
+            Assert.IsTrue(abo != null);
 
-            ABONNÉS abo = new ABONNÉS();
+            // On emprunte un album au hasard 
+            int i = rand.Next(80, 150);
 
-            ALBUMS alb = new ALBUMS();
+            ALBUMS alToTake = (from ab in Utils.Connexion.ALBUMS
+                               where ab.CODE_ALBUM == i
+                               select ab).FirstOrDefault();
 
-            abo.CODE_ABONNÉ = Utils.GetABONNÉ(aboId.FirstOrDefault()).CODE_ABONNÉ;
+            Assert.IsTrue(alToTake != null);
 
-            // On effectue une dizaines d'emprunts tests
-            for (int i = 86; i < 106; i++)
-            {
-                ALBUMS alToTake = (from ab in Utils.Connexion.ALBUMS
-                                   where ab.CODE_ALBUM == i
-                                   select ab).FirstOrDefault();
 
-                Assert.IsTrue(alToTake != null);
+            abo.Emprunter(alToTake).GetAwaiter().GetResult();
 
-                EMPRUNTER e = abo.Emprunter(alToTake).GetAwaiter().GetResult();
-                Assert.IsNotNull(e);
-                //Console.WriteLine(e);
+            EMPRUNTER e = (from emp in Utils.Connexion.EMPRUNTER
+                           where emp.CODE_ALBUM == alToTake.CODE_ALBUM
+                           select emp).FirstOrDefault();
+
+            Console.WriteLine("dubdpuibb      "  + e);
+
+            // On recupère tout les emprunts prolongés 
+            IQueryable<EMPRUNTER> prolongésBefore = Utils.AvoirLesEmpruntProlonger();
+
+            // On verifie que ce nouvel emprunt n'y es pas
+            Assert.IsFalse(prolongésBefore.Any(emprunt => (emprunt.CODE_ABONNÉ == e.CODE_ABONNÉ) && (emprunt.CODE_ALBUM == e.CODE_ALBUM)));
+
+            // On prolonge l'emprunt
+            bool prolong = abo.ProlongerEmprunt(alToTake).GetAwaiter().GetResult();
 
                 Assert.IsTrue(e.CODE_ALBUM == i);
             }
@@ -143,7 +144,7 @@ namespace DiscothequeTest
                             where aboGetId.LOGIN_ABONNÉ == "TestRegister"
                             select aboGetId.CODE_ABONNÉ;
 
-            SuppAboAfterTests(Utils.GetABONNÉ(abonneSup.FirstOrDefault()));
+            SuppAboAfterTests(abo);
         }
 
 
