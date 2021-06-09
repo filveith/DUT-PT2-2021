@@ -13,7 +13,7 @@ namespace DiscothequeTest
     [TestClass]
     public class UnitTest1
     {
-        /*
+        
         [TestMethod]
         public void TestUS3()
         {
@@ -80,7 +80,7 @@ namespace DiscothequeTest
 
             Assert.IsTrue(abo != null);
 
-        }*/
+        }
 
         [TestMethod]
         public void TestUS4()
@@ -113,29 +113,30 @@ namespace DiscothequeTest
             Assert.IsTrue(alToTake != null);
 
 
-            EMPRUNTER e = abo.Emprunter(alToTake).GetAwaiter().GetResult();
+            abo.Emprunter(alToTake).GetAwaiter().GetResult();
+
+            EMPRUNTER e = (from emp in Utils.Connexion.EMPRUNTER
+                           where emp.CODE_ALBUM == alToTake.CODE_ALBUM
+                           select emp).FirstOrDefault();
+
+            Console.WriteLine("dubdpuibb      "  + e);
 
             // On recupère tout les emprunts prolongés 
             IQueryable<EMPRUNTER> prolongésBefore = Utils.AvoirLesEmpruntProlonger();
 
-            foreach(EMPRUNTER em in prolongésBefore)
-            {
-                Console.WriteLine(em);
-            }
-
             // On verifie que ce nouvel emprunt n'y es pas
-            Assert.IsFalse(prolongésBefore.Contains(e));
+            Assert.IsFalse(prolongésBefore.Any(emprunt => (emprunt.CODE_ABONNÉ == e.CODE_ABONNÉ) && (emprunt.CODE_ALBUM == e.CODE_ALBUM)));
 
             // On prolonge l'emprunt
             bool prolong = abo.ProlongerEmprunt(alToTake).GetAwaiter().GetResult();
 
             Assert.IsTrue(prolong);
 
-            // On vérifie qu'il fait mtn partie des emprunts prolongés
+            // On vérifie qu'il fait maintenant partie des emprunts prolongés
             IQueryable<EMPRUNTER> prolongésAfter = Utils.AvoirLesEmpruntProlonger();
-            Assert.IsTrue(prolongésAfter.Contains(e));
+            Assert.IsTrue(prolongésAfter.Any(emprunt => (emprunt.CODE_ABONNÉ == e.CODE_ABONNÉ) && (emprunt.CODE_ALBUM == e.CODE_ALBUM)));
 
-
+            SuppAboAfterTests(abo);
         }
 
 
