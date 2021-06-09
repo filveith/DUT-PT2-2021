@@ -10,8 +10,11 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
+
+    
     public partial class UserView : Form
     {
+        public List<Task> currentSugg { get; private set; } = new List<Task>();
         public static ABONNÉS Abo;
         public UserView2 u2;
         PagedListbox AffichageAbo;
@@ -23,7 +26,7 @@ namespace WindowsFormsApp1
             AffichageAbo = new PagedListbox(TAffichageAbo);
             nextPage.Visible = AffichageAbo?.isOnLastPage == false;
             previousPage.Visible = AffichageAbo?.CurrentPage > 0;
-            u2 = new UserView2(Abo);
+            u2 = new UserView2(this);
         }
 
         /// <summary>
@@ -68,7 +71,7 @@ namespace WindowsFormsApp1
                 AffichageAbo.AddRange(sugg);
                 nextPage.Visible = AffichageAbo?.isOnLastPage == false;
                 previousPage.Visible = AffichageAbo?.CurrentPage > 0;
-                Task.Run(() => CachedElements.RefreshSuggestions(Abo));
+                Task.Run(() => CachedElements.RefreshSuggestions(Abo).GetAwaiter().GetResult()).GetAwaiter().GetResult();
             }
             else
             {
