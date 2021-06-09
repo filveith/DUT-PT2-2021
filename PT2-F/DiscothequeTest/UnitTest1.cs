@@ -392,6 +392,83 @@ namespace DiscothequeTest
 
         }
 
+
+        [TestMethod]
+        public void TestUS10()
+        {
+            // si l'abonné existe deja, on le supprime
+            ABONNÉS abo = (from ab in Utils.Connexion.ABONNÉS
+                           where ab.LOGIN_ABONNÉ.Equals("tus10")
+                           select ab).FirstOrDefault();
+
+            if (abo != null)
+            {
+                SuppAboAfterTests(abo);
+            }
+
+            Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
+
+            // On crée un abonné pour nos tests
+            abo = Utils.RegisterAbo("Test", "US10", "tus10", "mdpMEGAStrong", 44).GetAwaiter().GetResult();
+
+            Assert.IsTrue(abo != null);
+
+            // On emprunte 4 albums du genre baroque
+            for (int i = 1; i < 5; i++)
+            {
+                ALBUMS alToTake = (from ab in Utils.Connexion.ALBUMS
+                                   where ab.CODE_ALBUM == i
+                               select ab).FirstOrDefault();
+
+                Assert.IsTrue(alToTake != null);
+
+
+                abo.Emprunter(alToTake).GetAwaiter().GetResult();
+            }
+
+            // On emprunte 3 albums du genre classique
+            for (int i = 233; i < 236; i++)
+            {
+                ALBUMS alToTake = (from ab in Utils.Connexion.ALBUMS
+                                   where ab.CODE_ALBUM == i
+                                   select ab).FirstOrDefault();
+
+                Assert.IsTrue(alToTake != null);
+
+
+                abo.Emprunter(alToTake).GetAwaiter().GetResult();
+            }
+
+            // On emprunte 3 albums du genre contemporain
+            for (int i = 353; i < 356; i++)
+            {
+                ALBUMS alToTake = (from ab in Utils.Connexion.ALBUMS
+                                   where ab.CODE_ALBUM == i
+                                   select ab).FirstOrDefault();
+
+                Assert.IsTrue(alToTake != null);
+
+
+                abo.Emprunter(alToTake).GetAwaiter().GetResult();
+            }
+
+            Assert.IsTrue(abo.ConsulterEmprunts().Count() == 10);
+
+            HashSet<ALBUMS> suggestions = abo.AvoirSuggestions();
+
+
+            int codeBaroque = 3;
+            int codeClassique = 4;
+            int codeContempo = 7;
+
+            foreach(ALBUMS al in suggestions)
+            {
+                Assert.IsTrue(al.CODE_GENRE == codeBaroque || al.CODE_GENRE == codeClassique || al.CODE_GENRE == codeContempo);
+            }
+
+
+        }
+
         private static void AddAboForTests(string nom, string prenom, string login, string mdp, int codePays)
         {
             Utils.RegisterAbo(nom, prenom, login, mdp, codePays).GetAwaiter().GetResult();
