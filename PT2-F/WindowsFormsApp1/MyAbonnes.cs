@@ -199,6 +199,7 @@ namespace WindowsFormsApp1
                 // Le pourcentage détermine combien de fois des albums de ce genre auront tendance à être choisis pour la sélection finale
                 int nbToTake = (int)percentage;
                 List<ALBUMS> allAlbums = Utils.Connexion.ALBUMS.ToList();
+                
                 for (int i = 0; i < nbToTake; i++)
                 {
                     // On choisit un album au hasard et, si il est du bon genre, on le rajoute à la sélection NON FINALE 

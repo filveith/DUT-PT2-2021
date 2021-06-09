@@ -20,7 +20,7 @@ namespace WindowsFormsApp1
             tableLayoutPanel1.Controls.Add(pagedListbox);
             for(int i = 0; i<1000; i++)
             {
-                pagedListbox.AddItem(i);
+                pagedListbox.Add(i);
             }
             button1.Visible = !pagedListbox.isOnLastPage;
             button2.Visible = pagedListbox.CurrentPage > 0;

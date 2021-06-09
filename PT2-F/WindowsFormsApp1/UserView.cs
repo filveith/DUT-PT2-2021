@@ -13,7 +13,7 @@ namespace WindowsFormsApp1
     public partial class UserView : Form
     {
         public static ABONNÉS Abo;
-        public static UserView2 u2 = new UserView2(Abo);
+        public UserView2 u2;
         PagedListbox AffichageAbo;
         public UserView(ABONNÉS a)
         {
@@ -21,12 +21,13 @@ namespace WindowsFormsApp1
             Abo = a;
             Task.Run(() => CachedElements.RefreshSuggestions(a));
             AffichageAbo = new PagedListbox(TAffichageAbo);
+            nextPage.Visible = AffichageAbo?.isOnLastPage == false;
+            previousPage.Visible = AffichageAbo?.CurrentPage > 0;
+            u2 = new UserView2(Abo);
         }
 
         private void UserView_Load(object sender, EventArgs e)
         {
-
-
             filtres.Items.Clear();
             filtres.Items.Add("genre");
             filtres.Items.Add("titre");
@@ -52,15 +53,15 @@ namespace WindowsFormsApp1
             CachedElements.suggestionsParAbo.TryGetValue(Abo, out sugg);
             if (sugg != null && sugg.Count > 0)
             {
-                AffichageAbo.AddItem("Voici des albums qui devraient vous plairent : ");
-                foreach (ALBUMS s in sugg)
-                {
-                    AffichageAbo.AddItem(s);
-                }
+                AffichageAbo.Add("Voici des albums qui devraient vous plairent : ");
+                AffichageAbo.AddRange(sugg);
+                nextPage.Visible = AffichageAbo?.isOnLastPage == false;
+                previousPage.Visible = AffichageAbo?.CurrentPage > 0;
+                Task.Run(() => CachedElements.RefreshSuggestions(Abo));
             }
             else
             {
-                AffichageAbo.AddItem("Pas de suggestions");
+                AffichageAbo.Add("Pas de suggestions");
             }
         }
 
@@ -77,7 +78,7 @@ namespace WindowsFormsApp1
 
                 foreach (var a in recherce)
                 {
-                    AffichageAbo.AddItem(a);
+                    AffichageAbo.Add(a);
                 }
             }
             else if (filtre.Equals("genre"))
@@ -89,13 +90,15 @@ namespace WindowsFormsApp1
 
                 foreach (var a in recherche)
                 {
-                    AffichageAbo.AddItem(a);
+                    AffichageAbo.Add(a);
                 }
             }
             else
             {
                 this.suggestions();
             }
+            nextPage.Visible = AffichageAbo?.isOnLastPage == false;
+            previousPage.Visible = AffichageAbo?.CurrentPage > 0;
 
         }
 
@@ -130,29 +133,35 @@ namespace WindowsFormsApp1
 
         private static bool dejaEmprunté(ALBUMS alb)
         {
-            bool dejaEmprunte = false;
-            int codeAlbumAEmprunté = alb.CODE_ALBUM;
+            var mesEmprunts = Abo.ConsulterEmprunts();
 
-            var mesEmprunts = from e in Utils.Connexion.EMPRUNTER
-                              join a in Utils.Connexion.ABONNÉS on e.CODE_ABONNÉ equals a.CODE_ABONNÉ
-                              where a.LOGIN_ABONNÉ == Abo.LOGIN_ABONNÉ
-                              select e.CODE_ALBUM;
-
-            foreach (int code in mesEmprunts)
+            foreach (KeyValuePair<EMPRUNTER, ALBUMS> keyValuePair in mesEmprunts)
             {
-                if (code == codeAlbumAEmprunté)
+                if (keyValuePair.Value == alb)
                 {
-                    dejaEmprunte = true;
+                    return true;
                 }
             }
-
-
-            return dejaEmprunte;
+            return false;
         }
 
         private void suggest_Click(object sender, EventArgs e)
         {
             this.suggestions();
+        }
+
+        private void nextPage_Click(object sender, EventArgs e)
+        {
+            AffichageAbo.NextPage();
+            nextPage.Visible = AffichageAbo?.isOnLastPage == false;
+            previousPage.Visible = AffichageAbo?.CurrentPage > 0;
+        }
+
+        private void previousPage_Click(object sender, EventArgs e)
+        {
+            AffichageAbo.PreviousPage();
+            nextPage.Visible = AffichageAbo?.isOnLastPage == false;
+            previousPage.Visible = AffichageAbo?.CurrentPage > 0;
         }
     }
 }

@@ -12,24 +12,45 @@ namespace WindowsFormsApp1
 {
     public partial class UserView2 : Form
     {
-
+        PagedListbox AffichageAbo;
 
         public UserView2(ABONNÉS a)
         {
             InitializeComponent();
+            AffichageAbo = new PagedListbox(TAffichageAbo);
+            AffichageAbo.page.SelectedIndexChanged += Page_SelectedIndexChanged;
+            prolongerEmpruntButton.Enabled = false;
+            
+        }
+
+        private void Page_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int position = AffichageAbo.SelectedItem.ToString().IndexOf("|");
+            string titreAlbum = AffichageAbo.SelectedItem.ToString().Substring(0, position - 1);
+
+            ALBUMS obtAlbum = (from a in Utils.Connexion.ALBUMS
+                               where a.TITRE_ALBUM.ToString() == titreAlbum
+                               select a).FirstOrDefault();
+            var emprunt = (from em in Utils.Connexion.EMPRUNTER
+                           where em.CODE_ABONNÉ == UserView.Abo.CODE_ABONNÉ
+                           where em.CODE_ALBUM == obtAlbum.CODE_ALBUM
+                           select em).FirstOrDefault();
+            prolongerEmpruntButton.Enabled = emprunt.nbRallongements == 0;
         }
 
         private void UserView2_Load(object sender, EventArgs e)
         {
-            AffichageAbo.Items.Clear();
+            AffichageAbo.Clear();
             Dictionary<EMPRUNTER, ALBUMS> emprunts = UserView.Abo.ConsulterEmprunts();
             if (emprunts.Count > 0)
             {
                 foreach (KeyValuePair<EMPRUNTER, ALBUMS> emprunt in emprunts)
                 {
-                    AffichageAbo.Items.Add(emprunt.Value.ToString() + " | emprunté le     " + emprunt.Key.DATE_EMPRUNT + " | à rendre le " + emprunt.Key.DATE_RETOUR_ATTENDUE);
+                    AffichageAbo.Add(emprunt.Value.ToString() + " | emprunté le \"" + emprunt.Key.DATE_EMPRUNT + "\" | à rendre le " + emprunt.Key.DATE_RETOUR_ATTENDUE);
                 }
             }
+            nextPage.Visible = AffichageAbo?.isOnLastPage == false;
+            previousPage.Visible = AffichageAbo?.CurrentPage > 0;
         }
 
         private void mesAlbums_Click(object sender, EventArgs e)
@@ -48,7 +69,7 @@ namespace WindowsFormsApp1
 
             if (obtAlbum is ALBUMS al)
             {
-                AffichageAbo.Items.Remove(AffichageAbo.SelectedItem);
+                AffichageAbo.Remove(AffichageAbo.SelectedItem);
                 UserView.Abo.ProlongerEmprunt(Utils.GetALBUM(al.CODE_ALBUM)).GetAwaiter().GetResult();
                 ConnexionView.Pop("Emprunt prolongé de 1 mois !", "Attention");
             }
@@ -61,12 +82,23 @@ namespace WindowsFormsApp1
 
         private void prolongerToutEmprunt_Click(object sender, EventArgs e)
         {
-            AffichageAbo.Items.Clear();
+            AffichageAbo.Clear();
             UserView.Abo.ProlongerTousEmprunts().GetAwaiter().GetResult();
             ConnexionView.Pop("Tous vos emprunts ont bien étés prolongés !", "Attention");
         }
 
+        private void nextPage_Click(object sender, EventArgs e)
+        {
+            AffichageAbo.NextPage();
+            nextPage.Visible = AffichageAbo?.isOnLastPage == false;
+            previousPage.Visible = AffichageAbo?.CurrentPage > 0;
+        }
 
-
+        private void previousPage_Click(object sender, EventArgs e)
+        {
+            AffichageAbo.PreviousPage();
+            nextPage.Visible = AffichageAbo?.isOnLastPage == false;
+            previousPage.Visible = AffichageAbo?.CurrentPage > 0;
+        }
     }
 }

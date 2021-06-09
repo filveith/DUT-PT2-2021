@@ -634,10 +634,10 @@ namespace DiscothequeTest
             int ItemsPerPage = 600 / l.Font.Height;
             for(int i = 0; i<ItemsPerPage; i++)
             {
-                p.AddItem(i);
+                p.Add(i);
                 Assert.IsFalse(p.NextPage());
             }
-            p.AddItem(4);
+            p.Add(4);
             Assert.IsTrue(p.NextPage());
             Assert.IsFalse(p.NextPage());
         }
@@ -652,10 +652,10 @@ namespace DiscothequeTest
             Assert.IsFalse(p.PreviousPage());
             for (int i = 0; i < ItemsPerPage; i++)
             {
-                p.AddItem(i);
+                p.Add(i);
                 Assert.IsFalse(p.PreviousPage());
             }
-            p.AddItem(4);
+            p.Add(4);
             Assert.IsFalse(p.PreviousPage());
             p.NextPage();
             Assert.IsTrue(p.PreviousPage());
@@ -671,18 +671,18 @@ namespace DiscothequeTest
             List<int> iList = new List<int>();
             for (int i = 0; i < ItemsPerPage; i++)
             {
-                p.AddItem(i);
+                p.Add(i);
                 iList.Add(i);
                 CollectionAssert.AreEqual(iList, l.Items);
             }
-            p.AddItem("test");
+            p.Add("test");
             CollectionAssert.DoesNotContain(l.Items, "test");
             p.NextPage();
             List<string> test = new List<string>();
             test.Add("test");
             CollectionAssert.AreNotEqual(iList, l.Items);
             CollectionAssert.AreEqual(test, l.Items);
-            p.AddItem("omegaBrain");
+            p.Add("omegaBrain");
             test.Add("omegaBrain");
             CollectionAssert.AreEqual(test, l.Items);
             p.PreviousPage();

@@ -10,7 +10,7 @@ namespace WindowsFormsApp1
 {
     public class PagedListbox : Panel
     {
-        private ListBox page;
+        public readonly ListBox page;
         private int ItemsPerPage;
         public int CurrentPage { get; private set; } = 0;
         private List<object> allItems = new List<object>();
@@ -51,13 +51,19 @@ namespace WindowsFormsApp1
             ResetItemsForCurrentPage();
         }
 
-        public void AddItem(object o)
+        public void Add(object o)
         {
             allItems.Add(o);
             ResetItemsForCurrentPage();
         }
 
-        public void RemoveItem(object o)
+        public void AddRange(IEnumerable<object> o)
+        {
+            allItems.AddRange(o);
+            ResetItemsForCurrentPage();
+        }
+
+        public void Remove(object o)
         {
             allItems.Remove(o);
             ResetItemsForCurrentPage();
