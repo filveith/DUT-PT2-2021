@@ -563,9 +563,16 @@ namespace DiscothequeTest
             Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
 
             // On crée un abonné pour nos tests
-            abo = Utils.RegisterAbo("Test", "US9", "tus9", "mdpStrong", 45).GetAwaiter().GetResult();
+            abo = Utils.RegisterAbo("Test", "US9", "tus9", "mdpVERYStrong", 45).GetAwaiter().GetResult();
 
             Assert.IsTrue(abo != null);
+
+
+
+
+
+
+
         }
 
         private static void AddAboForTests(string nom, string prenom, string login, string mdp, int codePays)
