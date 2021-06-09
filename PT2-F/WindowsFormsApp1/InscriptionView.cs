@@ -59,6 +59,7 @@ namespace WindowsFormsApp1
             }
             comboBoxPays.SelectedIndex = 0;
         }
-       
+
+        
     }
 }

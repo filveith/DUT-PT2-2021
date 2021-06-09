@@ -86,6 +86,16 @@ namespace WindowsFormsApp1
 
         }
 
-        
+        private void listerAbonner_Click(object sender, EventArgs e)
+        {
+            log.Items.Clear();
+            IQueryable<ABONNÉS> toutLesAbonner = Utils.GetAllAbonnes();
+            log.Items.Add("Voici la liste de tout les abonnés :");
+            foreach (ABONNÉS abo in toutLesAbonner)
+            {
+                log.Items.Add(abo.NOM_ABONNÉ + abo.PRÉNOM_ABONNÉ +"date d'abonnement: " + abo.creationDate  );
+            }
+        }
+
     }
 }

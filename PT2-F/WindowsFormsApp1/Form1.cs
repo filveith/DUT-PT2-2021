@@ -36,6 +36,11 @@ namespace WindowsFormsApp1
                 DebugWindow d = new DebugWindow();
                 d.Show();
             }
+            if(e.KeyChar == 't')
+            {
+                TestForm t = new TestForm();
+                t.Show();
+            }
         }
 
         private void connexion_Click(object sender, EventArgs e)

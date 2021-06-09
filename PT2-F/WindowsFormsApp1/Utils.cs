@@ -12,8 +12,20 @@ namespace WindowsFormsApp1
 {
     public class Utils
     {
+        /// <summary>
+        /// Permet de se connecter à la base de donnée MusquePT2_F
+        /// </summary>
         public static MusiquePT2_FEntities Connexion = new MusiquePT2_FEntities();
 
+        /// <summary>
+        /// Enregistrer un nouvel abonné 
+        /// </summary>
+        /// <param name="nom"> Nom de l'abonné </param>
+        /// <param name="prenom"> Prenom de l'abonné </param>
+        /// <param name="login"> Login de l'abonné </param>
+        /// <param name="mdp"> Mot de passe </param>
+        /// <param name="codePays"> Code de pays d'où il vient </param>
+        /// <returns> Retourne vrai si on ajoute un abonné, faux sinon </returns>
         public static async Task<ABONNÉS> RegisterAbo(string nom, string prenom, string login, string mdp, int codePays)
         {
             ABONNÉS a = new ABONNÉS();
@@ -44,9 +56,9 @@ namespace WindowsFormsApp1
         }
 
         /// <summary>
-        /// Retourne une liste des abonnes avec des emrpunts en retard de plus de 10jours
+        /// Pemret d'avoir une liste des abonnes avec des emprunts en retard de plus de 10jours
         /// </summary>
-        /// <returns></returns>
+        /// <returns> Retourne liste des abonnés en retard de plus de 10 jours </returns>
         public static IQueryable<ABONNÉS> AvoirAbonneAvecEmpruntRetardDe10Jours()
         {
             var emprunt = (from emp in Connexion.EMPRUNTER
@@ -56,6 +68,10 @@ namespace WindowsFormsApp1
             return emprunt;
         }
 
+        /// <summary>
+        /// Permet à l'administrateur d'avoir tout les emprunts qui ont été prolongés  
+        /// </summary>
+        /// <returns> Retourne tout les emprunts prolongés </returns>
         public static IQueryable<EMPRUNTER> AvoirLesEmpruntProlonger()
         {
             IQueryable<EMPRUNTER> result = (from emp in Connexion.EMPRUNTER
@@ -67,6 +83,11 @@ namespace WindowsFormsApp1
 
             return result;
         }
+
+        /// <summary>
+        /// Permet d'avoir une liste des albums qui n'ont pas été emprunté depuis 1 an
+        /// </summary>
+        /// <returns> Retourne les albums pas emprunté depuis 1 an</returns>
         public static IQueryable<ALBUMS> AvoirAlbumsPasEmprunteDepuisUnAn()
         {
             var liste = (from a in Connexion.ALBUMS
@@ -79,6 +100,10 @@ namespace WindowsFormsApp1
             return liste;
         }
 
+        /// <summary>
+        /// Permet d'obtenir les abonné qui n'ont pas emprunté depuis 1an
+        /// </summary>
+        /// <returns> Retourne les abonné qui n'ont pas emprunté depuis 1 an</returns>
         private static IEnumerable<ABONNÉS> AvoirAbosPasEmprunteDepuisUnAn()
         {
             var abosPasEmprunt = (from a in Connexion.ABONNÉS
@@ -98,6 +123,10 @@ namespace WindowsFormsApp1
             return abos;
         }
 
+        /// <summary>
+        /// Permet de supprimé un abonné qui n'a pas emprunté depuis 1an 
+        /// </summary>
+        /// <returns> Liste d'abonnés supprimés </returns>
         public async static Task<IEnumerable<ABONNÉS>> SupprimerAbosPasEmpruntDepuisUnAn()
         {
             var abos = AvoirAbosPasEmprunteDepuisUnAn();
@@ -114,6 +143,10 @@ namespace WindowsFormsApp1
             return abos;
         }
 
+        /// <summary>
+        /// Permet d'obtenir le top 10 des albums 
+        /// </summary>
+        /// <returns> Retournne les 10 albums les plus empruntés</returns>
         public static List<ALBUMS> AvoirTopAlbum()
         {
             var nbEmprunt = (from emp in Connexion.EMPRUNTER
@@ -133,6 +166,10 @@ namespace WindowsFormsApp1
             return al;
         }
 
+        /// <summary>
+        /// Permet d'avoir la liste des pays 
+        /// </summary>
+        /// <returns> Retourne tout les pays </returns>
         public static IQueryable<PAYS> AvoirListeDesPays()
         {
             var pays = from p in Connexion.PAYS
@@ -141,6 +178,9 @@ namespace WindowsFormsApp1
             return pays;
         }
 
+        /// <summary>
+        /// Rafraichir la base 
+        /// </summary>
         public static void RefreshDatabase()
         {
             Connexion = new MusiquePT2_FEntities();

@@ -78,7 +78,7 @@ namespace WindowsFormsApp1
         /*
          *affiche les boites de messages 
          */
-        private static void Pop(string message, string caption)
+        public static void Pop(string message, string caption)
         {
             MessageBoxButtons buttons = MessageBoxButtons.OK;
             MessageBox.Show(message, caption, buttons);
