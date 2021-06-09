@@ -169,16 +169,17 @@ namespace WindowsFormsApp1
             // ValiderInscription
             // 
             this.ValiderInscription.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ValiderInscription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
+            this.ValiderInscription.BackColor = System.Drawing.Color.Transparent;
+            this.ValiderInscription.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonValider;
+            this.ValiderInscription.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ValiderInscription.FlatAppearance.BorderSize = 0;
             this.ValiderInscription.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ValiderInscription.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ValiderInscription.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ValiderInscription.Location = new System.Drawing.Point(350, 396);
+            this.ValiderInscription.Location = new System.Drawing.Point(331, 391);
             this.ValiderInscription.Name = "ValiderInscription";
-            this.ValiderInscription.Size = new System.Drawing.Size(109, 40);
+            this.ValiderInscription.Size = new System.Drawing.Size(147, 50);
             this.ValiderInscription.TabIndex = 11;
-            this.ValiderInscription.Text = "Valider";
             this.ValiderInscription.UseVisualStyleBackColor = false;
             this.ValiderInscription.Click += new System.EventHandler(this.ValiderInscription_Click);
             // 

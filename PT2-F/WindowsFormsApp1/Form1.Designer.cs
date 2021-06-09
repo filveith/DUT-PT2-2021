@@ -29,51 +29,17 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
-            this.connexion = new System.Windows.Forms.Button();
-            this.inscription = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
+            this.inscription = new System.Windows.Forms.Button();
+            this.connexion = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // connexion
-            // 
-            this.connexion.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.connexion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
-            this.connexion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.connexion.FlatAppearance.BorderSize = 0;
-            this.connexion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.connexion.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.connexion.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.connexion.Location = new System.Drawing.Point(539, 74);
-            this.connexion.Name = "connexion";
-            this.connexion.Size = new System.Drawing.Size(140, 60);
-            this.connexion.TabIndex = 1;
-            this.connexion.Text = "Connexion";
-            this.connexion.UseVisualStyleBackColor = false;
-            this.connexion.Click += new System.EventHandler(this.connexion_Click);
-            // 
-            // inscription
-            // 
-            this.inscription.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.inscription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
-            this.inscription.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.inscription.FlatAppearance.BorderSize = 0;
-            this.inscription.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inscription.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inscription.ForeColor = System.Drawing.SystemColors.Control;
-            this.inscription.Location = new System.Drawing.Point(133, 74);
-            this.inscription.Name = "inscription";
-            this.inscription.Size = new System.Drawing.Size(140, 60);
-            this.inscription.TabIndex = 0;
-            this.inscription.Text = "Inscription";
-            this.inscription.UseVisualStyleBackColor = false;
-            this.inscription.Click += new System.EventHandler(this.inscription_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -145,6 +111,42 @@ namespace WindowsFormsApp1
             this.label2.Size = new System.Drawing.Size(449, 19);
             this.label2.TabIndex = 0;
             this.label2.Text = "La musique se vend pas, elle se partage ";
+            // 
+            // inscription
+            // 
+            this.inscription.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.inscription.BackColor = System.Drawing.Color.Transparent;
+            this.inscription.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonInscription;
+            this.inscription.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.inscription.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.inscription.FlatAppearance.BorderSize = 0;
+            this.inscription.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inscription.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inscription.ForeColor = System.Drawing.SystemColors.Control;
+            this.inscription.Location = new System.Drawing.Point(111, 80);
+            this.inscription.Name = "inscription";
+            this.inscription.Size = new System.Drawing.Size(183, 48);
+            this.inscription.TabIndex = 0;
+            this.inscription.UseVisualStyleBackColor = false;
+            this.inscription.Click += new System.EventHandler(this.inscription_Click);
+            // 
+            // connexion
+            // 
+            this.connexion.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.connexion.BackColor = System.Drawing.Color.Transparent;
+            this.connexion.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonConnexion;
+            this.connexion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.connexion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.connexion.FlatAppearance.BorderSize = 0;
+            this.connexion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.connexion.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.connexion.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.connexion.Location = new System.Drawing.Point(518, 74);
+            this.connexion.Name = "connexion";
+            this.connexion.Size = new System.Drawing.Size(183, 60);
+            this.connexion.TabIndex = 1;
+            this.connexion.UseVisualStyleBackColor = false;
+            this.connexion.Click += new System.EventHandler(this.connexion_Click);
             // 
             // Form1
             // 
