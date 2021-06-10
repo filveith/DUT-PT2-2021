@@ -153,7 +153,11 @@ namespace DiscothequeTest
 
             Assert.IsTrue(abo != null);
 
-            // On effectue une dizaines d'emprunts tests
+            // On vérifie qu'il n'a aucun emprunt pour l'instant 
+            Dictionary<EMPRUNTER, ALBUMS> empruntsBefore = abo.ConsulterEmprunts();
+            Assert.IsTrue(empruntsBefore.Count() == 0);
+
+            // On effectue quelques emprunts tests
             for (int i = 50; i <= 80; i++)
             {
                 ALBUMS alToTake = (from ab in Utils.Connexion.ALBUMS
@@ -167,11 +171,11 @@ namespace DiscothequeTest
             }
 
             // On recupère ses emprunts, et on vérifie que tout les emprunts fait precedemment sont là
-            Dictionary<EMPRUNTER, ALBUMS> emprunts = abo.ConsulterEmprunts();
+            Dictionary<EMPRUNTER, ALBUMS> empruntsAfter = abo.ConsulterEmprunts();
 
             for (int i = 50; i <= 80; i++)
             {
-                Assert.IsTrue(emprunts.Values.Any(album => (album.CODE_ALBUM == i)));
+                Assert.IsTrue(empruntsAfter.Values.Any(album => (album.CODE_ALBUM == i)));
             }
 
             SuppAboAfterTests(abo);
