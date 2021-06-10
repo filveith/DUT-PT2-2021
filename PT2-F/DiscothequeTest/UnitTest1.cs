@@ -672,6 +672,54 @@ namespace DiscothequeTest
             }
         }
 
+        /// <summary>
+        /// Test Rendre un Emprunt
+        /// </summary>
+        [TestMethod]
+        public void TestRendre()
+        {
+            // si l'abonné existe deja, on le supprime
+            ABONNÉS abo = (from ab in Utils.Connexion.ABONNÉS
+                           where ab.LOGIN_ABONNÉ.Equals("TR")
+                           select ab).FirstOrDefault();
+
+            if (abo != null)
+            {
+                SuppAboAfterTests(abo);
+            }
+
+            Utils.Connexion.SaveChanges();
+
+            // On crée un abonné pour nos tests
+            abo = Utils.RegisterAbo("Test", "Rendre", "TR", "mdpULTRAStrong", 48);
+
+            Assert.IsTrue(abo != null);
+
+            // On emprunte un album quelconque 
+            ALBUMS alToTake = (from ab in Utils.Connexion.ALBUMS
+                               where ab.CODE_ALBUM == 250
+                               select ab).FirstOrDefault();
+
+            Assert.IsTrue(alToTake != null);
+
+            abo.Emprunter(alToTake);
+
+            EMPRUNTER emprunt = (from emp in Utils.Connexion.EMPRUNTER
+                                 where emp.CODE_ABONNÉ == abo.CODE_ABONNÉ && emp.CODE_ALBUM == alToTake.CODE_ALBUM
+                                 select emp).FirstOrDefault();
+
+            // On vérifie que la date de retour de l'album est nulle
+            Assert.IsTrue(emprunt.DATE_RETOUR == null);
+
+            // On rend l'album
+            abo.Rendre(alToTake);
+
+            // On vérifie que la date de retour n'est plus nulle
+            Assert.IsTrue(emprunt.DATE_RETOUR != null);
+
+        }
+            
+
         #region Test PagedListbox
         /// <summary>
         /// US13 Pagination (Constructeur)
