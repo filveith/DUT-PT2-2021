@@ -273,7 +273,7 @@ namespace DiscothequeTest
                            select emp).FirstOrDefault();
 
             // On recupère tout les emprunts prolongés 
-            IQueryable<EMPRUNTER> prolongésBefore = Utils.AvoirLesEmpruntProlonger();
+            var prolongésBefore = Utils.AvoirLesEmpruntProlonger();
 
 
             // On vérifie que ce nouvel emprunt n'y est pas
@@ -285,7 +285,7 @@ namespace DiscothequeTest
             Assert.IsTrue(prolong);
 
             // On vérifie qu'il fait maintenant partie des emprunts prolongés
-            IQueryable<EMPRUNTER> prolongésAfter = Utils.AvoirLesEmpruntProlonger();
+            var prolongésAfter = Utils.AvoirLesEmpruntProlonger();
 
             Assert.IsTrue(prolongésAfter.Any(emprunt => (emprunt.CODE_ABONNÉ == e.CODE_ABONNÉ) && (emprunt.CODE_ALBUM == e.CODE_ALBUM)));
 
@@ -578,14 +578,14 @@ namespace DiscothequeTest
             }
 
             // On vérifie que aucun des emprunts du nouvel abonné ne sont prolongés
-            IQueryable<EMPRUNTER> beforeProlonges = Utils.AvoirLesEmpruntProlonger();
+            var beforeProlonges = Utils.AvoirLesEmpruntProlonger();
             Assert.IsFalse(beforeProlonges.Any(emp => emp.CODE_ABONNÉ == abo.CODE_ABONNÉ));
 
             // On prolonge tout ses emprunts
             abo.ProlongerTousEmprunts();
 
             // On vérifie maintenant que tout les emprunts de l'abonné sont prolongés
-            IQueryable<EMPRUNTER> afterProlonges = Utils.AvoirLesEmpruntProlonger();
+            var afterProlonges = Utils.AvoirLesEmpruntProlonger();
             Assert.IsFalse(!afterProlonges.Any(emp => emp.CODE_ABONNÉ == abo.CODE_ABONNÉ));
 
             SuppAboAfterTests(abo);

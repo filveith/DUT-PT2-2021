@@ -70,16 +70,15 @@ namespace WindowsFormsApp1
         /// Permet à l'administrateur de consulter tout les emprunts qui ont été prolongés  
         /// </summary>
         /// <returns> Retourne tout les emprunts prolongés </returns>
-        public static IQueryable<EMPRUNTER> AvoirLesEmpruntProlonger()
+        public static IEnumerable<EMPRUNTER> AvoirLesEmpruntProlonger()
         {
-            IQueryable<EMPRUNTER> result = (from emp in Connexion.EMPRUNTER
+            var tempList = (from emp in Connexion.EMPRUNTER
                                             join abo in Connexion.ABONNÉS on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
                                             join alb in Connexion.ALBUMS on emp.CODE_ALBUM equals alb.CODE_ALBUM
-                                            where emp.nbRallongements > 0
-                                            select emp);
+                                            select emp).ToList();
 
 
-            return result;
+            return tempList.Where(emp => emp.nbRallongements > 0);
         }
 
         /// <summary>

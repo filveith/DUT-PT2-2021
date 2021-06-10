@@ -16,11 +16,15 @@ namespace WindowsFormsApp1
         /// <returns>Les informations</returns>
         public override string ToString()
         {
-            if(album == null)
-            {
-                album = Utils.GetALBUM(this.CODE_ALBUM);
-            }
-            return album.ToString() + " | emprunté le \"" + DATE_EMPRUNT + "\" | à rendre le " + DATE_RETOUR_ATTENDUE;
+            return ALBUMS.ToString() + " | emprunté le \"" + DATE_EMPRUNT + "\" | à rendre le " + DATE_RETOUR_ATTENDUE;
+        }
+
+        public int NombreRallongements()
+        {
+            var alb = this.ALBUMS;
+            var genre = alb.GENRES;
+            DateTime basicReturnTime = DATE_EMPRUNT.AddDays(genre.DÉLAI);
+            return (int)((DATE_RETOUR_ATTENDUE - basicReturnTime).Days / (365.25 / 12));
         }
     }
 }
