@@ -49,6 +49,7 @@ namespace WindowsFormsApp1
             this.panel2 = new System.Windows.Forms.Panel();
             this.nextPage = new System.Windows.Forms.Button();
             this.mesAlbums = new System.Windows.Forms.Button();
+            this.textSugg = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -143,10 +144,12 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel4.Controls.Add(this.searchBox, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.filtres, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.textSugg, 0, 1);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 125);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(886, 76);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
@@ -156,7 +159,7 @@ namespace WindowsFormsApp1
             this.searchBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.searchBox.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(137)))));
-            this.searchBox.Location = new System.Drawing.Point(3, 27);
+            this.searchBox.Location = new System.Drawing.Point(3, 11);
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(451, 22);
             this.searchBox.TabIndex = 1;
@@ -168,7 +171,7 @@ namespace WindowsFormsApp1
             this.filtres.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.filtres.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(167)))), ((int)(((byte)(194)))));
             this.filtres.FormattingEnabled = true;
-            this.filtres.Location = new System.Drawing.Point(534, 23);
+            this.filtres.Location = new System.Drawing.Point(534, 7);
             this.filtres.Name = "filtres";
             this.filtres.Size = new System.Drawing.Size(154, 29);
             this.filtres.TabIndex = 2;
@@ -361,6 +364,16 @@ namespace WindowsFormsApp1
             this.mesAlbums.UseVisualStyleBackColor = false;
             this.mesAlbums.Click += new System.EventHandler(this.mesAlbums_Click);
             // 
+            // textSugg
+            // 
+            this.textSugg.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textSugg.AutoSize = true;
+            this.textSugg.Location = new System.Drawing.Point(3, 53);
+            this.textSugg.Name = "textSugg";
+            this.textSugg.Size = new System.Drawing.Size(233, 13);
+            this.textSugg.TabIndex = 3;
+            this.textSugg.Text = "Voici des suggestions qui devraient vous plaire :";
+            // 
             // UserView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -412,5 +425,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button nextPage;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label imageLabel;
+        private System.Windows.Forms.Label textSugg;
     }
 }
