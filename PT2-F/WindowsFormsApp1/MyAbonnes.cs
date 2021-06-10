@@ -28,21 +28,27 @@ namespace WindowsFormsApp1
         {
             try
             {
-                int delai = (from al in Utils.Connexion.ALBUMS
-                             join genre in Utils.Connexion.GENRES on al.CODE_GENRE equals genre.CODE_GENRE
-                             where al.CODE_ALBUM == a.CODE_ALBUM
-                             select genre.DÉLAI).First();
+                int delai = a.GENRES.DÉLAI;
                 DateTime retour = DateTime.Now.AddDays(delai);
                 EMPRUNTER e = new EMPRUNTER { CODE_ABONNÉ = this.CODE_ABONNÉ, CODE_ALBUM = a.CODE_ALBUM, DATE_EMPRUNT = DateTime.Now, DATE_RETOUR_ATTENDUE = retour };
                 Utils.Connexion.EMPRUNTER.Add(e);
                 Utils.Connexion.SaveChanges();
                 return e;
             }
-            catch (DbUpdateException e)
+            catch (DbUpdateException ex)
             {
-                Console.WriteLine("erreur : " + e);
+                EMPRUNTER e = (from emp in Utils.Connexion.EMPRUNTER
+                               where emp.CODE_ABONNÉ == this.CODE_ABONNÉ && emp.CODE_ALBUM == a.CODE_ALBUM
+                               select emp).FirstOrDefault();
+                if(e.DATE_RETOUR != null)
+                {
+                    e.DATE_EMPRUNT = DateTime.Now;
+                    e.DATE_RETOUR_ATTENDUE = DateTime.Now.AddDays(a.GENRES.DÉLAI);
+                    Utils.Connexion.SaveChanges();
+                    return e;
+                }
+                Console.WriteLine("erreur : " + ex);
                 Utils.RefreshDatabase();
-                Console.WriteLine(e);
                 return null;
             }
         }
