@@ -38,11 +38,20 @@ namespace WindowsFormsApp1
                 Utils.Connexion.SaveChanges();
                 return e;
             }
-            catch (DbUpdateException e)
+            catch (DbUpdateException ex)
             {
-                Console.WriteLine("erreur : " + e);
+                EMPRUNTER e = (from emp in Utils.Connexion.EMPRUNTER
+                               where emp.CODE_ABONNÉ == this.CODE_ABONNÉ && emp.CODE_ALBUM == a.CODE_ALBUM
+                               select emp).FirstOrDefault();
+                if(e.DATE_RETOUR != null)
+                {
+                    e.DATE_EMPRUNT = DateTime.Now;
+                    e.DATE_RETOUR_ATTENDUE = DateTime.Now.AddDays(a.GENRES.DÉLAI);
+                    Utils.Connexion.SaveChanges();
+                    return e;
+                }
+                Console.WriteLine("erreur : " + ex);
                 Utils.RefreshDatabase();
-                Console.WriteLine(e);
                 return null;
             }
         }
