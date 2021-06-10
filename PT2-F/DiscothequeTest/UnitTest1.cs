@@ -443,6 +443,7 @@ namespace DiscothequeTest
             ABONNÉS abo = (from ab in Utils.Connexion.ABONNÉS
                            where ab.LOGIN_ABONNÉ.Equals("tus7")
                            select ab).FirstOrDefault();
+
             if (abo != null)
             {
                 SuppAboAfterTests(abo);
