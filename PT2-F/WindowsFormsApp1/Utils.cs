@@ -5,6 +5,7 @@ using System.Data.Entity.Infrastructure;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,34 +27,31 @@ namespace WindowsFormsApp1
         /// <param name="mdp"> Mot de passe </param>
         /// <param name="codePays"> Code de pays d'où il vient </param>
         /// <returns> Retourne vrai si on ajoute un abonné, faux sinon </returns>
-        public static async Task<ABONNÉS> RegisterAbo(string nom, string prenom, string login, string mdp, int codePays)
+        public static ABONNÉS RegisterAbo(string nom, string prenom, string login, string mdp, int codePays)
         {
             ABONNÉS a = new ABONNÉS();
             try
             {
-                // On crée un nouvel abonné
+                // on crée un nouveau Abonné
+                if (codePays > 0) a.CODE_PAYS = codePays;
 
-                if (codePays > 0)
-                {
-                    a.CODE_PAYS = codePays;
-                }
                 a.NOM_ABONNÉ = nom.Substring(0, Math.Min(nom.Length, 32));
                 a.PRÉNOM_ABONNÉ = prenom.Substring(0, Math.Min(prenom.Length, 32));
                 a.LOGIN_ABONNÉ = login.Substring(0, Math.Min(login.Length, 32));
-                a.PASSWORD_ABONNÉ = mdp.Substring(0, Math.Min(mdp.Length, 32));
+                a.PASSWORD_ABONNÉ = ComputeSha256Hash(mdp);
                 a.creationDate = DateTime.Now;
 
-
-                // Ajout du nouvel abonné
+                // ajout du nouveau Abonné
                 Connexion.ABONNÉS.Add(a);
-                await Connexion.SaveChanges();
+                Connexion.SaveChanges();
                 return a;
             }
             catch (DbUpdateException)
             {
-                return a;
+                return null;
             }
         }
+
 
         /// <summary>
         /// Pemret d'avoir une liste des abonnés avec des emprunts en retard de plus de 10 jours
@@ -233,5 +231,22 @@ namespace WindowsFormsApp1
             return abos;
         }
 
+        public static string ComputeSha256Hash(string rawData)
+        {
+            // Create a SHA256   
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                // ComputeHash - returns byte array  
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+
+                // Convert byte array to a string   
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
     }
 }
