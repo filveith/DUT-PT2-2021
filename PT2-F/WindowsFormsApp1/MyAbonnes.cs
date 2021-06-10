@@ -38,6 +38,24 @@ namespace WindowsFormsApp1
             }
         }
 
+        /// <summary>
+        /// Permet de rendre un album
+        /// </summary>
+        /// <param name="album">L'album</param>
+        public bool Rendre(ALBUMS album)
+        {
+            EMPRUNTER emprunt = (from emp in Utils.Connexion.EMPRUNTER
+                                 where emp.CODE_ABONNÉ == this.CODE_ABONNÉ && emp.CODE_ALBUM == album.CODE_ALBUM
+                                 select emp).FirstOrDefault();
+
+            if (emprunt != null)
+            {
+                emprunt.DATE_RETOUR = DateTime.Now;
+                return true;
+            }
+            return false;
+        }
+
         public List<EMPRUNTER> ProlongerTousEmprunts()
         {
             int i = 0;
