@@ -72,25 +72,30 @@ namespace WindowsFormsApp1
 
         private void valider_Click(object sender, EventArgs e)
         {
-            if (textBox2.Text == textBox3.Text)
+            if (textBox2.TextLength > 0)
             {
-                string hashedMdp = Utils.ComputeSha256Hash(textBox1.Text);
-                var abo = (from a in Utils.Connexion.ABONNÉS
-                           where a.CODE_ABONNÉ == abonne.CODE_ABONNÉ && a.PASSWORD_ABONNÉ == hashedMdp
-                           select a).FirstOrDefault();
-
-                if(abo != null)
+                if (textBox2.Text == textBox3.Text)
                 {
-                    abo.PASSWORD_ABONNÉ = Utils.ComputeSha256Hash(textBox2.Text);
-                    ConnexionView.Pop("Vous avez bien changé votre mot de passe!", "Confirmation");
-                    this.Close();
-                    Utils.Connexion.SaveChanges();
+                    string hashedMdp = Utils.ComputeSha256Hash(textBox1.Text);
+                    var abo = (from a in Utils.Connexion.ABONNÉS
+                               where a.CODE_ABONNÉ == abonne.CODE_ABONNÉ && a.PASSWORD_ABONNÉ == hashedMdp
+                               select a).FirstOrDefault();
+
+                    if (abo != null)
+                    {
+                        abo.PASSWORD_ABONNÉ = Utils.ComputeSha256Hash(textBox2.Text);
+                        ConnexionView.Pop("Vous avez bien changé votre mot de passe!", "Confirmation");
+                        this.Close();
+                        Utils.Connexion.SaveChanges();
+                        return;
+                    }
+                    ConnexionView.Pop("Erreur! Vous n'avez pas entré le bon mot de passe!", "Erreur");
                     return;
                 }
-                ConnexionView.Pop("Erreur! Vous n'avez pas entré le bon mot de passe!", "Erreur");
+                ConnexionView.Pop("Erreur, nouveau mot de passe et confirmation non identiques!", "Erreur");
                 return;
             }
-            ConnexionView.Pop("Erreur, nouveau mot de passe et confirmation non identiques!", "Erreur");
+            ConnexionView.Pop("Erreur, veuillez rentrer un mot de passe!", "Erreur");
 
         }
     }

@@ -107,5 +107,13 @@ namespace WindowsFormsApp1
                 textBoxCoMdp.PasswordChar = (char)0;
             }
         }
+
+        private void InscriptionView_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == 13)
+            {
+                ValiderInscription_Click(this, null);
+            }
+        }
     }
 }

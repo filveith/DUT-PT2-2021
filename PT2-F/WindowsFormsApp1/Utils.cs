@@ -203,7 +203,7 @@ namespace WindowsFormsApp1
         /// </summary>
         /// <param name="login">Le login de l'abonné</param>
         /// <returns>L'abonné correspondant</returns>
-        public static ABONNÉS GetABONNÉS(string login)
+        public static ABONNÉS GetABONNÉ(string login)
         {
             return (from a in Connexion.ABONNÉS
                     where a.LOGIN_ABONNÉ == login

@@ -16,7 +16,7 @@ namespace WindowsFormsApp1
         /// <returns>Les informations sous forme de string</returns>
         public override string ToString()
         {
-            return this.NOM_ABONNÉ.Trim() + " " + this.PRÉNOM_ABONNÉ.Trim();
+            return "\"" + this.NOM_ABONNÉ.Trim() + " " + this.PRÉNOM_ABONNÉ.Trim() + "\"" + " date de création : " + creationDate;
         }
 
         /// <summary>
