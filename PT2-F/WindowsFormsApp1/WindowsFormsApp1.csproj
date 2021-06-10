@@ -64,6 +64,12 @@
     <Compile Include="AdminView.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangePassword.Designer.cs">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="PagedListbox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -142,6 +148,9 @@
       <DependentUpon>UserView2.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils.cs" />
+    <EmbeddedResource Include="ChangePassword.resx">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConnexionView.resx">
       <DependentUpon>ConnexionView.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,6 +217,7 @@
       <DependentUpon>BDDModele.edmx</DependentUpon>
       <LastGenOutput>BDDModele.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\eyeIcon.png" />
     <None Include="Resources\logos\logoOnly.png" />
     <None Include="Resources\logos\logo_small_icon_only.png" />
     <None Include="Resources\logos\logo_titre.png" />
