@@ -81,6 +81,7 @@ namespace WindowsFormsApp1
 
 
             return tempList.Where(emp => emp.nbRallongements > 0);
+
         }
 
         /// <summary>
