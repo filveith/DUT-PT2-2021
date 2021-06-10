@@ -508,16 +508,16 @@ namespace DiscothequeTest
                                  where em.CODE_ALBUM == 10
                                  select em);
 
-            //Si il existe des emrpunts on les supprime
+            // Si il existe des emprunts, on les supprime
             foreach (EMPRUNTER em in removeEmprunt)
             foreach(EMPRUNTER em in removeEmprunt)
             {
                 Utils.Connexion.EMPRUNTER.Remove(em);
 
-            //On recup la liste des albums non emrpunté depuis un an
+            // On récupère la liste des albums non emprunté depuis un an
             var emprunt = Utils.AvoirAlbumsPasEmprunteDepuisUnAn();
 
-            //On verifie qu'il y a bien l'album 10 dans la liste des albums non emprunté depuis un an
+            // On vérifie qu'il y a bien l'album 10 dans la liste des albums non emprunté depuis un an
             foreach (ALBUMS em in emprunt)
             foreach(ALBUMS em in emprunt)
             {
@@ -663,7 +663,7 @@ namespace DiscothequeTest
             var abo = Utils.GetAllAbonnes();
             foreach (ABONNÉS a in abo)
             {
-                //Affiche la liste de tout les abonnés 
+                // Affiche la liste de tout les abonnés 
                 Console.WriteLine("Login abo = " + a.LOGIN_ABONNÉ);
                 Console.WriteLine("Login abo = "+a.LOGIN_ABONNÉ);
             }
