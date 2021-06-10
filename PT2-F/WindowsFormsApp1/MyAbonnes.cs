@@ -35,7 +35,7 @@ namespace WindowsFormsApp1
                 DateTime retour = DateTime.Now.AddDays(delai);
                 EMPRUNTER e = new EMPRUNTER { CODE_ABONNÉ = this.CODE_ABONNÉ, CODE_ALBUM = album.CODE_ALBUM, DATE_EMPRUNT = DateTime.Now, DATE_RETOUR_ATTENDUE = retour };
                 Utils.Connexion.EMPRUNTER.Add(e);
-                await Utils.Connexion.SaveChanges();
+                Utils.Connexion.SaveChanges();
                 return e;
             }
             catch (DbUpdateException e)
@@ -65,7 +65,7 @@ namespace WindowsFormsApp1
                 e.DATE_RETOUR_ATTENDUE = e.DATE_RETOUR_ATTENDUE.AddMonths(1);
                 e.nbRallongements = 1;
             }
-            await Utils.Connexion.SaveChanges();
+            Utils.Connexion.SaveChanges();
             Console.WriteLine(i + " rallongement(s) effectué(s)");
             return emprunts;
         }
@@ -109,7 +109,7 @@ namespace WindowsFormsApp1
                 {
                     emprunt.DATE_RETOUR_ATTENDUE = emprunt.DATE_RETOUR_ATTENDUE.AddMonths(1);
                     emprunt.nbRallongements = 1;
-                    await Utils.Connexion.SaveChanges();
+                    Utils.Connexion.SaveChanges();
                     Console.WriteLine("Rallongement effectué");
                     return true;
                 }

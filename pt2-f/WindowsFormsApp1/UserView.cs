@@ -22,7 +22,6 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             Abo = a;
-            Task.Run(() => CachedElements.RefreshSuggestions(a));
             AffichageAbo = new PagedListbox(TAffichageAbo);
             nextPage.Visible = AffichageAbo?.isOnLastPage == false;
             previousPage.Visible = AffichageAbo?.CurrentPage > 0;
@@ -137,7 +136,7 @@ namespace WindowsFormsApp1
             {
                 if (!dejaEmprunté(al))
                 {
-                    Abo.Emprunter(al).GetAwaiter().GetResult();
+                    Abo.Emprunter(al);
                     ConnexionView.Pop("Emprunt Réussi !", "Attention");
                 }
                 else

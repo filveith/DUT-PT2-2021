@@ -88,7 +88,7 @@ namespace WindowsFormsApp1
 
                 if (obtAlbum is ALBUMS al)
                 {
-                    UserView.Abo.ProlongerEmprunt(Utils.GetALBUM(al.CODE_ALBUM)).GetAwaiter().GetResult();
+                    UserView.Abo.ProlongerEmprunt(Utils.GetALBUM(al.CODE_ALBUM));
                     ConnexionView.Pop("Emprunt prolongé de 1 mois !", "Attention");
                 }
                 else
@@ -106,7 +106,7 @@ namespace WindowsFormsApp1
         /// <param name="e"></param>
         private void prolongerToutEmprunt_Click(object sender, EventArgs e)
         {
-            UserView.Abo.ProlongerTousEmprunts().GetAwaiter().GetResult();
+            UserView.Abo.ProlongerTousEmprunts();
             ConnexionView.Pop("Tous vos emprunts ont bien étés prolongés !", "Attention");
         }
 

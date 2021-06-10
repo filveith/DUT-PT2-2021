@@ -64,8 +64,6 @@
     <Compile Include="AdminView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CachedElements.cs" />
-    <Compile Include="MyConnexion.cs" />
     <Compile Include="PagedListbox.cs">
       <SubType>Component</SubType>
     </Compile>

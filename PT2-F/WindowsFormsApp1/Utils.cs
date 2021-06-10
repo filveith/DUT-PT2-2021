@@ -124,8 +124,8 @@ namespace WindowsFormsApp1
         /// <summary>
         /// Permet de supprimer un abonné qui n'a pas emprunté depuis 1an 
         /// </summary>
-        /// <returns> Liste des abonnés supprimés </returns>
-        public async static Task<IEnumerable<ABONNÉS>> SupprimerAbosPasEmpruntDepuisUnAn()
+        /// <returns> Liste d'abonnés supprimés </returns>
+        public static IEnumerable<ABONNÉS> SupprimerAbosPasEmpruntDepuisUnAn()
         {
             var abos = AvoirAbosPasEmprunteDepuisUnAn();
             foreach (ABONNÉS a in abos)
@@ -137,7 +137,7 @@ namespace WindowsFormsApp1
                 Connexion.ABONNÉS.Remove(a);
 
             }
-            await Connexion.SaveChanges();
+            Connexion.SaveChanges();
             return abos;
         }
 
