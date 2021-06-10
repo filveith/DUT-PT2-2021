@@ -65,7 +65,6 @@ namespace WindowsFormsApp1
             sugg = Abo.AvoirSuggestions();
             if (sugg != null && sugg.Count > 0)
             {
-                AffichageAbo.Add("Voici des albums qui devraient vous plairent : ");
                 AffichageAbo.AddRange(sugg);
                 nextPage.Visible = AffichageAbo?.isOnLastPage == false;
                 previousPage.Visible = AffichageAbo?.CurrentPage > 0;
