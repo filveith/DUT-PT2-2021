@@ -37,19 +37,21 @@ namespace WindowsFormsApp1
             }
             catch (DbUpdateException ex)
             {
+                Utils.RefreshDatabase();
                 EMPRUNTER e = (from emp in Utils.Connexion.EMPRUNTER
                                where emp.CODE_ABONNÉ == this.CODE_ABONNÉ && emp.CODE_ALBUM == a.CODE_ALBUM
                                select emp).FirstOrDefault();
-                if(e.DATE_RETOUR != null)
+                if (e.DATE_RETOUR != null)
                 {
                     e.DATE_EMPRUNT = DateTime.Now;
                     e.DATE_RETOUR_ATTENDUE = DateTime.Now.AddDays(a.GENRES.DÉLAI);
                     Utils.Connexion.SaveChanges();
                     return e;
+
                 }
-                Console.WriteLine("erreur : " + ex);
                 Utils.RefreshDatabase();
                 return null;
+
             }
         }
 
@@ -66,6 +68,7 @@ namespace WindowsFormsApp1
             if (emprunt != null)
             {
                 emprunt.DATE_RETOUR = DateTime.Now;
+                Utils.Connexion.SaveChanges();
                 return true;
             }
             return false;
@@ -75,8 +78,8 @@ namespace WindowsFormsApp1
         {
             int i = 0;
             var allEmprunts = (from emp in Utils.Connexion.EMPRUNTER
-                            where emp.CODE_ABONNÉ == this.CODE_ABONNÉ
-                            select emp).ToList();
+                               where emp.CODE_ABONNÉ == this.CODE_ABONNÉ
+                               select emp).ToList();
             var emprunts = allEmprunts.Where(emp => emp.nbRallongements == 0);
 
             foreach (EMPRUNTER e in emprunts)
@@ -124,7 +127,7 @@ namespace WindowsFormsApp1
                                  select emp).FirstOrDefault();
             if (emprunt != null)
             {
-                if (emprunt.nbRallongements != 1)
+                if (emprunt.nbRallongements == 0)
                 {
                     emprunt.DATE_RETOUR_ATTENDUE = emprunt.DATE_RETOUR_ATTENDUE.AddMonths(1);
                     Utils.Connexion.SaveChanges();

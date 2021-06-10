@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,8 @@ namespace WindowsFormsApp1
             var alb = this.ALBUMS;
             var genre = alb.GENRES;
             DateTime basicReturnTime = DATE_EMPRUNT.AddDays(genre.DÉLAI);
-            return (int)((DATE_RETOUR_ATTENDUE - basicReturnTime).Days / (365.25 / 12));
+            int diffMonth = (DATE_RETOUR_ATTENDUE.Month - basicReturnTime.Month) + 12 * (DATE_RETOUR_ATTENDUE.Year - basicReturnTime.Year); ;
+            return diffMonth;
         }
     }
 }
