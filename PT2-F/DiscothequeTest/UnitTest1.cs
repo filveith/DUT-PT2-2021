@@ -93,21 +93,15 @@ namespace DiscothequeTest
                             where em.CODE_ABONNÉ == idAboTest
                             select em;
 
-            foreach (EMPRUNTER em in initState)
-            {
-                var emprunts = (from emp in Utils.Connexion.EMPRUNTER
-                                where emp.CODE_ABONNÉ == idAboTest
-                                select emp);
-                Utils.Connexion.EMPRUNTER.RemoveRange(emprunts);
-            }
+            //On supprime les emprunts de l'abonné si ils existe pour eviter des erreurs
+            Utils.Connexion.EMPRUNTER.RemoveRange(initState);
 
             ABONNÉS abo = new ABONNÉS();
-
             ALBUMS alb = new ALBUMS();
 
-            abo.CODE_ABONNÉ = Utils.GetABONNÉ(aboId.FirstOrDefault()).CODE_ABONNÉ;
+            abo.CODE_ABONNÉ = idAboTest;
 
-            // On effectue une dizaines d'emprunts tests
+            // On effectue une dizaines d'emprunts tests (les albums id 86 a 105)
             for (int i = 86; i < 106; i++)
             {
                 ALBUMS alToTake = (from ab in Utils.Connexion.ALBUMS
@@ -118,16 +112,11 @@ namespace DiscothequeTest
 
                 EMPRUNTER e = abo.Emprunter(alToTake);
                 Assert.IsNotNull(e);
-                //Console.WriteLine(e);
 
                 Assert.IsTrue(e.CODE_ALBUM == i);
             }
 
-            var abonneSup = from aboGetId in Utils.Connexion.ABONNÉS
-                            where aboGetId.LOGIN_ABONNÉ == "TestRegister"
-                            select aboGetId.CODE_ABONNÉ;
-
-            SuppAboAfterTests(Utils.GetABONNÉ(abonneSup.FirstOrDefault()));
+            SuppAboAfterTests(Utils.GetABONNÉ(idAboTest));
         }
 
         /// <summary>
