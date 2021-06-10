@@ -30,6 +30,7 @@ namespace WindowsFormsApp1
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.MenuPrincipal = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.aboLabel = new System.Windows.Forms.Label();
@@ -42,9 +43,8 @@ namespace WindowsFormsApp1
             this.TAffichageAbo = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.MenuPrincipal = new System.Windows.Forms.Button();
             this.nextPage = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.previousPage = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -75,6 +75,25 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 62.52046F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1284, 561);
             this.tableLayoutPanel1.TabIndex = 3;
+            // 
+            // MenuPrincipal
+            // 
+            this.MenuPrincipal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MenuPrincipal.BackColor = System.Drawing.Color.Transparent;
+            this.MenuPrincipal.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonRetourMenu;
+            this.MenuPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.MenuPrincipal.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MenuPrincipal.FlatAppearance.BorderSize = 0;
+            this.MenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MenuPrincipal.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MenuPrincipal.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.MenuPrincipal.Location = new System.Drawing.Point(998, 50);
+            this.MenuPrincipal.Margin = new System.Windows.Forms.Padding(3, 50, 30, 3);
+            this.MenuPrincipal.Name = "MenuPrincipal";
+            this.MenuPrincipal.Size = new System.Drawing.Size(256, 55);
+            this.MenuPrincipal.TabIndex = 1;
+            this.MenuPrincipal.UseVisualStyleBackColor = false;
+            this.MenuPrincipal.Click += new System.EventHandler(this.mesAlbums_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -113,11 +132,11 @@ namespace WindowsFormsApp1
             // 
             this.aboLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.aboLabel.AutoSize = true;
-            this.aboLabel.Font = new System.Drawing.Font("NSimSun", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.aboLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(48)))), ((int)(((byte)(15)))));
-            this.aboLabel.Location = new System.Drawing.Point(441, 26);
+            this.aboLabel.Font = new System.Drawing.Font("Miriam Libre", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aboLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(137)))));
+            this.aboLabel.Location = new System.Drawing.Point(515, 37);
             this.aboLabel.Name = "aboLabel";
-            this.aboLabel.Size = new System.Drawing.Size(358, 64);
+            this.aboLabel.Size = new System.Drawing.Size(209, 42);
             this.aboLabel.TabIndex = 0;
             this.aboLabel.Text = "Mes Albums";
             // 
@@ -141,11 +160,11 @@ namespace WindowsFormsApp1
             // 
             this.searchTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.searchTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.searchTextBox.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchTextBox.Font = new System.Drawing.Font("Miriam Libre", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(48)))), ((int)(((byte)(15)))));
-            this.searchTextBox.Location = new System.Drawing.Point(3, 22);
+            this.searchTextBox.Location = new System.Drawing.Point(3, 25);
             this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(451, 31);
+            this.searchTextBox.Size = new System.Drawing.Size(451, 25);
             this.searchTextBox.TabIndex = 1;
             // 
             // tableLayoutPanel5
@@ -172,7 +191,7 @@ namespace WindowsFormsApp1
             this.prolongerAllEmpruntButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.prolongerAllEmpruntButton.FlatAppearance.BorderSize = 0;
             this.prolongerAllEmpruntButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.prolongerAllEmpruntButton.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prolongerAllEmpruntButton.Font = new System.Drawing.Font("Miriam Libre", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.prolongerAllEmpruntButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(137)))));
             this.prolongerAllEmpruntButton.Location = new System.Drawing.Point(97, 217);
             this.prolongerAllEmpruntButton.Margin = new System.Windows.Forms.Padding(0);
@@ -190,7 +209,7 @@ namespace WindowsFormsApp1
             this.prolongerEmpruntButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.prolongerEmpruntButton.FlatAppearance.BorderSize = 0;
             this.prolongerEmpruntButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.prolongerEmpruntButton.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prolongerEmpruntButton.Font = new System.Drawing.Font("Miriam Libre", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.prolongerEmpruntButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(137)))));
             this.prolongerEmpruntButton.Location = new System.Drawing.Point(97, 44);
             this.prolongerEmpruntButton.Margin = new System.Windows.Forms.Padding(0);
@@ -220,11 +239,11 @@ namespace WindowsFormsApp1
             // 
             this.TAffichageAbo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TAffichageAbo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TAffichageAbo.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TAffichageAbo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(48)))), ((int)(((byte)(15)))));
+            this.TAffichageAbo.Font = new System.Drawing.Font("Miriam Libre", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TAffichageAbo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(167)))), ((int)(((byte)(194)))));
             this.TAffichageAbo.FormattingEnabled = true;
             this.TAffichageAbo.HorizontalScrollbar = true;
-            this.TAffichageAbo.ItemHeight = 19;
+            this.TAffichageAbo.ItemHeight = 25;
             this.TAffichageAbo.Location = new System.Drawing.Point(0, 0);
             this.TAffichageAbo.Margin = new System.Windows.Forms.Padding(0);
             this.TAffichageAbo.Name = "TAffichageAbo";
@@ -256,34 +275,6 @@ namespace WindowsFormsApp1
             this.panel1.Size = new System.Drawing.Size(437, 126);
             this.panel1.TabIndex = 0;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.previousPage);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(437, 126);
-            this.panel2.TabIndex = 1;
-            // 
-            // MenuPrincipal
-            // 
-            this.MenuPrincipal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.MenuPrincipal.BackColor = System.Drawing.Color.Transparent;
-            this.MenuPrincipal.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonRetourMenu;
-            this.MenuPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.MenuPrincipal.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.MenuPrincipal.FlatAppearance.BorderSize = 0;
-            this.MenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MenuPrincipal.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MenuPrincipal.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.MenuPrincipal.Location = new System.Drawing.Point(998, 50);
-            this.MenuPrincipal.Margin = new System.Windows.Forms.Padding(3, 50, 30, 3);
-            this.MenuPrincipal.Name = "MenuPrincipal";
-            this.MenuPrincipal.Size = new System.Drawing.Size(256, 55);
-            this.MenuPrincipal.TabIndex = 1;
-            this.MenuPrincipal.UseVisualStyleBackColor = false;
-            this.MenuPrincipal.Click += new System.EventHandler(this.mesAlbums_Click);
-            // 
             // nextPage
             // 
             this.nextPage.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -301,6 +292,15 @@ namespace WindowsFormsApp1
             this.nextPage.TabIndex = 11;
             this.nextPage.UseVisualStyleBackColor = false;
             this.nextPage.Click += new System.EventHandler(this.nextPage_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.previousPage);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(437, 126);
+            this.panel2.TabIndex = 1;
             // 
             // previousPage
             // 

@@ -208,6 +208,10 @@
       <DependentUpon>BDDModele.edmx</DependentUpon>
       <LastGenOutput>BDDModele.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\logos\logoOnly.png" />
+    <None Include="Resources\logos\logo_small_icon_only.png" />
+    <None Include="Resources\logos\logo_titre.png" />
+    <None Include="Resources\logos\logo_small.png" />
     <None Include="Resources\images\buttonInscription.png" />
     <None Include="Resources\images\buttonConnexion.png" />
     <None Include="Resources\images\buttonValider.png" />
