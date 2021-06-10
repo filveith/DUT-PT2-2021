@@ -45,11 +45,6 @@ namespace WindowsFormsApp1
                 DebugWindow d = new DebugWindow();
                 d.Show();
             }
-            if(e.KeyChar == 't')
-            {
-                TestForm t = new TestForm();
-                t.Show();
-            }
         }
 
         /// <summary>

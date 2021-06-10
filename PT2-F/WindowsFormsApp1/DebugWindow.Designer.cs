@@ -48,9 +48,7 @@ namespace WindowsFormsApp1
             "US8",
             "US9",
             "US10",
-            "test",
-            "test2",
-            "test3"});
+            "US16"});
             this.comboBox1.Location = new System.Drawing.Point(97, 162);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);

@@ -17,6 +17,8 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             pagedListbox = new PagedListbox(log);
+            nextPage.Visible = pagedListbox?.isOnLastPage == false;
+            previousPage.Visible = pagedListbox?.CurrentPage > 0;
         }
 
         /// <summary>
