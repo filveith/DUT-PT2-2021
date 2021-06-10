@@ -34,11 +34,9 @@ namespace WindowsFormsApp1
             this.listEmpruntsProlongButton = new System.Windows.Forms.Button();
             this.listRetardButton = new System.Windows.Forms.Button();
             this.notEmprunterSinceAYear = new System.Windows.Forms.Button();
-            this.removeAlbumButton = new System.Windows.Forms.Button();
             this.top10Button = new System.Windows.Forms.Button();
             this.suppIdleUsersButton = new System.Windows.Forms.Button();
             this.listerAbonner = new System.Windows.Forms.Button();
-            this.addAlbumButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.log = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -48,6 +46,7 @@ namespace WindowsFormsApp1
             this.nextPage = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.afficheMiniature = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.buttons.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -77,14 +76,13 @@ namespace WindowsFormsApp1
             this.buttons.ColumnCount = 2;
             this.buttons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.buttons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.buttons.Controls.Add(this.listEmpruntsProlongButton, 0, 0);
             this.buttons.Controls.Add(this.listRetardButton, 1, 0);
             this.buttons.Controls.Add(this.notEmprunterSinceAYear, 1, 1);
-            this.buttons.Controls.Add(this.removeAlbumButton, 0, 2);
             this.buttons.Controls.Add(this.top10Button, 1, 2);
             this.buttons.Controls.Add(this.suppIdleUsersButton, 0, 3);
             this.buttons.Controls.Add(this.listerAbonner, 1, 3);
-            this.buttons.Controls.Add(this.addAlbumButton, 0, 1);
+            this.buttons.Controls.Add(this.listEmpruntsProlongButton, 0, 1);
+            this.buttons.Controls.Add(this.afficheMiniature, 0, 0);
             this.buttons.Dock = System.Windows.Forms.DockStyle.Left;
             this.buttons.Location = new System.Drawing.Point(3, 3);
             this.buttons.Name = "buttons";
@@ -105,7 +103,7 @@ namespace WindowsFormsApp1
             this.listEmpruntsProlongButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.listEmpruntsProlongButton.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listEmpruntsProlongButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.listEmpruntsProlongButton.Location = new System.Drawing.Point(24, 73);
+            this.listEmpruntsProlongButton.Location = new System.Drawing.Point(24, 288);
             this.listEmpruntsProlongButton.Name = "listEmpruntsProlongButton";
             this.listEmpruntsProlongButton.Size = new System.Drawing.Size(113, 69);
             this.listEmpruntsProlongButton.TabIndex = 1;
@@ -144,22 +142,6 @@ namespace WindowsFormsApp1
             this.notEmprunterSinceAYear.Text = "Albums pas empruntés depuis 1 an";
             this.notEmprunterSinceAYear.UseVisualStyleBackColor = false;
             this.notEmprunterSinceAYear.Click += new System.EventHandler(this.notEmprunterSinceAYear_Click);
-            // 
-            // removeAlbumButton
-            // 
-            this.removeAlbumButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.removeAlbumButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
-            this.removeAlbumButton.FlatAppearance.BorderSize = 0;
-            this.removeAlbumButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.removeAlbumButton.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.removeAlbumButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.removeAlbumButton.Location = new System.Drawing.Point(19, 458);
-            this.removeAlbumButton.Name = "removeAlbumButton";
-            this.removeAlbumButton.Size = new System.Drawing.Size(123, 60);
-            this.removeAlbumButton.TabIndex = 5;
-            this.removeAlbumButton.Text = "Supprimer Albums";
-            this.removeAlbumButton.UseVisualStyleBackColor = false;
-            this.removeAlbumButton.Click += new System.EventHandler(this.removeAlbumButton_Click);
             // 
             // top10Button
             // 
@@ -209,22 +191,6 @@ namespace WindowsFormsApp1
             this.listerAbonner.UseVisualStyleBackColor = false;
             this.listerAbonner.Click += new System.EventHandler(this.listerAbonner_Click);
             // 
-            // addAlbumButton
-            // 
-            this.addAlbumButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.addAlbumButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
-            this.addAlbumButton.FlatAppearance.BorderSize = 0;
-            this.addAlbumButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addAlbumButton.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addAlbumButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.addAlbumButton.Location = new System.Drawing.Point(23, 271);
-            this.addAlbumButton.Name = "addAlbumButton";
-            this.addAlbumButton.Size = new System.Drawing.Size(116, 102);
-            this.addAlbumButton.TabIndex = 3;
-            this.addAlbumButton.Text = "Ajouter Albums";
-            this.addAlbumButton.UseVisualStyleBackColor = false;
-            this.addAlbumButton.Click += new System.EventHandler(this.addAlbumButton_Click);
-            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
@@ -253,6 +219,7 @@ namespace WindowsFormsApp1
             this.log.Name = "log";
             this.log.Size = new System.Drawing.Size(536, 485);
             this.log.TabIndex = 11;
+            this.log.SelectedIndexChanged += new System.EventHandler(this.log_SelectedIndexChanged);
             // 
             // tableLayoutPanel3
             // 
@@ -287,6 +254,7 @@ namespace WindowsFormsApp1
             this.previousPage.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonPagePrécédente;
             this.previousPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.previousPage.FlatAppearance.BorderSize = 0;
+            this.previousPage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.previousPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.previousPage.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.previousPage.ForeColor = System.Drawing.SystemColors.Control;
@@ -313,6 +281,7 @@ namespace WindowsFormsApp1
             this.nextPage.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonPageSuivante;
             this.nextPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.nextPage.FlatAppearance.BorderSize = 0;
+            this.nextPage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.nextPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.nextPage.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nextPage.ForeColor = System.Drawing.SystemColors.Control;
@@ -350,6 +319,14 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel5.Size = new System.Drawing.Size(884, 701);
             this.tableLayoutPanel5.TabIndex = 10;
             // 
+            // afficheMiniature
+            // 
+            this.afficheMiniature.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.afficheMiniature.Location = new System.Drawing.Point(3, 19);
+            this.afficheMiniature.Name = "afficheMiniature";
+            this.afficheMiniature.Size = new System.Drawing.Size(156, 177);
+            this.afficheMiniature.TabIndex = 9;
+            // 
             // AdminView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -380,9 +357,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TableLayoutPanel buttons;
         private System.Windows.Forms.Button listEmpruntsProlongButton;
         private System.Windows.Forms.Button listRetardButton;
-        private System.Windows.Forms.Button addAlbumButton;
         private System.Windows.Forms.Button notEmprunterSinceAYear;
-        private System.Windows.Forms.Button removeAlbumButton;
         private System.Windows.Forms.Button top10Button;
         private System.Windows.Forms.Button suppIdleUsersButton;
         private System.Windows.Forms.Label label1;
@@ -395,5 +370,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button previousPage;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button nextPage;
+        private System.Windows.Forms.Label afficheMiniature;
     }
 }

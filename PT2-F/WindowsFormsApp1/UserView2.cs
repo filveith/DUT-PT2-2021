@@ -30,10 +30,10 @@ namespace WindowsFormsApp1
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Page_SelectedIndexChanged(object sender, EventArgs e)
+        public void Page_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int position = AffichageAbo.SelectedItem.ToString().IndexOf("|");
-            string titreAlbum = AffichageAbo.SelectedItem.ToString().Substring(0, position - 1);
+           
+            string titreAlbum = AffichageAbo.SelectedItem.ToString();
 
             ALBUMS obtAlbum = (from a in Utils.Connexion.ALBUMS
                                where a.TITRE_ALBUM.ToString() == titreAlbum
@@ -62,7 +62,7 @@ namespace WindowsFormsApp1
             {
                 foreach (KeyValuePair<EMPRUNTER, ALBUMS> emprunt in emprunts)
                 {
-                    AffichageAbo.Add(emprunt.Value.ToString() + " | emprunté le \"" + emprunt.Key.DATE_EMPRUNT + "\" | à rendre le " + emprunt.Key.DATE_RETOUR_ATTENDUE);
+                    AffichageAbo.Add(emprunt.Value.ToString().Trim()) ;
                 }
             }
             nextPage.Visible = AffichageAbo?.isOnLastPage == false;

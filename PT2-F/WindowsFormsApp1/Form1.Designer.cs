@@ -30,14 +30,14 @@ namespace WindowsFormsApp1
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.inscription = new System.Windows.Forms.Button();
+            this.connexion = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.inscription = new System.Windows.Forms.Button();
-            this.connexion = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -59,6 +59,52 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(813, 208);
             this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // inscription
+            // 
+            this.inscription.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.inscription.BackColor = System.Drawing.Color.Transparent;
+            this.inscription.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonInscription1;
+            this.inscription.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.inscription.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.inscription.FlatAppearance.BorderSize = 0;
+            this.inscription.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.inscription.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inscription.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inscription.ForeColor = System.Drawing.SystemColors.Control;
+            this.inscription.Location = new System.Drawing.Point(36, 79);
+            this.inscription.Name = "inscription";
+            this.inscription.Size = new System.Drawing.Size(184, 49);
+            this.inscription.TabIndex = 0;
+            this.inscription.UseVisualStyleBackColor = false;
+            this.inscription.Click += new System.EventHandler(this.inscription_Click);
+            // 
+            // connexion
+            // 
+            this.connexion.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.connexion.BackColor = System.Drawing.Color.Transparent;
+            this.connexion.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonConnexion1;
+            this.connexion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.connexion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.connexion.FlatAppearance.BorderSize = 0;
+            this.connexion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.connexion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.connexion.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.connexion.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.connexion.Location = new System.Drawing.Point(591, 79);
+            this.connexion.Name = "connexion";
+            this.connexion.Size = new System.Drawing.Size(175, 49);
+            this.connexion.TabIndex = 1;
+            this.connexion.UseVisualStyleBackColor = false;
+            this.connexion.Click += new System.EventHandler(this.connexion_Click);
+            // 
+            // label3
+            // 
+            this.label3.Image = global::WindowsFormsApp1.Properties.Resources.logo_titre;
+            this.label3.Location = new System.Drawing.Point(226, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(359, 60);
+            this.label3.TabIndex = 2;
             // 
             // tableLayoutPanel2
             // 
@@ -124,50 +170,6 @@ namespace WindowsFormsApp1
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 82);
             this.label4.TabIndex = 1;
-            // 
-            // inscription
-            // 
-            this.inscription.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.inscription.BackColor = System.Drawing.Color.Transparent;
-            this.inscription.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonInscription1;
-            this.inscription.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.inscription.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.inscription.FlatAppearance.BorderSize = 0;
-            this.inscription.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inscription.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inscription.ForeColor = System.Drawing.SystemColors.Control;
-            this.inscription.Location = new System.Drawing.Point(36, 79);
-            this.inscription.Name = "inscription";
-            this.inscription.Size = new System.Drawing.Size(184, 49);
-            this.inscription.TabIndex = 0;
-            this.inscription.UseVisualStyleBackColor = false;
-            this.inscription.Click += new System.EventHandler(this.inscription_Click);
-            // 
-            // connexion
-            // 
-            this.connexion.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.connexion.BackColor = System.Drawing.Color.Transparent;
-            this.connexion.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonConnexion1;
-            this.connexion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.connexion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.connexion.FlatAppearance.BorderSize = 0;
-            this.connexion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.connexion.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.connexion.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.connexion.Location = new System.Drawing.Point(591, 79);
-            this.connexion.Name = "connexion";
-            this.connexion.Size = new System.Drawing.Size(175, 49);
-            this.connexion.TabIndex = 1;
-            this.connexion.UseVisualStyleBackColor = false;
-            this.connexion.Click += new System.EventHandler(this.connexion_Click);
-            // 
-            // label3
-            // 
-            this.label3.Image = global::WindowsFormsApp1.Properties.Resources.logo_titre;
-            this.label3.Location = new System.Drawing.Point(226, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(359, 60);
-            this.label3.TabIndex = 2;
             // 
             // Form1
             // 

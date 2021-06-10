@@ -184,6 +184,7 @@ namespace WindowsFormsApp1
             this.ValiderInscription.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonValider1;
             this.ValiderInscription.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ValiderInscription.FlatAppearance.BorderSize = 0;
+            this.ValiderInscription.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.ValiderInscription.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ValiderInscription.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ValiderInscription.ForeColor = System.Drawing.SystemColors.ControlLightLight;

@@ -21,12 +21,13 @@ namespace WindowsFormsApp1
             previousPage.Visible = pagedListbox?.CurrentPage > 0;
         }
 
-        /// <summary>
-        /// Gère le clic sur le bouton 'Lister Emprunts Prolongés'
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void listEmpruntsProlongButton_Click(object sender, EventArgs e)
+  
+            /// <summary>
+            /// Gère le clic sur le bouton 'Lister Emprunts Prolongés'
+            /// </summary>
+            /// <param name="sender"></param>
+            /// <param name="e"></param>
+            private void listEmpruntsProlongButton_Click(object sender, EventArgs e)
         {
             pagedListbox.Clear();
             var empruntsProlongés = Utils.AvoirLesEmpruntProlonger();
@@ -90,7 +91,7 @@ namespace WindowsFormsApp1
             List<string> allStrings = new List<string>();
             foreach (ALBUMS al in albums)
             {
-                allStrings.Add("L'album " + al.TITRE_ALBUM.Trim() + " n'a pas été emprunté depuis 1 an");
+                allStrings.Add(al.TITRE_ALBUM.Trim());
             }
             pagedListbox.AddRange(allStrings);
             nextPage.Visible = pagedListbox?.isOnLastPage == false;
@@ -173,6 +174,19 @@ namespace WindowsFormsApp1
             pagedListbox.PreviousPage();
             nextPage.Visible = pagedListbox?.isOnLastPage == false;
             previousPage.Visible = pagedListbox?.CurrentPage > 0;
+        }
+
+        private void log_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string titreAlbum = pagedListbox.SelectedItem.ToString();
+
+            ALBUMS obtAlbum = (from a in Utils.Connexion.ALBUMS
+                               where a.TITRE_ALBUM.ToString() == titreAlbum
+                               select a).FirstOrDefault();
+            
+            var pochette = obtAlbum.POCHETTE;
+            afficheMiniature.Image = Utils.ResizeImage(Utils.byteArrayToImage(pochette), 200, 200);
+            
         }
     }
 }

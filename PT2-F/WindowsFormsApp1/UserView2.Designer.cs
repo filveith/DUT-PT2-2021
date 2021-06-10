@@ -92,6 +92,7 @@ namespace WindowsFormsApp1
             this.MenuPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.MenuPrincipal.Cursor = System.Windows.Forms.Cursors.Hand;
             this.MenuPrincipal.FlatAppearance.BorderSize = 0;
+            this.MenuPrincipal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.MenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MenuPrincipal.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MenuPrincipal.ForeColor = System.Drawing.SystemColors.ButtonFace;
@@ -259,12 +260,12 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel9.Controls.Add(this.dateEmprunt, 0, 0);
             this.tableLayoutPanel9.Controls.Add(this.dateRetour, 0, 1);
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(225, 3);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(226, 3);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 2;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(146, 187);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(145, 187);
             this.tableLayoutPanel9.TabIndex = 0;
             // 
             // dateEmprunt
@@ -272,7 +273,7 @@ namespace WindowsFormsApp1
             this.dateEmprunt.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dateEmprunt.AutoSize = true;
             this.dateEmprunt.Font = new System.Drawing.Font("Miriam Libre", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateEmprunt.Location = new System.Drawing.Point(73, 39);
+            this.dateEmprunt.Location = new System.Drawing.Point(72, 39);
             this.dateEmprunt.Name = "dateEmprunt";
             this.dateEmprunt.Size = new System.Drawing.Size(0, 14);
             this.dateEmprunt.TabIndex = 0;
@@ -282,7 +283,7 @@ namespace WindowsFormsApp1
             this.dateRetour.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dateRetour.AutoSize = true;
             this.dateRetour.Font = new System.Drawing.Font("Miriam Libre", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateRetour.Location = new System.Drawing.Point(73, 133);
+            this.dateRetour.Location = new System.Drawing.Point(72, 133);
             this.dateRetour.Name = "dateRetour";
             this.dateRetour.Size = new System.Drawing.Size(0, 14);
             this.dateRetour.TabIndex = 1;
@@ -293,7 +294,7 @@ namespace WindowsFormsApp1
             this.afficherMiniature.Dock = System.Windows.Forms.DockStyle.Fill;
             this.afficherMiniature.Location = new System.Drawing.Point(3, 0);
             this.afficherMiniature.Name = "afficherMiniature";
-            this.afficherMiniature.Size = new System.Drawing.Size(216, 193);
+            this.afficherMiniature.Size = new System.Drawing.Size(217, 193);
             this.afficherMiniature.TabIndex = 1;
             // 
             // tableLayoutPanel6
@@ -358,6 +359,7 @@ namespace WindowsFormsApp1
             this.nextPage.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonPageSuivante;
             this.nextPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.nextPage.FlatAppearance.BorderSize = 0;
+            this.nextPage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.nextPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.nextPage.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nextPage.ForeColor = System.Drawing.SystemColors.ButtonFace;
@@ -385,6 +387,7 @@ namespace WindowsFormsApp1
             this.previousPage.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonPagePrécédente;
             this.previousPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.previousPage.FlatAppearance.BorderSize = 0;
+            this.previousPage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.previousPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.previousPage.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.previousPage.ForeColor = System.Drawing.SystemColors.ButtonFace;
