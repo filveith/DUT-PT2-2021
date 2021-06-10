@@ -32,17 +32,13 @@ namespace WindowsFormsApp1
             try
             {
                 // on crée un nouveau Abonné
-
-                if (codePays > 0)
-                {
-                    a.CODE_PAYS = codePays;
-                }
+                if (codePays > 0) a.CODE_PAYS = codePays;
+                
                 a.NOM_ABONNÉ = nom.Substring(0, Math.Min(nom.Length, 32));
                 a.PRÉNOM_ABONNÉ = prenom.Substring(0, Math.Min(prenom.Length, 32));
                 a.LOGIN_ABONNÉ = login.Substring(0, Math.Min(login.Length, 32));
                 a.PASSWORD_ABONNÉ = mdp.Substring(0, Math.Min(mdp.Length, 32));
                 a.creationDate = DateTime.Now;
-
 
                 // ajout du nouveau Abonné
                 Connexion.ABONNÉS.Add(a);
