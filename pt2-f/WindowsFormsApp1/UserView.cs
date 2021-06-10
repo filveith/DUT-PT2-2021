@@ -14,7 +14,6 @@ namespace WindowsFormsApp1
     
     public partial class UserView : Form
     {
-        public List<Task> currentSugg { get; private set; } = new List<Task>();
         public static ABONNÉS Abo;
         public UserView2 u2;
         PagedListbox AffichageAbo;

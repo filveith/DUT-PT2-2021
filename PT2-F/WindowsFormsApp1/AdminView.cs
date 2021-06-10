@@ -24,7 +24,7 @@ namespace WindowsFormsApp1
         private void listEmpruntsProlongButton_Click(object sender, EventArgs e)
         {
             pagedListbox.Clear();
-            IQueryable<EMPRUNTER> empruntsProlongés = Utils.AvoirLesEmpruntProlonger();
+            var empruntsProlongés = Utils.AvoirLesEmpruntProlonger();
 
             foreach (EMPRUNTER emprunt in empruntsProlongés)
             {
