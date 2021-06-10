@@ -127,6 +127,12 @@
   <data name="logo_small_icon_only(1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo_small_icon_only(1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="buttonInscription1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\images\buttonInscription.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logo_titre" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logos\logo_titre.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="buttonSuggestions" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\buttonSuggestions.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -142,8 +148,8 @@
   <data name="buttonValider1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\images\buttonValider.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="buttonEmprunter" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\images\buttonEmprunter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="logo_small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logos\logo_small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="buttonConnexion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\buttonConnexion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,8 +160,14 @@
   <data name="buttonSugg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\images\buttonSugg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="buttonEmprunter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\images\buttonEmprunter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="buttonPageSuivante" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\images\buttonPageSuivante.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logo_small_icon_only" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logos\logo_small_icon_only.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="buttonAlbums1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\images\buttonAlbums.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,7 +184,7 @@
   <data name="buttonAlbums" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\buttonAlbums.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="buttonInscription1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\images\buttonInscription.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="logoOnly" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logos\logoOnly.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

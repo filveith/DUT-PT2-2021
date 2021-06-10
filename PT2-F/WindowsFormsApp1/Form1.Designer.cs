@@ -47,9 +47,9 @@ namespace WindowsFormsApp1
             // 
             this.tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.44557F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.10886F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.44557F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.5F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.5F));
             this.tableLayoutPanel1.Controls.Add(this.inscription, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.connexion, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label3, 1, 0);
@@ -57,7 +57,6 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 208F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(813, 208);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
@@ -80,12 +79,12 @@ namespace WindowsFormsApp1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("NSimSun", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(48)))), ((int)(((byte)(15)))));
+            this.label1.Font = new System.Drawing.Font("Miriam Libre", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(137)))));
             this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Location = new System.Drawing.Point(161, 60);
+            this.label1.Location = new System.Drawing.Point(168, 49);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(490, 35);
+            this.label1.Size = new System.Drawing.Size(477, 46);
             this.label1.TabIndex = 0;
             this.label1.Text = "Bienvenue sur Dédisclasik";
             // 
@@ -110,7 +109,7 @@ namespace WindowsFormsApp1
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("NSimSun", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(48)))), ((int)(((byte)(15)))));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(167)))), ((int)(((byte)(194)))));
             this.label2.Location = new System.Drawing.Point(208, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(449, 19);
@@ -120,10 +119,10 @@ namespace WindowsFormsApp1
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label4.Image = global::WindowsFormsApp1.Properties.Resources.logo_small_icon_only_1_;
-            this.label4.Location = new System.Drawing.Point(698, 30);
+            this.label4.Image = global::WindowsFormsApp1.Properties.Resources.logoOnly;
+            this.label4.Location = new System.Drawing.Point(698, 22);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(77, 65);
+            this.label4.Size = new System.Drawing.Size(77, 82);
             this.label4.TabIndex = 1;
             // 
             // inscription
@@ -137,7 +136,7 @@ namespace WindowsFormsApp1
             this.inscription.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.inscription.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inscription.ForeColor = System.Drawing.SystemColors.Control;
-            this.inscription.Location = new System.Drawing.Point(125, 79);
+            this.inscription.Location = new System.Drawing.Point(36, 79);
             this.inscription.Name = "inscription";
             this.inscription.Size = new System.Drawing.Size(184, 49);
             this.inscription.TabIndex = 0;
@@ -155,7 +154,7 @@ namespace WindowsFormsApp1
             this.connexion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.connexion.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.connexion.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.connexion.Location = new System.Drawing.Point(502, 79);
+            this.connexion.Location = new System.Drawing.Point(591, 79);
             this.connexion.Name = "connexion";
             this.connexion.Size = new System.Drawing.Size(175, 49);
             this.connexion.TabIndex = 1;
@@ -164,10 +163,10 @@ namespace WindowsFormsApp1
             // 
             // label3
             // 
-            this.label3.Image = global::WindowsFormsApp1.Properties.Resources.logo_small_3_;
-            this.label3.Location = new System.Drawing.Point(315, 0);
+            this.label3.Image = global::WindowsFormsApp1.Properties.Resources.logo_titre;
+            this.label3.Location = new System.Drawing.Point(226, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(181, 60);
+            this.label3.Size = new System.Drawing.Size(359, 60);
             this.label3.TabIndex = 2;
             // 
             // Form1
