@@ -12,10 +12,13 @@ namespace WindowsFormsApp1
 {
     public partial class ConnexionView : Form
     {
-        private static readonly MusiquePT2_FEntities Connexion = Utils.Connexion;
+        private bool isHidden = true;
         public ConnexionView()
         {
             InitializeComponent();
+            eyeButton.Image = Utils.ResizeImage(eyeButton.Image, 20, 20);
+            passTextBox.PasswordChar = '*';
+
         }
 
         /// <summary>
@@ -99,7 +102,7 @@ namespace WindowsFormsApp1
         {
             bool loginValide = false;
 
-            var logQuery = (from ab in Connexion.ABONNÉS
+            var logQuery = (from ab in Utils.Connexion.ABONNÉS
                             select ab.LOGIN_ABONNÉ).ToList();
 
             List<string> logins = logQuery;
@@ -129,7 +132,7 @@ namespace WindowsFormsApp1
         private static ABONNÉS Abonne(string login, string password)
         {
             string hashedPass = Utils.ComputeSha256Hash(password);
-            var passQuery = from ab in Connexion.ABONNÉS
+            var passQuery = from ab in Utils.Connexion.ABONNÉS
                             where ab.LOGIN_ABONNÉ == login && ab.PASSWORD_ABONNÉ == hashedPass
                             select ab;
 
@@ -140,7 +143,7 @@ namespace WindowsFormsApp1
         {
             bool admin = false;
 
-            var adminQuery = (from ab in Connexion.ABONNÉS
+            var adminQuery = (from ab in Utils.Connexion.ABONNÉS
                               where ab.isAdmin == true
                               select ab.LOGIN_ABONNÉ).ToList();
 
@@ -164,6 +167,21 @@ namespace WindowsFormsApp1
             if (e.KeyChar == 13)
             {
                 this.valider();
+            }
+        }
+
+        private void eyeButton_Click(object sender, EventArgs e)
+        {
+            isHidden = !isHidden;
+            if (isHidden)
+            {
+                eyeButton.Image = Utils.ResizeImage(Properties.Resources.eyeClosed_Icon, 20, 20);
+                passTextBox.PasswordChar = '*';
+            }
+            else
+            {
+                eyeButton.Image = Utils.ResizeImage(Properties.Resources.eyeIcon, 20, 20);
+                passTextBox.PasswordChar = (char)0;
             }
         }
     }

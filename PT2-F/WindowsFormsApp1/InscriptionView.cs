@@ -12,9 +12,13 @@ namespace WindowsFormsApp1
 {
     public partial class InscriptionView : Form
     {
+        private bool isFirstHidden = true;
+        private bool isSecondHidden = true;
         public InscriptionView()
         {
             InitializeComponent();
+            button1.Image = Utils.ResizeImage(button1.Image, 20, 20);
+            button2.Image = Utils.ResizeImage(button1.Image, 20, 20);
         }
 
         /// <summary>
@@ -24,7 +28,6 @@ namespace WindowsFormsApp1
         /// <param name="e"></param>
         private void ValiderInscription_Click(object sender, EventArgs e)
         {
-
             // les contrôles sont remplis ?
             if (textBoxNom.TextLength != 0 && textBoxPrenom.TextLength != 0 && textBoxID.TextLength != 0 && textBoxMdp.TextLength != 0 && textBoxCoMdp.TextLength != 0 && comboBoxPays.SelectedItem != null)
             {
@@ -63,7 +66,7 @@ namespace WindowsFormsApp1
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void InscriptionView_Load(object sender, EventArgs e)
+        private void RegisterView2_Load(object sender, EventArgs e)
         {
             IQueryable<PAYS> pays = Utils.AvoirListeDesPays();
             comboBoxPays.Items.Clear();
@@ -75,6 +78,34 @@ namespace WindowsFormsApp1
             comboBoxPays.SelectedIndex = 0;
         }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            isFirstHidden = !isFirstHidden;
+            if (isFirstHidden)
+            {
+                button1.Image = Utils.ResizeImage(Properties.Resources.eyeClosed_Icon, 20, 20);
+                textBoxMdp.PasswordChar = '*';
+            }
+            else
+            {
+                button1.Image = Utils.ResizeImage(Properties.Resources.eyeIcon, 20, 20);
+                textBoxMdp.PasswordChar = (char)0;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            isSecondHidden = !isSecondHidden;
+            if (isSecondHidden)
+            {
+                button2.Image = Utils.ResizeImage(Properties.Resources.eyeClosed_Icon, 20, 20);
+                textBoxCoMdp.PasswordChar = '*';
+            }
+            else
+            {
+                button2.Image = Utils.ResizeImage(Properties.Resources.eyeIcon, 20, 20);
+                textBoxCoMdp.PasswordChar = (char)0;
+            }
+        }
     }
 }
