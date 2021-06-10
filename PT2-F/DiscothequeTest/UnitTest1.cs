@@ -87,19 +87,20 @@ namespace DiscothequeTest
 
                 Assert.IsTrue(alToTake != null);
 
-                abo.Rendre(alb);
-                EMPRUNTER emp = abo.Emprunter(alb);
-                Assert.IsNotNull(emp);
-
-
-                SuppAboAfterTests(Utils.GetABONNÉ(idAboTest));
-
-                var abonneSup = from aboGetId in Utils.Connexion.ABONNÉS
-                                where aboGetId.LOGIN_ABONNÉ == "TestRegister"
-                                select aboGetId.CODE_ABONNÉ;
-
-                SuppAboAfterTests(Utils.GetABONNÉ(abonneSup.FirstOrDefault()));
+                
             }
+
+            abo.Rendre(alb);
+            EMPRUNTER emp = abo.Emprunter(alb);
+            Assert.IsNotNull(emp);
+
+            SuppAboAfterTests(Utils.GetABONNÉ(idAboTest));
+
+            var abonneSup = from aboGetId in Utils.Connexion.ABONNÉS
+                            where aboGetId.LOGIN_ABONNÉ == "TestRegister"
+                            select aboGetId.CODE_ABONNÉ;
+
+            SuppAboAfterTests(Utils.GetABONNÉ(abonneSup.FirstOrDefault()));
         }
 
         /// <summary>

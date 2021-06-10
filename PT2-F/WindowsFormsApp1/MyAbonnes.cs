@@ -47,7 +47,6 @@ namespace WindowsFormsApp1
                     e.DATE_RETOUR_ATTENDUE = DateTime.Now.AddDays(a.GENRES.DÉLAI);
                     Utils.Connexion.SaveChanges();
                     return e;
-
                 }
                 Utils.RefreshDatabase();
                 return null;
