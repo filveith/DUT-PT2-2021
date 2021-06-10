@@ -43,9 +43,15 @@ namespace WindowsFormsApp1
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.listCasiers = new System.Windows.Forms.ListBox();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.previousPage = new System.Windows.Forms.Button();
+            this.nextPage = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -55,7 +61,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.listBox1, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(17, 29);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
@@ -285,17 +291,78 @@ namespace WindowsFormsApp1
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // listBox1
+            // tableLayoutPanel3
             // 
-            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox1.Font = new System.Drawing.Font("Miriam Libre", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.listBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 17;
-            this.listBox1.Location = new System.Drawing.Point(486, 3);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(478, 599);
-            this.listBox1.TabIndex = 1;
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Controls.Add(this.listCasiers, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 1);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(486, 3);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 82.63773F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.36227F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(478, 599);
+            this.tableLayoutPanel3.TabIndex = 1;
+            // 
+            // listCasiers
+            // 
+            this.listCasiers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listCasiers.Font = new System.Drawing.Font("Miriam Libre", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.listCasiers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
+            this.listCasiers.FormattingEnabled = true;
+            this.listCasiers.ItemHeight = 17;
+            this.listCasiers.Location = new System.Drawing.Point(3, 3);
+            this.listCasiers.Name = "listCasiers";
+            this.listCasiers.Size = new System.Drawing.Size(472, 488);
+            this.listCasiers.TabIndex = 2;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.nextPage, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.previousPage, 0, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 497);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(472, 99);
+            this.tableLayoutPanel4.TabIndex = 3;
+            // 
+            // previousPage
+            // 
+            this.previousPage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.previousPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
+            this.previousPage.FlatAppearance.BorderSize = 0;
+            this.previousPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.previousPage.Font = new System.Drawing.Font("Miriam Libre", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.previousPage.Location = new System.Drawing.Point(25, 15);
+            this.previousPage.Name = "previousPage";
+            this.previousPage.Size = new System.Drawing.Size(185, 68);
+            this.previousPage.TabIndex = 0;
+            this.previousPage.Text = "Page Précédente";
+            this.previousPage.UseVisualStyleBackColor = false;
+            this.previousPage.Click += new System.EventHandler(this.previousPage_Click);
+            // 
+            // nextPage
+            // 
+            this.nextPage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.nextPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
+            this.nextPage.FlatAppearance.BorderSize = 0;
+            this.nextPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nextPage.Font = new System.Drawing.Font("Miriam Libre", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.nextPage.Location = new System.Drawing.Point(261, 15);
+            this.nextPage.Name = "nextPage";
+            this.nextPage.Size = new System.Drawing.Size(185, 68);
+            this.nextPage.TabIndex = 1;
+            this.nextPage.Text = "Page Suivante";
+            this.nextPage.UseVisualStyleBackColor = false;
+            this.nextPage.Click += new System.EventHandler(this.nextPage_Click);
             // 
             // Casiers
             // 
@@ -307,8 +374,11 @@ namespace WindowsFormsApp1
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(235)))), ((int)(((byte)(237)))));
             this.Name = "Casiers";
             this.Text = "Casiers";
+            this.Load += new System.EventHandler(this.Casiers_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -329,6 +399,10 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.ListBox listCasiers;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Button nextPage;
+        private System.Windows.Forms.Button previousPage;
     }
 }
