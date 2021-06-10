@@ -57,12 +57,20 @@ namespace WindowsFormsApp1
         private void UserView2_Load(object sender, EventArgs e)
         {
             AffichageAbo.Clear();
+            filtres.Items.Clear();
+            filtres.Items.Add("titre");
+
+            this.recherche();
+        }
+
+        private void Emprunts()
+        {
             Dictionary<EMPRUNTER, ALBUMS> emprunts = UserView.Abo.ConsulterEmprunts();
             if (emprunts.Count > 0)
             {
                 foreach (KeyValuePair<EMPRUNTER, ALBUMS> emprunt in emprunts)
                 {
-                    AffichageAbo.Add(emprunt.Value.ToString().Trim()) ;
+                    AffichageAbo.Add(emprunt.Value.ToString().Trim());
                 }
             }
             nextPage.Visible = AffichageAbo?.isOnLastPage == false;
@@ -137,6 +145,42 @@ namespace WindowsFormsApp1
             AffichageAbo.PreviousPage();
             nextPage.Visible = AffichageAbo?.isOnLastPage == false;
             previousPage.Visible = AffichageAbo?.CurrentPage > 0;
+        }
+
+
+        private void recherche()
+        {
+            string filtre = filtres.Text;
+            string objet = searchBox.Text;
+            AffichageAbo.Clear();
+            if (filtre.Equals("titre"))
+            {
+                Dictionary<EMPRUNTER, ALBUMS> emprunts = UserView.Abo.ConsulterEmprunts();
+
+                foreach (KeyValuePair<EMPRUNTER, ALBUMS> keyValuePair in emprunts)
+                {
+                    ALBUMS val = keyValuePair.Value;
+                    if (val.TITRE_ALBUM.Contains(objet))
+                    {
+                        AffichageAbo.Add(val);
+                    }
+                }
+                
+            }
+            else
+            {
+                this.Emprunts();
+            }
+            nextPage.Visible = AffichageAbo?.isOnLastPage == false;
+            previousPage.Visible = AffichageAbo?.CurrentPage > 0;
+
+        }
+        private void userView2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                this.recherche();
+            }
         }
 
     }

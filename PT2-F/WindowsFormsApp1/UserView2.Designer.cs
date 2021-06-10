@@ -36,7 +36,7 @@ namespace WindowsFormsApp1
             this.aboLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.searchTextBox = new System.Windows.Forms.TextBox();
+            this.searchBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.prolongerAllEmpruntButton = new System.Windows.Forms.Button();
             this.prolongerEmpruntButton = new System.Windows.Forms.Button();
@@ -52,6 +52,7 @@ namespace WindowsFormsApp1
             this.nextPage = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.previousPage = new System.Windows.Forms.Button();
+            this.filtres = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -166,7 +167,8 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel4.Controls.Add(this.searchTextBox, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.searchBox, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.filtres, 1, 0);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 95);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
@@ -174,16 +176,17 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel4.Size = new System.Drawing.Size(886, 56);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
-            // searchTextBox
+            // searchBox
             // 
-            this.searchTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.searchTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.searchTextBox.Font = new System.Drawing.Font("Miriam Libre", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(48)))), ((int)(((byte)(15)))));
-            this.searchTextBox.Location = new System.Drawing.Point(3, 15);
-            this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(451, 25);
-            this.searchTextBox.TabIndex = 1;
+            this.searchBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.searchBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.searchBox.Font = new System.Drawing.Font("Miriam Libre", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(48)))), ((int)(((byte)(15)))));
+            this.searchBox.Location = new System.Drawing.Point(3, 15);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(451, 25);
+            this.searchBox.TabIndex = 1;
+            this.searchBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.userView2_KeyPress);
             // 
             // tableLayoutPanel5
             // 
@@ -406,6 +409,17 @@ namespace WindowsFormsApp1
             this.previousPage.UseVisualStyleBackColor = false;
             this.previousPage.Click += new System.EventHandler(this.previousPage_Click);
             // 
+            // filtres
+            // 
+            this.filtres.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.filtres.Font = new System.Drawing.Font("Miriam Libre", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filtres.FormattingEnabled = true;
+            this.filtres.Location = new System.Drawing.Point(534, 17);
+            this.filtres.Name = "filtres";
+            this.filtres.Size = new System.Drawing.Size(121, 28);
+            this.filtres.TabIndex = 2;
+            this.filtres.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.userView2_KeyPress);
+            // 
             // UserView2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -418,6 +432,7 @@ namespace WindowsFormsApp1
             this.Name = "UserView2";
             this.Text = "UserView2";
             this.Load += new System.EventHandler(this.UserView2_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.userView2_KeyPress);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -444,7 +459,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label aboLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.TextBox searchTextBox;
+        private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Button prolongerAllEmpruntButton;
         private System.Windows.Forms.Button prolongerEmpruntButton;
@@ -461,5 +476,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label afficherMiniature;
         private System.Windows.Forms.Label dateEmprunt;
         private System.Windows.Forms.Label dateRetour;
+        private System.Windows.Forms.ComboBox filtres;
     }
 }

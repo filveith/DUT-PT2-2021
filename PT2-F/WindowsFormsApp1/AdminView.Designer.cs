@@ -80,6 +80,10 @@ namespace WindowsFormsApp1
             this.buttons.Controls.Add(this.notEmprunterSinceAYear, 1, 1);
             this.buttons.Controls.Add(this.top10Button, 1, 2);
             this.buttons.Controls.Add(this.suppIdleUsersButton, 0, 3);
+            this.buttons.Controls.Add(this.listEmpruntsProlongButton, 0, 2);
+            this.buttons.Controls.Add(this.listRetardButton, 0, 1);
+            this.buttons.Controls.Add(this.showLockersButton, 1, 0);
+            this.buttons.Controls.Add(this.addAlbumButton, 0, 1);
             this.buttons.Controls.Add(this.listerAbonner, 1, 3);
             this.buttons.Controls.Add(this.listEmpruntsProlongButton, 0, 2);
             this.buttons.Controls.Add(this.listRetardButton, 0, 1);
