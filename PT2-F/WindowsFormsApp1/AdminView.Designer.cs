@@ -47,6 +47,8 @@ namespace WindowsFormsApp1
             this.nextPage = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.previousPage = new System.Windows.Forms.Button();
+            this.nextPage = new System.Windows.Forms.Button();
             this.afficheMiniature = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.buttons.SuspendLayout();
