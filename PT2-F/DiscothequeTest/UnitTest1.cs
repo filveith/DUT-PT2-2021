@@ -22,33 +22,30 @@ namespace DiscothequeTest
         [TestMethod, TestCategory("US1")]
         public void TestAjoutAbonnée()
         {
-            var initState = (from data in Utils.Connexion.ABONNÉS
-                             where data.LOGIN_ABONNÉ.Equals("TestRegister")
-                             select data.CODE_ABONNÉ);
+            //Check si abo existe
+            ABONNÉS abo = Utils.GetABONNÉS("TestRegister");
 
             //On passse si l'abonné TestRegister n'existe pas
-            if (initState.Count() != 0)
+            if (abo == null)
             {
-                Console.WriteLine("abo existe pas");
 
-                //Create an ABONNE object
-                ABONNÉS abo = Utils.GetABONNÉ(initState.FirstOrDefault());
+                SuppAboAfterTests(abo);
 
-                //On supprime l'abonné si il existe 
-                var emprunts = (from e in Utils.Connexion.EMPRUNTER
-                                where e.CODE_ABONNÉ == abo.CODE_ABONNÉ
-                                select e);
-
-                Utils.Connexion.EMPRUNTER.RemoveRange(emprunts);
+                /*//On supprime les emrpunts de l'abonné si il en a
+                if (abo.EMPRUNTER != null)
+                {
+                    var emprunts = abo.EMPRUNTER;
+                    Utils.Connexion.EMPRUNTER.RemoveRange(emprunts);
+                }
+                
+                //On supprime l'abonné
                 Utils.Connexion.ABONNÉS.Remove(abo);
                 Utils.Connexion.SaveChanges();
 
-                var result = from data in Utils.Connexion.ABONNÉS
-                             where data.LOGIN_ABONNÉ == "TestRegister"
-                             select data.CODE_ABONNÉ;
+                ABONNÉS removedAbo = Utils.GetABONNÉS("TestRegister");
 
                 //Assert.IsFalse(Utils.GetABONNÉ(result.FirstOrDefault()).CODE_ABONNÉ==abo.CODE_ABONNÉ);
-                Assert.IsTrue(result.FirstOrDefault() == 0);
+                Assert.IsTrue(removedAbo == null);*/
             }
 
             //On ajoute un abonné
@@ -57,17 +54,13 @@ namespace DiscothequeTest
             //On regarde si il a bien etait crée
             Assert.IsNotNull(a);
 
-            var finalResult = from data in Utils.Connexion.ABONNÉS
-                              where data.LOGIN_ABONNÉ.Equals("TestRegister")
-                              select data.CODE_ABONNÉ;
-
-            ABONNÉS aboFinal = Utils.GetABONNÉ(finalResult.FirstOrDefault());
+            ABONNÉS aboFinal = Utils.GetABONNÉS("TestRegister");
 
             //On verifie avec la base de données si il existe bien
             Assert.IsTrue(aboFinal.LOGIN_ABONNÉ == "TestRegister");
             idAboTest = aboFinal.CODE_ABONNÉ;
 
-            SuppAboAfterTests(Utils.GetABONNÉ(aboFinal.CODE_ABONNÉ));
+            SuppAboAfterTests(aboFinal);
         }
 
         /// <summary>
@@ -798,14 +791,19 @@ namespace DiscothequeTest
         /// <param name="abo"></param>
         private static void SuppAboAfterTests(ABONNÉS abo)
         {
-            foreach (EMPRUNTER emprunt in Utils.Connexion.EMPRUNTER)
+            if (abo != null)
             {
-                if (emprunt.CODE_ABONNÉ == abo.CODE_ABONNÉ)
+                foreach (EMPRUNTER emprunt in Utils.Connexion.EMPRUNTER)
                 {
-                    Utils.Connexion.EMPRUNTER.Remove(emprunt);
+
+                    if (emprunt.CODE_ABONNÉ == abo.CODE_ABONNÉ)
+                    {
+                        Utils.Connexion.EMPRUNTER.Remove(emprunt);
+                    }
+
                 }
+                Utils.Connexion.ABONNÉS.Remove(abo);
             }
-            Utils.Connexion.ABONNÉS.Remove(abo);
             Utils.Connexion.SaveChanges();
         }
     }
