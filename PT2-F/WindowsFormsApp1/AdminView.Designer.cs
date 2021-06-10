@@ -47,6 +47,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.previousPage = new System.Windows.Forms.Button();
             this.nextPage = new System.Windows.Forms.Button();
+            this.afficheMiniature = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.buttons.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -82,7 +83,6 @@ namespace WindowsFormsApp1
             this.buttons.Controls.Add(this.listEmpruntsProlongButton, 0, 2);
             this.buttons.Controls.Add(this.listRetardButton, 0, 1);
             this.buttons.Controls.Add(this.showLockersButton, 1, 0);
-            this.buttons.Controls.Add(this.addAlbumButton, 0, 1);
             this.buttons.Controls.Add(this.listerAbonner, 1, 3);
             this.buttons.Controls.Add(this.listEmpruntsProlongButton, 0, 2);
             this.buttons.Controls.Add(this.listRetardButton, 0, 1);
