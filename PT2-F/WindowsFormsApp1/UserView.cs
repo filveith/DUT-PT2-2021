@@ -53,14 +53,13 @@ namespace WindowsFormsApp1
         {
             AffichageAbo.Clear();
             HashSet<ALBUMS> sugg;
-            CachedElements.suggestionsParAbo.TryGetValue(Abo, out sugg);
+            sugg = Abo.AvoirSuggestions_Opti();
             if (sugg != null && sugg.Count > 0)
             {
                 AffichageAbo.Add("Voici des albums qui devraient vous plairent : ");
                 AffichageAbo.AddRange(sugg);
                 nextPage.Visible = AffichageAbo?.isOnLastPage == false;
                 previousPage.Visible = AffichageAbo?.CurrentPage > 0;
-                Task.Run(() => CachedElements.RefreshSuggestions(Abo).GetAwaiter().GetResult()).GetAwaiter().GetResult();
             }
             else
             {

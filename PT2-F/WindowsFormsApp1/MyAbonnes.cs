@@ -64,11 +64,11 @@ namespace WindowsFormsApp1
         {
             Dictionary<EMPRUNTER, ALBUMS> emprunts = new Dictionary<EMPRUNTER, ALBUMS>();
             var emprunt = from alb in Utils.Connexion.ALBUMS
-                           join emp in Utils.Connexion.EMPRUNTER on alb.CODE_ALBUM equals emp.CODE_ALBUM
-                           join abo in Utils.Connexion.ABONNÉS on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
-                           where abo.CODE_ABONNÉ == this.CODE_ABONNÉ
-                           orderby emp.DATE_RETOUR_ATTENDUE ascending
-                           select new { emprunt = emp, album = alb };
+                          join emp in Utils.Connexion.EMPRUNTER on alb.CODE_ALBUM equals emp.CODE_ALBUM
+                          join abo in Utils.Connexion.ABONNÉS on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
+                          where abo.CODE_ABONNÉ == this.CODE_ABONNÉ
+                          orderby emp.DATE_RETOUR_ATTENDUE ascending
+                          select new { emprunt = emp, album = alb };
 
 
 
@@ -115,7 +115,7 @@ namespace WindowsFormsApp1
             Dictionary<string, int> allGenre = new Dictionary<string, int>();
 
             var emprunts = ConsulterEmprunts();
-            
+
 
             int nbEmprunts = emprunts.Count();
 
@@ -172,81 +172,54 @@ namespace WindowsFormsApp1
 
         }
 
-        /// <summary>
-        /// Renvoie 10 suggestions
-        /// </summary>
-        /// <param name="codeAbonne"></param>
-        /// <returns></returns>
-        public HashSet<ALBUMS> AvoirSuggestions()
+        public Dictionary<GENRES, double> GetPreferences_Opti()
         {
-
-            // On recupère les preferences de l'abonné
-            Dictionary<string, double> preferences = GetPreferences();
-
-            Random rdm = new Random();
-
-            HashSet<ALBUMS> suggestionsNOTFINAL = new HashSet<ALBUMS>();
-            List<ALBUMS> allAlbums = Utils.Connexion.ALBUMS.ToList();
-
-            // Pour chaque genre parmi les préférences de l'abonné :
-            foreach (string genre in preferences.Keys)
+            Dictionary<GENRES, double> preferences = new Dictionary<GENRES, double>();
+            var emprunts = (from emp in Utils.Connexion.EMPRUNTER
+                            join gen in Utils.Connexion.GENRES on emp.ALBUMS.CODE_GENRE equals gen.CODE_GENRE
+                            where emp.CODE_ABONNÉ == this.CODE_ABONNÉ
+                            select new { emprunt = emp, genre = gen });
+            int Count = emprunts.Count();
+            var GroupedEmprunts = emprunts.GroupBy(x => x.genre);
+            foreach (var e in GroupedEmprunts)
             {
-                // On récupère le code du genre et le pourcentage associé
-                int codeGenre = (from g in Utils.Connexion.GENRES
-                                 where g.LIBELLÉ_GENRE == genre
-                                 select g.CODE_GENRE).FirstOrDefault();
+                int nEmprunts = e.Count();
+                preferences.Add(e.Key, nEmprunts * 100f / Count);
+            }
+            return preferences;
+        }
 
-                double percentage = preferences[genre];
-
-                // Le pourcentage détermine combien de fois des albums de ce genre auront tendance à être choisis pour la sélection finale
-                int nbToTake = (int)percentage;
-                
-                
-                for (int i = 0; i < nbToTake; i++)
+        public HashSet<ALBUMS> AvoirSuggestions_Opti()
+        {
+            var pref = GetPreferences_Opti();
+            int i = 0;
+            HashSet<ALBUMS> suggestions = new HashSet<ALBUMS>();
+            Random r = new Random();
+            foreach (var v in pref)
+            {
+                if (i < 10)
                 {
-                    // On choisit un album au hasard et, si il est du bon genre, on le rajoute à la sélection NON FINALE 
-                    ALBUMS currentSugg = allAlbums.Skip(rdm.Next(1, 10)).FirstOrDefault();
-                    if (currentSugg != null)
+                    List<ALBUMS> AlbumsOfGenre = v.Key.ALBUMS.ToList();
+                    int numAlbums = Round(v.Value / 10f);
+                    for (int n = 0; n < numAlbums && i < 10; i++)
                     {
-                        if (currentSugg.CODE_GENRE == codeGenre)
-                        {
-                            suggestionsNOTFINAL.Add(currentSugg);
-                        }
-                    }
-                    else
-                    {
-                        i--;
+                        int ind = r.Next(AlbumsOfGenre.Count);
+                        suggestions.Add(AlbumsOfGenre[ind]);
+                        AlbumsOfGenre.RemoveAt(ind);
                     }
                 }
             }
 
-            // Les suggestions finales sont conservées dans un HashSet pour éviter les doublons
-            HashSet<ALBUMS> suggestionsFinal = new HashSet<ALBUMS>();
+            return suggestions;
+        }
 
-            // LE LAG EST JUSTE AVANT
-            // LE LAG EST JUSTE AVANT
-            // LE LAG EST JUSTE AVANT
-            // LE LAG EST JUSTE AVANT
-
-            ALBUMS[] suggArray = suggestionsNOTFINAL.ToArray();
-
-            int stop = 10;
-            if (suggArray.Length < 10)
+        public int Round(double n)
+        {
+            if (n >= 0)
             {
-                stop = suggArray.Length;
+                return (int)(n + 0.5);
             }
-
-            // On récupère 10 suggestions maximum, qui composeront la suggestion finale
-            for (int i = 0; i < stop; i++)
-            {
-                ALBUMS sugg = suggArray[rdm.Next(0, suggArray.Length)];
-                suggestionsFinal.Add(sugg);
-                List<ALBUMS> provisory = new List<ALBUMS>(suggArray);
-                provisory.Remove(sugg);
-                suggArray = provisory.ToArray();
-
-            }
-            return suggestionsFinal;
+            return (int)(n - 0.5);
         }
 
     }
