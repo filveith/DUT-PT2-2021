@@ -34,11 +34,17 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.aboLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.prolongerAllEmpruntButton = new System.Windows.Forms.Button();
             this.prolongerEmpruntButton = new System.Windows.Forms.Button();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.dateEmprunt = new System.Windows.Forms.Label();
+            this.dateRetour = new System.Windows.Forms.Label();
+            this.afficherMiniature = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.TAffichageAbo = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
@@ -46,12 +52,13 @@ namespace WindowsFormsApp1
             this.nextPage = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.previousPage = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
+            this.tableLayoutPanel9.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -72,8 +79,8 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 37.47954F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 62.52046F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.69875F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 71.30125F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1284, 561);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
@@ -110,7 +117,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(892, 204);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(892, 154);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // tableLayoutPanel3
@@ -127,7 +134,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(886, 116);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(886, 86);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // aboLabel
@@ -136,11 +143,19 @@ namespace WindowsFormsApp1
             this.aboLabel.AutoSize = true;
             this.aboLabel.Font = new System.Drawing.Font("Miriam Libre", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.aboLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(137)))));
-            this.aboLabel.Location = new System.Drawing.Point(515, 37);
+            this.aboLabel.Location = new System.Drawing.Point(515, 22);
             this.aboLabel.Name = "aboLabel";
             this.aboLabel.Size = new System.Drawing.Size(209, 42);
             this.aboLabel.TabIndex = 0;
             this.aboLabel.Text = "Mes Albums";
+            // 
+            // label1
+            // 
+            this.label1.Image = global::WindowsFormsApp1.Properties.Resources.logoOnly;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(153, 86);
+            this.label1.TabIndex = 1;
             // 
             // tableLayoutPanel4
             // 
@@ -151,11 +166,11 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel4.Controls.Add(this.searchTextBox, 0, 0);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 125);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 95);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(886, 76);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(886, 56);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // searchTextBox
@@ -164,7 +179,7 @@ namespace WindowsFormsApp1
             this.searchTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.searchTextBox.Font = new System.Drawing.Font("Miriam Libre", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(48)))), ((int)(((byte)(15)))));
-            this.searchTextBox.Location = new System.Drawing.Point(3, 25);
+            this.searchTextBox.Location = new System.Drawing.Point(3, 15);
             this.searchTextBox.Name = "searchTextBox";
             this.searchTextBox.Size = new System.Drawing.Size(451, 25);
             this.searchTextBox.TabIndex = 1;
@@ -174,16 +189,17 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel5.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel5.ColumnCount = 1;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel5.Controls.Add(this.prolongerAllEmpruntButton, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.prolongerEmpruntButton, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel8, 0, 2);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(901, 213);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(901, 163);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 2;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(380, 345);
+            this.tableLayoutPanel5.RowCount = 3;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.89239F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.89239F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.21521F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(380, 395);
             this.tableLayoutPanel5.TabIndex = 4;
             // 
             // prolongerAllEmpruntButton
@@ -195,7 +211,7 @@ namespace WindowsFormsApp1
             this.prolongerAllEmpruntButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.prolongerAllEmpruntButton.Font = new System.Drawing.Font("Miriam Libre", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.prolongerAllEmpruntButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(137)))));
-            this.prolongerAllEmpruntButton.Location = new System.Drawing.Point(97, 217);
+            this.prolongerAllEmpruntButton.Location = new System.Drawing.Point(97, 105);
             this.prolongerAllEmpruntButton.Margin = new System.Windows.Forms.Padding(0);
             this.prolongerAllEmpruntButton.Name = "prolongerAllEmpruntButton";
             this.prolongerAllEmpruntButton.Size = new System.Drawing.Size(185, 83);
@@ -213,7 +229,7 @@ namespace WindowsFormsApp1
             this.prolongerEmpruntButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.prolongerEmpruntButton.Font = new System.Drawing.Font("Miriam Libre", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.prolongerEmpruntButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(137)))));
-            this.prolongerEmpruntButton.Location = new System.Drawing.Point(97, 44);
+            this.prolongerEmpruntButton.Location = new System.Drawing.Point(97, 7);
             this.prolongerEmpruntButton.Margin = new System.Windows.Forms.Padding(0);
             this.prolongerEmpruntButton.Name = "prolongerEmpruntButton";
             this.prolongerEmpruntButton.Size = new System.Drawing.Size(185, 83);
@@ -222,6 +238,64 @@ namespace WindowsFormsApp1
             this.prolongerEmpruntButton.UseVisualStyleBackColor = false;
             this.prolongerEmpruntButton.Click += new System.EventHandler(this.prolongerEmprunt_Click);
             // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 2;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 59.62567F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.37433F));
+            this.tableLayoutPanel8.Controls.Add(this.tableLayoutPanel9, 1, 0);
+            this.tableLayoutPanel8.Controls.Add(this.afficherMiniature, 0, 0);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 199);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 1;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(374, 193);
+            this.tableLayoutPanel8.TabIndex = 4;
+            // 
+            // tableLayoutPanel9
+            // 
+            this.tableLayoutPanel9.ColumnCount = 1;
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel9.Controls.Add(this.dateEmprunt, 0, 0);
+            this.tableLayoutPanel9.Controls.Add(this.dateRetour, 0, 1);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(225, 3);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.RowCount = 2;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(146, 187);
+            this.tableLayoutPanel9.TabIndex = 0;
+            // 
+            // dateEmprunt
+            // 
+            this.dateEmprunt.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dateEmprunt.AutoSize = true;
+            this.dateEmprunt.Font = new System.Drawing.Font("Miriam Libre", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateEmprunt.Location = new System.Drawing.Point(73, 39);
+            this.dateEmprunt.Name = "dateEmprunt";
+            this.dateEmprunt.Size = new System.Drawing.Size(0, 14);
+            this.dateEmprunt.TabIndex = 0;
+            // 
+            // dateRetour
+            // 
+            this.dateRetour.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dateRetour.AutoSize = true;
+            this.dateRetour.Font = new System.Drawing.Font("Miriam Libre", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateRetour.Location = new System.Drawing.Point(73, 133);
+            this.dateRetour.Name = "dateRetour";
+            this.dateRetour.Size = new System.Drawing.Size(0, 14);
+            this.dateRetour.TabIndex = 1;
+            // 
+            // afficherMiniature
+            // 
+            this.afficherMiniature.Cursor = System.Windows.Forms.Cursors.Default;
+            this.afficherMiniature.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.afficherMiniature.Location = new System.Drawing.Point(3, 0);
+            this.afficherMiniature.Name = "afficherMiniature";
+            this.afficherMiniature.Size = new System.Drawing.Size(216, 193);
+            this.afficherMiniature.TabIndex = 1;
+            // 
             // tableLayoutPanel6
             // 
             this.tableLayoutPanel6.ColumnCount = 1;
@@ -229,12 +303,12 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel6.Controls.Add(this.TAffichageAbo, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 0, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 213);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 163);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 2;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60.0024F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 39.9976F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(892, 345);
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 67.59494F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.40506F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(892, 395);
             this.tableLayoutPanel6.TabIndex = 5;
             // 
             // TAffichageAbo
@@ -249,7 +323,7 @@ namespace WindowsFormsApp1
             this.TAffichageAbo.Location = new System.Drawing.Point(0, 0);
             this.TAffichageAbo.Margin = new System.Windows.Forms.Padding(0);
             this.TAffichageAbo.Name = "TAffichageAbo";
-            this.TAffichageAbo.Size = new System.Drawing.Size(892, 207);
+            this.TAffichageAbo.Size = new System.Drawing.Size(892, 267);
             this.TAffichageAbo.TabIndex = 4;
             // 
             // tableLayoutPanel7
@@ -260,12 +334,12 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel7.Controls.Add(this.panel1, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.panel2, 0, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 210);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 270);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 132F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(886, 132);
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 122F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(886, 122);
             this.tableLayoutPanel7.TabIndex = 5;
             // 
             // panel1
@@ -274,7 +348,7 @@ namespace WindowsFormsApp1
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(446, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(437, 126);
+            this.panel1.Size = new System.Drawing.Size(437, 116);
             this.panel1.TabIndex = 0;
             // 
             // nextPage
@@ -287,7 +361,7 @@ namespace WindowsFormsApp1
             this.nextPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.nextPage.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nextPage.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.nextPage.Location = new System.Drawing.Point(94, 33);
+            this.nextPage.Location = new System.Drawing.Point(94, 28);
             this.nextPage.Margin = new System.Windows.Forms.Padding(0);
             this.nextPage.Name = "nextPage";
             this.nextPage.Size = new System.Drawing.Size(239, 53);
@@ -301,7 +375,7 @@ namespace WindowsFormsApp1
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(437, 126);
+            this.panel2.Size = new System.Drawing.Size(437, 116);
             this.panel2.TabIndex = 1;
             // 
             // previousPage
@@ -314,21 +388,13 @@ namespace WindowsFormsApp1
             this.previousPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.previousPage.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.previousPage.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.previousPage.Location = new System.Drawing.Point(73, 26);
+            this.previousPage.Location = new System.Drawing.Point(73, 21);
             this.previousPage.Margin = new System.Windows.Forms.Padding(0);
             this.previousPage.Name = "previousPage";
             this.previousPage.Size = new System.Drawing.Size(276, 66);
             this.previousPage.TabIndex = 11;
             this.previousPage.UseVisualStyleBackColor = false;
             this.previousPage.Click += new System.EventHandler(this.previousPage_Click);
-            // 
-            // label1
-            // 
-            this.label1.Image = global::WindowsFormsApp1.Properties.Resources.logoOnly;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(153, 116);
-            this.label1.TabIndex = 1;
             // 
             // UserView2
             // 
@@ -349,6 +415,9 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel8.ResumeLayout(false);
+            this.tableLayoutPanel9.ResumeLayout(false);
+            this.tableLayoutPanel9.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -377,5 +446,10 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button previousPage;
         private System.Windows.Forms.Button nextPage;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
+        private System.Windows.Forms.Label afficherMiniature;
+        private System.Windows.Forms.Label dateEmprunt;
+        private System.Windows.Forms.Label dateRetour;
     }
 }
