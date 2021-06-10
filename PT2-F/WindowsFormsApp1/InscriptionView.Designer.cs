@@ -347,9 +347,11 @@ namespace WindowsFormsApp1
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.KeyPreview = true;
             this.Name = "InscriptionView";
             this.Text = "RegisterView2";
             this.Load += new System.EventHandler(this.RegisterView2_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.InscriptionView_KeyPress);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
