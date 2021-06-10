@@ -30,7 +30,7 @@ namespace WindowsFormsApp1
             {
                 int delai = a.GENRES.DÉLAI;
                 DateTime retour = DateTime.Now.AddDays(delai);
-                EMPRUNTER e = new EMPRUNTER { CODE_ABONNÉ = this.CODE_ABONNÉ, CODE_ALBUM = a.CODE_ALBUM, DATE_EMPRUNT = DateTime.Now, DATE_RETOUR_ATTENDUE = retour };
+                EMPRUNTER e = new EMPRUNTER { CODE_ABONNÉ = this.CODE_ABONNÉ, CODE_ALBUM = album.CODE_ALBUM, DATE_EMPRUNT = DateTime.Now, DATE_RETOUR_ATTENDUE = retour };
                 Utils.Connexion.EMPRUNTER.Add(e);
                 Utils.Connexion.SaveChanges();
                 return e;
@@ -123,7 +123,7 @@ namespace WindowsFormsApp1
         public bool ProlongerEmprunt(ALBUMS al)
         {
             EMPRUNTER emprunt = (from emp in Utils.Connexion.EMPRUNTER
-                                 where emp.CODE_ABONNÉ == this.CODE_ABONNÉ && emp.CODE_ALBUM == al.CODE_ALBUM
+                                 where emp.CODE_ABONNÉ == this.CODE_ABONNÉ && emp.CODE_ALBUM == album.CODE_ALBUM
                                  select emp).FirstOrDefault();
             if (emprunt != null)
             {

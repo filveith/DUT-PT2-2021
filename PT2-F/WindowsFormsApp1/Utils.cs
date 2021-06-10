@@ -210,6 +210,11 @@ namespace WindowsFormsApp1
                     select a).FirstOrDefault();
         }
 
+        /// <summary>
+        /// Renvoie un album selon son code
+        /// </summary>
+        /// <param name="codeAlbum">Le code de l'album</param>
+        /// <returns>L'album correpondant</returns>
         public static ALBUMS GetALBUM(int codeAlbum)
         {
             return (from al in Connexion.ALBUMS
