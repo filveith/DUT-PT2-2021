@@ -30,10 +30,10 @@ namespace WindowsFormsApp1
             {
                 int delai = (from al in Utils.Connexion.ALBUMS
                              join genre in Utils.Connexion.GENRES on al.CODE_GENRE equals genre.CODE_GENRE
-                             where al.CODE_ALBUM == a.CODE_ALBUM
+                             where al.CODE_ALBUM == album.CODE_ALBUM
                              select genre.DÉLAI).First();
                 DateTime retour = DateTime.Now.AddDays(delai);
-                EMPRUNTER e = new EMPRUNTER { CODE_ABONNÉ = this.CODE_ABONNÉ, CODE_ALBUM = a.CODE_ALBUM, DATE_EMPRUNT = DateTime.Now, DATE_RETOUR_ATTENDUE = retour };
+                EMPRUNTER e = new EMPRUNTER { CODE_ABONNÉ = this.CODE_ABONNÉ, CODE_ALBUM = album.CODE_ALBUM, DATE_EMPRUNT = DateTime.Now, DATE_RETOUR_ATTENDUE = retour };
                 Utils.Connexion.EMPRUNTER.Add(e);
                 Utils.Connexion.SaveChanges();
                 return e;
@@ -47,6 +47,10 @@ namespace WindowsFormsApp1
             }
         }
 
+        /// <summary>
+        /// Prolonge tout les emprunts de l'abonné
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<EMPRUNTER> ProlongerTousEmprunts()
         {
             int i = 0;
@@ -66,9 +70,9 @@ namespace WindowsFormsApp1
         }
 
         /// <summary>
-        /// Retourne un dictionnary avec la liste des emprunt et l'album correspondant
+        /// Retourne un dictionnaire de tout les albums empruntés par l'abonné
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Le dictionnaire des emprunts</returns>
         public Dictionary<EMPRUNTER, ALBUMS> ConsulterEmprunts()
         {
             Dictionary<EMPRUNTER, ALBUMS> emprunts = new Dictionary<EMPRUNTER, ALBUMS>();
@@ -96,7 +100,7 @@ namespace WindowsFormsApp1
         public bool ProlongerEmprunt(ALBUMS al)
         {
             EMPRUNTER emprunt = (from emp in Utils.Connexion.EMPRUNTER
-                                 where emp.CODE_ABONNÉ == this.CODE_ABONNÉ && emp.CODE_ALBUM == al.CODE_ALBUM
+                                 where emp.CODE_ABONNÉ == this.CODE_ABONNÉ && emp.CODE_ALBUM == album.CODE_ALBUM
                                  select emp).FirstOrDefault();
             if (emprunt != null)
             {

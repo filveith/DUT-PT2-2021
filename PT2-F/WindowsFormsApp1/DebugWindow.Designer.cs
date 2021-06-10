@@ -81,7 +81,6 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.comboBox1);
             this.Name = "DebugWindow";
             this.Text = "DebugWindow";
-            this.Load += new System.EventHandler(this.DebugWindow_Load);
             this.ResumeLayout(false);
 
         }

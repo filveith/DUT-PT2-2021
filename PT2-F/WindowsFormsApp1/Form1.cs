@@ -20,6 +20,11 @@ namespace WindowsFormsApp1
 
         }
 
+        /// <summary>
+        /// Gère le clic sur le bouton d'inscription
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void inscription_Click(object sender, EventArgs e)
         {
             InscriptionView view = new InscriptionView();
@@ -28,6 +33,11 @@ namespace WindowsFormsApp1
             this.Visible = true;
         }
 
+        /// <summary>
+        /// [PROVISOIRE] Permet d'accéder à certaines fenetres manuellement
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 'd')
@@ -37,6 +47,11 @@ namespace WindowsFormsApp1
             }
         }
 
+        /// <summary>
+        /// Gère le clic sur le bouton de connexion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void connexion_Click(object sender, EventArgs e)
         {
             ConnexionView c = new ConnexionView();
