@@ -32,13 +32,14 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
             this.aboLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.searchBox = new System.Windows.Forms.TextBox();
             this.filtres = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.suggest = new System.Windows.Forms.Button();
             this.emprunter = new System.Windows.Forms.Button();
+            this.suggest = new System.Windows.Forms.Button();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.TAffichageAbo = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
@@ -47,7 +48,7 @@ namespace WindowsFormsApp1
             this.panel2 = new System.Windows.Forms.Panel();
             this.nextPage = new System.Windows.Forms.Button();
             this.mesAlbums = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.imageLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -111,6 +112,14 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel3.Size = new System.Drawing.Size(886, 116);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
+            // label1
+            // 
+            this.label1.Image = global::WindowsFormsApp1.Properties.Resources.logoOnly;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(153, 116);
+            this.label1.TabIndex = 2;
+            // 
             // aboLabel
             // 
             this.aboLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -170,34 +179,18 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel5.ColumnCount = 1;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Controls.Add(this.suggest, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.emprunter, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.suggest, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.imageLabel, 0, 2);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(901, 213);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 2;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.RowCount = 3;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.93814F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.06186F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 173F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(380, 345);
             this.tableLayoutPanel5.TabIndex = 4;
-            // 
-            // suggest
-            // 
-            this.suggest.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.suggest.BackColor = System.Drawing.Color.Transparent;
-            this.suggest.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonSugg;
-            this.suggest.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.suggest.FlatAppearance.BorderSize = 0;
-            this.suggest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.suggest.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.suggest.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.suggest.Location = new System.Drawing.Point(69, 233);
-            this.suggest.Margin = new System.Windows.Forms.Padding(0);
-            this.suggest.Name = "suggest";
-            this.suggest.Size = new System.Drawing.Size(242, 50);
-            this.suggest.TabIndex = 6;
-            this.suggest.UseVisualStyleBackColor = false;
-            this.suggest.Click += new System.EventHandler(this.suggest_Click);
             // 
             // emprunter
             // 
@@ -209,13 +202,31 @@ namespace WindowsFormsApp1
             this.emprunter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.emprunter.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.emprunter.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.emprunter.Location = new System.Drawing.Point(101, 61);
+            this.emprunter.Location = new System.Drawing.Point(101, 16);
             this.emprunter.Margin = new System.Windows.Forms.Padding(0);
             this.emprunter.Name = "emprunter";
             this.emprunter.Size = new System.Drawing.Size(178, 50);
             this.emprunter.TabIndex = 5;
             this.emprunter.UseVisualStyleBackColor = false;
             this.emprunter.Click += new System.EventHandler(this.emprunter_Click);
+            // 
+            // suggest
+            // 
+            this.suggest.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.suggest.BackColor = System.Drawing.Color.Transparent;
+            this.suggest.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonSugg;
+            this.suggest.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.suggest.FlatAppearance.BorderSize = 0;
+            this.suggest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.suggest.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.suggest.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.suggest.Location = new System.Drawing.Point(69, 101);
+            this.suggest.Margin = new System.Windows.Forms.Padding(0);
+            this.suggest.Name = "suggest";
+            this.suggest.Size = new System.Drawing.Size(242, 50);
+            this.suggest.TabIndex = 6;
+            this.suggest.UseVisualStyleBackColor = false;
+            this.suggest.Click += new System.EventHandler(this.suggest_Click);
             // 
             // tableLayoutPanel6
             // 
@@ -245,6 +256,7 @@ namespace WindowsFormsApp1
             this.TAffichageAbo.Name = "TAffichageAbo";
             this.TAffichageAbo.Size = new System.Drawing.Size(892, 230);
             this.TAffichageAbo.TabIndex = 4;
+            this.TAffichageAbo.SelectedIndexChanged += new System.EventHandler(this.TAffichageAbo_SelectedIndexChanged);
             // 
             // tableLayoutPanel7
             // 
@@ -335,13 +347,14 @@ namespace WindowsFormsApp1
             this.mesAlbums.UseVisualStyleBackColor = false;
             this.mesAlbums.Click += new System.EventHandler(this.mesAlbums_Click);
             // 
-            // label1
+            // imageLabel
             // 
-            this.label1.Image = global::WindowsFormsApp1.Properties.Resources.logoOnly;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(153, 116);
-            this.label1.TabIndex = 2;
+            this.imageLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.imageLabel.AutoSize = true;
+            this.imageLabel.Location = new System.Drawing.Point(190, 251);
+            this.imageLabel.Name = "imageLabel";
+            this.imageLabel.Size = new System.Drawing.Size(0, 13);
+            this.imageLabel.TabIndex = 7;
             // 
             // UserView
             // 
@@ -363,6 +376,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
@@ -392,5 +406,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button previousPage;
         private System.Windows.Forms.Button nextPage;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label imageLabel;
     }
 }

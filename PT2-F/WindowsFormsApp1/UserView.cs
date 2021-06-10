@@ -202,5 +202,27 @@ namespace WindowsFormsApp1
             nextPage.Visible = AffichageAbo?.isOnLastPage == false;
             previousPage.Visible = AffichageAbo?.CurrentPage > 0;
         }
+
+        private void TAffichageAbo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (TAffichageAbo.SelectedItem is ALBUMS alb)
+            {
+                
+                if (alb.POCHETTE == null)
+                {
+                    imageLabel.Image = null;
+                    imageLabel.Text = "Cet album ne possède pas de pochette.";
+                } else
+                {
+                    Image image = Utils.byteArrayToImage(alb.POCHETTE);
+                    imageLabel.AutoSize = false;
+                    imageLabel.Size = image.Size;
+                    imageLabel.Image = Utils.byteArrayToImage(alb.POCHETTE);
+                }
+            } else
+            {
+                imageLabel.Image = null;
+            }
+        }
     }
 }
