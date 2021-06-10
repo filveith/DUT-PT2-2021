@@ -103,7 +103,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(435, 74);
-            this.tableLayoutPanel1.TabIndex = 12;
+            this.tableLayoutPanel1.TabIndex = 2;
             // 
             // passTextBox
             // 
@@ -115,7 +115,7 @@ namespace WindowsFormsApp1
             this.passTextBox.Name = "passTextBox";
             this.passTextBox.PasswordChar = '*';
             this.passTextBox.Size = new System.Drawing.Size(406, 25);
-            this.passTextBox.TabIndex = 3;
+            this.passTextBox.TabIndex = 2;
             // 
             // eyeButton
             // 
@@ -130,6 +130,7 @@ namespace WindowsFormsApp1
             this.eyeButton.Name = "eyeButton";
             this.eyeButton.Size = new System.Drawing.Size(23, 23);
             this.eyeButton.TabIndex = 4;
+            this.eyeButton.TabStop = false;
             this.eyeButton.UseVisualStyleBackColor = true;
             this.eyeButton.Click += new System.EventHandler(this.eyeButton_Click);
             // 
@@ -145,7 +146,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(435, 73);
-            this.tableLayoutPanel4.TabIndex = 13;
+            this.tableLayoutPanel4.TabIndex = 1;
             // 
             // idTextBox
             // 
@@ -156,7 +157,7 @@ namespace WindowsFormsApp1
             this.idTextBox.Margin = new System.Windows.Forms.Padding(0);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.Size = new System.Drawing.Size(406, 25);
-            this.idTextBox.TabIndex = 2;
+            this.idTextBox.TabIndex = 1;
             // 
             // label1
             // 
@@ -225,6 +226,7 @@ namespace WindowsFormsApp1
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(684, 561);
             this.Controls.Add(this.tableLayoutPanel2);
+            this.KeyPreview = true;
             this.MaximumSize = new System.Drawing.Size(1000, 800);
             this.MinimumSize = new System.Drawing.Size(600, 500);
             this.Name = "ConnexionView";
