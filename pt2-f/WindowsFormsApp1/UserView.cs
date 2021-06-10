@@ -26,6 +26,11 @@ namespace WindowsFormsApp1
             u2 = new UserView2(Abo);
         }
 
+        /// <summary>
+        /// Gère le chargement de la page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UserView_Load(object sender, EventArgs e)
         {
             filtres.Items.Clear();
@@ -33,9 +38,13 @@ namespace WindowsFormsApp1
             filtres.Items.Add("titre");
 
             this.recherche();
-
-
         }
+
+        /// <summary>
+        /// Gère le clic sur le bouton 'Mes Albums'
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mesAlbums_Click(object sender, EventArgs e)
         {
 
@@ -45,7 +54,9 @@ namespace WindowsFormsApp1
 
         }
 
-
+        /// <summary>
+        /// Calcule des suggestions pour l'abonné
+        /// </summary>
         private void suggestions()
         {
             AffichageAbo.Clear();
@@ -65,6 +76,9 @@ namespace WindowsFormsApp1
             }
         }
 
+        /// <summary>
+        /// Effectue une recherche selon le filtre
+        /// </summary>
         private void recherche()
         {
             string filtre = filtres.Text;
@@ -110,6 +124,11 @@ namespace WindowsFormsApp1
             }
         }
 
+        /// <summary>
+        /// Permet d'emprunter l'album sélectionné
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void emprunter_Click(object sender, EventArgs e)
         {
             if (AffichageAbo.SelectedItem is ALBUMS al)
@@ -131,6 +150,11 @@ namespace WindowsFormsApp1
             }
         }
 
+        /// <summary>
+        /// Détermine si l'album a déjà été emprunté
+        /// </summary>
+        /// <param name="alb">L'album</param>
+        /// <returns>Vrai si l'album a déjà été emprunté</returns>
         private static bool dejaEmprunté(ALBUMS alb)
         {
             var mesEmprunts = Abo.ConsulterEmprunts();
@@ -145,11 +169,21 @@ namespace WindowsFormsApp1
             return false;
         }
 
+        /// <summary>
+        /// Gère le clic sur le bouton de suggestion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void suggest_Click(object sender, EventArgs e)
         {
             this.suggestions();
         }
 
+        /// <summary>
+        /// Gère le clic sur le bouton 'Page Suivante'
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void nextPage_Click(object sender, EventArgs e)
         {
             AffichageAbo.NextPage();
@@ -157,6 +191,11 @@ namespace WindowsFormsApp1
             previousPage.Visible = AffichageAbo?.CurrentPage > 0;
         }
 
+        /// <summary>
+        /// Gère le clic sur le bouton 'Page Précédente'
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void previousPage_Click(object sender, EventArgs e)
         {
             AffichageAbo.PreviousPage();
