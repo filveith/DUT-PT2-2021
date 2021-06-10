@@ -13,6 +13,7 @@ namespace WindowsFormsApp1
     public partial class AdminView : Form
     {
         private PagedListbox pagedListbox;
+        private Casiers casiers;
         public AdminView()
         {
             InitializeComponent();
@@ -64,8 +65,8 @@ namespace WindowsFormsApp1
         /// <param name="e"></param>
         private void addAlbumButton_Click(object sender, EventArgs e)
         {
-            pagedListbox.Clear();
-            pagedListbox.Add("Pas implémenté");
+            casiers = new Casiers();
+            casiers.ShowDialog();
         }
 
         /// <summary>
@@ -187,6 +188,11 @@ namespace WindowsFormsApp1
             var pochette = obtAlbum.POCHETTE;
             afficheMiniature.Image = Utils.ResizeImage(Utils.byteArrayToImage(pochette), 200, 200);
             
+        }
+
+        private void tableLayoutPanel5_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
