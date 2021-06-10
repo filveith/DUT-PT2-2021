@@ -64,7 +64,7 @@ namespace WindowsFormsApp1
         {
             AffichageAbo.Clear();
             HashSet<ALBUMS> sugg;
-            sugg = Abo.AvoirSuggestions_Opti();
+            sugg = Abo.AvoirSuggestions();
             if (sugg != null && sugg.Count > 0)
             {
                 AffichageAbo.Add("Voici des albums qui devraient vous plairent : ");
