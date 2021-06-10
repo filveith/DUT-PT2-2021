@@ -119,7 +119,6 @@ namespace WindowsFormsApp1
         {
             if (e.KeyChar == 13)
             {
-                textSugg.Visible = false;
                 this.recherche();
             }
         }
@@ -176,7 +175,6 @@ namespace WindowsFormsApp1
         /// <param name="e"></param>
         private void suggest_Click(object sender, EventArgs e)
         {
-            textSugg.Visible = true;
             this.suggestions();
         }
 
