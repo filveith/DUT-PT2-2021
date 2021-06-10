@@ -40,6 +40,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.emprunter = new System.Windows.Forms.Button();
             this.suggest = new System.Windows.Forms.Button();
+            this.imageLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.TAffichageAbo = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
@@ -48,7 +49,6 @@ namespace WindowsFormsApp1
             this.panel2 = new System.Windows.Forms.Panel();
             this.nextPage = new System.Windows.Forms.Button();
             this.mesAlbums = new System.Windows.Forms.Button();
-            this.imageLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -199,6 +199,7 @@ namespace WindowsFormsApp1
             this.emprunter.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonEmprunter;
             this.emprunter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.emprunter.FlatAppearance.BorderSize = 0;
+            this.emprunter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.emprunter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.emprunter.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.emprunter.ForeColor = System.Drawing.SystemColors.ButtonFace;
@@ -229,24 +230,14 @@ namespace WindowsFormsApp1
             this.suggest.UseVisualStyleBackColor = false;
             this.suggest.Click += new System.EventHandler(this.suggest_Click);
             // 
-            // emprunter
+            // imageLabel
             // 
-            this.emprunter.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.emprunter.BackColor = System.Drawing.Color.Transparent;
-            this.emprunter.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonEmprunter;
-            this.emprunter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.emprunter.FlatAppearance.BorderSize = 0;
-            this.emprunter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.emprunter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.emprunter.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emprunter.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.emprunter.Location = new System.Drawing.Point(101, 61);
-            this.emprunter.Margin = new System.Windows.Forms.Padding(0);
-            this.emprunter.Name = "emprunter";
-            this.emprunter.Size = new System.Drawing.Size(178, 50);
-            this.emprunter.TabIndex = 5;
-            this.emprunter.UseVisualStyleBackColor = false;
-            this.emprunter.Click += new System.EventHandler(this.emprunter_Click);
+            this.imageLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.imageLabel.AutoSize = true;
+            this.imageLabel.Location = new System.Drawing.Point(190, 251);
+            this.imageLabel.Name = "imageLabel";
+            this.imageLabel.Size = new System.Drawing.Size(0, 13);
+            this.imageLabel.TabIndex = 7;
             // 
             // tableLayoutPanel6
             // 
@@ -370,20 +361,11 @@ namespace WindowsFormsApp1
             this.mesAlbums.UseVisualStyleBackColor = false;
             this.mesAlbums.Click += new System.EventHandler(this.mesAlbums_Click);
             // 
-            // imageLabel
-            // 
-            this.imageLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.imageLabel.AutoSize = true;
-            this.imageLabel.Location = new System.Drawing.Point(190, 251);
-            this.imageLabel.Name = "imageLabel";
-            this.imageLabel.Size = new System.Drawing.Size(0, 13);
-            this.imageLabel.TabIndex = 7;
-            // 
             // UserView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(235)))), ((int)(((byte)(237)))));
             this.ClientSize = new System.Drawing.Size(1284, 561);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MaximumSize = new System.Drawing.Size(1400, 700);

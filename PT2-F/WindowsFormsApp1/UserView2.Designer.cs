@@ -244,62 +244,6 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel8.ColumnCount = 2;
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 59.62567F));
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.37433F));
-            this.tableLayoutPanel8.Controls.Add(this.tableLayoutPanel9, 1, 0);
-            this.tableLayoutPanel8.Controls.Add(this.afficherMiniature, 0, 0);
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 199);
-            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
-            this.tableLayoutPanel8.RowCount = 1;
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(374, 193);
-            this.tableLayoutPanel8.TabIndex = 4;
-            // 
-            // tableLayoutPanel9
-            // 
-            this.tableLayoutPanel9.ColumnCount = 1;
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel9.Controls.Add(this.dateEmprunt, 0, 0);
-            this.tableLayoutPanel9.Controls.Add(this.dateRetour, 0, 1);
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(225, 3);
-            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
-            this.tableLayoutPanel9.RowCount = 2;
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(146, 187);
-            this.tableLayoutPanel9.TabIndex = 0;
-            // 
-            // dateEmprunt
-            // 
-            this.dateEmprunt.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dateEmprunt.AutoSize = true;
-            this.dateEmprunt.Font = new System.Drawing.Font("Miriam Libre", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateEmprunt.Location = new System.Drawing.Point(73, 39);
-            this.dateEmprunt.Name = "dateEmprunt";
-            this.dateEmprunt.Size = new System.Drawing.Size(0, 14);
-            this.dateEmprunt.TabIndex = 0;
-            // 
-            // dateRetour
-            // 
-            this.dateRetour.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dateRetour.AutoSize = true;
-            this.dateRetour.Font = new System.Drawing.Font("Miriam Libre", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateRetour.Location = new System.Drawing.Point(73, 133);
-            this.dateRetour.Name = "dateRetour";
-            this.dateRetour.Size = new System.Drawing.Size(0, 14);
-            this.dateRetour.TabIndex = 1;
-            // 
-            // afficherMiniature
-            // 
-            this.afficherMiniature.Cursor = System.Windows.Forms.Cursors.Default;
-            this.afficherMiniature.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.afficherMiniature.Location = new System.Drawing.Point(3, 0);
-            this.afficherMiniature.Name = "afficherMiniature";
-            this.afficherMiniature.Size = new System.Drawing.Size(216, 193);
-            this.afficherMiniature.TabIndex = 1;
-            // 
-            // tableLayoutPanel8
-            // 
-            this.tableLayoutPanel8.ColumnCount = 2;
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 59.62567F));
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.37433F));
             this.tableLayoutPanel8.Controls.Add(this.tableLayoutPanel9, 1, 0);
@@ -308,6 +252,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel8.Size = new System.Drawing.Size(374, 193);
             this.tableLayoutPanel8.TabIndex = 4;
             // 
@@ -316,11 +261,15 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel9.ColumnCount = 1;
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel9.Controls.Add(this.dateEmprunt, 0, 0);
             this.tableLayoutPanel9.Controls.Add(this.dateRetour, 0, 1);
             this.tableLayoutPanel9.Location = new System.Drawing.Point(226, 3);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 2;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel9.Size = new System.Drawing.Size(145, 187);
@@ -461,7 +410,7 @@ namespace WindowsFormsApp1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(235)))), ((int)(((byte)(237)))));
             this.ClientSize = new System.Drawing.Size(1284, 561);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MaximumSize = new System.Drawing.Size(1400, 700);

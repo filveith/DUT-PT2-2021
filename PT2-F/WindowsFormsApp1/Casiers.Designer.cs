@@ -46,8 +46,8 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.listCasiers = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.previousPage = new System.Windows.Forms.Button();
             this.nextPage = new System.Windows.Forms.Button();
+            this.previousPage = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -58,8 +58,8 @@ namespace WindowsFormsApp1
             // 
             this.tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.64013F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 56.35987F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(17, 29);
@@ -96,7 +96,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(477, 599);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(416, 599);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // button12
@@ -107,7 +107,7 @@ namespace WindowsFormsApp1
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button12.Font = new System.Drawing.Font("Miriam Libre", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(235)))), ((int)(((byte)(237)))));
-            this.button12.Location = new System.Drawing.Point(285, 513);
+            this.button12.Location = new System.Drawing.Point(239, 513);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(145, 67);
             this.button12.TabIndex = 11;
@@ -123,7 +123,7 @@ namespace WindowsFormsApp1
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button11.Font = new System.Drawing.Font("Miriam Libre", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(235)))), ((int)(((byte)(237)))));
-            this.button11.Location = new System.Drawing.Point(46, 513);
+            this.button11.Location = new System.Drawing.Point(31, 513);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(145, 67);
             this.button11.TabIndex = 10;
@@ -139,7 +139,7 @@ namespace WindowsFormsApp1
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.Font = new System.Drawing.Font("Miriam Libre", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(235)))), ((int)(((byte)(237)))));
-            this.button10.Location = new System.Drawing.Point(285, 412);
+            this.button10.Location = new System.Drawing.Point(239, 412);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(145, 67);
             this.button10.TabIndex = 9;
@@ -155,7 +155,7 @@ namespace WindowsFormsApp1
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.Font = new System.Drawing.Font("Miriam Libre", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(235)))), ((int)(((byte)(237)))));
-            this.button9.Location = new System.Drawing.Point(46, 412);
+            this.button9.Location = new System.Drawing.Point(31, 412);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(145, 67);
             this.button9.TabIndex = 8;
@@ -171,7 +171,7 @@ namespace WindowsFormsApp1
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.Font = new System.Drawing.Font("Miriam Libre", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(235)))), ((int)(((byte)(237)))));
-            this.button8.Location = new System.Drawing.Point(285, 313);
+            this.button8.Location = new System.Drawing.Point(239, 313);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(145, 67);
             this.button8.TabIndex = 7;
@@ -187,7 +187,7 @@ namespace WindowsFormsApp1
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Font = new System.Drawing.Font("Miriam Libre", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(235)))), ((int)(((byte)(237)))));
-            this.button7.Location = new System.Drawing.Point(46, 313);
+            this.button7.Location = new System.Drawing.Point(31, 313);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(145, 67);
             this.button7.TabIndex = 6;
@@ -203,7 +203,7 @@ namespace WindowsFormsApp1
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Miriam Libre", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(235)))), ((int)(((byte)(237)))));
-            this.button6.Location = new System.Drawing.Point(285, 214);
+            this.button6.Location = new System.Drawing.Point(239, 214);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(145, 67);
             this.button6.TabIndex = 5;
@@ -219,7 +219,7 @@ namespace WindowsFormsApp1
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Miriam Libre", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(235)))), ((int)(((byte)(237)))));
-            this.button5.Location = new System.Drawing.Point(46, 214);
+            this.button5.Location = new System.Drawing.Point(31, 214);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(145, 67);
             this.button5.TabIndex = 4;
@@ -235,7 +235,7 @@ namespace WindowsFormsApp1
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Miriam Libre", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(235)))), ((int)(((byte)(237)))));
-            this.button4.Location = new System.Drawing.Point(285, 115);
+            this.button4.Location = new System.Drawing.Point(239, 115);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(145, 67);
             this.button4.TabIndex = 3;
@@ -251,7 +251,7 @@ namespace WindowsFormsApp1
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Miriam Libre", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(235)))), ((int)(((byte)(237)))));
-            this.button3.Location = new System.Drawing.Point(46, 115);
+            this.button3.Location = new System.Drawing.Point(31, 115);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(145, 67);
             this.button3.TabIndex = 2;
@@ -267,7 +267,7 @@ namespace WindowsFormsApp1
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Miriam Libre", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(235)))), ((int)(((byte)(237)))));
-            this.button2.Location = new System.Drawing.Point(285, 16);
+            this.button2.Location = new System.Drawing.Point(239, 16);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(145, 67);
             this.button2.TabIndex = 1;
@@ -283,7 +283,7 @@ namespace WindowsFormsApp1
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Miriam Libre", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(235)))), ((int)(((byte)(237)))));
-            this.button1.Location = new System.Drawing.Point(46, 16);
+            this.button1.Location = new System.Drawing.Point(31, 16);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(145, 67);
             this.button1.TabIndex = 0;
@@ -298,12 +298,12 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel3.Controls.Add(this.listCasiers, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(486, 3);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(425, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 82.63773F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.36227F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(478, 599);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(539, 599);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // listCasiers
@@ -315,54 +315,57 @@ namespace WindowsFormsApp1
             this.listCasiers.ItemHeight = 17;
             this.listCasiers.Location = new System.Drawing.Point(3, 3);
             this.listCasiers.Name = "listCasiers";
-            this.listCasiers.Size = new System.Drawing.Size(472, 488);
+            this.listCasiers.Size = new System.Drawing.Size(533, 489);
             this.listCasiers.TabIndex = 2;
             // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.09568F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.90432F));
             this.tableLayoutPanel4.Controls.Add(this.nextPage, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.previousPage, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 497);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 498);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(472, 99);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(533, 98);
             this.tableLayoutPanel4.TabIndex = 3;
-            // 
-            // previousPage
-            // 
-            this.previousPage.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.previousPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
-            this.previousPage.FlatAppearance.BorderSize = 0;
-            this.previousPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.previousPage.Font = new System.Drawing.Font("Miriam Libre", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.previousPage.Location = new System.Drawing.Point(25, 15);
-            this.previousPage.Name = "previousPage";
-            this.previousPage.Size = new System.Drawing.Size(185, 68);
-            this.previousPage.TabIndex = 0;
-            this.previousPage.Text = "Page Précédente";
-            this.previousPage.UseVisualStyleBackColor = false;
-            this.previousPage.Click += new System.EventHandler(this.previousPage_Click);
             // 
             // nextPage
             // 
             this.nextPage.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.nextPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
+            this.nextPage.BackColor = System.Drawing.Color.Transparent;
+            this.nextPage.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonPageSuivante;
+            this.nextPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.nextPage.FlatAppearance.BorderSize = 0;
+            this.nextPage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.nextPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.nextPage.Font = new System.Drawing.Font("Miriam Libre", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.nextPage.Location = new System.Drawing.Point(261, 15);
+            this.nextPage.Location = new System.Drawing.Point(285, 15);
             this.nextPage.Name = "nextPage";
-            this.nextPage.Size = new System.Drawing.Size(185, 68);
+            this.nextPage.Size = new System.Drawing.Size(245, 68);
             this.nextPage.TabIndex = 1;
-            this.nextPage.Text = "Page Suivante";
             this.nextPage.UseVisualStyleBackColor = false;
             this.nextPage.Click += new System.EventHandler(this.nextPage_Click);
+            // 
+            // previousPage
+            // 
+            this.previousPage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.previousPage.BackColor = System.Drawing.Color.Transparent;
+            this.previousPage.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonPagePrécédente;
+            this.previousPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.previousPage.FlatAppearance.BorderSize = 0;
+            this.previousPage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.previousPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.previousPage.Font = new System.Drawing.Font("Miriam Libre", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.previousPage.Location = new System.Drawing.Point(3, 15);
+            this.previousPage.Name = "previousPage";
+            this.previousPage.Size = new System.Drawing.Size(276, 68);
+            this.previousPage.TabIndex = 0;
+            this.previousPage.UseVisualStyleBackColor = false;
+            this.previousPage.Click += new System.EventHandler(this.previousPage_Click);
             // 
             // Casiers
             // 
