@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MusiquePT2_FModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MusiquePT2_FModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ABONNÉS">
           <Key>
             <PropertyRef Name="CODE_ABONNÉ" />
@@ -14,7 +14,7 @@
           <Property Name="NOM_ABONNÉ" Type="char" MaxLength="32" Nullable="false" />
           <Property Name="PRÉNOM_ABONNÉ" Type="char" MaxLength="32" Nullable="false" />
           <Property Name="LOGIN_ABONNÉ" Type="char" MaxLength="32" Nullable="false" />
-          <Property Name="PASSWORD_ABONNÉ" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="PASSWORD_ABONNÉ" Type="char" MaxLength="256" Nullable="false" />
           <Property Name="isAdmin" Type="bit" Nullable="false" />
           <Property Name="creationDate" Type="datetime" Nullable="false" />
         </EntityType>
@@ -171,8 +171,7 @@
             <End Role="EMPRUNTER" EntitySet="EMPRUNTER" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MusiquePT2_FModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -185,7 +184,7 @@
           <Property Name="NOM_ABONNÉ" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="PRÉNOM_ABONNÉ" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="LOGIN_ABONNÉ" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="PASSWORD_ABONNÉ" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD_ABONNÉ" Type="String" MaxLength="256" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="isAdmin" Type="Boolean" Nullable="false" />
           <Property Name="creationDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="PAYS" Relationship="Self.FK_ABONNÉS_PAYS" FromRole="ABONNÉS" ToRole="PAYS" />
