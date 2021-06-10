@@ -199,7 +199,19 @@ namespace WindowsFormsApp1
         }
 
         /// <summary>
-        /// Renvoie un album selon son login
+        /// Renvoie un abonné selon son login
+        /// </summary>
+        /// <param name="login">Le login de l'abonné</param>
+        /// <returns>L'abonné correspondant</returns>
+        public static ABONNÉS GetABONNÉS(string login)
+        {
+            return (from a in Connexion.ABONNÉS
+                    where a.LOGIN_ABONNÉ == login
+                    select a).FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Renvoie un album selon son code
         /// </summary>
         /// <param name="codeAlbum">Le login</param>
         /// <returns>L'album correpondant</returns>
@@ -210,24 +222,6 @@ namespace WindowsFormsApp1
                     select a).FirstOrDefault();
         }
 
-        /// <summary>
-        /// Renvoie un album selon son code
-        /// </summary>
-        /// <param name="codeAlbum">Le code de l'album</param>
-        /// <returns>L'album correpondant</returns>
-        public static ABONNÉS GetABONNÉS(string login)
-        {
-            return (from a in Connexion.ABONNÉS
-                    where a.LOGIN_ABONNÉ == login
-                    select a).FirstOrDefault();
-        }
-
-        public static ALBUMS GetALBUM(int codeAlbum)
-        {
-            return (from al in Connexion.ALBUMS
-                    where al.CODE_ALBUM == codeAlbum
-                    select al).FirstOrDefault();
-        }
 
         /// <summary>
         /// Traduit un tableau d'octets en image
@@ -268,6 +262,38 @@ namespace WindowsFormsApp1
                 }
                 return builder.ToString();
             }
+        }
+
+        /// <summary>
+        /// Resize the image to the specified width and height.
+        /// </summary>
+        /// <param name="image">The image to resize.</param>
+        /// <param name="width">The width to resize to.</param>
+        /// <param name="height">The height to resize to.</param>
+        /// <returns>The resized image.</returns>
+        public static Bitmap ResizeImage(Image image, int width, int height)
+        {
+            var destRect = new Rectangle(0, 0, width, height);
+            var destImage = new Bitmap(width, height);
+
+            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+
+            using (var graphics = Graphics.FromImage(destImage))
+            {
+                graphics.CompositingMode = CompositingMode.SourceCopy;
+                graphics.CompositingQuality = CompositingQuality.HighQuality;
+                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+                using (var wrapMode = new ImageAttributes())
+                {
+                    wrapMode.SetWrapMode(WrapMode.TileFlipXY);
+                    graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+                }
+            }
+
+            return destImage;
         }
 
         /// <summary>
