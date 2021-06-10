@@ -26,7 +26,7 @@ namespace WindowsFormsApp1
         /// <param name="mdp"> Mot de passe </param>
         /// <param name="codePays"> Code de pays d'où il vient </param>
         /// <returns> Retourne vrai si on ajoute un abonné, faux sinon </returns>
-        public static async Task<ABONNÉS> RegisterAbo(string nom, string prenom, string login, string mdp, int codePays)
+        public static ABONNÉS RegisterAbo(string nom, string prenom, string login, string mdp, int codePays)
         {
             ABONNÉS a = new ABONNÉS();
             try
@@ -46,7 +46,7 @@ namespace WindowsFormsApp1
 
                 // ajout du nouveau Abonné
                 Connexion.ABONNÉS.Add(a);
-                await Connexion.SaveChanges();
+                Connexion.SaveChanges();
                 return a;
             }
             catch (DbUpdateException)
@@ -127,7 +127,7 @@ namespace WindowsFormsApp1
         /// Permet de supprimé un abonné qui n'a pas emprunté depuis 1an 
         /// </summary>
         /// <returns> Liste d'abonnés supprimés </returns>
-        public async static Task<IEnumerable<ABONNÉS>> SupprimerAbosPasEmpruntDepuisUnAn()
+        public static IEnumerable<ABONNÉS> SupprimerAbosPasEmpruntDepuisUnAn()
         {
             var abos = AvoirAbosPasEmprunteDepuisUnAn();
             foreach (ABONNÉS a in abos)
@@ -139,7 +139,7 @@ namespace WindowsFormsApp1
                 Connexion.ABONNÉS.Remove(a);
 
             }
-            await Connexion.SaveChanges();
+            Connexion.SaveChanges();
             return abos;
         }
 

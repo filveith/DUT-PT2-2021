@@ -41,7 +41,7 @@ namespace DiscothequeTest
 
                 Utils.Connexion.EMPRUNTER.RemoveRange(emprunts);
                 Utils.Connexion.ABONNÉS.Remove(abo);
-                Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
+                Utils.Connexion.SaveChanges();
 
                 var result = from data in Utils.Connexion.ABONNÉS
                              where data.LOGIN_ABONNÉ == "TestRegister"
@@ -52,7 +52,7 @@ namespace DiscothequeTest
             }
 
             //On ajoute un abonné
-            ABONNÉS a = Utils.RegisterAbo("Test", "Register", "TestRegister", "123456", 1).GetAwaiter().GetResult();
+            ABONNÉS a = Utils.RegisterAbo("Test", "Register", "TestRegister", "123456", 1);
 
             //On regarde si il a bien etait crée
             Assert.IsNotNull(a);
@@ -82,7 +82,7 @@ namespace DiscothequeTest
 
             if (aboId.Count() == 0)
             {
-                ABONNÉS a = Utils.RegisterAbo("Test", "Register", "TestRegister", "123456", 1).GetAwaiter().GetResult();
+                ABONNÉS a = Utils.RegisterAbo("Test", "Register", "TestRegister", "123456", 1);
                 Assert.IsNotNull(a);
             }
 
@@ -115,7 +115,7 @@ namespace DiscothequeTest
 
                 Assert.IsTrue(alToTake != null);
 
-                EMPRUNTER e = abo.Emprunter(alToTake).GetAwaiter().GetResult();
+                EMPRUNTER e = abo.Emprunter(alToTake);
                 Assert.IsNotNull(e);
                 //Console.WriteLine(e);
 
@@ -146,10 +146,10 @@ namespace DiscothequeTest
                 SuppAboAfterTests(abo);
             }
 
-            Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
+            Utils.Connexion.SaveChanges();
 
             // On crée un abonné pour nos tests
-            abo = Utils.RegisterAbo("Test", "US2", "tus2", "mdpGIGAStrong", 45).GetAwaiter().GetResult();
+            abo = Utils.RegisterAbo("Test", "US2", "tus2", "mdpGIGAStrong", 45);
 
             Assert.IsTrue(abo != null);
 
@@ -163,7 +163,7 @@ namespace DiscothequeTest
                 Assert.IsTrue(alToTake != null);
 
 
-                EMPRUNTER e = abo.Emprunter(alToTake).GetAwaiter().GetResult();
+                EMPRUNTER e = abo.Emprunter(alToTake);
             }
 
             // On recupère ses emprunts, et on vérifie que tout les emprunts fait precedemment sont là
@@ -194,10 +194,10 @@ namespace DiscothequeTest
                 SuppAboAfterTests(abo);
             }
 
-            Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
+            Utils.Connexion.SaveChanges();
 
             // On crée un abonné pour nos tests
-            abo = Utils.RegisterAbo("Test", "US3", "tus3", "mdpStrong", 45).GetAwaiter().GetResult();
+            abo = Utils.RegisterAbo("Test", "US3", "tus3", "mdpStrong", 45);
 
             Assert.IsTrue(abo != null);
 
@@ -212,7 +212,7 @@ namespace DiscothequeTest
                 Assert.IsTrue(alToTake != null);
 
 
-                EMPRUNTER e = abo.Emprunter(alToTake).GetAwaiter().GetResult();
+                EMPRUNTER e = abo.Emprunter(alToTake);
             }
 
             // On recupère ses emprunts, et on choisit un emprunt et l'album à prolonger au hasard
@@ -226,7 +226,7 @@ namespace DiscothequeTest
             // On vérifie que la date avant changement est differente de celle après changement, d'exactement 1 mois
             DateTime dateAvantProlong = emprunt.DATE_RETOUR_ATTENDUE;
 
-            abo.ProlongerEmprunt(al).GetAwaiter().GetResult();
+            abo.ProlongerEmprunt(al);
 
             DateTime dateApresProlong = emprunt.DATE_RETOUR_ATTENDUE;
 
@@ -235,7 +235,7 @@ namespace DiscothequeTest
 
             // On vérifie qu'on ne peut pas prolonger un emprunt déjà emprunté
 
-            abo.ProlongerEmprunt(al).GetAwaiter().GetResult();
+            abo.ProlongerEmprunt(al);
 
             DateTime dateApresSecondProlong = emprunt.DATE_RETOUR_ATTENDUE;
 
@@ -263,10 +263,10 @@ namespace DiscothequeTest
                 SuppAboAfterTests(abo);
             }
 
-            Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
+            Utils.Connexion.SaveChanges();
 
             // On crée un abonné pour nos tests
-            abo = Utils.RegisterAbo("Test", "US4", "tus4", "mdpStrong", 45).GetAwaiter().GetResult();
+            abo = Utils.RegisterAbo("Test", "US4", "tus4", "mdpStrong", 45);
 
             Assert.IsTrue(abo != null);
 
@@ -280,7 +280,7 @@ namespace DiscothequeTest
             Assert.IsTrue(alToTake != null);
 
 
-            abo.Emprunter(alToTake).GetAwaiter().GetResult();
+            abo.Emprunter(alToTake);
 
             EMPRUNTER e = (from emp in Utils.Connexion.EMPRUNTER
                            where emp.CODE_ALBUM == alToTake.CODE_ALBUM
@@ -303,7 +303,7 @@ namespace DiscothequeTest
             Assert.IsFalse(prolongésBefore.Any(emprunt => (emprunt.CODE_ABONNÉ == e.CODE_ABONNÉ) && (emprunt.CODE_ALBUM == e.CODE_ALBUM)));
 
             // On prolonge l'emprunt
-            bool prolong = abo.ProlongerEmprunt(alToTake).GetAwaiter().GetResult();
+            bool prolong = abo.ProlongerEmprunt(alToTake);
 
             Assert.IsTrue(prolong);
 
@@ -336,10 +336,10 @@ namespace DiscothequeTest
                 SuppAboAfterTests(abo);
             }
 
-            Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
+            Utils.Connexion.SaveChanges();
 
             // On crée un abonné pour nos tests
-            abo = Utils.RegisterAbo("Test", "US5", "tus5", "mdpTRESStrong", 45).GetAwaiter().GetResult();
+            abo = Utils.RegisterAbo("Test", "US5", "tus5", "mdpTRESStrong", 45);
 
             Assert.IsTrue(abo != null);
 
@@ -353,7 +353,7 @@ namespace DiscothequeTest
                 Assert.IsTrue(alToTake != null);
 
 
-                EMPRUNTER e = abo.Emprunter(alToTake).GetAwaiter().GetResult();
+                EMPRUNTER e = abo.Emprunter(alToTake);
             }
 
             // On vérifie que l'abonné n'est pas pour l'instant en retard
@@ -367,7 +367,7 @@ namespace DiscothequeTest
 
             Assert.IsTrue(alb != null);
 
-            EMPRUNTER emp = abo.Emprunter(alb).GetAwaiter().GetResult();
+            EMPRUNTER emp = abo.Emprunter(alb);
 
             Assert.IsNotNull(emp);
 
@@ -401,7 +401,7 @@ namespace DiscothequeTest
             abonne.creationDate = DateTime.Now.AddDays(-400);
             abonne.CODE_PAYS = 5;
             idAboTest = abonne.CODE_ABONNÉ;
-            Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
+            Utils.Connexion.SaveChanges();
 
             var middleState = from abFinal in Utils.Connexion.ABONNÉS
                               where abFinal.LOGIN_ABONNÉ == "TestRegister"
@@ -417,18 +417,18 @@ namespace DiscothequeTest
             Assert.IsTrue(alb != null);
 
             //on l'emprunte
-            EMPRUNTER e = abonne.Emprunter(alb).GetAwaiter().GetResult();
+            EMPRUNTER e = abonne.Emprunter(alb);
 
             //on verifie que l'emprunt a bien fonctionner
             Assert.IsNotNull(e);
 
             //On chnage la date de son dernier emprunt a plus d'un an
             e.DATE_EMPRUNT = DateTime.Now.AddDays(-390);
-            Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
+            Utils.Connexion.SaveChanges();
             //FIN DE PREP
 
             //On recupere la liste des abo inactifs supprimer
-            var abo = Utils.SupprimerAbosPasEmpruntDepuisUnAn().GetAwaiter().GetResult();
+            var abo = Utils.SupprimerAbosPasEmpruntDepuisUnAn();
 
             //On verifie que l'abonne "TestRegister" à bien etait supprimé
             foreach (ABONNÉS a in abo)
@@ -466,10 +466,10 @@ namespace DiscothequeTest
                 SuppAboAfterTests(abo);
             }
 
-            Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
+            Utils.Connexion.SaveChanges();
 
             // On crée un abonné pour nos tests
-            abo = Utils.RegisterAbo("Test", "US47", "tus7", "mdp", 7).GetAwaiter().GetResult();
+            abo = Utils.RegisterAbo("Test", "US47", "tus7", "mdp", 7);
 
             Assert.IsTrue(abo != null);
 
@@ -480,9 +480,9 @@ namespace DiscothequeTest
             ALBUMS premier = topAlbums.FirstOrDefault();
 
             //on emprunte cette album encore une fois
-            abo.Emprunter(premier).GetAwaiter().GetResult();
+            abo.Emprunter(premier);
 
-            Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
+            Utils.Connexion.SaveChanges();
 
             //on vérifie que l'album est encore le plus emprunté
             Assert.IsTrue(premier.Equals(Utils.AvoirTopAlbum().FirstOrDefault()));
@@ -508,13 +508,13 @@ namespace DiscothequeTest
                     SuppAboAfterTests(abonne);
                 }
 
-                Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
+                Utils.Connexion.SaveChanges();
 
-                abonne = Utils.RegisterAbo("Test", "US7", "tus7." + a, "mdp", 7).GetAwaiter().GetResult();
+                abonne = Utils.RegisterAbo("Test", "US7", "tus7." + a, "mdp", 7);
 
                 Assert.IsTrue(abo != null);
 
-                abonne.Emprunter(alToTake).GetAwaiter().GetResult();
+                abonne.Emprunter(alToTake);
             }
 
             //on vérifie que l'album emprunté est maintenant n°1
@@ -580,10 +580,10 @@ namespace DiscothequeTest
                 SuppAboAfterTests(abo);
             }
 
-            Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
+            Utils.Connexion.SaveChanges();
 
             // On crée un abonné pour nos tests
-            abo = Utils.RegisterAbo("Test", "US9", "tus9", "mdpVERYStrong", 45).GetAwaiter().GetResult();
+            abo = Utils.RegisterAbo("Test", "US9", "tus9", "mdpVERYStrong", 45);
 
             Assert.IsTrue(abo != null);
 
@@ -598,7 +598,7 @@ namespace DiscothequeTest
                 Assert.IsTrue(alToTake != null);
 
 
-                EMPRUNTER e = abo.Emprunter(alToTake).GetAwaiter().GetResult();
+                EMPRUNTER e = abo.Emprunter(alToTake);
             }
 
             // On vérifie que aucun des emprunts du nouvel abonné ne sont prolongés
@@ -606,7 +606,7 @@ namespace DiscothequeTest
             Assert.IsFalse(beforeProlonges.Any(emp => emp.CODE_ABONNÉ == abo.CODE_ABONNÉ));
 
             // On prolonge tout ses emprunts
-            abo.ProlongerTousEmprunts().GetAwaiter().GetResult();
+            abo.ProlongerTousEmprunts();
 
             // On vérifie maintenant que tout les emprunts de l'abonné sont prolongés
             // On vérifie que aucun des emprunts du nouvel abonné ne sont prolongés
@@ -633,10 +633,10 @@ namespace DiscothequeTest
                 SuppAboAfterTests(abo);
             }
 
-            Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
+            Utils.Connexion.SaveChanges();
 
             // On crée un abonné pour nos tests
-            abo = Utils.RegisterAbo("Test", "US10", "tus10", "mdpMEGAStrong", 44).GetAwaiter().GetResult();
+            abo = Utils.RegisterAbo("Test", "US10", "tus10", "mdpMEGAStrong", 44);
 
             Assert.IsTrue(abo != null);
 
@@ -650,7 +650,7 @@ namespace DiscothequeTest
                 Assert.IsTrue(alToTake != null);
 
 
-                abo.Emprunter(alToTake).GetAwaiter().GetResult();
+                abo.Emprunter(alToTake);
             }
 
             // On emprunte 3 albums du genre classique
@@ -663,7 +663,7 @@ namespace DiscothequeTest
                 Assert.IsTrue(alToTake != null);
 
 
-                abo.Emprunter(alToTake).GetAwaiter().GetResult();
+                abo.Emprunter(alToTake);
             }
 
             // On emprunte 3 albums du genre contemporain
@@ -676,7 +676,7 @@ namespace DiscothequeTest
                 Assert.IsTrue(alToTake != null);
 
 
-                abo.Emprunter(alToTake).GetAwaiter().GetResult();
+                abo.Emprunter(alToTake);
             }
 
             Assert.IsTrue(abo.ConsulterEmprunts().Count() == 10);
@@ -796,7 +796,7 @@ namespace DiscothequeTest
         private static void AddAboForTests(string nom, string prenom, string login, string mdp, int codePays)
         {
             //ajoute un abonné à la base 
-            Utils.RegisterAbo(nom, prenom, login, mdp, codePays).GetAwaiter().GetResult();
+            Utils.RegisterAbo(nom, prenom, login, mdp, codePays);
         }
 
         /// <summary>
@@ -813,7 +813,7 @@ namespace DiscothequeTest
                 }
             }
             Utils.Connexion.ABONNÉS.Remove(abo);
-            Utils.Connexion.SaveChanges().GetAwaiter().GetResult();
+            Utils.Connexion.SaveChanges();
         }
     }
 }

@@ -15,7 +15,6 @@ namespace WindowsFormsApp1
         public DebugWindow()
         {
             InitializeComponent();
-            Task.Factory.StartNew(() => CachedElements.RefreshCache());
         }
 
         private void DebugWindow_Load(object sender, EventArgs e)
@@ -52,7 +51,8 @@ namespace WindowsFormsApp1
                     }
                     break;
                 case "US6":
-                    foreach (var v in Utils.SupprimerAbosPasEmpruntDepuisUnAn().GetAwaiter().GetResult())
+                    var liste = Utils.SupprimerAbosPasEmpruntDepuisUnAn();
+                    foreach (var v in liste)
                     {
                         listBox1.Items.Add(v);
                     }
@@ -61,20 +61,19 @@ namespace WindowsFormsApp1
                     Utils.AvoirTopAlbum().ForEach(v => listBox1.Items.Add(v));
                     break;
                 case "US8":
-                    foreach (var v in CachedElements.albumsPasEmpruntes)
+                    foreach (var v in Utils.AvoirAlbumsPasEmprunteDepuisUnAn())
                     {
                         listBox1.Items.Add(v);
                     }
                     break;
                 case "US9":
-                    Utils.GetABONNÉ(65).ProlongerTousEmprunts().GetAwaiter().GetResult().ForEach(v => listBox1.Items.Add(v));
+                    Utils.GetABONNÉ(65).ProlongerTousEmprunts().ForEach(v => listBox1.Items.Add(v));
                     break;
                 case "US10":
-                    foreach (ALBUMS al in CachedElements.suggestionsParAbo[Utils.GetABONNÉ(65)])
+                    foreach (ALBUMS al in Utils.GetABONNÉ(65).AvoirSuggestions())
                     {
                         listBox1.Items.Add(al);
                     }
-                    Task.Factory.StartNew(() => CachedElements.RefreshSuggestions(Utils.GetABONNÉ(65)));
                     break;
                 default:
                     if (s != null && s.Count() > 0)
