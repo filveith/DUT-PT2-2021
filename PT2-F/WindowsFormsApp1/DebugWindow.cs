@@ -67,7 +67,9 @@ namespace WindowsFormsApp1
                     }
                     break;
                 case "US9":
-                    Utils.GetABONNÉ(65).ProlongerTousEmprunts().ForEach(v => listBox1.Items.Add(v));
+                    foreach (var v in Utils.GetABONNÉ(65).ProlongerTousEmprunts()) {
+                        listBox1.Items.Add(v);
+                    }
                     break;
                 case "US10":
                     foreach (ALBUMS al in Utils.GetABONNÉ(65).AvoirSuggestions())

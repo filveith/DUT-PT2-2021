@@ -62,25 +62,26 @@ namespace WindowsFormsApp1
 
         private void prolongerEmprunt_Click(object sender, EventArgs e)
         {
-            if (previousWindow.currentSugg == null)
+            int position = AffichageAbo.SelectedItem.ToString().IndexOf("|");
+            string titreAlbum = AffichageAbo.SelectedItem.ToString().Substring(0, position - 1);
+
+            ALBUMS obtAlbum = (from a in Utils.Connexion.ALBUMS
+                               where a.TITRE_ALBUM.ToString() == titreAlbum
+                               select a).FirstOrDefault();
+
+            if (obtAlbum is ALBUMS al)
             {
-                int position = AffichageAbo.SelectedItem.ToString().IndexOf("|");
-                string titreAlbum = AffichageAbo.SelectedItem.ToString().Substring(0, position - 1);
+                UserView.Abo.ProlongerEmprunt(Utils.GetALBUM(al.CODE_ALBUM));
 
-                ALBUMS obtAlbum = (from a in Utils.Connexion.ALBUMS
-                                   where a.TITRE_ALBUM.ToString() == titreAlbum
-                                   select a).FirstOrDefault();
 
-                if (obtAlbum is ALBUMS al)
-                {
-                    UserView.Abo.ProlongerEmprunt(Utils.GetALBUM(al.CODE_ALBUM));
-                    ConnexionView.Pop("Emprunt prolongé de 1 mois !", "Attention");
-                }
-                else
-                {
-                    ConnexionView.Pop("ce n'est pas un album", "Erreur");
-                }
+                ConnexionView.Pop("Emprunt prolongé de 1 mois !", "Attention");
+                prolongerEmpruntButton.Enabled = false;
             }
+            else
+            {
+                ConnexionView.Pop("ce n'est pas un album", "Erreur");
+            }
+
 
         }
 

@@ -38,19 +38,18 @@ namespace WindowsFormsApp1
             }
         }
 
-        public List<EMPRUNTER> ProlongerTousEmprunts()
+        public IEnumerable<EMPRUNTER> ProlongerTousEmprunts()
         {
             int i = 0;
-            var emprunts = (from emp in Utils.Connexion.EMPRUNTER
-                            where emp.CODE_ABONNÉ == this.CODE_ABONNÉ && emp.nbRallongements == 0
+            var allEmprunts = (from emp in Utils.Connexion.EMPRUNTER
+                            where emp.CODE_ABONNÉ == this.CODE_ABONNÉ
                             select emp).ToList();
-
+            var emprunts = allEmprunts.Where(emp => emp.nbRallongements == 0);
 
             foreach (EMPRUNTER e in emprunts)
             {
                 i++;
                 e.DATE_RETOUR_ATTENDUE = e.DATE_RETOUR_ATTENDUE.AddMonths(1);
-                e.nbRallongements = 1;
             }
             Utils.Connexion.SaveChanges();
             Console.WriteLine(i + " rallongement(s) effectué(s)");
@@ -90,7 +89,6 @@ namespace WindowsFormsApp1
                 if (emprunt.nbRallongements != 1)
                 {
                     emprunt.DATE_RETOUR_ATTENDUE = emprunt.DATE_RETOUR_ATTENDUE.AddMonths(1);
-                    emprunt.nbRallongements = 1;
                     Utils.Connexion.SaveChanges();
                     Console.WriteLine("Rallongement effectué");
                     return true;

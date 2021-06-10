@@ -50,7 +50,6 @@
           <Property Name="DATE_EMPRUNT" Type="datetime" Nullable="false" />
           <Property Name="DATE_RETOUR_ATTENDUE" Type="datetime" Nullable="false" />
           <Property Name="DATE_RETOUR" Type="datetime" />
-          <Property Name="nbRallongements" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="GENRES">
           <Key>
@@ -227,7 +226,6 @@
           <Property Name="DATE_EMPRUNT" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DATE_RETOUR_ATTENDUE" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DATE_RETOUR" Type="DateTime" Precision="3" />
-          <Property Name="nbRallongements" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ABONNÉS" Relationship="Self.FK_EMPRUNTER_ABONNÉS" FromRole="EMPRUNTER" ToRole="ABONNÉS" />
           <NavigationProperty Name="ALBUMS" Relationship="Self.FK_EMPRUNTER_ALBUMS" FromRole="EMPRUNTER" ToRole="ALBUMS" />
         </EntityType>
@@ -405,7 +403,6 @@
                 <ScalarProperty Name="DATE_EMPRUNT" ColumnName="DATE_EMPRUNT" />
                 <ScalarProperty Name="DATE_RETOUR_ATTENDUE" ColumnName="DATE_RETOUR_ATTENDUE" />
                 <ScalarProperty Name="DATE_RETOUR" ColumnName="DATE_RETOUR" />
-                <ScalarProperty Name="nbRallongements" ColumnName="nbRallongements" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

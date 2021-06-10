@@ -19,7 +19,6 @@ namespace WindowsFormsApp1
         public System.DateTime DATE_EMPRUNT { get; set; }
         public System.DateTime DATE_RETOUR_ATTENDUE { get; set; }
         public Nullable<System.DateTime> DATE_RETOUR { get; set; }
-        public int nbRallongements { get; set; }
     
         public virtual ABONNÉS ABONNÉS { get; set; }
         public virtual ALBUMS ALBUMS { get; set; }
