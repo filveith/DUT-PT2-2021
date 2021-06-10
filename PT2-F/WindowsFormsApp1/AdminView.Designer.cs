@@ -37,7 +37,7 @@ namespace WindowsFormsApp1
             this.top10Button = new System.Windows.Forms.Button();
             this.suppIdleUsersButton = new System.Windows.Forms.Button();
             this.listerAbonner = new System.Windows.Forms.Button();
-            this.addAlbumButton = new System.Windows.Forms.Button();
+            this.showLockersButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.log = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -76,8 +76,6 @@ namespace WindowsFormsApp1
             this.buttons.ColumnCount = 2;
             this.buttons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.buttons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.buttons.Controls.Add(this.listEmpruntsProlongButton, 0, 0);
-            this.buttons.Controls.Add(this.listRetardButton, 1, 0);
             this.buttons.Controls.Add(this.notEmprunterSinceAYear, 1, 1);
             this.buttons.Controls.Add(this.top10Button, 1, 2);
             this.buttons.Controls.Add(this.suppIdleUsersButton, 0, 3);
@@ -85,6 +83,10 @@ namespace WindowsFormsApp1
             this.buttons.Controls.Add(this.listRetardButton, 0, 1);
             this.buttons.Controls.Add(this.showLockersButton, 1, 0);
             this.buttons.Controls.Add(this.addAlbumButton, 0, 1);
+            this.buttons.Controls.Add(this.listerAbonner, 1, 3);
+            this.buttons.Controls.Add(this.listEmpruntsProlongButton, 0, 2);
+            this.buttons.Controls.Add(this.listRetardButton, 0, 1);
+            this.buttons.Controls.Add(this.showLockersButton, 1, 0);
             this.buttons.Dock = System.Windows.Forms.DockStyle.Left;
             this.buttons.Location = new System.Drawing.Point(3, 3);
             this.buttons.Name = "buttons";
@@ -104,7 +106,7 @@ namespace WindowsFormsApp1
             this.listEmpruntsProlongButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.listEmpruntsProlongButton.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listEmpruntsProlongButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.listEmpruntsProlongButton.Location = new System.Drawing.Point(24, 73);
+            this.listEmpruntsProlongButton.Location = new System.Drawing.Point(24, 357);
             this.listEmpruntsProlongButton.Name = "listEmpruntsProlongButton";
             this.listEmpruntsProlongButton.Size = new System.Drawing.Size(113, 100);
             this.listEmpruntsProlongButton.TabIndex = 1;
@@ -192,21 +194,21 @@ namespace WindowsFormsApp1
             this.listerAbonner.UseVisualStyleBackColor = false;
             this.listerAbonner.Click += new System.EventHandler(this.listerAbonner_Click);
             // 
-            // addAlbumButton
+            // showLockersButton
             // 
-            this.addAlbumButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.addAlbumButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
-            this.addAlbumButton.FlatAppearance.BorderSize = 0;
-            this.addAlbumButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addAlbumButton.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addAlbumButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.addAlbumButton.Location = new System.Drawing.Point(23, 271);
-            this.addAlbumButton.Name = "addAlbumButton";
-            this.addAlbumButton.Size = new System.Drawing.Size(116, 102);
-            this.addAlbumButton.TabIndex = 3;
-            this.addAlbumButton.Text = "Ajouter Albums";
-            this.addAlbumButton.UseVisualStyleBackColor = false;
-            this.addAlbumButton.Click += new System.EventHandler(this.addAlbumButton_Click);
+            this.showLockersButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.showLockersButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
+            this.showLockersButton.FlatAppearance.BorderSize = 0;
+            this.showLockersButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.showLockersButton.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.showLockersButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.showLockersButton.Location = new System.Drawing.Point(185, 30);
+            this.showLockersButton.Name = "showLockersButton";
+            this.showLockersButton.Size = new System.Drawing.Size(116, 103);
+            this.showLockersButton.TabIndex = 3;
+            this.showLockersButton.Text = "Afficher les albums empruntés par casier";
+            this.showLockersButton.UseVisualStyleBackColor = false;
+            this.showLockersButton.Click += new System.EventHandler(this.showLockersButton_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -264,23 +266,6 @@ namespace WindowsFormsApp1
             this.panel1.Size = new System.Drawing.Size(272, 152);
             this.panel1.TabIndex = 4;
             // 
-            // previousPage
-            // 
-            this.previousPage.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.previousPage.BackColor = System.Drawing.Color.Transparent;
-            this.previousPage.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonPagePrécédente;
-            this.previousPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.previousPage.FlatAppearance.BorderSize = 0;
-            this.previousPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.previousPage.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.previousPage.ForeColor = System.Drawing.SystemColors.Control;
-            this.previousPage.Location = new System.Drawing.Point(-1, 44);
-            this.previousPage.Name = "previousPage";
-            this.previousPage.Size = new System.Drawing.Size(277, 64);
-            this.previousPage.TabIndex = 5;
-            this.previousPage.UseVisualStyleBackColor = false;
-            this.previousPage.Click += new System.EventHandler(this.previousPage_Click);
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.nextPage);
@@ -289,23 +274,6 @@ namespace WindowsFormsApp1
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(252, 152);
             this.panel2.TabIndex = 5;
-            // 
-            // nextPage
-            // 
-            this.nextPage.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.nextPage.BackColor = System.Drawing.Color.Transparent;
-            this.nextPage.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonPageSuivante;
-            this.nextPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.nextPage.FlatAppearance.BorderSize = 0;
-            this.nextPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.nextPage.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nextPage.ForeColor = System.Drawing.SystemColors.Control;
-            this.nextPage.Location = new System.Drawing.Point(13, 44);
-            this.nextPage.Name = "nextPage";
-            this.nextPage.Size = new System.Drawing.Size(241, 64);
-            this.nextPage.TabIndex = 4;
-            this.nextPage.UseVisualStyleBackColor = false;
-            this.nextPage.Click += new System.EventHandler(this.nextPage_Click);
             // 
             // label1
             // 
@@ -395,6 +363,41 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(884, 701);
             this.tableLayoutPanel5.TabIndex = 10;
+            this.tableLayoutPanel5.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel5_Paint);
+            // 
+            // previousPage
+            // 
+            this.previousPage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.previousPage.BackColor = System.Drawing.Color.Transparent;
+            this.previousPage.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonPagePrécédente;
+            this.previousPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.previousPage.FlatAppearance.BorderSize = 0;
+            this.previousPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.previousPage.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.previousPage.ForeColor = System.Drawing.SystemColors.Control;
+            this.previousPage.Location = new System.Drawing.Point(-1, 44);
+            this.previousPage.Name = "previousPage";
+            this.previousPage.Size = new System.Drawing.Size(277, 64);
+            this.previousPage.TabIndex = 5;
+            this.previousPage.UseVisualStyleBackColor = false;
+            this.previousPage.Click += new System.EventHandler(this.previousPage_Click);
+            // 
+            // nextPage
+            // 
+            this.nextPage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.nextPage.BackColor = System.Drawing.Color.Transparent;
+            this.nextPage.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonPageSuivante;
+            this.nextPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.nextPage.FlatAppearance.BorderSize = 0;
+            this.nextPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nextPage.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nextPage.ForeColor = System.Drawing.SystemColors.Control;
+            this.nextPage.Location = new System.Drawing.Point(13, 44);
+            this.nextPage.Name = "nextPage";
+            this.nextPage.Size = new System.Drawing.Size(241, 64);
+            this.nextPage.TabIndex = 4;
+            this.nextPage.UseVisualStyleBackColor = false;
+            this.nextPage.Click += new System.EventHandler(this.nextPage_Click);
             // 
             // afficheMiniature
             // 
@@ -434,7 +437,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TableLayoutPanel buttons;
         private System.Windows.Forms.Button listEmpruntsProlongButton;
         private System.Windows.Forms.Button listRetardButton;
-        private System.Windows.Forms.Button addAlbumButton;
+        private System.Windows.Forms.Button showLockersButton;
         private System.Windows.Forms.Button notEmprunterSinceAYear;
         private System.Windows.Forms.Button top10Button;
         private System.Windows.Forms.Button suppIdleUsersButton;

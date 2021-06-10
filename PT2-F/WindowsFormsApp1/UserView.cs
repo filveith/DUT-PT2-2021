@@ -65,7 +65,6 @@ namespace WindowsFormsApp1
             sugg = Abo.AvoirSuggestions();
             if (sugg != null && sugg.Count > 0)
             {
-                AffichageAbo.Add("Voici des albums qui devraient vous plairent : ");
                 AffichageAbo.AddRange(sugg);
                 nextPage.Visible = AffichageAbo?.isOnLastPage == false;
                 previousPage.Visible = AffichageAbo?.CurrentPage > 0;
@@ -217,7 +216,7 @@ namespace WindowsFormsApp1
                     Image image = Utils.byteArrayToImage(alb.POCHETTE);
                     imageLabel.AutoSize = false;
                     imageLabel.Size = image.Size;
-                    imageLabel.Image = Utils.byteArrayToImage(alb.POCHETTE);
+                    imageLabel.Image = Utils.ResizeImage(image, 200, 200);
                 }
             } else
             {
