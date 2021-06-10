@@ -39,7 +39,7 @@ namespace WindowsFormsApp1
                                where a.TITRE_ALBUM.ToString() == titreAlbum
                                select a).FirstOrDefault();
             var emprunt = (from em in Utils.Connexion.EMPRUNTER
-                           where em.CODE_ABONNÉ == UserView.Abo.CODE_ABONNÉ
+                           where em.CODE_ABONNÉ == UserView.Abo.CODE_ABONNÉ && em.DATE_RETOUR == null
                            where em.CODE_ALBUM == obtAlbum.CODE_ALBUM
                            select em).FirstOrDefault();
             prolongerEmpruntButton.Enabled = emprunt.nbRallongements == 0;
