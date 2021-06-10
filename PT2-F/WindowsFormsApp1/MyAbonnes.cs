@@ -30,7 +30,7 @@ namespace WindowsFormsApp1
             {
                 int delai = (from al in Utils.Connexion.ALBUMS
                              join genre in Utils.Connexion.GENRES on al.CODE_GENRE equals genre.CODE_GENRE
-                             where al.CODE_ALBUM == album.CODE_ALBUM
+                             where al.CODE_ALBUM == a.CODE_ALBUM
                              select genre.DÉLAI).First();
                 DateTime retour = DateTime.Now.AddDays(delai);
                 EMPRUNTER e = new EMPRUNTER { CODE_ABONNÉ = this.CODE_ABONNÉ, CODE_ALBUM = a.CODE_ALBUM, DATE_EMPRUNT = DateTime.Now, DATE_RETOUR_ATTENDUE = retour };
