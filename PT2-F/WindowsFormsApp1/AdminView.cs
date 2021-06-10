@@ -13,6 +13,7 @@ namespace WindowsFormsApp1
     public partial class AdminView : Form
     {
         private PagedListbox pagedListbox;
+        private Casiers casiers;
         public AdminView()
         {
             InitializeComponent();
@@ -46,10 +47,10 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void addAlbumButton_Click(object sender, EventArgs e)
+        private void showLockersButton_Click(object sender, EventArgs e)
         {
-            pagedListbox.Clear();
-            pagedListbox.Add("Pas implémenté");
+            casiers = new Casiers();
+            casiers.ShowDialog();
         }
 
         private void removeAlbumButton_Click(object sender, EventArgs e)
@@ -123,6 +124,11 @@ namespace WindowsFormsApp1
             pagedListbox.PreviousPage();
             nextPage.Visible = pagedListbox?.isOnLastPage == false;
             previousPage.Visible = pagedListbox?.CurrentPage > 0;
+        }
+
+        private void tableLayoutPanel5_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -64,6 +64,12 @@
     <Compile Include="AdminView.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Casiers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Casiers.Designer.cs">
+      <DependentUpon>Casiers.cs</DependentUpon>
+    </Compile>
     <Compile Include="PagedListbox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -142,6 +148,9 @@
       <DependentUpon>UserView2.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils.cs" />
+    <EmbeddedResource Include="Casiers.resx">
+      <DependentUpon>Casiers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConnexionView.resx">
       <DependentUpon>ConnexionView.cs</DependentUpon>
     </EmbeddedResource>
