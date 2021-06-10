@@ -9,6 +9,11 @@ namespace WindowsFormsApp1
     public partial class EMPRUNTER
     {
         ALBUMS album;
+
+        /// <summary>
+        /// Renvoie les informations sur cet emprunt
+        /// </summary>
+        /// <returns>Les informations</returns>
         public override string ToString()
         {
             if(album == null)

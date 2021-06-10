@@ -18,11 +18,11 @@ namespace WindowsFormsApp1
             Task.Factory.StartNew(() => CachedElements.RefreshCache());
         }
 
-        private void DebugWindow_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Lorsque le texte de la box change, teste, l'US correspondante
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void comboBox1_TextChanged(object sender, EventArgs e)
         {
             string s = (string)comboBox1.Text;

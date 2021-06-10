@@ -23,6 +23,11 @@ namespace WindowsFormsApp1
             
         }
 
+        /// <summary>
+        /// Change de page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Page_SelectedIndexChanged(object sender, EventArgs e)
         {
             int position = AffichageAbo.SelectedItem.ToString().IndexOf("|");
@@ -38,6 +43,11 @@ namespace WindowsFormsApp1
             prolongerEmpruntButton.Enabled = emprunt.nbRallongements == 0;
         }
 
+        /// <summary>
+        /// Gère le chargement de la page 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UserView2_Load(object sender, EventArgs e)
         {
             AffichageAbo.Clear();
@@ -53,6 +63,11 @@ namespace WindowsFormsApp1
             previousPage.Visible = AffichageAbo?.CurrentPage > 0;
         }
 
+        /// <summary>
+        /// Gère le clic sur le bouton 'Mes Albums'
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mesAlbums_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -80,6 +95,11 @@ namespace WindowsFormsApp1
 
         }
 
+        /// <summary>
+        /// Gère le clic sur le bouton de prolongement de tout les emprunts
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void prolongerToutEmprunt_Click(object sender, EventArgs e)
         {
             AffichageAbo.Clear();
@@ -87,6 +107,11 @@ namespace WindowsFormsApp1
             ConnexionView.Pop("Tous vos emprunts ont bien étés prolongés !", "Attention");
         }
 
+        /// <summary>
+        /// Gère le clic sur le bouton 'Page Suivante'
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void nextPage_Click(object sender, EventArgs e)
         {
             AffichageAbo.NextPage();
@@ -94,6 +119,11 @@ namespace WindowsFormsApp1
             previousPage.Visible = AffichageAbo?.CurrentPage > 0;
         }
 
+        /// <summary>
+        /// Gère le clic sur le bouton 'Page Précédente'
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void previousPage_Click(object sender, EventArgs e)
         {
             AffichageAbo.PreviousPage();

@@ -17,6 +17,11 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Vérifie que toutes les inforamtions nécessaires sont données et valides
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ValiderInscription_Click(object sender, EventArgs e)
         {
 
@@ -42,12 +47,22 @@ namespace WindowsFormsApp1
             else PopupErreurOK("Tous les champs doivent être remplis", "Erreur");
         }
 
+        /// <summary>
+        /// Affiche une fenêtre avec un message d'erreur
+        /// </summary>
+        /// <param name="message">Le message</param>
+        /// <param name="caption">Le type</param>
         private void PopupErreurOK(string message, string caption)
         {
             MessageBoxButtons buttons = MessageBoxButtons.OK;
             MessageBox.Show(message, caption, buttons);
         }
 
+        /// <summary>
+        /// Prépare la fenêtre lors de son chargement
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void InscriptionView_Load(object sender, EventArgs e)
         {
             IQueryable<PAYS> pays = Utils.AvoirListeDesPays();

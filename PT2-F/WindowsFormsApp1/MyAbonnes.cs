@@ -9,21 +9,30 @@ namespace WindowsFormsApp1
 {
     public partial class ABONNÉS
     {
+        /// <summary>
+        /// Affiche des informations sur l'abonné
+        /// </summary>
+        /// <returns>Les informations sous forme de string</returns>
         public override string ToString()
         {
             return this.NOM_ABONNÉ.Trim() + " " + this.PRÉNOM_ABONNÉ.Trim();
         }
 
-        public async Task<EMPRUNTER> Emprunter(ALBUMS a)
+        /// <summary>
+        /// Crée un nouvel emprunt pour cet abonné et l'album précisé
+        /// </summary>
+        /// <param name="album">L'album</param>
+        /// <returns></returns>
+        public async Task<EMPRUNTER> Emprunter(ALBUMS album)
         {
             try
             {
                 int delai = (from al in Utils.Connexion.ALBUMS
                              join genre in Utils.Connexion.GENRES on al.CODE_GENRE equals genre.CODE_GENRE
-                             where al.CODE_ALBUM == a.CODE_ALBUM
+                             where al.CODE_ALBUM == album.CODE_ALBUM
                              select genre.DÉLAI).First();
                 DateTime retour = DateTime.Now.AddDays(delai);
-                EMPRUNTER e = new EMPRUNTER { CODE_ABONNÉ = this.CODE_ABONNÉ, CODE_ALBUM = a.CODE_ALBUM, DATE_EMPRUNT = DateTime.Now, DATE_RETOUR_ATTENDUE = retour };
+                EMPRUNTER e = new EMPRUNTER { CODE_ABONNÉ = this.CODE_ABONNÉ, CODE_ALBUM = album.CODE_ALBUM, DATE_EMPRUNT = DateTime.Now, DATE_RETOUR_ATTENDUE = retour };
                 Utils.Connexion.EMPRUNTER.Add(e);
                 await Utils.Connexion.SaveChanges();
                 return e;
@@ -37,6 +46,10 @@ namespace WindowsFormsApp1
             }
         }
 
+        /// <summary>
+        /// Prolonge tout les emprunts de l'abonné
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<EMPRUNTER>> ProlongerTousEmprunts()
         {
             int i = 0;
@@ -57,9 +70,9 @@ namespace WindowsFormsApp1
         }
 
         /// <summary>
-        /// Retourne un dictionnary avec la liste des emprunt et l'album correspondant
+        /// Retourne un dictionnaire de tout les albums empruntés par l'abonné
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Le dictionnaire des emprunts</returns>
         public Dictionary<EMPRUNTER, ALBUMS> ConsulterEmprunts()
         {
             Dictionary<EMPRUNTER, ALBUMS> emprunts = new Dictionary<EMPRUNTER, ALBUMS>();
@@ -79,10 +92,15 @@ namespace WindowsFormsApp1
             return emprunts;
         }
 
-        public async Task<bool> ProlongerEmprunt(ALBUMS al)
+        /// <summary>
+        /// Prolonge l'emprunt d'un album
+        /// </summary>
+        /// <param name="album">L'album</param>
+        /// <returns></returns>
+        public async Task<bool> ProlongerEmprunt(ALBUMS album)
         {
             EMPRUNTER emprunt = (from emp in Utils.Connexion.EMPRUNTER
-                                 where emp.CODE_ABONNÉ == this.CODE_ABONNÉ && emp.CODE_ALBUM == al.CODE_ALBUM
+                                 where emp.CODE_ABONNÉ == this.CODE_ABONNÉ && emp.CODE_ALBUM == album.CODE_ALBUM
                                  select emp).FirstOrDefault();
             if (emprunt != null)
             {
@@ -104,14 +122,13 @@ namespace WindowsFormsApp1
         }
 
         /// <summary>
-        /// Retourne les genres avec pourcentage de prefs de l'abo
+        /// Calcule le pourcentage de préférence de chaque genre de cet abonné
         /// </summary>
-        /// <param name="codeAbonne"></param>
-        /// <returns></returns>
+        /// <returns>Un dictionnaire des préférences</returns>
         private Dictionary<string, double> GetPreferences()
         {
             // On crée d'abord un dictionnaire qui associe une string (un genre de musique)
-            // à un int (combien d'album de ce genre on été emprunté par l'abonné)
+            // à un int (combien d'album de ce genre ont été emprunté par l'abonné)
             Dictionary<string, int> allGenre = new Dictionary<string, int>();
 
             var emprunts = ConsulterEmprunts();
@@ -133,7 +150,7 @@ namespace WindowsFormsApp1
 
                 if (allGenre.Count() > 0)
                 {
-                    // Si ce genre d'album a déjà été rencontré, on incremente sa valeur
+                    // Si ce genre d'album a déjà été rencontré, on incrémente sa valeur
                     if (allGenre.ContainsKey(nomGenre))
                     {
                         allGenre[nomGenre]++;
@@ -145,7 +162,7 @@ namespace WindowsFormsApp1
                     }
 
                 }
-                // Si il s'agit du premier genre de la liste
+                // S'il s'agit du premier genre de la liste
                 else
                 {
                     allGenre.Add(nomGenre, 1);
@@ -154,7 +171,7 @@ namespace WindowsFormsApp1
 
             }
 
-            // Les preferences seront conservées dans un dictionnaire,
+            // Les préférences seront conservées dans un dictionnaire,
             // qui associera une string (le genre) à un double (le pourcentage)
             Dictionary<string, double> preferencesByGenre = new Dictionary<string, double>();
 
@@ -174,12 +191,11 @@ namespace WindowsFormsApp1
         /// <summary>
         /// Renvoie 10 suggestions
         /// </summary>
-        /// <param name="codeAbonne"></param>
-        /// <returns></returns>
+        /// <returns>Une liste d'albums</returns>
         public HashSet<ALBUMS> AvoirSuggestions()
         {
 
-            // On recupère les preferences de l'abonné
+            // On récupère les préférences de l'abonné
             Dictionary<string, double> preferences = GetPreferences();
 
             Random rdm = new Random();

@@ -14,11 +14,20 @@ namespace WindowsFormsApp1
 
         public static Dictionary<ABONNÉS, HashSet<ALBUMS>> suggestionsParAbo { get; private set; } = new Dictionary<ABONNÉS, HashSet<ALBUMS>>();
 
+        /// <summary>
+        /// Met à jour le cache
+        /// </summary>
+        /// <returns></returns>
         public static Task RefreshCache()
         {
             return Task.Run(() => albumsPasEmpruntes = Utils.AvoirAlbumsPasEmprunteDepuisUnAn());
         }
 
+        /// <summary>
+        /// Met à jour les suggestions d'un abonné
+        /// </summary>
+        /// <param name="a">L'abonné</param>
+        /// <returns></returns>
         public static Task RefreshSuggestions(ABONNÉS a)
         {
             return Task.Run(() =>

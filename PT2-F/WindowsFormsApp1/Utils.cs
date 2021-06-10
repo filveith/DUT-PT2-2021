@@ -31,7 +31,7 @@ namespace WindowsFormsApp1
             ABONNÉS a = new ABONNÉS();
             try
             {
-                // on crée un nouveau Abonné
+                // On crée un nouvel abonné
 
                 if (codePays > 0)
                 {
@@ -44,7 +44,7 @@ namespace WindowsFormsApp1
                 a.creationDate = DateTime.Now;
 
 
-                // ajout du nouveau Abonné
+                // Ajout du nouvel abonné
                 Connexion.ABONNÉS.Add(a);
                 await Connexion.SaveChanges();
                 return a;
@@ -56,9 +56,9 @@ namespace WindowsFormsApp1
         }
 
         /// <summary>
-        /// Pemret d'avoir une liste des abonnes avec des emprunts en retard de plus de 10jours
+        /// Pemret d'avoir une liste des abonnés avec des emprunts en retard de plus de 10 jours
         /// </summary>
-        /// <returns> Retourne liste des abonnés en retard de plus de 10 jours </returns>
+        /// <returns> Retourne une liste des abonnés en retard de plus de 10 jours </returns>
         public static IQueryable<ABONNÉS> AvoirAbonneAvecEmpruntRetardDe10Jours()
         {
             var emprunt = (from emp in Connexion.EMPRUNTER
@@ -69,7 +69,7 @@ namespace WindowsFormsApp1
         }
 
         /// <summary>
-        /// Permet à l'administrateur d'avoir tout les emprunts qui ont été prolongés  
+        /// Permet à l'administrateur de consulter tout les emprunts qui ont été prolongés  
         /// </summary>
         /// <returns> Retourne tout les emprunts prolongés </returns>
         public static IQueryable<EMPRUNTER> AvoirLesEmpruntProlonger()
@@ -87,7 +87,7 @@ namespace WindowsFormsApp1
         /// <summary>
         /// Permet d'avoir une liste des albums qui n'ont pas été emprunté depuis 1 an
         /// </summary>
-        /// <returns> Retourne les albums pas emprunté depuis 1 an</returns>
+        /// <returns> Retourne les albums qui n'ont pas été emprunté depuis 1 an</returns>
         public static IQueryable<ALBUMS> AvoirAlbumsPasEmprunteDepuisUnAn()
         {
             var liste = (from a in Connexion.ALBUMS
@@ -101,9 +101,9 @@ namespace WindowsFormsApp1
         }
 
         /// <summary>
-        /// Permet d'obtenir les abonné qui n'ont pas emprunté depuis 1an
+        /// Permet d'obtenir les abonnés qui n'ont pas emprunté depuis 1an
         /// </summary>
-        /// <returns> Retourne les abonné qui n'ont pas emprunté depuis 1 an</returns>
+        /// <returns> Retourne les abonnés qui n'ont pas emprunté depuis 1 an</returns>
         private static IEnumerable<ABONNÉS> AvoirAbosPasEmprunteDepuisUnAn()
         {
             var abosPasEmprunt = (from a in Connexion.ABONNÉS
@@ -124,9 +124,9 @@ namespace WindowsFormsApp1
         }
 
         /// <summary>
-        /// Permet de supprimé un abonné qui n'a pas emprunté depuis 1an 
+        /// Permet de supprimer un abonné qui n'a pas emprunté depuis 1an 
         /// </summary>
-        /// <returns> Liste d'abonnés supprimés </returns>
+        /// <returns> Liste des abonnés supprimés </returns>
         public async static Task<IEnumerable<ABONNÉS>> SupprimerAbosPasEmpruntDepuisUnAn()
         {
             var abos = AvoirAbosPasEmprunteDepuisUnAn();
@@ -146,7 +146,7 @@ namespace WindowsFormsApp1
         /// <summary>
         /// Permet d'obtenir le top 10 des albums 
         /// </summary>
-        /// <returns> Retournne les 10 albums les plus empruntés</returns>
+        /// <returns> Retourne les 10 albums les plus empruntés</returns>
         public static List<ALBUMS> AvoirTopAlbum()
         {
             var nbEmprunt = (from emp in Connexion.EMPRUNTER
@@ -179,13 +179,18 @@ namespace WindowsFormsApp1
         }
 
         /// <summary>
-        /// Rafraichir la base 
+        /// Rafraichit la base 
         /// </summary>
         public static void RefreshDatabase()
         {
             Connexion = new MusiquePT2_FEntities();
         }
 
+        /// <summary>
+        /// Renvoie un abonné selon son code
+        /// </summary>
+        /// <param name="codeAbonne">Le code de l'abonné</param>
+        /// <returns>L'abonné correspondant</returns>
         public static ABONNÉS GetABONNÉ(int codeAbonne)
         {
             return (from a in Connexion.ABONNÉS
@@ -193,6 +198,11 @@ namespace WindowsFormsApp1
                     select a).FirstOrDefault();
         }
 
+        /// <summary>
+        /// Renvoie un album selon son code
+        /// </summary>
+        /// <param name="codeAlbum">Le code de l'album</param>
+        /// <returns>L'album correpondant</returns>
         public static ALBUMS GetALBUM(int codeAlbum)
         {
             return (from al in Connexion.ALBUMS
@@ -200,6 +210,11 @@ namespace WindowsFormsApp1
                     select al).FirstOrDefault();
         }
 
+        /// <summary>
+        /// Traduit un tableau d'octets en image
+        /// </summary>
+        /// <param name="byteArrayIn">Le tableau d'octets</param>
+        /// <returns>L'image</returns>
         public static Image byteArrayToImage(byte[] byteArrayIn)
         {
             MemoryStream ms = new MemoryStream(byteArrayIn);
@@ -207,6 +222,10 @@ namespace WindowsFormsApp1
             return returnImage;
         }
 
+        /// <summary>
+        /// Renvoie une liste de tout les abonnés
+        /// </summary>
+        /// <returns>La liste de tout les abonnés</returns>
         public static IQueryable<ABONNÉS> GetAllAbonnes()
         {
             var abos = from ab in Connexion.ABONNÉS

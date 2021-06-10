@@ -179,7 +179,6 @@ namespace WindowsFormsApp1
             this.MinimumSize = new System.Drawing.Size(600, 500);
             this.Name = "ConnexionView";
             this.Text = "ConnexionView";
-            this.Load += new System.EventHandler(this.ConnexionView_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();

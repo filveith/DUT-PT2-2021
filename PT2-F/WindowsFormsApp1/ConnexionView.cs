@@ -18,17 +18,19 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        private void ConnexionView_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Bouton 'Valider' cliqué
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void validerButton_Click(object sender, EventArgs e)
         {
             this.valider();
-
         }
 
+        /// <summary>
+        /// Vérifie que le login et le mot de passe entrés sont corrects
+        /// </summary>
         private void valider()
         {
             string login = idTextBox.Text;
@@ -75,9 +77,11 @@ namespace WindowsFormsApp1
 
 
 
-        /*
-         *affiche les boites de messages 
-         */
+        /// <summary>
+        /// Affiche les boites de message
+        /// </summary>
+        /// <param name="message">Le message</param>
+        /// <param name="caption">Le type</param>
         public static void Pop(string message, string caption)
         {
             MessageBoxButtons buttons = MessageBoxButtons.OK;
@@ -86,9 +90,11 @@ namespace WindowsFormsApp1
 
 
 
-        /**
-         *permet de verifier si le login existe  
-         */
+        /// <summary>
+        /// Vérifie si le login entré existe
+        /// </summary>
+        /// <param name="login">Le login</param>
+        /// <returns>Vrai si le login est correct</returns>
         private static bool LoginValide(string login)
         {
             bool loginValide = false;
@@ -114,9 +120,12 @@ namespace WindowsFormsApp1
 
 
 
-        /**
-         * permet de vérifier si le mot de passe est le bon
-         */
+        /// <summary>
+        /// Vérifie si le mot de passe est le bon
+        /// </summary>
+        /// <param name="login">Le login</param>
+        /// <param name="password">Le mot de passe</param>
+        /// <returns>L'abonné correspondant</returns>
         private static ABONNÉS Abonne(string login, string password)
         {
             

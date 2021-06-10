@@ -8,6 +8,10 @@ namespace WindowsFormsApp1
 {
     partial class MusiquePT2_FEntities
     {
+        /// <summary>
+        /// Sauve les changements effectués
+        /// </summary>
+        /// <returns></returns>
         public new async Task SaveChanges()
         {
             int n = base.SaveChanges();
