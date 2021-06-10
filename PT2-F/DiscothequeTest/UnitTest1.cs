@@ -17,7 +17,7 @@ namespace DiscothequeTest
         private int idAboTest = 0;
 
         /// <summary>
-        /// US1 Ajout d'un abonné
+        /// US1 ajout abo
         /// </summary>
         [TestMethod, TestCategory("US1")]
         public void TestAjoutAbonnée()
@@ -37,7 +37,7 @@ namespace DiscothequeTest
             //On ajoute un abonné
             ABONNÉS a = Utils.RegisterAbo("Test", "Register", "TestRegister", "123456", 1);
 
-            // On vérifie qu'il a bien était créé
+            //On regarde si il a bien etait crée
             Assert.IsNotNull(a);
 
             ABONNÉS aboFinal = Utils.GetABONNÉS("TestRegister");
@@ -50,16 +50,17 @@ namespace DiscothequeTest
         }
 
         /// <summary>
-        /// US1 Ajout d'un emprunt
+        /// US1 ajout emrpunt
         /// </summary>
         [TestMethod, TestCategory("US1")]
         public void TestAjoutEmprunt()
         {
             // On récupère le code de l'abonné TestRegister 
             ABONNÉS abonne = Utils.GetABONNÉS("TestRegister");
-
+                        select aboGetId.CODE_ABONNÉ;
             // S'il n'y en a pas, on crée l'abonné
             if (abonne == null)
+            if (aboId.Count() == 0)
             {
                 ABONNÉS a = Utils.RegisterAbo("Test", "Register", "TestRegister", "123456", 1);
                 Assert.IsNotNull(a);
@@ -70,48 +71,42 @@ namespace DiscothequeTest
             var initState = from em in Utils.Connexion.EMPRUNTER
                             where em.CODE_ABONNÉ == idAboTest
                             select em;
-
+            // On effectue une dizaines d'emprunts tests (les albums id 86 a 105)
             // On effectue une dizaines d'emprunts tests (les albums id 86 a 105)
             ABONNÉS abo = new ABONNÉS();
             ALBUMS alb = new ALBUMS();
-
             abonne = Utils.GetABONNÉS("TestRegister");
-
+            abo.CODE_ABONNÉ = Utils.GetABONNÉ(aboId.FirstOrDefault()).CODE_ABONNÉ;
             abo.CODE_ABONNÉ = abonne.CODE_ABONNÉ;
 
             // On effectue une dizaines d'emprunts tests
+            // On effectue une dizaines d'emprunts tests
             for (int i = 86; i < 106; i++)
-            {
                 ALBUMS alToTake = Utils.GetALBUM(i);
                 alb = alToTake;
+                lastAlb = alToTake;
 
                 Assert.IsTrue(alToTake != null);
-
 
             }
 
             abo.Rendre(alb);
             EMPRUNTER emp = abo.Emprunter(alb);
             Assert.IsNotNull(emp);
+            Assert.IsNotNull(emp);
 
             SuppAboAfterTests(Utils.GetABONNÉ(idAboTest));
-
-            var abonneSup = from aboGetId in Utils.Connexion.ABONNÉS
-                            where aboGetId.LOGIN_ABONNÉ == "TestRegister"
-                            select aboGetId.CODE_ABONNÉ;
-
-            SuppAboAfterTests(Utils.GetABONNÉ(abonneSup.FirstOrDefault()));
         }
 
         /// <summary>
-        /// US2 Consulter ses emprunts
+        /// US2
         /// </summary>
         [TestMethod, TestCategory("US2")]
         public void TestUS2()
         {
             Random rand = new Random();
 
-            // Si l'abonné existe déjà, on le supprime
+            // si l'abonné existe deja, on le supprime
             ABONNÉS abo = (from ab in Utils.Connexion.ABONNÉS
                            where ab.LOGIN_ABONNÉ.Equals("tus2")
                            select ab).FirstOrDefault();
@@ -156,14 +151,14 @@ namespace DiscothequeTest
         }
 
         /// <summary>
-        /// US3 Prolonger un emprunt
+        /// US3
         /// </summary>
         [TestMethod, TestCategory("US3")]
         public void TestUS3()
         {
             Random rand = new Random();
 
-            // Si l'abonné existe déjà, on le supprime
+            // si l'abonné existe deja, on le supprime
             ABONNÉS abo = (from ab in Utils.Connexion.ABONNÉS
                            where ab.LOGIN_ABONNÉ.Equals("tus3")
                            select ab).FirstOrDefault();
@@ -220,17 +215,19 @@ namespace DiscothequeTest
             Assert.IsTrue(dateApresProlong == dateApresSecondProlong);
 
             Assert.IsTrue(abo != null);
+
+            //SuppAboAfterTests(abo);
         }
 
         /// <summary>
-        /// US4 Consulter emprunts prolongés
+        /// US4
         /// </summary>
         [TestMethod, TestCategory("US4")]
         public void TestUS4()
         {
             Random rand = new Random();
 
-            // Si l'abonné existe déjà, on le supprime
+            // si l'abonné existe deja, on le supprime
             ABONNÉS abo = (from ab in Utils.Connexion.ABONNÉS
                            where ab.LOGIN_ABONNÉ.Equals("tus4")
                            select ab).FirstOrDefault();
@@ -263,11 +260,19 @@ namespace DiscothequeTest
                            && emp.CODE_ABONNÉ == abo.CODE_ABONNÉ
                            select emp).FirstOrDefault();
 
+            Console.WriteLine("dubdpuibb      " + e);
+
             // On recupère tout les emprunts prolongés 
             var prolongésBefore = Utils.AvoirLesEmpruntProlonger();
 
+            foreach (EMPRUNTER emp in prolongésBefore)
+            {
+                Console.WriteLine(emp);
+            }
+            Console.WriteLine("-------------------------------------------");
 
-            // On vérifie que ce nouvel emprunt n'y est pas
+
+            // On verifie que ce nouvel emprunt n'y es pas
             Assert.IsFalse(prolongésBefore.Any(emprunt => (emprunt.CODE_ABONNÉ == e.CODE_ABONNÉ) && (emprunt.CODE_ALBUM == e.CODE_ALBUM)));
 
             // On prolonge l'emprunt
@@ -278,6 +283,11 @@ namespace DiscothequeTest
             // On vérifie qu'il fait maintenant partie des emprunts prolongés
             var prolongésAfter = Utils.AvoirLesEmpruntProlonger();
 
+            foreach (EMPRUNTER empr in prolongésAfter)
+            {
+                Console.WriteLine(empr);
+            }
+
             Assert.IsTrue(prolongésAfter.Any(emprunt => (emprunt.CODE_ABONNÉ == e.CODE_ABONNÉ) && (emprunt.CODE_ALBUM == e.CODE_ALBUM)));
 
             SuppAboAfterTests(abo);
@@ -285,12 +295,12 @@ namespace DiscothequeTest
         }
 
         /// <summary>
-        /// US5 Lister retards
+        /// US5
         /// </summary>
         [TestMethod, TestCategory("US5")]
         public void TestUS5()
         {
-            // Si l'abonné existe déjà, on le supprime
+            // si l'abonné existe deja, on le supprime
             ABONNÉS abo = (from ab in Utils.Connexion.ABONNÉS
                            where ab.LOGIN_ABONNÉ.Equals("tus5")
                            select ab).FirstOrDefault();
@@ -345,13 +355,13 @@ namespace DiscothequeTest
 
 
         /// <summary>
-        /// US6 Purge les abonées qui n'ont pas emprunté depuis un an
+        /// US6 Purge les abonées qui ont pas emprunté depuis un an
         /// </summary>
         [TestMethod, TestCategory("US6")]
         public void TestPurgerAbonneInactif()
         {
-            // DEPART DE PREPARATION POUR PURGER UN ABONNE INACTIF
-            // Ajout d'un abonné
+            //DEPART DE PREP POUR PURGER ABO
+            //Ajout d'un abo
             AddAboForTests("Register", "Test", "TestRegister", "123456", 1);
 
             var initState = from getAboNew in Utils.Connexion.ABONNÉS
@@ -360,7 +370,7 @@ namespace DiscothequeTest
 
             ABONNÉS abonne = Utils.GetABONNÉ(initState.FirstOrDefault());
 
-            // On change la date de création de l'abonné de -400 jours
+            //on change la date de creation de l'abonné de -400
             abonne.creationDate = DateTime.Now.AddDays(-400);
             abonne.CODE_PAYS = 5;
             idAboTest = abonne.CODE_ABONNÉ;
@@ -376,16 +386,16 @@ namespace DiscothequeTest
                           where ab.CODE_ALBUM == 20
                           select ab).FirstOrDefault();
 
-            // On vérifie que l'album existe bien
+            //on verifie que l'album existe bien
             Assert.IsTrue(alb != null);
 
             //on l'emprunte
             EMPRUNTER e = abonne.Emprunter(alb);
 
-            // On vérifie que l'emprunt a bien fonctionner
+            //on verifie que l'emprunt a bien fonctionner
             Assert.IsNotNull(e);
 
-            // On change la date de son dernier emprunt à plus d'un an
+            //On chnage la date de son dernier emprunt a plus d'un an
             e.DATE_EMPRUNT = DateTime.Now.AddDays(-390);
             Utils.Connexion.SaveChanges();
             //FIN DE PREP
@@ -393,7 +403,7 @@ namespace DiscothequeTest
             //On recupere la liste des abo inactifs supprimer
             var abo = Utils.SupprimerAbosPasEmpruntDepuisUnAn();
 
-            // On verifie que l'abonné "TestRegister" a bien été supprimé
+            //On verifie que l'abonne "TestRegister" à bien etait supprimé
             foreach (ABONNÉS a in abo)
             {
                 ABONNÉS aboneSupp = Utils.GetABONNÉ(a.CODE_ABONNÉ);
@@ -403,8 +413,8 @@ namespace DiscothequeTest
                     Assert.IsTrue(a.LOGIN_ABONNÉ == "TestRegister");
                 }
 
-            }
 
+            // On supprime l'abonné si jamais il n'a pas était supprimé
             // On supprime l'abonné si jamais il n'a pas était supprimé
             try
             {
@@ -412,18 +422,15 @@ namespace DiscothequeTest
             }
             catch (InvalidOperationException)
             {
-                Console.WriteLine("Abonné déjà supprimé");
+                Console.WriteLine("abo deja supprimer");
             }
 
         }
 
-        /// <summary>
-        /// US7 Top 10
-        /// </summary>
         [TestMethod, TestCategory("US7")]
         public void TestUS7()
         {
-            // Si l'abonné existe déjà, on le supprime
+            // si l'abonné existe déjà, on le supprime
             ABONNÉS abo = (from ab in Utils.Connexion.ABONNÉS
                            where ab.LOGIN_ABONNÉ.Equals("tus7")
                            select ab).FirstOrDefault();
@@ -440,10 +447,10 @@ namespace DiscothequeTest
 
             Assert.IsTrue(abo != null);
 
-            // On récupère les albums les plus empruntés
+            // on récupère les albums les plus empruntés
             List<ALBUMS> topAlbums = Utils.AvoirTopAlbum();
 
-            // On récupère l'album le plus emprunté
+            // on récupère l'album le plus emprunté
             ALBUMS premier = topAlbums.FirstOrDefault();
 
             //on emprunte cette album encore une fois
@@ -451,10 +458,10 @@ namespace DiscothequeTest
 
             Utils.Connexion.SaveChanges();
 
-            // On vérifie que l'album est toujours le plus emprunté
+            //on vérifie que l'album est encore le plus emprunté
             Assert.IsTrue(premier.Equals(Utils.AvoirTopAlbum().FirstOrDefault()));
 
-            // On emprunte un album au hasard 50 fois
+            //on emprunte un album au hasard 50 fois
             Random rand = new Random();
 
             int i = rand.Next(80, 150);
@@ -484,12 +491,12 @@ namespace DiscothequeTest
                 abonne.Emprunter(alToTake);
             }
 
-            // On vérifie que l'album emprunté est maintenant n°1
+            //on vérifie que l'album emprunté est maintenant n°1
             topAlbums = Utils.AvoirTopAlbum();
             premier = topAlbums.FirstOrDefault();
             Assert.IsTrue(premier.Equals(alToTake));
 
-            // On supprime les abonnés
+            //on supprime les abonnés
             for (int z = 0; z < 50; z++)
             {
                 ABONNÉS abonne = (from ab in Utils.Connexion.ABONNÉS
@@ -503,27 +510,27 @@ namespace DiscothequeTest
         }
 
         /// <summary>
-        /// US8 Consulter les albums non emprunté depuis au moins 1 an
+        /// US8
         /// </summary>
         [TestMethod, TestCategory("US8")]
         public void TestAlbumPasEmprunterDepuis1An()
         {
-            // Récupère la liste des tout les emprunts de l'album n°10
+            //Recupere la liste des tout les emprunt de l'album 10
             var removeEmprunt = (from em in Utils.Connexion.EMPRUNTER
                                  where em.CODE_ALBUM == 10
                                  select em);
-
             // Si il existe des emprunts, on les supprime
             foreach (EMPRUNTER em in removeEmprunt)
+            foreach(EMPRUNTER em in removeEmprunt)
             {
                 Utils.Connexion.EMPRUNTER.Remove(em);
-            }
 
             // On récupère la liste des albums non emprunté depuis un an
-            var emprunt = Utils.AvoirAlbumsPasEmprunteDepuisUnAn();
+            // On récupère la liste des albums non emprunté depuis un an
 
             // On vérifie qu'il y a bien l'album 10 dans la liste des albums non emprunté depuis un an
             foreach (ALBUMS em in emprunt)
+            foreach(ALBUMS em in emprunt)
             {
                 if (em.CODE_ALBUM == 10)
                 {
@@ -533,12 +540,12 @@ namespace DiscothequeTest
         }
 
         /// <summary>
-        /// US9 Prolonger tout les emprunts
+        /// US9
         /// </summary>
         [TestMethod, TestCategory("US9")]
         public void TestUS9()
         {
-            // Si l'abonné existe déjà, on le supprime
+            // si l'abonné existe deja, on le supprime
             ABONNÉS abo = (from ab in Utils.Connexion.ABONNÉS
                            where ab.LOGIN_ABONNÉ.Equals("tus9")
                            select ab).FirstOrDefault();
@@ -579,16 +586,17 @@ namespace DiscothequeTest
             var afterProlonges = Utils.AvoirLesEmpruntProlonger();
             Assert.IsFalse(!afterProlonges.Any(emp => emp.CODE_ABONNÉ == abo.CODE_ABONNÉ));
 
+
             SuppAboAfterTests(abo);
         }
 
         /// <summary>
-        /// US10 Suggestions
+        /// US10
         /// </summary>
         [TestMethod, TestCategory("US10")]
         public void TestUS10()
         {
-            // Si l'abonné existe déjà, on le supprime
+            // si l'abonné existe deja, on le supprime
             ABONNÉS abo = (from ab in Utils.Connexion.ABONNÉS
                            where ab.LOGIN_ABONNÉ.Equals("tus10")
                            select ab).FirstOrDefault();
@@ -659,16 +667,16 @@ namespace DiscothequeTest
         }
 
         /// <summary>
-        /// US12 Lister tout les abonnés
+        /// US12
         /// </summary>
         [TestMethod, TestCategory("US12")]
         public void TestListerToutLesAbos()
         {
             var abo = Utils.GetAllAbonnes();
             foreach (ABONNÉS a in abo)
-            {
                 // Affiche la liste de tout les abonnés 
                 Console.WriteLine("Login abo = " + a.LOGIN_ABONNÉ);
+                Console.WriteLine("Login abo = "+a.LOGIN_ABONNÉ);
             }
         }
 
@@ -721,9 +729,6 @@ namespace DiscothequeTest
             
 
         #region Test PagedListbox
-        /// <summary>
-        /// US13 Pagination (Constructeur)
-        /// </summary>
         [TestMethod, TestCategory("US13")]
         public void TestConstructeur()
         {
@@ -738,9 +743,6 @@ namespace DiscothequeTest
             CollectionAssert.Contains(p.Controls, l);
         }
 
-        /// <summary>
-        /// US13 Pagination (Page suivante)
-        /// </summary>
         [TestMethod, TestCategory("US13")]
         public void TestNextPage()
         {
@@ -758,9 +760,6 @@ namespace DiscothequeTest
             Assert.IsFalse(p.NextPage());
         }
 
-        /// <summary>
-        /// US13 Pagination (Page précédente)
-        /// </summary>
         [TestMethod, TestCategory("US13")]
         public void TestPreviousPage()
         {
@@ -780,9 +779,6 @@ namespace DiscothequeTest
             Assert.IsTrue(p.PreviousPage());
         }
 
-        /// <summary>
-        /// US13 Pagination (Reset)
-        /// </summary>
         [TestMethod, TestCategory("US13")]
         public void TestResetItems()
         {
@@ -817,14 +813,7 @@ namespace DiscothequeTest
 
         #endregion
 
-        /// <summary>
-        /// Ajoute un abonné à la base
-        /// </summary>
-        /// <param name="nom">Son nom</param>
-        /// <param name="prenom">Son prénom</param>
-        /// <param name="login">Son login</param>
-        /// <param name="mdp">Son mot de passe</param>
-        /// <param name="codePays">Le code de son pays</param>
+        //Ajoute un abonné a la bd
         private static void AddAboForTests(string nom, string prenom, string login, string mdp, int codePays)
         {
             //ajoute un abonné à la base 
@@ -832,7 +821,7 @@ namespace DiscothequeTest
         }
 
         /// <summary>
-        /// Supprime un abonné et ses emprunts
+        /// Supprime les abonnés et leurs emprunt
         /// </summary>
         /// <param name="abo"></param>
         private static void SuppAboAfterTests(ABONNÉS aboAsupp)
