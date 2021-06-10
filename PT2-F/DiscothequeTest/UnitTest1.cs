@@ -802,6 +802,7 @@ namespace DiscothequeTest
                 }
                 Utils.Connexion.ABONNÉS.Remove(aboAsupp);
             }
+            Utils.Connexion.ABONNÉS.Remove(abo);
             Utils.Connexion.SaveChanges();
         }
     }
