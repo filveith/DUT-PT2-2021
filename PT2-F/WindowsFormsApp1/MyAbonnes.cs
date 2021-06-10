@@ -103,76 +103,7 @@ namespace WindowsFormsApp1
             return false;
         }
 
-        /// <summary>
-        /// Retourne les genres avec pourcentage de prefs de l'abo
-        /// </summary>
-        /// <param name="codeAbonne"></param>
-        /// <returns></returns>
-        private Dictionary<string, double> GetPreferences()
-        {
-            // On crée d'abord un dictionnaire qui associe une string (un genre de musique)
-            // à un int (combien d'album de ce genre on été emprunté par l'abonné)
-            Dictionary<string, int> allGenre = new Dictionary<string, int>();
-
-            var emprunts = ConsulterEmprunts();
-
-
-            int nbEmprunts = emprunts.Count();
-
-            List<GENRES> genres = Utils.Connexion.GENRES.ToList();
-            // Pour chaque emprunt :
-            foreach (EMPRUNTER e in emprunts.Keys)
-            {
-                ALBUMS album = emprunts[e];
-
-                GENRES genreAlbum = (from gen in genres
-                                     where gen.CODE_GENRE == album.CODE_GENRE
-                                     select gen).FirstOrDefault();
-
-                string nomGenre = genreAlbum.LIBELLÉ_GENRE;
-
-
-                if (allGenre.Count() > 0)
-                {
-                    // Si ce genre d'album a déjà été rencontré, on incremente sa valeur
-                    if (allGenre.ContainsKey(nomGenre))
-                    {
-                        allGenre[nomGenre]++;
-                    }
-                    // Sinon, on l'ajoute à la liste avec une valeur initiale de 1
-                    else
-                    {
-                        allGenre.Add(nomGenre, 1);
-                    }
-
-                }
-                // Si il s'agit du premier genre de la liste
-                else
-                {
-                    allGenre.Add(nomGenre, 1);
-                }
-
-
-            }
-
-            // Les preferences seront conservées dans un dictionnaire,
-            // qui associera une string (le genre) à un double (le pourcentage)
-            Dictionary<string, double> preferencesByGenre = new Dictionary<string, double>();
-
-            // On calcule le pourcentage de préférence de ce genre pour cet utilisateur
-            // (nb d'album empruntés de ce genre / nb d'emprunts total)
-            foreach (KeyValuePair<string, int> values in allGenre)
-            {
-                int v = values.Value;
-                double result = (double)v / nbEmprunts * 100;
-                preferencesByGenre.Add(values.Key, result);
-            }
-
-            return preferencesByGenre;
-
-        }
-
-        public Dictionary<GENRES, double> GetPreferences_Opti()
+        public Dictionary<GENRES, double> GetPreferences()
         {
             Dictionary<GENRES, double> preferences = new Dictionary<GENRES, double>();
             var emprunts = (from emp in Utils.Connexion.EMPRUNTER
@@ -189,9 +120,9 @@ namespace WindowsFormsApp1
             return preferences;
         }
 
-        public HashSet<ALBUMS> AvoirSuggestions_Opti()
+        public HashSet<ALBUMS> AvoirSuggestions()
         {
-            var pref = GetPreferences_Opti();
+            var pref = GetPreferences();
             int i = 0;
             HashSet<ALBUMS> suggestions = new HashSet<ALBUMS>();
             Random r = new Random();
