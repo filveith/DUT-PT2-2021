@@ -23,8 +23,8 @@ namespace WindowsFormsApp1
         /// Crée un nouvel emprunt pour cet abonné et l'album précisé
         /// </summary>
         /// <param name="album">L'album</param>
-        /// <returns></returns>
-        public async Task<EMPRUNTER> Emprunter(ALBUMS album)
+        /// <returns></return>
+        public EMPRUNTER Emprunter(ALBUMS a)
         {
             try
             {
@@ -51,7 +51,7 @@ namespace WindowsFormsApp1
         /// Prolonge tout les emprunts de l'abonné
         /// </summary>
         /// <returns></returns>
-        public async Task<List<EMPRUNTER>> ProlongerTousEmprunts()
+        public List<EMPRUNTER> ProlongerTousEmprunts()
         {
             int i = 0;
             var emprunts = (from emp in Utils.Connexion.EMPRUNTER
@@ -98,7 +98,7 @@ namespace WindowsFormsApp1
         /// </summary>
         /// <param name="album">L'album</param>
         /// <returns></returns>
-        public async Task<bool> ProlongerEmprunt(ALBUMS album)
+        public bool ProlongerEmprunt(ALBUMS al)
         {
             EMPRUNTER emprunt = (from emp in Utils.Connexion.EMPRUNTER
                                  where emp.CODE_ABONNÉ == this.CODE_ABONNÉ && emp.CODE_ALBUM == album.CODE_ALBUM
@@ -126,7 +126,7 @@ namespace WindowsFormsApp1
         /// Calcule le pourcentage de préférence de chaque genre de cet abonné
         /// </summary>
         /// <returns>Un dictionnaire des préférences</returns>
-        private Dictionary<GENRES, double> GetPreferences()
+        public Dictionary<GENRES, double> GetPreferences()
         {
             // On crée d'abord un dictionnaire qui associe une string (un genre de musique)
             // à un int (combien d'album de ce genre ont été emprunté par l'abonné)
@@ -193,6 +193,5 @@ namespace WindowsFormsApp1
             this.PASSWORD_ABONNÉ = Utils.ComputeSha256Hash(newPass);
             Utils.Connexion.SaveChanges();
         }
-
     }
 }
