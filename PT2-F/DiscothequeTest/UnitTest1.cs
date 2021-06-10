@@ -454,6 +454,7 @@ namespace DiscothequeTest
             ABONNÉS abo = (from ab in Utils.Connexion.ABONNÉS
                            where ab.LOGIN_ABONNÉ.Equals("tus7")
                            select ab).FirstOrDefault();
+
             if (abo != null)
             {
                 SuppAboAfterTests(abo);
@@ -602,7 +603,6 @@ namespace DiscothequeTest
             abo.ProlongerTousEmprunts();
 
             // On vérifie maintenant que tout les emprunts de l'abonné sont prolongés
-            // On vérifie que aucun des emprunts du nouvel abonné ne sont prolongés
             IQueryable<EMPRUNTER> afterProlonges = Utils.AvoirLesEmpruntProlonger();
             Assert.IsFalse(!afterProlonges.Any(emp => emp.CODE_ABONNÉ == abo.CODE_ABONNÉ));
 
