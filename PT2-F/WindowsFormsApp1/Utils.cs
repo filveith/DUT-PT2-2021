@@ -173,7 +173,7 @@ namespace WindowsFormsApp1
         public static IQueryable<PAYS> AvoirListeDesPays()
         {
             var pays = from p in Connexion.PAYS
-                       orderby p.CODE_PAYS ascending
+                       orderby p.NOM_PAYS ascending
                        select p;
             return pays;
         }
