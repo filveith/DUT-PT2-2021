@@ -190,6 +190,13 @@ namespace WindowsFormsApp1
                     select a).FirstOrDefault();
         }
 
+        public static ABONNÉS GetABONNÉS(string login)
+        {
+            return (from a in Connexion.ABONNÉS
+                    where a.LOGIN_ABONNÉ == login
+                    select a).FirstOrDefault();
+        }
+
         public static ALBUMS GetALBUM(int codeAlbum)
         {
             return (from al in Connexion.ALBUMS
