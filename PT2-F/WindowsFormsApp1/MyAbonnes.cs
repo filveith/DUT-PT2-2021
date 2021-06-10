@@ -183,6 +183,5 @@ namespace WindowsFormsApp1
             this.PASSWORD_ABONNÉ = Utils.ComputeSha256Hash(newPass);
             Utils.Connexion.SaveChanges();
         }
-
     }
 }
