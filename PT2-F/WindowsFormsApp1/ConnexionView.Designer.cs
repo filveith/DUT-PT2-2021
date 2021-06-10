@@ -31,14 +31,19 @@ namespace WindowsFormsApp1
         {
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
-            this.passTextBox = new System.Windows.Forms.TextBox();
-            this.idTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.passTextBox = new System.Windows.Forms.TextBox();
+            this.eyeButton = new System.Windows.Forms.Button();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.idTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,9 +53,9 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
             this.tableLayoutPanel3.Controls.Add(this.label5, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.passTextBox, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.idTextBox, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.label4, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel1, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(137)))));
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 231);
@@ -73,31 +78,6 @@ namespace WindowsFormsApp1
             this.label5.TabIndex = 11;
             this.label5.Text = "Mot de passe";
             // 
-            // passTextBox
-            // 
-            this.passTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.passTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.passTextBox.Font = new System.Drawing.Font("Miriam Libre", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passTextBox.Location = new System.Drawing.Point(287, 106);
-            this.passTextBox.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
-            this.passTextBox.Name = "passTextBox";
-            this.passTextBox.PasswordChar = '*';
-            this.passTextBox.Size = new System.Drawing.Size(212, 25);
-            this.passTextBox.TabIndex = 2;
-            this.passTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
-            // 
-            // idTextBox
-            // 
-            this.idTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.idTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.idTextBox.Font = new System.Drawing.Font("Miriam Libre", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idTextBox.Location = new System.Drawing.Point(287, 27);
-            this.idTextBox.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
-            this.idTextBox.Name = "idTextBox";
-            this.idTextBox.Size = new System.Drawing.Size(212, 25);
-            this.idTextBox.TabIndex = 1;
-            this.idTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
-            // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -109,6 +89,74 @@ namespace WindowsFormsApp1
             this.label4.Size = new System.Drawing.Size(120, 25);
             this.label4.TabIndex = 10;
             this.label4.Text = "Identifiant";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.Controls.Add(this.passTextBox, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.eyeButton, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(240, 82);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(435, 74);
+            this.tableLayoutPanel1.TabIndex = 12;
+            // 
+            // passTextBox
+            // 
+            this.passTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.passTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.passTextBox.Font = new System.Drawing.Font("Miriam Libre", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passTextBox.Location = new System.Drawing.Point(0, 24);
+            this.passTextBox.Margin = new System.Windows.Forms.Padding(0);
+            this.passTextBox.Name = "passTextBox";
+            this.passTextBox.PasswordChar = '*';
+            this.passTextBox.Size = new System.Drawing.Size(406, 25);
+            this.passTextBox.TabIndex = 3;
+            // 
+            // eyeButton
+            // 
+            this.eyeButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.eyeButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.eyeButton.FlatAppearance.BorderSize = 0;
+            this.eyeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.eyeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.eyeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.eyeButton.Image = global::WindowsFormsApp1.Properties.Resources.eyeClosed_Icon;
+            this.eyeButton.Location = new System.Drawing.Point(409, 25);
+            this.eyeButton.Name = "eyeButton";
+            this.eyeButton.Size = new System.Drawing.Size(23, 23);
+            this.eyeButton.TabIndex = 4;
+            this.eyeButton.UseVisualStyleBackColor = true;
+            this.eyeButton.Click += new System.EventHandler(this.eyeButton_Click);
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel4.Controls.Add(this.idTextBox, 0, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(240, 3);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(435, 73);
+            this.tableLayoutPanel4.TabIndex = 13;
+            // 
+            // idTextBox
+            // 
+            this.idTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.idTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.idTextBox.Font = new System.Drawing.Font("Miriam Libre", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.idTextBox.Location = new System.Drawing.Point(0, 24);
+            this.idTextBox.Margin = new System.Windows.Forms.Padding(0);
+            this.idTextBox.Name = "idTextBox";
+            this.idTextBox.Size = new System.Drawing.Size(406, 25);
+            this.idTextBox.TabIndex = 2;
             // 
             // label1
             // 
@@ -184,6 +232,10 @@ namespace WindowsFormsApp1
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
@@ -194,12 +246,15 @@ namespace WindowsFormsApp1
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox passTextBox;
-        private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TextBox passTextBox;
+        private System.Windows.Forms.Button eyeButton;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.TextBox idTextBox;
     }
 }
