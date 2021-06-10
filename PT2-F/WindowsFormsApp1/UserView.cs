@@ -37,6 +37,7 @@ namespace WindowsFormsApp1
             filtres.Items.Clear();
             filtres.Items.Add("genre");
             filtres.Items.Add("titre");
+            filtres.SelectedIndex = 1;
 
             this.recherche();
         }
@@ -214,9 +215,7 @@ namespace WindowsFormsApp1
                 } else
                 {
                     Image image = Utils.byteArrayToImage(alb.POCHETTE);
-                    imageLabel.AutoSize = false;
-                    imageLabel.Size = image.Size;
-                    imageLabel.Image = Utils.byteArrayToImage(alb.POCHETTE);
+                    imageLabel.Image = Utils.ResizeImage(image, imageLabel.Width, imageLabel.Height);
                 }
             } else
             {

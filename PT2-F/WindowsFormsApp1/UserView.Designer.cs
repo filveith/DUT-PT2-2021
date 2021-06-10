@@ -40,6 +40,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.emprunter = new System.Windows.Forms.Button();
             this.suggest = new System.Windows.Forms.Button();
+            this.imageLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.TAffichageAbo = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
@@ -48,7 +49,6 @@ namespace WindowsFormsApp1
             this.panel2 = new System.Windows.Forms.Panel();
             this.nextPage = new System.Windows.Forms.Button();
             this.mesAlbums = new System.Windows.Forms.Button();
-            this.imageLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -228,6 +228,15 @@ namespace WindowsFormsApp1
             this.suggest.UseVisualStyleBackColor = false;
             this.suggest.Click += new System.EventHandler(this.suggest_Click);
             // 
+            // imageLabel
+            // 
+            this.imageLabel.AutoSize = true;
+            this.imageLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.imageLabel.Location = new System.Drawing.Point(3, 171);
+            this.imageLabel.Name = "imageLabel";
+            this.imageLabel.Size = new System.Drawing.Size(374, 174);
+            this.imageLabel.TabIndex = 7;
+            // 
             // tableLayoutPanel6
             // 
             this.tableLayoutPanel6.ColumnCount = 1;
@@ -346,15 +355,6 @@ namespace WindowsFormsApp1
             this.mesAlbums.TabIndex = 1;
             this.mesAlbums.UseVisualStyleBackColor = false;
             this.mesAlbums.Click += new System.EventHandler(this.mesAlbums_Click);
-            // 
-            // imageLabel
-            // 
-            this.imageLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.imageLabel.AutoSize = true;
-            this.imageLabel.Location = new System.Drawing.Point(190, 251);
-            this.imageLabel.Name = "imageLabel";
-            this.imageLabel.Size = new System.Drawing.Size(0, 13);
-            this.imageLabel.TabIndex = 7;
             // 
             // UserView
             // 
