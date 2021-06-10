@@ -43,6 +43,10 @@ namespace WindowsFormsApp1
                            where em.CODE_ALBUM == obtAlbum.CODE_ALBUM
                            select em).FirstOrDefault();
             prolongerEmpruntButton.Enabled = emprunt.nbRallongements == 0;
+            var pochette = obtAlbum.POCHETTE;
+            afficherMiniature.Image = Utils.ResizeImage(Utils.byteArrayToImage(pochette), 200, 200);
+            dateEmprunt.Text = "Date d'emprunt: " + emprunt.DATE_EMPRUNT.ToString();
+            dateRetour.Text = "Date de retour: " + emprunt.DATE_RETOUR_ATTENDUE.ToString(); ;
         }
 
         /// <summary>
@@ -134,5 +138,6 @@ namespace WindowsFormsApp1
             nextPage.Visible = AffichageAbo?.isOnLastPage == false;
             previousPage.Visible = AffichageAbo?.CurrentPage > 0;
         }
+
     }
 }
