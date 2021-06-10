@@ -36,7 +36,7 @@ namespace WindowsFormsApp1
             {
                 // on crée un nouveau Abonné
                 if (codePays > 0) a.CODE_PAYS = codePays;
-                
+
                 a.NOM_ABONNÉ = nom.Substring(0, Math.Min(nom.Length, 32));
                 a.PRÉNOM_ABONNÉ = prenom.Substring(0, Math.Min(prenom.Length, 32));
                 a.LOGIN_ABONNÉ = login.Substring(0, Math.Min(login.Length, 32));

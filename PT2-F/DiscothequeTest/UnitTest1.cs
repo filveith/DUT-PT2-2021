@@ -96,6 +96,12 @@ namespace DiscothequeTest
             Assert.IsNotNull(emp);
 
             SuppAboAfterTests(Utils.GetABONNÉ(idAboTest));
+
+            var abonneSup = from aboGetId in Utils.Connexion.ABONNÉS
+                            where aboGetId.LOGIN_ABONNÉ == "TestRegister"
+                            select aboGetId.CODE_ABONNÉ;
+
+            SuppAboAfterTests(Utils.GetABONNÉ(abonneSup.FirstOrDefault()));
         }
 
         /// <summary>

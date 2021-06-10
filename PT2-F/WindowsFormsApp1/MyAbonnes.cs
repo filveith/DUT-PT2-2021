@@ -151,6 +151,8 @@ namespace WindowsFormsApp1
         /// <returns>Un dictionnaire des préférences</returns>
         public Dictionary<GENRES, double> GetPreferences()
         {
+            // On crée d'abord un dictionnaire qui associe une string (un genre de musique)
+            // à un int (combien d'album de ce genre ont été emprunté par l'abonné)
             Dictionary<GENRES, double> preferences = new Dictionary<GENRES, double>();
             var emprunts = (from emp in Utils.Connexion.EMPRUNTER
                             join gen in Utils.Connexion.GENRES on emp.ALBUMS.CODE_GENRE equals gen.CODE_GENRE
@@ -158,11 +160,14 @@ namespace WindowsFormsApp1
                             select new { emprunt = emp, genre = gen });
             int Count = emprunts.Count();
             var GroupedEmprunts = emprunts.GroupBy(x => x.genre);
+
+            // Pour chaque emprunt :
             foreach (var e in GroupedEmprunts)
             {
                 int nEmprunts = e.Count();
                 preferences.Add(e.Key, nEmprunts * 100f / Count);
             }
+
             return preferences;
         }
 
@@ -172,10 +177,14 @@ namespace WindowsFormsApp1
         /// <returns>Une liste d'albums</returns>
         public HashSet<ALBUMS> AvoirSuggestions()
         {
+
+            // On récupère les préférences de l'abonné
             var pref = GetPreferences();
             int i = 0;
             HashSet<ALBUMS> suggestions = new HashSet<ALBUMS>();
             Random r = new Random();
+
+            // Pour chaque genre parmi les préférences de l'abonné :
             foreach (var v in pref)
             {
                 if (i < 10)
@@ -190,7 +199,6 @@ namespace WindowsFormsApp1
                     }
                 }
             }
-
             return suggestions;
         }
 
