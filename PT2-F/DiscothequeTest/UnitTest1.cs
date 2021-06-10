@@ -28,10 +28,8 @@ namespace DiscothequeTest
             //On passse si l'abonné TestRegister n'existe pas
             if (abo == null)
             {
-                Console.WriteLine("L'abonné n'existe pas.");
 
-                // On crée un nouvel abonné 
-                ABONNÉS abo = Utils.GetABONNÉ(initState.FirstOrDefault());
+                SuppAboAfterTests(abo);
 
                 // On supprime l'abonné si il existe 
                 var emprunts = (from e in Utils.Connexion.EMPRUNTER
@@ -55,7 +53,7 @@ namespace DiscothequeTest
 
             ABONNÉS aboFinal = Utils.GetABONNÉS("TestRegister");
 
-            // On vérifie avec la base de données s'il existe bien
+            //On verifie avec la base de données si il existe bien
             Assert.IsTrue(aboFinal.LOGIN_ABONNÉ == "TestRegister");
             idAboTest = aboFinal.CODE_ABONNÉ;
 
@@ -86,30 +84,34 @@ namespace DiscothequeTest
                             where em.CODE_ABONNÉ == idAboTest
                             select em;
 
-            //On supprime les emprunts de l'abonné si ils existe pour eviter des erreurs
-            Utils.Connexion.EMPRUNTER.RemoveRange(initState);
-
-            ABONNÉS abo = new ABONNÉS();
-            ALBUMS alb = new ALBUMS();
-
             abo.CODE_ABONNÉ = idAboTest;
 
             // On effectue une dizaines d'emprunts tests (les albums id 86 a 105)
+            ABONNÉS abo = new ABONNÉS();
+            ALBUMS alb = new ALBUMS();
+
+            abo.CODE_ABONNÉ = Utils.GetABONNÉ(aboId.FirstOrDefault()).CODE_ABONNÉ;
+
+            // On effectue une dizaines d'emprunts tests
             for (int i = 86; i < 106; i++)
             {
-                ALBUMS alToTake = (from ab in Utils.Connexion.ALBUMS
-                                   where ab.CODE_ALBUM == i
-                                   select ab).FirstOrDefault();
+                ALBUMS alToTake = Utils.GetALBUM(i);
+                lastAlb = alToTake;
 
                 Assert.IsTrue(alToTake != null);
 
-                EMPRUNTER e = abo.Emprunter(alToTake);
-                Assert.IsNotNull(e);
+            abo.Rendre(lastAlb);
+            EMPRUNTER emp = abo.Emprunter(lastAlb);
+            Assert.IsNotNull(emp);
 
-                Assert.IsTrue(e.CODE_ALBUM == i);
-            }
 
             SuppAboAfterTests(Utils.GetABONNÉ(idAboTest));
+
+            var abonneSup = from aboGetId in Utils.Connexion.ABONNÉS
+                            where aboGetId.LOGIN_ABONNÉ == "TestRegister"
+                            select aboGetId.CODE_ABONNÉ;
+
+            SuppAboAfterTests(Utils.GetABONNÉ(abonneSup.FirstOrDefault()));
         }
 
         /// <summary>

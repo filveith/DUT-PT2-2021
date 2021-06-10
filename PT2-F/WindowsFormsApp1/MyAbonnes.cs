@@ -28,31 +28,58 @@ namespace WindowsFormsApp1
         {
             try
             {
-                int delai = (from al in Utils.Connexion.ALBUMS
-                             join genre in Utils.Connexion.GENRES on al.CODE_GENRE equals genre.CODE_GENRE
-                             where al.CODE_ALBUM == album.CODE_ALBUM
-                             select genre.DÉLAI).First();
+                int delai = a.GENRES.DÉLAI;
                 DateTime retour = DateTime.Now.AddDays(delai);
                 EMPRUNTER e = new EMPRUNTER { CODE_ABONNÉ = this.CODE_ABONNÉ, CODE_ALBUM = album.CODE_ALBUM, DATE_EMPRUNT = DateTime.Now, DATE_RETOUR_ATTENDUE = retour };
                 Utils.Connexion.EMPRUNTER.Add(e);
                 Utils.Connexion.SaveChanges();
                 return e;
             }
-            catch (DbUpdateException e)
+            catch (DbUpdateException ex)
             {
-                Console.WriteLine("erreur : " + e);
                 Utils.RefreshDatabase();
-                Console.WriteLine(e);
+                EMPRUNTER e = (from emp in Utils.Connexion.EMPRUNTER
+                               where emp.CODE_ABONNÉ == this.CODE_ABONNÉ && emp.CODE_ALBUM == a.CODE_ALBUM
+                               select emp).FirstOrDefault();
+                if (e.DATE_RETOUR != null)
+                {
+                    e.DATE_EMPRUNT = DateTime.Now;
+                    e.DATE_RETOUR_ATTENDUE = DateTime.Now.AddDays(a.GENRES.DÉLAI);
+                    Utils.Connexion.SaveChanges();
+                    return e;
+
+                }
+                Utils.RefreshDatabase();
                 return null;
+
             }
+        }
+
+        /// <summary>
+        /// Permet de rendre un album
+        /// </summary>
+        /// <param name="album">L'album</param>
+        public bool Rendre(ALBUMS album)
+        {
+            EMPRUNTER emprunt = (from emp in Utils.Connexion.EMPRUNTER
+                                 where emp.CODE_ABONNÉ == this.CODE_ABONNÉ && emp.CODE_ALBUM == album.CODE_ALBUM
+                                 select emp).FirstOrDefault();
+
+            if (emprunt != null)
+            {
+                emprunt.DATE_RETOUR = DateTime.Now;
+                Utils.Connexion.SaveChanges();
+                return true;
+            }
+            return false;
         }
 
         public IEnumerable<EMPRUNTER> ProlongerTousEmprunts()
         {
             int i = 0;
             var allEmprunts = (from emp in Utils.Connexion.EMPRUNTER
-                            where emp.CODE_ABONNÉ == this.CODE_ABONNÉ
-                            select emp).ToList();
+                               where emp.CODE_ABONNÉ == this.CODE_ABONNÉ
+                               select emp).ToList();
             var emprunts = allEmprunts.Where(emp => emp.nbRallongements == 0);
 
             foreach (EMPRUNTER e in emprunts)
@@ -100,7 +127,7 @@ namespace WindowsFormsApp1
                                  select emp).FirstOrDefault();
             if (emprunt != null)
             {
-                if (emprunt.nbRallongements != 1)
+                if (emprunt.nbRallongements == 0)
                 {
                     emprunt.DATE_RETOUR_ATTENDUE = emprunt.DATE_RETOUR_ATTENDUE.AddMonths(1);
                     Utils.Connexion.SaveChanges();
