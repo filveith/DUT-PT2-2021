@@ -92,13 +92,12 @@ namespace DiscothequeTest
             ALBUMS alb = new ALBUMS();
 
             abo.CODE_ABONNÉ = idAboTest;
-
+            ALBUMS lastAlb = null;
             // On effectue une dizaines d'emprunts tests (les albums id 86 a 105)
             for (int i = 86; i < 106; i++)
             {
-                ALBUMS alToTake = (from ab in Utils.Connexion.ALBUMS
-                                   where ab.CODE_ALBUM == i
-                                   select ab).FirstOrDefault();
+                ALBUMS alToTake = Utils.GetALBUM(i);
+                lastAlb = alToTake;
 
                 Assert.IsTrue(alToTake != null);
 
@@ -107,6 +106,11 @@ namespace DiscothequeTest
 
                 Assert.IsTrue(e.CODE_ALBUM == i);
             }
+
+            abo.Rendre(lastAlb);
+            EMPRUNTER emp = abo.Emprunter(lastAlb);
+            Assert.IsNotNull(emp);
+
 
             SuppAboAfterTests(Utils.GetABONNÉ(idAboTest));
         }
