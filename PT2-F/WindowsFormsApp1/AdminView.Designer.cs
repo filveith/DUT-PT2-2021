@@ -42,19 +42,19 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.log = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.previousPage = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.nextPage = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.buttons.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -65,11 +65,11 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.Controls.Add(this.buttons, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 38);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 41);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 661F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(878, 660);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(878, 657);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
             // buttons
@@ -100,10 +100,10 @@ namespace WindowsFormsApp1
             // listEmpruntsProlongButton
             // 
             this.listEmpruntsProlongButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.listEmpruntsProlongButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
+            this.listEmpruntsProlongButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
             this.listEmpruntsProlongButton.FlatAppearance.BorderSize = 0;
             this.listEmpruntsProlongButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.listEmpruntsProlongButton.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listEmpruntsProlongButton.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listEmpruntsProlongButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.listEmpruntsProlongButton.Location = new System.Drawing.Point(24, 73);
             this.listEmpruntsProlongButton.Name = "listEmpruntsProlongButton";
@@ -116,10 +116,10 @@ namespace WindowsFormsApp1
             // listRetardButton
             // 
             this.listRetardButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.listRetardButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
+            this.listRetardButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
             this.listRetardButton.FlatAppearance.BorderSize = 0;
             this.listRetardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.listRetardButton.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listRetardButton.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listRetardButton.ForeColor = System.Drawing.SystemColors.Control;
             this.listRetardButton.Location = new System.Drawing.Point(185, 75);
             this.listRetardButton.Name = "listRetardButton";
@@ -132,10 +132,10 @@ namespace WindowsFormsApp1
             // notEmprunterSinceAYear
             // 
             this.notEmprunterSinceAYear.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.notEmprunterSinceAYear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
+            this.notEmprunterSinceAYear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
             this.notEmprunterSinceAYear.FlatAppearance.BorderSize = 0;
             this.notEmprunterSinceAYear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.notEmprunterSinceAYear.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.notEmprunterSinceAYear.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.notEmprunterSinceAYear.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.notEmprunterSinceAYear.Location = new System.Drawing.Point(183, 270);
             this.notEmprunterSinceAYear.Name = "notEmprunterSinceAYear";
@@ -148,10 +148,10 @@ namespace WindowsFormsApp1
             // removeAlbumButton
             // 
             this.removeAlbumButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.removeAlbumButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
+            this.removeAlbumButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
             this.removeAlbumButton.FlatAppearance.BorderSize = 0;
             this.removeAlbumButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.removeAlbumButton.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.removeAlbumButton.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.removeAlbumButton.ForeColor = System.Drawing.SystemColors.Control;
             this.removeAlbumButton.Location = new System.Drawing.Point(19, 458);
             this.removeAlbumButton.Name = "removeAlbumButton";
@@ -164,10 +164,10 @@ namespace WindowsFormsApp1
             // top10Button
             // 
             this.top10Button.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.top10Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
+            this.top10Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
             this.top10Button.FlatAppearance.BorderSize = 0;
             this.top10Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.top10Button.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.top10Button.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.top10Button.ForeColor = System.Drawing.SystemColors.Control;
             this.top10Button.Location = new System.Drawing.Point(184, 458);
             this.top10Button.Name = "top10Button";
@@ -180,10 +180,10 @@ namespace WindowsFormsApp1
             // suppIdleUsersButton
             // 
             this.suppIdleUsersButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.suppIdleUsersButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
+            this.suppIdleUsersButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
             this.suppIdleUsersButton.FlatAppearance.BorderSize = 0;
             this.suppIdleUsersButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.suppIdleUsersButton.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.suppIdleUsersButton.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.suppIdleUsersButton.ForeColor = System.Drawing.SystemColors.Control;
             this.suppIdleUsersButton.Location = new System.Drawing.Point(23, 558);
             this.suppIdleUsersButton.Name = "suppIdleUsersButton";
@@ -196,10 +196,10 @@ namespace WindowsFormsApp1
             // listerAbonner
             // 
             this.listerAbonner.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.listerAbonner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
+            this.listerAbonner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
             this.listerAbonner.FlatAppearance.BorderSize = 0;
             this.listerAbonner.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.listerAbonner.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listerAbonner.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listerAbonner.ForeColor = System.Drawing.SystemColors.Control;
             this.listerAbonner.Location = new System.Drawing.Point(185, 564);
             this.listerAbonner.Name = "listerAbonner";
@@ -212,10 +212,10 @@ namespace WindowsFormsApp1
             // addAlbumButton
             // 
             this.addAlbumButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.addAlbumButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
+            this.addAlbumButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
             this.addAlbumButton.FlatAppearance.BorderSize = 0;
             this.addAlbumButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addAlbumButton.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addAlbumButton.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addAlbumButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.addAlbumButton.Location = new System.Drawing.Point(23, 271);
             this.addAlbumButton.Name = "addAlbumButton";
@@ -245,10 +245,10 @@ namespace WindowsFormsApp1
             this.log.BackColor = System.Drawing.SystemColors.Window;
             this.log.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.log.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.log.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.log.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.log.FormattingEnabled = true;
             this.log.HorizontalScrollbar = true;
-            this.log.ItemHeight = 19;
+            this.log.ItemHeight = 21;
             this.log.Location = new System.Drawing.Point(3, 3);
             this.log.Name = "log";
             this.log.Size = new System.Drawing.Size(536, 485);
@@ -258,8 +258,8 @@ namespace WindowsFormsApp1
             // 
             this.tableLayoutPanel3.AutoSize = true;
             this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.05224F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.94776F));
             this.tableLayoutPanel3.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.panel2, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -267,19 +267,71 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 158F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(536, 158);
             this.tableLayoutPanel3.TabIndex = 12;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.previousPage);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(272, 152);
+            this.panel1.TabIndex = 4;
+            // 
+            // previousPage
+            // 
+            this.previousPage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.previousPage.BackColor = System.Drawing.Color.Transparent;
+            this.previousPage.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonPagePrécédente;
+            this.previousPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.previousPage.FlatAppearance.BorderSize = 0;
+            this.previousPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.previousPage.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.previousPage.ForeColor = System.Drawing.SystemColors.Control;
+            this.previousPage.Location = new System.Drawing.Point(-1, 44);
+            this.previousPage.Name = "previousPage";
+            this.previousPage.Size = new System.Drawing.Size(277, 64);
+            this.previousPage.TabIndex = 5;
+            this.previousPage.UseVisualStyleBackColor = false;
+            this.previousPage.Click += new System.EventHandler(this.previousPage_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.nextPage);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(281, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(252, 152);
+            this.panel2.TabIndex = 5;
+            // 
+            // nextPage
+            // 
+            this.nextPage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.nextPage.BackColor = System.Drawing.Color.Transparent;
+            this.nextPage.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonPageSuivante;
+            this.nextPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.nextPage.FlatAppearance.BorderSize = 0;
+            this.nextPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nextPage.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nextPage.ForeColor = System.Drawing.SystemColors.Control;
+            this.nextPage.Location = new System.Drawing.Point(13, 44);
+            this.nextPage.Name = "nextPage";
+            this.nextPage.Size = new System.Drawing.Size(241, 64);
+            this.nextPage.TabIndex = 4;
+            this.nextPage.UseVisualStyleBackColor = false;
+            this.nextPage.Click += new System.EventHandler(this.nextPage_Click);
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("NSimSun", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(48)))), ((int)(((byte)(15)))));
-            this.label1.Location = new System.Drawing.Point(235, 0);
+            this.label1.Font = new System.Drawing.Font("Miriam Libre", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(137)))));
+            this.label1.Location = new System.Drawing.Point(532, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(414, 35);
+            this.label1.Size = new System.Drawing.Size(349, 38);
             this.label1.TabIndex = 0;
             this.label1.Text = "Espace administrateur";
             // 
@@ -298,56 +350,6 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel5.Size = new System.Drawing.Size(884, 701);
             this.tableLayoutPanel5.TabIndex = 10;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.previousPage);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(262, 152);
-            this.panel1.TabIndex = 4;
-            // 
-            // previousPage
-            // 
-            this.previousPage.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.previousPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
-            this.previousPage.FlatAppearance.BorderSize = 0;
-            this.previousPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.previousPage.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.previousPage.ForeColor = System.Drawing.SystemColors.Control;
-            this.previousPage.Location = new System.Drawing.Point(68, 44);
-            this.previousPage.Name = "previousPage";
-            this.previousPage.Size = new System.Drawing.Size(127, 64);
-            this.previousPage.TabIndex = 5;
-            this.previousPage.Text = "Page Précédente";
-            this.previousPage.UseVisualStyleBackColor = false;
-            this.previousPage.Click += new System.EventHandler(this.previousPage_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.nextPage);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(271, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(262, 152);
-            this.panel2.TabIndex = 5;
-            // 
-            // nextPage
-            // 
-            this.nextPage.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.nextPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
-            this.nextPage.FlatAppearance.BorderSize = 0;
-            this.nextPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.nextPage.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nextPage.ForeColor = System.Drawing.SystemColors.Control;
-            this.nextPage.Location = new System.Drawing.Point(74, 44);
-            this.nextPage.Name = "nextPage";
-            this.nextPage.Size = new System.Drawing.Size(115, 64);
-            this.nextPage.TabIndex = 4;
-            this.nextPage.Text = "Page Suivante";
-            this.nextPage.UseVisualStyleBackColor = false;
-            this.nextPage.Click += new System.EventHandler(this.nextPage_Click);
-            // 
             // AdminView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -364,10 +366,10 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
             this.ResumeLayout(false);
 
         }

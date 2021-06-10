@@ -64,16 +64,8 @@
     <Compile Include="AdminView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CachedElements.cs" />
-    <Compile Include="MyConnexion.cs" />
     <Compile Include="PagedListbox.cs">
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="TestForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TestForm.Designer.cs">
-      <DependentUpon>TestForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UserView.cs">
       <SubType>Form</SubType>
@@ -168,9 +160,6 @@
     <EmbeddedResource Include="PagedListbox.resx">
       <DependentUpon>PagedListbox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TestForm.resx">
-      <DependentUpon>TestForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserView.resx">
       <DependentUpon>UserView.cs</DependentUpon>
     </EmbeddedResource>
@@ -219,6 +208,19 @@
       <DependentUpon>BDDModele.edmx</DependentUpon>
       <LastGenOutput>BDDModele.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\logos\logoOnly.png" />
+    <None Include="Resources\logos\logo_small_icon_only.png" />
+    <None Include="Resources\logos\logo_titre.png" />
+    <None Include="Resources\logos\logo_small.png" />
+    <None Include="Resources\images\buttonInscription.png" />
+    <None Include="Resources\images\buttonConnexion.png" />
+    <None Include="Resources\images\buttonValider.png" />
+    <None Include="Resources\images\buttonSugg.png" />
+    <None Include="Resources\images\buttonEmprunter.png" />
+    <None Include="Resources\images\buttonAlbums.png" />
+    <None Include="Resources\images\buttonPagePrécédente.png" />
+    <None Include="Resources\images\buttonPageSuivante.png" />
+    <None Include="Resources\images\buttonRetourMenu.png" />
     <None Include="Resources\logo_small_icon_only%281%29.png" />
     <None Include="Resources\logo_small%283%29.png" />
     <None Include="Resources\logo_small%281%29.png" />

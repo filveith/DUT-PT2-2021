@@ -17,6 +17,8 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             pagedListbox = new PagedListbox(log);
+            nextPage.Visible = pagedListbox?.isOnLastPage == false;
+            previousPage.Visible = pagedListbox?.CurrentPage > 0;
         }
 
         private void listEmpruntsProlongButton_Click(object sender, EventArgs e)
@@ -59,7 +61,7 @@ namespace WindowsFormsApp1
         private void notEmprunterSinceAYear_Click(object sender, EventArgs e)
         {
             pagedListbox.Clear();
-            var albums = CachedElements.albumsPasEmpruntes;
+            var albums = Utils.AvoirAlbumsPasEmprunteDepuisUnAn();
             List<string> allStrings = new List<string>();
             foreach (ALBUMS al in albums)
             {
@@ -88,7 +90,7 @@ namespace WindowsFormsApp1
         private void suppIdleUsersButton_Click(object sender, EventArgs e)
         {
             pagedListbox.Clear();
-            foreach (ABONNÉS a in Utils.SupprimerAbosPasEmpruntDepuisUnAn().GetAwaiter().GetResult())
+            foreach (ABONNÉS a in Utils.SupprimerAbosPasEmpruntDepuisUnAn())
             {
                 pagedListbox.Add("L'abonné \"" + a.NOM_ABONNÉ.Trim() + " " + a.PRÉNOM_ABONNÉ.Trim() + "\" a été supprimé pour inactivité");
             }
@@ -103,7 +105,7 @@ namespace WindowsFormsApp1
             pagedListbox.Add("Voici la liste de tout les abonnés :");
             foreach (ABONNÉS abo in toutLesAbonner)
             {
-                pagedListbox.Add(abo.NOM_ABONNÉ.Trim() + " " + abo.PRÉNOM_ABONNÉ.Trim() + " date d'abonnement: " + abo.creationDate  );
+                pagedListbox.Add(abo.NOM_ABONNÉ.Trim() + " " + abo.PRÉNOM_ABONNÉ.Trim() + " date d'abonnement: " + abo.creationDate);
             }
             nextPage.Visible = pagedListbox?.isOnLastPage == false;
             previousPage.Visible = pagedListbox?.CurrentPage > 0;

@@ -13,14 +13,16 @@ namespace WindowsFormsApp1
     public partial class UserView2 : Form
     {
         PagedListbox AffichageAbo;
+        private UserView previousWindow;
 
-        public UserView2(ABONNÉS a)
+        public UserView2(UserView v)
         {
             InitializeComponent();
             AffichageAbo = new PagedListbox(TAffichageAbo);
             AffichageAbo.page.SelectedIndexChanged += Page_SelectedIndexChanged;
             prolongerEmpruntButton.Enabled = false;
-            
+            previousWindow = v;
+
         }
 
         private void Page_SelectedIndexChanged(object sender, EventArgs e)
@@ -60,30 +62,31 @@ namespace WindowsFormsApp1
 
         private void prolongerEmprunt_Click(object sender, EventArgs e)
         {
-            int position = AffichageAbo.SelectedItem.ToString().IndexOf("|");
-            string titreAlbum = AffichageAbo.SelectedItem.ToString().Substring(0, position - 1);
-
-            ALBUMS obtAlbum = (from a in Utils.Connexion.ALBUMS
-                               where a.TITRE_ALBUM.ToString() == titreAlbum
-                               select a).FirstOrDefault();
-
-            if (obtAlbum is ALBUMS al)
+            if (previousWindow.currentSugg == null)
             {
-                AffichageAbo.Remove(AffichageAbo.SelectedItem);
-                UserView.Abo.ProlongerEmprunt(Utils.GetALBUM(al.CODE_ALBUM)).GetAwaiter().GetResult();
-                ConnexionView.Pop("Emprunt prolongé de 1 mois !", "Attention");
-            }
-            else
-            {
-                ConnexionView.Pop("ce n'est pas un album", "Erreur");
+                int position = AffichageAbo.SelectedItem.ToString().IndexOf("|");
+                string titreAlbum = AffichageAbo.SelectedItem.ToString().Substring(0, position - 1);
+
+                ALBUMS obtAlbum = (from a in Utils.Connexion.ALBUMS
+                                   where a.TITRE_ALBUM.ToString() == titreAlbum
+                                   select a).FirstOrDefault();
+
+                if (obtAlbum is ALBUMS al)
+                {
+                    UserView.Abo.ProlongerEmprunt(Utils.GetALBUM(al.CODE_ALBUM));
+                    ConnexionView.Pop("Emprunt prolongé de 1 mois !", "Attention");
+                }
+                else
+                {
+                    ConnexionView.Pop("ce n'est pas un album", "Erreur");
+                }
             }
 
         }
 
         private void prolongerToutEmprunt_Click(object sender, EventArgs e)
         {
-            AffichageAbo.Clear();
-            UserView.Abo.ProlongerTousEmprunts().GetAwaiter().GetResult();
+            UserView.Abo.ProlongerTousEmprunts();
             ConnexionView.Pop("Tous vos emprunts ont bien étés prolongés !", "Attention");
         }
 

@@ -41,7 +41,7 @@ namespace WindowsFormsApp1
                     ABONNÉS a = Abonne(login, password);
                     if (a != null)
                     {
-                        
+
                         if (isAdmin(login))
                         {
                             AdminView ad = new AdminView();
@@ -94,13 +94,13 @@ namespace WindowsFormsApp1
             bool loginValide = false;
 
             var logQuery = (from ab in Connexion.ABONNÉS
-                           select ab.LOGIN_ABONNÉ).ToList();
+                            select ab.LOGIN_ABONNÉ).ToList();
 
             List<string> logins = logQuery;
 
-            foreach(string s in logins)
+            foreach (string s in logins)
             {
-                
+
                 if (login.Equals(s.Trim()))
                 {
                     loginValide = true;
@@ -119,10 +119,10 @@ namespace WindowsFormsApp1
          */
         private static ABONNÉS Abonne(string login, string password)
         {
-            
+            string hashedPass = Utils.ComputeSha256Hash(password);
             var passQuery = from ab in Connexion.ABONNÉS
-                              where ab.LOGIN_ABONNÉ == login && ab.PASSWORD_ABONNÉ == password
-                              select ab;
+                            where ab.LOGIN_ABONNÉ == login && ab.PASSWORD_ABONNÉ == hashedPass
+                            select ab;
 
             return passQuery.FirstOrDefault();
         }
@@ -132,8 +132,8 @@ namespace WindowsFormsApp1
             bool admin = false;
 
             var adminQuery = (from ab in Connexion.ABONNÉS
-                             where ab.isAdmin == true
-                             select ab.LOGIN_ABONNÉ).ToList();
+                              where ab.isAdmin == true
+                              select ab.LOGIN_ABONNÉ).ToList();
 
             List<string> admins = adminQuery;
 
@@ -158,5 +158,5 @@ namespace WindowsFormsApp1
             }
         }
     }
-    
+
 }

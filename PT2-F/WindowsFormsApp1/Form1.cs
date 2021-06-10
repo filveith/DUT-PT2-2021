@@ -16,7 +16,6 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             ABONNÉS a = Utils.GetABONNÉ(65);
-            Task.Run(async () => { await CachedElements.RefreshCache(); await CachedElements.RefreshSuggestions(Utils.GetABONNÉ(65)); });
 
 
         }
@@ -35,11 +34,6 @@ namespace WindowsFormsApp1
             {
                 DebugWindow d = new DebugWindow();
                 d.Show();
-            }
-            if(e.KeyChar == 't')
-            {
-                TestForm t = new TestForm();
-                t.Show();
             }
         }
 
