@@ -37,6 +37,7 @@ namespace WindowsFormsApp1
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.searchBox = new System.Windows.Forms.TextBox();
+            this.filtres = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.prolongerAllEmpruntButton = new System.Windows.Forms.Button();
             this.prolongerEmpruntButton = new System.Windows.Forms.Button();
@@ -52,7 +53,6 @@ namespace WindowsFormsApp1
             this.nextPage = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.previousPage = new System.Windows.Forms.Button();
-            this.filtres = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -181,12 +181,23 @@ namespace WindowsFormsApp1
             this.searchBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.searchBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.searchBox.Font = new System.Drawing.Font("Miriam Libre", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(48)))), ((int)(((byte)(15)))));
+            this.searchBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(167)))), ((int)(((byte)(194)))));
             this.searchBox.Location = new System.Drawing.Point(3, 15);
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(451, 25);
             this.searchBox.TabIndex = 1;
             this.searchBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.userView2_KeyPress);
+            // 
+            // filtres
+            // 
+            this.filtres.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.filtres.Font = new System.Drawing.Font("Miriam Libre", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filtres.FormattingEnabled = true;
+            this.filtres.Location = new System.Drawing.Point(534, 14);
+            this.filtres.Name = "filtres";
+            this.filtres.Size = new System.Drawing.Size(121, 28);
+            this.filtres.TabIndex = 2;
+            this.filtres.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.userView2_KeyPress);
             // 
             // tableLayoutPanel5
             // 
@@ -336,6 +347,7 @@ namespace WindowsFormsApp1
             this.TAffichageAbo.Name = "TAffichageAbo";
             this.TAffichageAbo.Size = new System.Drawing.Size(892, 267);
             this.TAffichageAbo.TabIndex = 4;
+            this.TAffichageAbo.SelectedIndexChanged += new System.EventHandler(this.TAffichageAbo_SelectedIndexChanged);
             // 
             // tableLayoutPanel7
             // 
@@ -408,17 +420,6 @@ namespace WindowsFormsApp1
             this.previousPage.TabIndex = 11;
             this.previousPage.UseVisualStyleBackColor = false;
             this.previousPage.Click += new System.EventHandler(this.previousPage_Click);
-            // 
-            // filtres
-            // 
-            this.filtres.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.filtres.Font = new System.Drawing.Font("Miriam Libre", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.filtres.FormattingEnabled = true;
-            this.filtres.Location = new System.Drawing.Point(534, 17);
-            this.filtres.Name = "filtres";
-            this.filtres.Size = new System.Drawing.Size(121, 28);
-            this.filtres.TabIndex = 2;
-            this.filtres.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.userView2_KeyPress);
             // 
             // UserView2
             // 

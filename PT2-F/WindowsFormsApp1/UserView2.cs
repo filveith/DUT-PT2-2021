@@ -183,5 +183,9 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void TAffichageAbo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
