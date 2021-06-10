@@ -42,19 +42,19 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.log = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.previousPage = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.nextPage = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.buttons.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -258,8 +258,8 @@ namespace WindowsFormsApp1
             // 
             this.tableLayoutPanel3.AutoSize = true;
             this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.05224F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.94776F));
             this.tableLayoutPanel3.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.panel2, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -267,9 +267,61 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 158F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(536, 158);
             this.tableLayoutPanel3.TabIndex = 12;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.previousPage);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(272, 152);
+            this.panel1.TabIndex = 4;
+            // 
+            // previousPage
+            // 
+            this.previousPage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.previousPage.BackColor = System.Drawing.Color.Transparent;
+            this.previousPage.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonPagePrécédente;
+            this.previousPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.previousPage.FlatAppearance.BorderSize = 0;
+            this.previousPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.previousPage.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.previousPage.ForeColor = System.Drawing.SystemColors.Control;
+            this.previousPage.Location = new System.Drawing.Point(-1, 44);
+            this.previousPage.Name = "previousPage";
+            this.previousPage.Size = new System.Drawing.Size(277, 64);
+            this.previousPage.TabIndex = 5;
+            this.previousPage.UseVisualStyleBackColor = false;
+            this.previousPage.Click += new System.EventHandler(this.previousPage_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.nextPage);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(281, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(252, 152);
+            this.panel2.TabIndex = 5;
+            // 
+            // nextPage
+            // 
+            this.nextPage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.nextPage.BackColor = System.Drawing.Color.Transparent;
+            this.nextPage.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonPageSuivante;
+            this.nextPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.nextPage.FlatAppearance.BorderSize = 0;
+            this.nextPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nextPage.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nextPage.ForeColor = System.Drawing.SystemColors.Control;
+            this.nextPage.Location = new System.Drawing.Point(13, 44);
+            this.nextPage.Name = "nextPage";
+            this.nextPage.Size = new System.Drawing.Size(241, 64);
+            this.nextPage.TabIndex = 4;
+            this.nextPage.UseVisualStyleBackColor = false;
+            this.nextPage.Click += new System.EventHandler(this.nextPage_Click);
             // 
             // label1
             // 
@@ -277,7 +329,7 @@ namespace WindowsFormsApp1
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("NSimSun", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(48)))), ((int)(((byte)(15)))));
-            this.label1.Location = new System.Drawing.Point(235, 0);
+            this.label1.Location = new System.Drawing.Point(467, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(414, 35);
             this.label1.TabIndex = 0;
@@ -298,56 +350,6 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel5.Size = new System.Drawing.Size(884, 701);
             this.tableLayoutPanel5.TabIndex = 10;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.previousPage);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(262, 152);
-            this.panel1.TabIndex = 4;
-            // 
-            // previousPage
-            // 
-            this.previousPage.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.previousPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
-            this.previousPage.FlatAppearance.BorderSize = 0;
-            this.previousPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.previousPage.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.previousPage.ForeColor = System.Drawing.SystemColors.Control;
-            this.previousPage.Location = new System.Drawing.Point(68, 44);
-            this.previousPage.Name = "previousPage";
-            this.previousPage.Size = new System.Drawing.Size(127, 64);
-            this.previousPage.TabIndex = 5;
-            this.previousPage.Text = "Page Précédente";
-            this.previousPage.UseVisualStyleBackColor = false;
-            this.previousPage.Click += new System.EventHandler(this.previousPage_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.nextPage);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(271, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(262, 152);
-            this.panel2.TabIndex = 5;
-            // 
-            // nextPage
-            // 
-            this.nextPage.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.nextPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(129)))), ((int)(((byte)(21)))));
-            this.nextPage.FlatAppearance.BorderSize = 0;
-            this.nextPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.nextPage.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nextPage.ForeColor = System.Drawing.SystemColors.Control;
-            this.nextPage.Location = new System.Drawing.Point(74, 44);
-            this.nextPage.Name = "nextPage";
-            this.nextPage.Size = new System.Drawing.Size(115, 64);
-            this.nextPage.TabIndex = 4;
-            this.nextPage.Text = "Page Suivante";
-            this.nextPage.UseVisualStyleBackColor = false;
-            this.nextPage.Click += new System.EventHandler(this.nextPage_Click);
-            // 
             // AdminView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -364,10 +366,10 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
