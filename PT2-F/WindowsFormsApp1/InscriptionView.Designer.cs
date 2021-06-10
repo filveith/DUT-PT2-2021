@@ -171,7 +171,7 @@ namespace WindowsFormsApp1
             // 
             this.ValiderInscription.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ValiderInscription.BackColor = System.Drawing.Color.Transparent;
-            this.ValiderInscription.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonValider;
+            this.ValiderInscription.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonValider1;
             this.ValiderInscription.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ValiderInscription.FlatAppearance.BorderSize = 0;
             this.ValiderInscription.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

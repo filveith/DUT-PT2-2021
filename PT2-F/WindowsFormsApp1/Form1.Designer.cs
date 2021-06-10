@@ -57,7 +57,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 208F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(813, 208);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
@@ -130,7 +130,7 @@ namespace WindowsFormsApp1
             // 
             this.inscription.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.inscription.BackColor = System.Drawing.Color.Transparent;
-            this.inscription.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonInscription;
+            this.inscription.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonInscription1;
             this.inscription.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.inscription.Cursor = System.Windows.Forms.Cursors.Hand;
             this.inscription.FlatAppearance.BorderSize = 0;
@@ -148,7 +148,7 @@ namespace WindowsFormsApp1
             // 
             this.connexion.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.connexion.BackColor = System.Drawing.Color.Transparent;
-            this.connexion.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonConnexion;
+            this.connexion.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonConnexion1;
             this.connexion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.connexion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.connexion.FlatAppearance.BorderSize = 0;

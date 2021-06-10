@@ -217,6 +217,15 @@
       <DependentUpon>BDDModele.edmx</DependentUpon>
       <LastGenOutput>BDDModele.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\images\buttonInscription.png" />
+    <None Include="Resources\images\buttonConnexion.png" />
+    <None Include="Resources\images\buttonValider.png" />
+    <None Include="Resources\images\buttonSugg.png" />
+    <None Include="Resources\images\buttonEmprunter.png" />
+    <None Include="Resources\images\buttonAlbums.png" />
+    <None Include="Resources\images\buttonPagePrécédente.png" />
+    <None Include="Resources\images\buttonPageSuivante.png" />
+    <None Include="Resources\images\buttonRetourMenu.png" />
     <None Include="Resources\logo_small_icon_only%281%29.png" />
     <None Include="Resources\logo_small%283%29.png" />
     <None Include="Resources\logo_small%281%29.png" />
