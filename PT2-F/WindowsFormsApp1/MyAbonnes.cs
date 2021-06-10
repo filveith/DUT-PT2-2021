@@ -10,11 +10,20 @@ namespace WindowsFormsApp1
 {
     public partial class ABONNÉS
     {
+        /// <summary>
+        /// Affiche des informations sur l'abonné
+        /// </summary>
+        /// <returns>Les informations sous forme de string</returns>
         public override string ToString()
         {
             return this.NOM_ABONNÉ.Trim() + " " + this.PRÉNOM_ABONNÉ.Trim();
         }
 
+        /// <summary>
+        /// Crée un nouvel emprunt pour cet abonné et l'album précisé
+        /// </summary>
+        /// <param name="album">L'album</param>
+        /// <returns></return>
         public EMPRUNTER Emprunter(ALBUMS a)
         {
             try
@@ -38,6 +47,10 @@ namespace WindowsFormsApp1
             }
         }
 
+        /// <summary>
+        /// Prolonge tout les emprunts de l'abonné
+        /// </summary>
+        /// <returns></returns>
         public List<EMPRUNTER> ProlongerTousEmprunts()
         {
             int i = 0;
@@ -80,6 +93,11 @@ namespace WindowsFormsApp1
             return emprunts;
         }
 
+        /// <summary>
+        /// Prolonge l'emprunt d'un album
+        /// </summary>
+        /// <param name="album">L'album</param>
+        /// <returns></returns>
         public bool ProlongerEmprunt(ALBUMS al)
         {
             EMPRUNTER emprunt = (from emp in Utils.Connexion.EMPRUNTER
@@ -104,6 +122,10 @@ namespace WindowsFormsApp1
             return false;
         }
 
+        /// <summary>
+        /// Calcule le pourcentage de préférence de chaque genre de cet abonné
+        /// </summary>
+        /// <returns>Un dictionnaire des préférences</returns>
         public Dictionary<GENRES, double> GetPreferences()
         {
             Dictionary<GENRES, double> preferences = new Dictionary<GENRES, double>();
@@ -121,6 +143,10 @@ namespace WindowsFormsApp1
             return preferences;
         }
 
+        /// <summary>
+        /// Renvoie 10 suggestions
+        /// </summary>
+        /// <returns>Une liste d'albums</returns>
         public HashSet<ALBUMS> AvoirSuggestions()
         {
             var pref = GetPreferences();
@@ -154,14 +180,10 @@ namespace WindowsFormsApp1
             return (int)(n - 0.5);
         }
 
-
         public void ChangePassword(string newPass)
         {
             this.PASSWORD_ABONNÉ = Utils.ComputeSha256Hash(newPass);
             Utils.Connexion.SaveChanges();
         }
-
-        
-
     }
 }
