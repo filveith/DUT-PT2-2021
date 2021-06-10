@@ -10,6 +10,11 @@ namespace WindowsFormsApp1
     public partial class EMPRUNTER
     {
         public int nbRallongements => this.NombreRallongements();
+        
+        /// <summary>
+        /// Renvoie les informations sur cet emprunt
+        /// </summary>
+        /// <returns>Les informations</returns>
         public override string ToString()
         {
 

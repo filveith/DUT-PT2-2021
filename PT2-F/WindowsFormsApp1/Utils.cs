@@ -198,12 +198,18 @@ namespace WindowsFormsApp1
                     select a).FirstOrDefault();
         }
 
+        /// <summary>
+        /// Renvoie un album selon son code
+        /// </summary>
+        /// <param name="codeAlbum">Le code de l'album</param>
+        /// <returns>L'album correpondant</returns>
         public static ABONNÉS GetABONNÉS(string login)
         {
             return (from a in Connexion.ABONNÉS
                     where a.LOGIN_ABONNÉ == login
                     select a).FirstOrDefault();
         }
+
 
         public static ALBUMS GetALBUM(int codeAlbum)
         {
