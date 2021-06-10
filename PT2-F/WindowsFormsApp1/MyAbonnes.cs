@@ -77,11 +77,11 @@ namespace WindowsFormsApp1
         {
             Dictionary<EMPRUNTER, ALBUMS> emprunts = new Dictionary<EMPRUNTER, ALBUMS>();
             var emprunt = from alb in Utils.Connexion.ALBUMS
-                           join emp in Utils.Connexion.EMPRUNTER on alb.CODE_ALBUM equals emp.CODE_ALBUM
-                           join abo in Utils.Connexion.ABONNÉS on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
-                           where abo.CODE_ABONNÉ == this.CODE_ABONNÉ
-                           orderby emp.DATE_RETOUR_ATTENDUE ascending
-                           select new { emprunt = emp, album = alb };
+                          join emp in Utils.Connexion.EMPRUNTER on alb.CODE_ALBUM equals emp.CODE_ALBUM
+                          join abo in Utils.Connexion.ABONNÉS on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
+                          where abo.CODE_ABONNÉ == this.CODE_ABONNÉ
+                          orderby emp.DATE_RETOUR_ATTENDUE ascending
+                          select new { emprunt = emp, album = alb };
 
 
 
