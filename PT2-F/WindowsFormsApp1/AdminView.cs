@@ -42,11 +42,6 @@ namespace WindowsFormsApp1
 
         }
 
-        /// <summary>
-        /// Gère le clic sur le bouton 'Lister Retards'
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void listRetardButton_Click(object sender, EventArgs e)
         {
             pagedListbox.Clear();
@@ -58,33 +53,18 @@ namespace WindowsFormsApp1
             }
         }
 
-        /// <summary>
-        /// Gère le clic sur le bouton 'Ajouter Albums'
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void addAlbumButton_Click(object sender, EventArgs e)
+        private void showLockersButton_Click(object sender, EventArgs e)
         {
             casiers = new Casiers();
             casiers.ShowDialog();
         }
 
-        /// <summary>
-        /// Gère le clic sur le bouton 'Supprimer Albums'
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void removeAlbumButton_Click(object sender, EventArgs e)
         {
             pagedListbox.Clear();
             pagedListbox.Add("Pas implémenté");
         }
 
-        /// <summary>
-        /// Gère le clic sur le bouton 'Album pas emprunté depuis 1 an'
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void notEmprunterSinceAYear_Click(object sender, EventArgs e)
         {
             pagedListbox.Clear();
@@ -100,11 +80,6 @@ namespace WindowsFormsApp1
 
         }
 
-        /// <summary>
-        /// Gère le clic sur le bouton 'Top 10 Albums'
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void top10Button_Click(object sender, EventArgs e)
         {
             pagedListbox.Clear();
@@ -119,11 +94,6 @@ namespace WindowsFormsApp1
             previousPage.Visible = pagedListbox?.CurrentPage > 0;
         }
 
-        /// <summary>
-        /// Gère le clic sur le bouton 'Supprimer Utilisateurs Inactifs'
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void suppIdleUsersButton_Click(object sender, EventArgs e)
         {
             pagedListbox.Clear();
@@ -135,11 +105,6 @@ namespace WindowsFormsApp1
             previousPage.Visible = pagedListbox?.CurrentPage > 0;
         }
 
-        /// <summary>
-        /// Gère le clic sur le bouton 'Lister les abonnés'
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void listerAbonner_Click(object sender, EventArgs e)
         {
             pagedListbox.Clear();
@@ -153,11 +118,6 @@ namespace WindowsFormsApp1
             previousPage.Visible = pagedListbox?.CurrentPage > 0;
         }
 
-        /// <summary>
-        /// Gère le clic sur le bouton 'Page Suivante'
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void nextPage_Click(object sender, EventArgs e)
         {
             pagedListbox.NextPage();
@@ -165,11 +125,6 @@ namespace WindowsFormsApp1
             previousPage.Visible = pagedListbox?.CurrentPage > 0;
         }
 
-        /// <summary>
-        /// Gère le clic sur le bouton 'Page Précédente'
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void previousPage_Click(object sender, EventArgs e)
         {
             pagedListbox.PreviousPage();
