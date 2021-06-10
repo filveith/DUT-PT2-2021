@@ -216,7 +216,7 @@ namespace WindowsFormsApp1
                     Image image = Utils.byteArrayToImage(alb.POCHETTE);
                     imageLabel.AutoSize = false;
                     imageLabel.Size = image.Size;
-                    imageLabel.Image = Utils.byteArrayToImage(alb.POCHETTE);
+                    imageLabel.Image = Utils.ResizeImage(image, 200, 200);
                 }
             } else
             {
