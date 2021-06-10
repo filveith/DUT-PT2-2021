@@ -38,8 +38,8 @@ namespace WindowsFormsApp1
             this.searchBox = new System.Windows.Forms.TextBox();
             this.filtres = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.suggest = new System.Windows.Forms.Button();
             this.emprunter = new System.Windows.Forms.Button();
+            this.suggest = new System.Windows.Forms.Button();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.TAffichageAbo = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
@@ -178,16 +178,36 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel5.ColumnCount = 1;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Controls.Add(this.suggest, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.emprunter, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.suggest, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.imageLabel, 0, 2);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(901, 213);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 2;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.RowCount = 3;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.93814F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.06186F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 173F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(380, 345);
             this.tableLayoutPanel5.TabIndex = 4;
+            // 
+            // emprunter
+            // 
+            this.emprunter.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.emprunter.BackColor = System.Drawing.Color.Transparent;
+            this.emprunter.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonEmprunter;
+            this.emprunter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.emprunter.FlatAppearance.BorderSize = 0;
+            this.emprunter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.emprunter.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emprunter.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.emprunter.Location = new System.Drawing.Point(101, 16);
+            this.emprunter.Margin = new System.Windows.Forms.Padding(0);
+            this.emprunter.Name = "emprunter";
+            this.emprunter.Size = new System.Drawing.Size(178, 50);
+            this.emprunter.TabIndex = 5;
+            this.emprunter.UseVisualStyleBackColor = false;
+            this.emprunter.Click += new System.EventHandler(this.emprunter_Click);
             // 
             // suggest
             // 
@@ -200,7 +220,7 @@ namespace WindowsFormsApp1
             this.suggest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.suggest.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.suggest.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.suggest.Location = new System.Drawing.Point(69, 233);
+            this.suggest.Location = new System.Drawing.Point(69, 101);
             this.suggest.Margin = new System.Windows.Forms.Padding(0);
             this.suggest.Name = "suggest";
             this.suggest.Size = new System.Drawing.Size(242, 50);
@@ -255,6 +275,7 @@ namespace WindowsFormsApp1
             this.TAffichageAbo.Name = "TAffichageAbo";
             this.TAffichageAbo.Size = new System.Drawing.Size(892, 230);
             this.TAffichageAbo.TabIndex = 4;
+            this.TAffichageAbo.SelectedIndexChanged += new System.EventHandler(this.TAffichageAbo_SelectedIndexChanged);
             // 
             // tableLayoutPanel7
             // 
@@ -368,6 +389,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
@@ -397,5 +419,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button previousPage;
         private System.Windows.Forms.Button nextPage;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label imageLabel;
     }
 }
