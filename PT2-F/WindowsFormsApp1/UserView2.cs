@@ -77,14 +77,12 @@ namespace WindowsFormsApp1
 
         private void prolongerEmprunt_Click(object sender, EventArgs e)
         {
-            if (previousWindow.currentSugg == null)
-            {
-                int position = AffichageAbo.SelectedItem.ToString().IndexOf("|");
-                string titreAlbum = AffichageAbo.SelectedItem.ToString().Substring(0, position - 1);
+            int position = AffichageAbo.SelectedItem.ToString().IndexOf("|");
+            string titreAlbum = AffichageAbo.SelectedItem.ToString().Substring(0, position - 1);
 
-                ALBUMS obtAlbum = (from a in Utils.Connexion.ALBUMS
-                                   where a.TITRE_ALBUM.ToString() == titreAlbum
-                                   select a).FirstOrDefault();
+            ALBUMS obtAlbum = (from a in Utils.Connexion.ALBUMS
+                               where a.TITRE_ALBUM.ToString() == titreAlbum
+                               select a).FirstOrDefault();
 
             if (obtAlbum is ALBUMS al)
             {
