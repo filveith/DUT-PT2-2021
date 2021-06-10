@@ -79,6 +79,12 @@
     <Compile Include="PagedListbox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="InscriptionView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InscriptionView.Designer.cs">
+      <DependentUpon>InscriptionView.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,12 +139,6 @@
     <Compile Include="GENRES.cs">
       <DependentUpon>BDDModele.tt</DependentUpon>
     </Compile>
-    <Compile Include="InscriptionView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InscriptionView.Designer.cs">
-      <DependentUpon>InscriptionView.cs</DependentUpon>
-    </Compile>
     <Compile Include="MyAbonnes.cs" />
     <Compile Include="MyAlbum.cs" />
     <Compile Include="MyEmprunt.cs" />
@@ -172,11 +172,11 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InscriptionView.resx">
-      <DependentUpon>InscriptionView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="PagedListbox.resx">
       <DependentUpon>PagedListbox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InscriptionView.resx">
+      <DependentUpon>InscriptionView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserView.resx">
       <DependentUpon>UserView.cs</DependentUpon>

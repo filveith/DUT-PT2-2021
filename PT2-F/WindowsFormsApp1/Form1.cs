@@ -62,7 +62,7 @@ namespace WindowsFormsApp1
             ConnexionView c = new ConnexionView();
             this.Visible = false;
             c.ShowDialog();
-            this.Visible = true;
+            this.Close();
         }
 
         
