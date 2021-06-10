@@ -367,6 +367,33 @@ namespace WindowsFormsApp1
             this.nextPage.UseVisualStyleBackColor = false;
             this.nextPage.Click += new System.EventHandler(this.nextPage_Click);
             // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("NSimSun", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(48)))), ((int)(((byte)(15)))));
+            this.label1.Location = new System.Drawing.Point(467, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(414, 35);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Espace administrateur";
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 1;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel1, 0, 1);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 2;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(884, 701);
+            this.tableLayoutPanel5.TabIndex = 10;
+            // 
             // afficheMiniature
             // 
             this.afficheMiniature.Anchor = System.Windows.Forms.AnchorStyles.None;

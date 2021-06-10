@@ -172,6 +172,12 @@
   <data name="buttonAlbums1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\images\buttonAlbums.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="buttonPageSuivante" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\images\buttonPageSuivante.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="buttonAlbums1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\images\buttonAlbums.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="buttonValider" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\buttonValider.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
