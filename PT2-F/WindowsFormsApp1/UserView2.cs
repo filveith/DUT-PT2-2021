@@ -13,7 +13,6 @@ namespace WindowsFormsApp1
     public partial class UserView2 : Form
     {
         PagedListbox AffichageAbo;
-        private UserView previousWindow;
 
         public UserView2(UserView v)
         {
@@ -21,7 +20,6 @@ namespace WindowsFormsApp1
             AffichageAbo = new PagedListbox(TAffichageAbo);
             AffichageAbo.page.SelectedIndexChanged += Page_SelectedIndexChanged;
             prolongerEmpruntButton.Enabled = false;
-            previousWindow = v;
 
         }
 
@@ -59,6 +57,7 @@ namespace WindowsFormsApp1
             AffichageAbo.Clear();
             filtres.Items.Clear();
             filtres.Items.Add("titre");
+            filtres.Items.Add("genre");
 
             this.recherche();
         }
@@ -166,6 +165,14 @@ namespace WindowsFormsApp1
                     }
                 }
                 
+            }
+            else if (filtre == "genre")
+            {
+                Dictionary<EMPRUNTER, ALBUMS> emprunts = UserView.Abo.ConsulterEmprunts();
+                foreach(var v in emprunts.Where(v => v.Value.GENRES.LIBELLÉ_GENRE.Contains(objet)))
+                {
+                    AffichageAbo.Add(v.Value);
+                }
             }
             else
             {
