@@ -122,7 +122,7 @@ Cas limite et détails:
 
 Cas limite et détails:
 - [x] Est-ce que la suggestion exploite la popularité (exemple: genre similaire aux albums que j'ai empruntés, et trié par nombre de fois que les albums ont été empruntés)
-- [ ] Affiche les bonnes infos ? (où sont-ils… empruntés ou rangée/casier)
+- [x] Affiche les bonnes infos ? (où sont-ils… empruntés ou rangée/casier)
 
 ## US-TU1: Tests unitaires
 
