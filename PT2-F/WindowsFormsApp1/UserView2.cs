@@ -261,5 +261,14 @@ namespace WindowsFormsApp1
                 label2_Click(this, null);
             }
         }
+
+        private void TAffichageAbo_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if(TAffichageAbo.SelectedItem != null && TAffichageAbo.SelectedItem is ALBUMS a)
+            {
+                AlbumInfo albI = new AlbumInfo(a);
+                albI.Show();
+            }
+        }
     }
 }
