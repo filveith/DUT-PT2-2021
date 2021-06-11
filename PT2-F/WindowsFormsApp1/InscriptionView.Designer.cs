@@ -31,6 +31,8 @@ namespace WindowsFormsApp1
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.ValiderInscription = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxNom = new System.Windows.Forms.TextBox();
             this.textBoxPrenom = new System.Windows.Forms.TextBox();
@@ -38,6 +40,8 @@ namespace WindowsFormsApp1
             this.textBoxMdp = new System.Windows.Forms.TextBox();
             this.textBoxCoMdp = new System.Windows.Forms.TextBox();
             this.comboBoxPays = new System.Windows.Forms.ComboBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,10 +49,6 @@ namespace WindowsFormsApp1
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.ValiderInscription = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -66,7 +66,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 450F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 450);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -101,6 +101,33 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.28F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(528, 444);
             this.tableLayoutPanel3.TabIndex = 1;
+            // 
+            // ValiderInscription
+            // 
+            this.ValiderInscription.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ValiderInscription.BackColor = System.Drawing.Color.Transparent;
+            this.ValiderInscription.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonValider1;
+            this.ValiderInscription.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.ValiderInscription.FlatAppearance.BorderSize = 0;
+            this.ValiderInscription.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.ValiderInscription.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ValiderInscription.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ValiderInscription.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ValiderInscription.Location = new System.Drawing.Point(178, 387);
+            this.ValiderInscription.Name = "ValiderInscription";
+            this.ValiderInscription.Size = new System.Drawing.Size(143, 49);
+            this.ValiderInscription.TabIndex = 6;
+            this.ValiderInscription.UseVisualStyleBackColor = false;
+            this.ValiderInscription.Click += new System.EventHandler(this.ValiderInscription_Click);
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label8.Image = global::WindowsFormsApp1.Properties.Resources.logoOnly;
+            this.label8.Location = new System.Drawing.Point(180, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(138, 98);
+            this.label8.TabIndex = 15;
             // 
             // label1
             // 
@@ -181,6 +208,40 @@ namespace WindowsFormsApp1
             this.comboBoxPays.Name = "comboBoxPays";
             this.comboBoxPays.Size = new System.Drawing.Size(493, 33);
             this.comboBoxPays.TabIndex = 5;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Image = global::WindowsFormsApp1.Properties.Resources.eyeClosed_Icon;
+            this.button2.Location = new System.Drawing.Point(502, 316);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(23, 23);
+            this.button2.TabIndex = 25;
+            this.button2.TabStop = false;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Image = global::WindowsFormsApp1.Properties.Resources.eyeClosed_Icon;
+            this.button1.Location = new System.Drawing.Point(502, 281);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(23, 23);
+            this.button1.TabIndex = 24;
+            this.button1.TabStop = false;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -280,77 +341,17 @@ namespace WindowsFormsApp1
             this.label7.TabIndex = 13;
             this.label7.Text = "Pays :";
             // 
-            // ValiderInscription
-            // 
-            this.ValiderInscription.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ValiderInscription.BackColor = System.Drawing.Color.Transparent;
-            this.ValiderInscription.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonValider1;
-            this.ValiderInscription.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ValiderInscription.FlatAppearance.BorderSize = 0;
-            this.ValiderInscription.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.ValiderInscription.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ValiderInscription.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ValiderInscription.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ValiderInscription.Location = new System.Drawing.Point(178, 387);
-            this.ValiderInscription.Name = "ValiderInscription";
-            this.ValiderInscription.Size = new System.Drawing.Size(143, 49);
-            this.ValiderInscription.TabIndex = 6;
-            this.ValiderInscription.UseVisualStyleBackColor = false;
-            this.ValiderInscription.Click += new System.EventHandler(this.ValiderInscription_Click);
-            // 
-            // label8
-            // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label8.Image = global::WindowsFormsApp1.Properties.Resources.logoOnly;
-            this.label8.Location = new System.Drawing.Point(180, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(138, 98);
-            this.label8.TabIndex = 15;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Image = global::WindowsFormsApp1.Properties.Resources.eyeClosed_Icon;
-            this.button2.Location = new System.Drawing.Point(502, 316);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(23, 23);
-            this.button2.TabIndex = 25;
-            this.button2.TabStop = false;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = global::WindowsFormsApp1.Properties.Resources.eyeClosed_Icon;
-            this.button1.Location = new System.Drawing.Point(502, 281);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(23, 23);
-            this.button1.TabIndex = 24;
-            this.button1.TabStop = false;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // InscriptionView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(235)))), ((int)(((byte)(237)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.KeyPreview = true;
             this.Name = "InscriptionView";
             this.Text = "RegisterView2";
             this.Load += new System.EventHandler(this.RegisterView2_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.InscriptionView_KeyPress);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();

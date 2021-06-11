@@ -13,7 +13,6 @@ namespace WindowsFormsApp1
     public partial class UserView2 : Form
     {
         PagedListbox AffichageAbo;
-        private UserView previousWindow;
 
         public UserView2(UserView v)
         {
@@ -21,7 +20,6 @@ namespace WindowsFormsApp1
             AffichageAbo = new PagedListbox(TAffichageAbo);
             AffichageAbo.page.SelectedIndexChanged += Page_SelectedIndexChanged;
             prolongerEmpruntButton.Enabled = false;
-            previousWindow = v;
 
         }
 
@@ -57,12 +55,21 @@ namespace WindowsFormsApp1
         private void UserView2_Load(object sender, EventArgs e)
         {
             AffichageAbo.Clear();
+            filtres.Items.Clear();
+            filtres.Items.Add("titre");
+            filtres.Items.Add("genre");
+
+            this.recherche();
+        }
+
+        private void Emprunts()
+        {
             Dictionary<EMPRUNTER, ALBUMS> emprunts = UserView.Abo.ConsulterEmprunts();
             if (emprunts.Count > 0)
             {
                 foreach (KeyValuePair<EMPRUNTER, ALBUMS> emprunt in emprunts)
                 {
-                    AffichageAbo.Add(emprunt.Value.ToString().Trim()) ;
+                    AffichageAbo.Add(emprunt.Value.ToString().Trim());
                 }
             }
             nextPage.Visible = AffichageAbo?.isOnLastPage == false;
@@ -81,8 +88,7 @@ namespace WindowsFormsApp1
 
         private void prolongerEmprunt_Click(object sender, EventArgs e)
         {
-            int position = AffichageAbo.SelectedItem.ToString().IndexOf("|");
-            string titreAlbum = AffichageAbo.SelectedItem.ToString().Substring(0, position - 1);
+            string titreAlbum = AffichageAbo.SelectedItem.ToString().Trim();
 
             ALBUMS obtAlbum = (from a in Utils.Connexion.ALBUMS
                                where a.TITRE_ALBUM.ToString() == titreAlbum
@@ -139,5 +145,53 @@ namespace WindowsFormsApp1
             previousPage.Visible = AffichageAbo?.CurrentPage > 0;
         }
 
+
+        private void recherche()
+        {
+            string filtre = filtres.Text;
+            string objet = searchBox.Text;
+            AffichageAbo.Clear();
+            if (filtre.Equals("titre"))
+            {
+                Dictionary<EMPRUNTER, ALBUMS> emprunts = UserView.Abo.ConsulterEmprunts();
+
+                foreach (KeyValuePair<EMPRUNTER, ALBUMS> keyValuePair in emprunts)
+                {
+                    ALBUMS val = keyValuePair.Value;
+                    if (val.TITRE_ALBUM.Contains(objet))
+                    {
+                        AffichageAbo.Add(val);
+                    }
+                }
+                
+            }
+            else if (filtre == "genre")
+            {
+                Dictionary<EMPRUNTER, ALBUMS> emprunts = UserView.Abo.ConsulterEmprunts();
+                foreach(var v in emprunts.Where(v => v.Value.GENRES.LIBELLÉ_GENRE.Contains(objet)))
+                {
+                    AffichageAbo.Add(v.Value);
+                }
+            }
+            else
+            {
+                this.Emprunts();
+            }
+            nextPage.Visible = AffichageAbo?.isOnLastPage == false;
+            previousPage.Visible = AffichageAbo?.CurrentPage > 0;
+
+        }
+        private void userView2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                this.recherche();
+            }
+        }
+
+        private void TAffichageAbo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

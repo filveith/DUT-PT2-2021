@@ -22,14 +22,15 @@ namespace WindowsFormsApp1
             previousPage.Visible = pagedListbox?.CurrentPage > 0;
         }
 
-  
-            /// <summary>
-            /// Gère le clic sur le bouton 'Lister Emprunts Prolongés'
-            /// </summary>
-            /// <param name="sender"></param>
-            /// <param name="e"></param>
-            private void listEmpruntsProlongButton_Click(object sender, EventArgs e)
+
+        /// <summary>
+        /// Gère le clic sur le bouton 'Lister Emprunts Prolongés'
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listEmpruntsProlongButton_Click(object sender, EventArgs e)
         {
+            afficheMiniature.Image = null;
             pagedListbox.Clear();
             var empruntsProlongés = Utils.AvoirLesEmpruntProlonger();
 
@@ -44,6 +45,8 @@ namespace WindowsFormsApp1
 
         private void listRetardButton_Click(object sender, EventArgs e)
         {
+
+            afficheMiniature.Image = null;
             pagedListbox.Clear();
             IQueryable<ABONNÉS> abonnésEnRetard = Utils.AvoirAbonneAvecEmpruntRetardDe10Jours();
 
@@ -59,14 +62,9 @@ namespace WindowsFormsApp1
             casiers.ShowDialog();
         }
 
-        private void removeAlbumButton_Click(object sender, EventArgs e)
-        {
-            pagedListbox.Clear();
-            pagedListbox.Add("Pas implémenté");
-        }
-
         private void notEmprunterSinceAYear_Click(object sender, EventArgs e)
         {
+            afficheMiniature.Image = null;
             pagedListbox.Clear();
             var albums = Utils.AvoirAlbumsPasEmprunteDepuisUnAn();
             List<string> allStrings = new List<string>();
@@ -82,6 +80,7 @@ namespace WindowsFormsApp1
 
         private void top10Button_Click(object sender, EventArgs e)
         {
+            afficheMiniature.Image = null;
             pagedListbox.Clear();
 
             List<ALBUMS> top10 = Utils.AvoirTopAlbum();
@@ -96,6 +95,7 @@ namespace WindowsFormsApp1
 
         private void suppIdleUsersButton_Click(object sender, EventArgs e)
         {
+            afficheMiniature.Image = null;
             pagedListbox.Clear();
             foreach (ABONNÉS a in Utils.SupprimerAbosPasEmpruntDepuisUnAn())
             {
@@ -107,12 +107,13 @@ namespace WindowsFormsApp1
 
         private void listerAbonner_Click(object sender, EventArgs e)
         {
+            afficheMiniature.Image = null;
             pagedListbox.Clear();
             IQueryable<ABONNÉS> toutLesAbonner = Utils.GetAllAbonnes();
             pagedListbox.Add("Voici la liste de tout les abonnés :");
             foreach (ABONNÉS abo in toutLesAbonner)
             {
-                pagedListbox.Add(abo.NOM_ABONNÉ.Trim() + " " + abo.PRÉNOM_ABONNÉ.Trim() + " date d'abonnement: " + abo.creationDate);
+                pagedListbox.Add(abo);
             }
             nextPage.Visible = pagedListbox?.isOnLastPage == false;
             previousPage.Visible = pagedListbox?.CurrentPage > 0;
@@ -134,19 +135,35 @@ namespace WindowsFormsApp1
 
         private void log_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string titreAlbum = pagedListbox.SelectedItem.ToString();
+            if (pagedListbox.SelectedItem != null)
+            {
+                string titreAlbum = pagedListbox.SelectedItem.ToString();
 
-            ALBUMS obtAlbum = (from a in Utils.Connexion.ALBUMS
-                               where a.TITRE_ALBUM.ToString() == titreAlbum
-                               select a).FirstOrDefault();
-            
-            var pochette = obtAlbum.POCHETTE;
-            afficheMiniature.Image = Utils.ResizeImage(Utils.byteArrayToImage(pochette), 200, 200);
-            
+                ALBUMS obtAlbum = (from a in Utils.Connexion.ALBUMS
+                                   where a.TITRE_ALBUM.ToString() == titreAlbum
+                                   select a).FirstOrDefault();
+
+                if (obtAlbum != null)
+                {
+                    var pochette = obtAlbum.POCHETTE;
+                    afficheMiniature.Image = Utils.ResizeImage(Utils.byteArrayToImage(pochette), afficheMiniature.Width, afficheMiniature.Height);
+                }
+            }
+
         }
 
         private void tableLayoutPanel5_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+
+        private void changePassword_Click(object sender, EventArgs e)
+        {
+            if (pagedListbox.SelectedItem is ABONNÉS a)
+            {
+                AdminChangePassword c = new AdminChangePassword(a);
+                c.Show();
+            }
 
         }
     }

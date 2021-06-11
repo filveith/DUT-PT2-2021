@@ -47,6 +47,7 @@ namespace WindowsFormsApp1
 
         public void Clear()
         {
+            CurrentPage = 0;
             allItems.Clear();
             ResetItemsForCurrentPage();
         }

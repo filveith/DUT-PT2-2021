@@ -16,7 +16,7 @@ namespace WindowsFormsApp1
         /// <returns>Les informations sous forme de string</returns>
         public override string ToString()
         {
-            return this.NOM_ABONNÉ.Trim() + " " + this.PRÉNOM_ABONNÉ.Trim();
+            return "\"" + this.NOM_ABONNÉ.Trim() + " " + this.PRÉNOM_ABONNÉ.Trim() + "\"" + " date de création : " + creationDate;
         }
 
         /// <summary>
@@ -113,6 +113,29 @@ namespace WindowsFormsApp1
             foreach (var al in emprunt)
             {
                 emprunts.Add(al.emprunt, al.album);
+            }
+            return emprunts;
+        }
+        /// <summary>
+        /// Retourne un dictionnaire de tout les genres des albums empruntés par l'abonné
+        /// </summary>
+        /// <returns>Le dictionnaire des emprunts</returns>
+        public Dictionary<ALBUMS, GENRES> ConsulterGenresEmprunts()
+        {
+            Dictionary<ALBUMS, GENRES> emprunts = new Dictionary<ALBUMS, GENRES>();
+            var emprunt = from alb in Utils.Connexion.ALBUMS
+                          join emp in Utils.Connexion.EMPRUNTER on alb.CODE_ALBUM equals emp.CODE_ALBUM
+                          join abo in Utils.Connexion.ABONNÉS on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
+                          join gen in Utils.Connexion.GENRES on alb.CODE_GENRE equals gen.CODE_GENRE
+                          where abo.CODE_ABONNÉ == this.CODE_ABONNÉ
+                          orderby emp.DATE_RETOUR_ATTENDUE ascending
+                          select new { album = alb, genre = gen };
+
+
+
+            foreach (var al in emprunt)
+            {
+                emprunts.Add(al.album, al.genre);
             }
             return emprunts;
         }

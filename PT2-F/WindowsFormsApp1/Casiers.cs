@@ -148,6 +148,15 @@ namespace WindowsFormsApp1
             nextPage.Visible = pagedListbox?.isOnLastPage == false;
             previousPage.Visible = pagedListbox?.CurrentPage > 0;
         }
+
+        private void listCasiers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listCasiers.SelectedItem is ALBUMS a)
+            {
+                Image pochette = Utils.byteArrayToImage(a.POCHETTE);
+                affichageMinia.Image = Utils.ResizeImage(pochette, 200, 200);
+            }
+        }
     }
 
 
