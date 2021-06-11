@@ -34,15 +34,6 @@ namespace WindowsFormsApp1
         }
 
         /// <summary>
-        /// [PROVISOIRE] Permet d'accéder à certaines fenetres manuellement
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-        }
-
-        /// <summary>
         /// Gère le clic sur le bouton de connexion
         /// </summary>
         /// <param name="sender"></param>
@@ -61,6 +52,11 @@ namespace WindowsFormsApp1
             }
         }
 
+        /// <summary>
+        /// Quitte la fenêtre si la touche Echap est pressée
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)

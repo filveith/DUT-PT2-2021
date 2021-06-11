@@ -21,6 +21,11 @@ namespace WindowsFormsApp1
             return ALBUMS.ToString() + " | emprunté le \"" + DATE_EMPRUNT + "\" | à rendre le " + DATE_RETOUR_ATTENDUE;
         }
 
+
+        /// <summary>
+        /// Calcule le nombre de rallongements en fonction de la date de retour attendue
+        /// </summary>
+        /// <returns>Le nombre</returns>
         public int NombreRallongements()
         {
             var alb = this.ALBUMS;

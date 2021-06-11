@@ -47,6 +47,9 @@ namespace WindowsFormsApp1
             this.recherche();
         }
 
+        /// <summary>
+        /// Affiche les emprunts
+        /// </summary>
         private void Emprunts()
         {
             Dictionary<EMPRUNTER, ALBUMS> emprunts = previousWindow.Abo.ConsulterEmprunts();
@@ -70,11 +73,6 @@ namespace WindowsFormsApp1
         {
             this.DialogResult = DialogResult.OK;
             this.Close();
-        }
-
-        private void prolongerEmprunt_Click(object sender, EventArgs e)
-        {
-
         }
 
         /// <summary>
@@ -115,7 +113,9 @@ namespace WindowsFormsApp1
             previousPage.Visible = AffichageAbo?.CurrentPage > 0;
         }
 
-
+        /// <summary>
+        /// Effectue une recherche
+        /// </summary>
         private void recherche()
         {
             string filtre = filtres.Text;
@@ -156,6 +156,12 @@ namespace WindowsFormsApp1
             previousPage.Visible = AffichageAbo?.CurrentPage > 0;
 
         }
+
+        /// <summary>
+        /// Valide si la touche Entrée est pressée
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void userView2_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
@@ -164,6 +170,11 @@ namespace WindowsFormsApp1
             }
         }
 
+        /// <summary>
+        /// Affiche la pochette de l'album sélectionné
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TAffichageAbo_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (AffichageAbo.SelectedItem is ALBUMS obtAlbum)
@@ -191,6 +202,11 @@ namespace WindowsFormsApp1
             }
         }
 
+        /// <summary>
+        /// Permet de rendre un albulm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rendreButton_Click(object sender, EventArgs e)
         {
             if (AffichageAbo.SelectedItem is ALBUMS obtAlbum)
@@ -200,6 +216,11 @@ namespace WindowsFormsApp1
             }
         }
 
+        /// <summary>
+        /// Prolonge l'emprunt d'un album
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void prolongerEmprunt_Click_1(object sender, EventArgs e)
         {
             if (AffichageAbo.SelectedItem is ALBUMS al)
@@ -216,6 +237,11 @@ namespace WindowsFormsApp1
             }
         }
 
+        /// <summary>
+        /// Déconnecte
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void label2_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -223,6 +249,11 @@ namespace WindowsFormsApp1
             previousWindow.Close();
         }
 
+        /// <summary>
+        /// Quitte si la touche Entrée est pressée
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UserView2_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)

@@ -131,6 +131,11 @@ namespace WindowsFormsApp1
             return passQuery.FirstOrDefault();
         }
 
+        /// <summary>
+        /// Vérifie si le login correspond à un utilisateur administrateur
+        /// </summary>
+        /// <param name="login">Le login</param>
+        /// <returns>Vrai si l'utilisateur est administrateur</returns>
         private static bool isAdmin(string login)
         {
 
@@ -141,6 +146,11 @@ namespace WindowsFormsApp1
             return adminQuery != null;
         }
 
+        /// <summary>
+        /// Valide si la touche Entrée est pressée
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
@@ -149,6 +159,11 @@ namespace WindowsFormsApp1
             }
         }
 
+        /// <summary>
+        /// Affiche ou pas le mot de passe
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void eyeButton_Click(object sender, EventArgs e)
         {
             isHidden = !isHidden;
@@ -164,6 +179,11 @@ namespace WindowsFormsApp1
             }
         }
 
+        /// <summary>
+        /// Quitte la page si la touche Echap est pressée
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ConnexionView_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.Escape)
