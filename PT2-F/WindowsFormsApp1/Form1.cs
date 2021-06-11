@@ -45,11 +45,6 @@ namespace WindowsFormsApp1
                 DebugWindow d = new DebugWindow();
                 d.Show();
             }
-            if(e.KeyChar == 'c')
-            {
-                ChangePassword c = new ChangePassword(Utils.GetABONNÉ("jean"));
-                c.Show();
-            }
         }
 
         /// <summary>

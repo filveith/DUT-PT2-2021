@@ -22,12 +22,12 @@ namespace WindowsFormsApp1
         private void Casiers_Load(object sender, EventArgs e)
         {
             pagedListbox.Clear();
-            this.afficherAlbumsNoirRouge();
+            this.afficherAlbums();
 
         }
 
 
-        private void afficherAlbumsNoirRouge()
+        private void afficherAlbums()
         {
             var toutAlbums = (from alb in Utils.Connexion.ALBUMS
                               join emp in Utils.Connexion.EMPRUNTER on alb.CODE_ALBUM equals emp.CODE_ALBUM
