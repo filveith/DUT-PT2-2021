@@ -24,7 +24,7 @@ namespace WindowsFormsApp1
             AffichageAbo = new PagedListbox(TAffichageAbo);
             nextPage.Visible = AffichageAbo?.isOnLastPage == false;
             previousPage.Visible = AffichageAbo?.CurrentPage > 0;
-            u2 = new UserView2(this);
+            u2 = new UserView2();
         }
 
         /// <summary>
@@ -37,6 +37,7 @@ namespace WindowsFormsApp1
             filtres.Items.Clear();
             filtres.Items.Add("titre");
             filtres.Items.Add("genre");
+            filtres.Text = "titre";
             filtres.SelectedIndex = 0;
 
             this.suggestions();

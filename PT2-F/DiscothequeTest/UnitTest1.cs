@@ -266,9 +266,9 @@ namespace DiscothequeTest
             Assert.IsFalse(prolongésBefore.Any(emprunt => (emprunt.CODE_ABONNÉ == e.CODE_ABONNÉ) && (emprunt.CODE_ALBUM == e.CODE_ALBUM)));
 
             // On prolonge l'emprunt
-            bool prolong = abo.ProlongerEmprunt(alToTake);
+            EMPRUNTER prolong = abo.ProlongerEmprunt(alToTake);
 
-            Assert.IsTrue(prolong);
+            Assert.IsNotNull(prolong);
 
             // On vérifie qu'il fait maintenant partie des emprunts prolongés
             var prolongésAfter = Utils.AvoirLesEmpruntProlonger();
