@@ -10,7 +10,15 @@ namespace WindowsFormsApp1
     {
         public override string ToString()
         {
-            return "\"" + NOM_EDITEUR + "\" basé en " + PAYS.ToString();
+            PAYS p = PAYS;
+            if (p != null)
+            {
+                return "\"" + NOM_EDITEUR.Trim() + "\" basé en " + PAYS.ToString();
+            }
+            else
+            {
+                return "\"" + NOM_EDITEUR.Trim() + "\"";
+            }
         }
     }
 }

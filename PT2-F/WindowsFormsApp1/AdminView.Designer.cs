@@ -289,6 +289,7 @@ namespace WindowsFormsApp1
             this.log.Size = new System.Drawing.Size(762, 651);
             this.log.TabIndex = 9;
             this.log.SelectedIndexChanged += new System.EventHandler(this.log_SelectedIndexChanged);
+            this.log.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.log_MouseDoubleClick);
             // 
             // tableLayoutPanel3
             // 

@@ -166,5 +166,14 @@ namespace WindowsFormsApp1
                 this.Close();
             }
         }
+
+        private void log_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if(log.SelectedItem != null && log.SelectedItem is ALBUMS al)
+            {
+                AlbumInfo albumInfo = new AlbumInfo(al);
+                albumInfo.Show();
+            }
+        }
     }
 }

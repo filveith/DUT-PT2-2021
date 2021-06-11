@@ -22,5 +22,13 @@ namespace WindowsFormsApp1
             genre.Text = a.GENRES.LIBELLÉ_GENRE.Trim();
             prix.Text = a.PRIX_ALBUM.ToString();
         }
+
+        private void AlbumInfo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }

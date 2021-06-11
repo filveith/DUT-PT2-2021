@@ -58,6 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbonneInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbonneInfo.Designer.cs">
+      <DependentUpon>AbonneInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="ABONNÉS.cs">
       <DependentUpon>BDDModele.tt</DependentUpon>
     </Compile>
