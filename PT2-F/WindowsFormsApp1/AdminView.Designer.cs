@@ -179,21 +179,7 @@ namespace WindowsFormsApp1
             this.suppIdleUsersButton.UseVisualStyleBackColor = false;
             this.suppIdleUsersButton.Click += new System.EventHandler(this.suppIdleUsersButton_Click);
             // 
-            // listEmpruntsProlongButton
-            // 
-            this.listEmpruntsProlongButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.listEmpruntsProlongButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
-            this.listEmpruntsProlongButton.FlatAppearance.BorderSize = 0;
-            this.listEmpruntsProlongButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.listEmpruntsProlongButton.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listEmpruntsProlongButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.listEmpruntsProlongButton.Location = new System.Drawing.Point(24, 357);
-            this.listEmpruntsProlongButton.Name = "listEmpruntsProlongButton";
-            this.listEmpruntsProlongButton.Size = new System.Drawing.Size(113, 100);
-            this.listEmpruntsProlongButton.TabIndex = 1;
-            this.listEmpruntsProlongButton.Text = "Lister Emprunts Prolongés";
-            this.listEmpruntsProlongButton.UseVisualStyleBackColor = false;
-            this.listEmpruntsProlongButton.Click += new System.EventHandler(this.listEmpruntsProlongButton_Click);
+            // listerAbonner
             // 
             this.listerAbonner.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.listerAbonner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
@@ -371,7 +357,7 @@ namespace WindowsFormsApp1
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Miriam Libre", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(137)))));
-            this.label1.Location = new System.Drawing.Point(815, 0);
+            this.label1.Location = new System.Drawing.Point(409, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(349, 38);
             this.label1.TabIndex = 0;
