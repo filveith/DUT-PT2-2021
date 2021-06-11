@@ -68,6 +68,7 @@ namespace WindowsFormsApp1
         /// <param name="e"></param>
         private void mesAlbums_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
@@ -206,6 +207,13 @@ namespace WindowsFormsApp1
             {
                 ConnexionView.Pop("ce n'est pas un album", "Erreur");
             }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            previousWindow.DialogResult = DialogResult.OK;
+            previousWindow.Close();
         }
     }
 }
