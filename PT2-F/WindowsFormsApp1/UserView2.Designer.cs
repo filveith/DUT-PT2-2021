@@ -197,6 +197,7 @@ namespace WindowsFormsApp1
             // 
             this.filtres.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.filtres.Font = new System.Drawing.Font("Miriam Libre", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filtres.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(167)))), ((int)(((byte)(194)))));
             this.filtres.FormattingEnabled = true;
             this.filtres.Location = new System.Drawing.Point(534, 14);
             this.filtres.Name = "filtres";
