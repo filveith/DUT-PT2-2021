@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
         public override string ToString()
         {
 
-            return ALBUMS.ToString() + " | emprunté le \"" + DATE_EMPRUNT + "\" | à rendre le " + DATE_RETOUR_ATTENDUE;
+            return ALBUMS.ToString();
         }
 
 
