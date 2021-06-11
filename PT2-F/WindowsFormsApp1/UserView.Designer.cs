@@ -415,6 +415,7 @@ namespace WindowsFormsApp1
             this.changerMdp.Size = new System.Drawing.Size(247, 49);
             this.changerMdp.TabIndex = 3;
             this.changerMdp.UseVisualStyleBackColor = false;
+            this.changerMdp.Click += new System.EventHandler(this.changerMdp_Click);
             // 
             // UserView
             // 
