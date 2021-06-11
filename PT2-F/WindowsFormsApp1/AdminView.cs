@@ -43,6 +43,11 @@ namespace WindowsFormsApp1
 
         }
 
+        /// <summary>
+        /// Liste les abonnés en retard sur un emprunt
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listRetardButton_Click(object sender, EventArgs e)
         {
 
@@ -56,12 +61,22 @@ namespace WindowsFormsApp1
             }
         }
 
+        /// <summary>
+        /// Affiche la liste des casiers, afin de consulter les albums manquants
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void showLockersButton_Click(object sender, EventArgs e)
         {
             casiers = new Casiers();
             casiers.ShowDialog();
         }
 
+        /// <summary>
+        /// Recupère les abonnés n'ayant pas emprunter d'album depuis plus d'un an
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void notEmprunterSinceAYear_Click(object sender, EventArgs e)
         {
             afficheMiniature.Image = null;
@@ -73,6 +88,11 @@ namespace WindowsFormsApp1
 
         }
 
+        /// <summary>
+        /// Affiche le top 10 des albums les plus empruntés
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void top10Button_Click(object sender, EventArgs e)
         {
             afficheMiniature.Image = null;
@@ -88,6 +108,11 @@ namespace WindowsFormsApp1
             previousPage.Visible = pagedListbox?.CurrentPage > 0;
         }
 
+        /// <summary>
+        /// Permet de supprimer les abonnés inactifs
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void suppIdleUsersButton_Click(object sender, EventArgs e)
         {
             afficheMiniature.Image = null;
@@ -100,6 +125,11 @@ namespace WindowsFormsApp1
             previousPage.Visible = pagedListbox?.CurrentPage > 0;
         }
 
+        /// <summary>
+        /// Affiche la liste des abonnés
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listerAbonner_Click(object sender, EventArgs e)
         {
             afficheMiniature.Image = null;
@@ -111,6 +141,11 @@ namespace WindowsFormsApp1
             previousPage.Visible = pagedListbox?.CurrentPage > 0;
         }
 
+        /// <summary>
+        /// Passe à la page suivante
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void nextPage_Click(object sender, EventArgs e)
         {
             pagedListbox.NextPage();
@@ -118,6 +153,11 @@ namespace WindowsFormsApp1
             previousPage.Visible = pagedListbox?.CurrentPage > 0;
         }
 
+        /// <summary>
+        /// Passe à la page précédente
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void previousPage_Click(object sender, EventArgs e)
         {
             pagedListbox.PreviousPage();
@@ -125,6 +165,11 @@ namespace WindowsFormsApp1
             previousPage.Visible = pagedListbox?.CurrentPage > 0;
         }
 
+        /// <summary>
+        /// Affiche la pochette lorsque l'on sélectionne un album
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void log_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (pagedListbox.SelectedItem != null && pagedListbox.SelectedItem is ALBUMS obtAlbum)
@@ -144,11 +189,11 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void tableLayoutPanel5_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Permet de changer le mot de passe de l'abonné sélectionné
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void changePassword_Click(object sender, EventArgs e)
         {
             if (pagedListbox.SelectedItem is ABONNÉS a)
@@ -159,6 +204,11 @@ namespace WindowsFormsApp1
 
         }
 
+        /// <summary>
+        /// Quitte la fenêtre administrateur si la touche Echap est pressée
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AdminView_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)

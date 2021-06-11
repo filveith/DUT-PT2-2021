@@ -142,7 +142,6 @@ namespace WindowsFormsApp1
             this.KeyPreview = true;
             this.Name = "AdminChangePassword";
             this.Text = "AdminChangePasswordcs";
-            this.Load += new System.EventHandler(this.AdminChangePassword_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AdminChangePassword_KeyPress);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

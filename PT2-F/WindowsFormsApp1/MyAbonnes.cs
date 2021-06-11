@@ -69,6 +69,10 @@ namespace WindowsFormsApp1
             return false;
         }
 
+        /// <summary>
+        /// Prolonge tout les emprunts de l'abonné
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<EMPRUNTER> ProlongerTousEmprunts()
         {
             int i = 0;
@@ -205,6 +209,11 @@ namespace WindowsFormsApp1
             return suggestions;
         }
 
+        /// <summary>
+        /// Arrondi un nombre
+        /// </summary>
+        /// <param name="n">Le nombre</param>
+        /// <returns>L'entier arrondi</returns>
         public int Round(double n)
         {
             if (n >= 0)
@@ -213,6 +222,7 @@ namespace WindowsFormsApp1
             }
             return (int)(n - 0.5);
         }
+
 
         public void ChangePassword(string newPass)
         {

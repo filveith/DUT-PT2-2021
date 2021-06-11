@@ -19,6 +19,12 @@ namespace WindowsFormsApp1
             InitializeComponent();
             pagedListbox = new PagedListbox(listCasiers);
         }
+
+        /// <summary>
+        /// Charge la fenêtre des casiers
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Casiers_Load(object sender, EventArgs e)
         {
             pagedListbox.Clear();
@@ -26,7 +32,9 @@ namespace WindowsFormsApp1
 
         }
 
-
+        /// <summary>
+        /// Affiche les albums empruntés
+        /// </summary>
         private void afficherAlbums()
         {
             var toutAlbums = Utils.AvoirAlbumsEmpruntes();
@@ -35,6 +43,11 @@ namespace WindowsFormsApp1
             nextPage.Visible = pagedListbox?.isOnLastPage == false;
             previousPage.Visible = pagedListbox?.CurrentPage > 0;
         }
+
+        /// <summary>
+        /// Affiche les albums empruntés du casier renseigné
+        /// </summary>
+        /// <param name="numéroDeCasier">Le code du casier</param>
         private void AfficherAlbumsSelonCasier(int numéroDeCasier)
         {
             pagedListbox.Clear();
@@ -45,6 +58,12 @@ namespace WindowsFormsApp1
             previousPage.Visible = pagedListbox?.CurrentPage > 0;
         }
 
+        /// <summary>
+        /// Gère les clics sur les boutons selon le casier
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        #region Numéros de casier
         private void button1_Click(object sender, EventArgs e)
         {
             numCasier = 1;
@@ -116,7 +135,13 @@ namespace WindowsFormsApp1
             numCasier = 12;
             this.AfficherAlbumsSelonCasier(numCasier);
         }
+        #endregion
 
+        /// <summary>
+        /// Passe à la page précédente
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void previousPage_Click(object sender, EventArgs e)
         {
             pagedListbox.PreviousPage();
@@ -124,6 +149,11 @@ namespace WindowsFormsApp1
             previousPage.Visible = pagedListbox?.CurrentPage > 0;
         }
 
+        /// <summary>
+        /// Passe à la page suivante
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void nextPage_Click(object sender, EventArgs e)
         {
             pagedListbox.NextPage();
@@ -131,6 +161,11 @@ namespace WindowsFormsApp1
             previousPage.Visible = pagedListbox?.CurrentPage > 0;
         }
 
+        /// <summary>
+        /// Affiche la pochette de l'album séléctionné
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listCasiers_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listCasiers.SelectedItem is ALBUMS a)
@@ -146,6 +181,11 @@ namespace WindowsFormsApp1
             }
         }
 
+        /// <summary>
+        /// Quitte la fenêtre si la touche Entrée est pressée
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Casiers_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
