@@ -646,7 +646,7 @@ namespace DiscothequeTest
         /// <summary>
         /// Test Rendre un Emprunt
         /// </summary>
-        [TestMethod]
+        [TestMethod, TestCategory("US1")]
         public void TestRendre()
         {
             // si l'abonné existe deja, on le supprime
