@@ -56,10 +56,12 @@ namespace WindowsFormsApp1
                         }
                         else
                         {
-                            UserView u = new UserView(a);
                             this.Visible = false;
-                            u.ShowDialog();
-                            this.Visible = true;
+                            UserView u = new UserView(a);
+                            if(u.ShowDialog() == DialogResult.OK)
+                            {
+                                this.Visible = true;
+                            }
                         }
                     }
                     else Pop("Mot de passe invalide", "Erreur");

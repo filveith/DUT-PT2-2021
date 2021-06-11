@@ -52,8 +52,9 @@ namespace WindowsFormsApp1
         {
 
             this.Visible = false;
-            u2.ShowDialog();
-            this.Visible = true;
+            if(u2.ShowDialog() == DialogResult.OK) { 
+                this.Visible = true;
+            }
 
         }
 
@@ -228,6 +229,12 @@ namespace WindowsFormsApp1
         {
             ChangePassword changeMdp = new ChangePassword(Abo);
             changeMdp.Show();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }
