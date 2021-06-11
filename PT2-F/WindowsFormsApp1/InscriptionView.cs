@@ -68,12 +68,12 @@ namespace WindowsFormsApp1
         /// <param name="e"></param>
         private void RegisterView2_Load(object sender, EventArgs e)
         {
-            IQueryable<PAYS> pays = Utils.AvoirListeDesPays();
+            IEnumerable<PAYS> pays = Utils.AvoirListeDesPays();
             comboBoxPays.Items.Clear();
             comboBoxPays.Items.Add("Autre");
             foreach (PAYS p in pays)
             {
-                comboBoxPays.Items.Add(p.NOM_PAYS.Trim());
+                comboBoxPays.Items.Add(p);
             }
             comboBoxPays.SelectedIndex = 0;
         }
@@ -110,7 +110,7 @@ namespace WindowsFormsApp1
 
         private void InscriptionView_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar == 13)
+            if (e.KeyChar == 13)
             {
                 ValiderInscription_Click(this, null);
             }
@@ -118,7 +118,7 @@ namespace WindowsFormsApp1
 
         private void InscriptionView_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Escape)
+            if (e.KeyCode == Keys.Escape)
             {
                 this.Close();
             }

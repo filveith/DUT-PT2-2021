@@ -9,5 +9,6 @@ namespace WindowsFormsApp1
     public static class CachedElements
     {
         public static List<ALBUMS> allAlbums = Utils.Connexion.ALBUMS.ToList();
+        public static List<PAYS> allPays = Utils.Connexion.PAYS.ToList();
     }
 }
