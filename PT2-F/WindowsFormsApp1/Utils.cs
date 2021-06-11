@@ -174,6 +174,7 @@ namespace WindowsFormsApp1
 
             var top = (from alb in Connexion.ALBUMS
                        join emp in Connexion.EMPRUNTER on alb.CODE_ALBUM equals emp.CODE_ALBUM
+                       where emp.DATE_EMPRUNT.Year == DateTime.Now.Year
                        group alb by alb.CODE_ALBUM into groupés
                        orderby groupés.Count() descending
                        select groupés).Take(10);
