@@ -235,6 +235,7 @@
       <DependentUpon>BDDModele.edmx</DependentUpon>
       <LastGenOutput>BDDModele.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\pngfind.com-submit-button-png-3041534.png" />
     <None Include="Resources\images\buttonChangerMdp.png" />
     <None Include="Resources\eyeClosed_Icon.png" />
     <None Include="Resources\eyeIcon.png" />
