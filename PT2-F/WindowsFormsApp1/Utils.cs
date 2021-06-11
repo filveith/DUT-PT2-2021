@@ -75,7 +75,7 @@ namespace WindowsFormsApp1
         {
             var tempList = (from emp in Connexion.EMPRUNTER
                             join abo in Connexion.ABONNÉS on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
-                            join alb in CachedElements.allAlbums on emp.CODE_ALBUM equals alb.CODE_ALBUM
+                            join alb in Connexion.ALBUMS on emp.CODE_ALBUM equals alb.CODE_ALBUM
                             select emp).ToList();
 
 
@@ -89,7 +89,7 @@ namespace WindowsFormsApp1
         /// <returns> Retourne les albums qui n'ont pas été emprunté depuis 1 an</returns>
         public static IEnumerable<ALBUMS> AvoirAlbumsPasEmprunteDepuisUnAn()
         {
-            var liste = (from a in CachedElements.allAlbums
+            var liste = (from a in Connexion.ALBUMS
                          join e in Connexion.EMPRUNTER
                          on a.CODE_ALBUM equals e.CODE_ALBUM into empDept
                          from ed in empDept.DefaultIfEmpty()
