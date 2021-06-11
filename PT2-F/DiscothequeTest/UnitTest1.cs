@@ -16,6 +16,12 @@ namespace DiscothequeTest
     {
         private int idAboTest = 0;
 
+        [TestMethod]
+        public void RemoveAboPourTest()
+        {
+            SuppAboAfterTests(Utils.GetABONNÉ("TestRegister"));
+        }
+
         /// <summary>
         /// US1 ajout abo
         /// </summary>
@@ -23,14 +29,14 @@ namespace DiscothequeTest
         public void TestAjoutAbonnée()
         {
             //Check si abo existe
-            ABONNÉS abo = Utils.GetABONNÉS("TestRegister");
+            ABONNÉS abo = Utils.GetABONNÉ("TestRegister");
 
             //On passse si l'abonné TestRegister n'existe pas
             if (abo == null)
             {
                 SuppAboAfterTests(abo);
 
-                ABONNÉS removedAbo = Utils.GetABONNÉS("TestRegister");
+                ABONNÉS removedAbo = Utils.GetABONNÉ("TestRegister");
                 Assert.IsTrue(removedAbo == null);
             }
 
@@ -40,7 +46,7 @@ namespace DiscothequeTest
             //On regarde si il a bien etait crée
             Assert.IsNotNull(a);
 
-            ABONNÉS aboFinal = Utils.GetABONNÉS("TestRegister");
+            ABONNÉS aboFinal = Utils.GetABONNÉ("TestRegister");
 
             //On verifie avec la base de données si il existe bien
             Assert.IsTrue(aboFinal.LOGIN_ABONNÉ == "TestRegister");
@@ -56,7 +62,7 @@ namespace DiscothequeTest
         public void TestAjoutEmprunt()
         {
             //Check si abo existe
-            ABONNÉS abo = Utils.GetABONNÉS("TestRegister");
+            ABONNÉS abo = Utils.GetABONNÉ("TestRegister");
 
             //On cree un abonne si il n'existe pas
             if (abo == null)
@@ -65,7 +71,7 @@ namespace DiscothequeTest
                 Assert.IsNotNull(a);
             }
 
-            abo = Utils.GetABONNÉS("TestRegister");
+            abo = Utils.GetABONNÉ("TestRegister");
 
             var initState = from em in Utils.Connexion.EMPRUNTER
                             where em.CODE_ABONNÉ == abo.CODE_ABONNÉ
@@ -106,7 +112,7 @@ namespace DiscothequeTest
             Random rand = new Random();
 
             // si l'abonné existe deja, on le supprime
-            ABONNÉS abo = Utils.GetABONNÉS("TestRegister");
+            ABONNÉS abo = Utils.GetABONNÉ("TestRegister");
 
             if (abo != null)
             {
@@ -155,7 +161,7 @@ namespace DiscothequeTest
             Random rand = new Random();
 
             // si l'abonné existe deja, on le supprime
-            ABONNÉS abo = Utils.GetABONNÉS("TestRegister");
+            ABONNÉS abo = Utils.GetABONNÉ("TestRegister");
 
             if (abo != null)
             {
@@ -223,7 +229,7 @@ namespace DiscothequeTest
 
             // si l'abonné existe deja, on le supprime
 
-            ABONNÉS abo = Utils.GetABONNÉS("TestRegister");
+            ABONNÉS abo = Utils.GetABONNÉ("TestRegister");
 
             if (abo != null)
             {
@@ -279,7 +285,7 @@ namespace DiscothequeTest
         public void TestUS5()
         {
             // si l'abonné existe deja, on le supprime
-            ABONNÉS abo = Utils.GetABONNÉS("TestRegister");
+            ABONNÉS abo = Utils.GetABONNÉ("TestRegister");
 
             if (abo != null)
             {
@@ -347,7 +353,7 @@ namespace DiscothequeTest
             idAboTest = abonne.CODE_ABONNÉ;
             Utils.Connexion.SaveChanges();
 
-            abonne = Utils.GetABONNÉS("TestRegister");
+            abonne = Utils.GetABONNÉ("TestRegister");
 
             ALBUMS alb = (from ab in Utils.Connexion.ALBUMS
                           where ab.CODE_ALBUM == 20
@@ -398,7 +404,7 @@ namespace DiscothequeTest
         public void TestUS7()
         {
             // si l'abonné existe déjà, on le supprime
-            ABONNÉS abo = Utils.GetABONNÉS("TestRegister");
+            ABONNÉS abo = Utils.GetABONNÉ("TestRegister");
 
             if (abo != null)
             {
@@ -437,7 +443,7 @@ namespace DiscothequeTest
 
             for (int a = 0; a < 50; a++)
             {
-                ABONNÉS abonne = Utils.GetABONNÉS("tus7."+a);
+                ABONNÉS abonne = Utils.GetABONNÉ("tus7."+a);
                 if (abonne != null)
                 {
                     SuppAboAfterTests(abonne);
@@ -460,7 +466,7 @@ namespace DiscothequeTest
             //on supprime les abonnés
             for (int z = 0; z < 50; z++)
             {
-                ABONNÉS abonne = Utils.GetABONNÉS("tus7." + z);
+                ABONNÉS abonne = Utils.GetABONNÉ("tus7." + z);
 
                 if (abonne != null)
                 {
@@ -506,7 +512,7 @@ namespace DiscothequeTest
         public void TestUS9()
         {
             // si l'abonné existe deja, on le supprime
-            ABONNÉS abo = Utils.GetABONNÉS("TestRegister");
+            ABONNÉS abo = Utils.GetABONNÉ("TestRegister");
 
             if (abo != null)
             {
@@ -556,7 +562,7 @@ namespace DiscothequeTest
         public void TestUS10()
         {
             // si l'abonné existe deja, on le supprime
-            ABONNÉS abo = Utils.GetABONNÉS("tus10");
+            ABONNÉS abo = Utils.GetABONNÉ("TestRegister");
 
             if (abo != null)
             {
@@ -566,7 +572,7 @@ namespace DiscothequeTest
             Utils.Connexion.SaveChanges();
 
             // On crée un abonné pour nos tests
-            abo = Utils.RegisterAbo("Test", "US10", "tus10", "mdpMEGAStrong", 44);
+            abo = Utils.RegisterAbo("Test", "Register", "TestRegister", "123456", 1);
 
             Assert.IsTrue(abo != null);
 
@@ -644,7 +650,7 @@ namespace DiscothequeTest
         public void TestRendre()
         {
             // si l'abonné existe deja, on le supprime
-            ABONNÉS abo = Utils.GetABONNÉS("TR");
+            ABONNÉS abo = Utils.GetABONNÉ("TestRegister");
 
             if (abo != null)
             {
@@ -654,7 +660,7 @@ namespace DiscothequeTest
             Utils.Connexion.SaveChanges();
 
             // On crée un abonné pour nos tests
-            abo = Utils.RegisterAbo("Test", "Rendre", "TR", "mdpULTRAStrong", 48);
+            abo = Utils.RegisterAbo("Test", "Register", "TestRegister", "123456", 1);
 
             Assert.IsTrue(abo != null);
 
