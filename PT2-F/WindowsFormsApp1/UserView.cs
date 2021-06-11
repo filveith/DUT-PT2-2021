@@ -226,7 +226,7 @@ namespace WindowsFormsApp1
         private void changerMdp_Click(object sender, EventArgs e)
         {
             ChangePassword changeMdp = new ChangePassword(Abo);
-            changeMdp.ShowDialog();
+            changeMdp.Show();
         }
     }
 }

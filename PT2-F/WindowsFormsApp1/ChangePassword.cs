@@ -85,8 +85,8 @@ namespace WindowsFormsApp1
                     {
                         abo.PASSWORD_ABONNÉ = Utils.ComputeSha256Hash(textBox2.Text);
                         ConnexionView.Pop("Vous avez bien changé votre mot de passe!", "Confirmation");
-                        this.Close();
                         Utils.Connexion.SaveChanges();
+                        this.Close();
                         return;
                     }
                     ConnexionView.Pop("Erreur! Vous n'avez pas entré le bon mot de passe!", "Erreur");
@@ -102,6 +102,30 @@ namespace WindowsFormsApp1
         private void ChangePassword_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                valider_Click(this, null);
+            }
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                valider_Click(this, null);
+            }
+        }
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                valider_Click(this, null);
+            }
         }
     }
 }
