@@ -88,8 +88,7 @@ namespace WindowsFormsApp1
 
         private void prolongerEmprunt_Click(object sender, EventArgs e)
         {
-            int position = AffichageAbo.SelectedItem.ToString().IndexOf("|");
-            string titreAlbum = AffichageAbo.SelectedItem.ToString().Substring(0, position - 1);
+            string titreAlbum = AffichageAbo.SelectedItem.ToString().Trim();
 
             ALBUMS obtAlbum = (from a in Utils.Connexion.ALBUMS
                                where a.TITRE_ALBUM.ToString() == titreAlbum
