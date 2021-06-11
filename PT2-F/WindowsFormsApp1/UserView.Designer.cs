@@ -323,6 +323,7 @@ namespace WindowsFormsApp1
             this.TAffichageAbo.Size = new System.Drawing.Size(892, 230);
             this.TAffichageAbo.TabIndex = 4;
             this.TAffichageAbo.SelectedIndexChanged += new System.EventHandler(this.TAffichageAbo_SelectedIndexChanged);
+            this.TAffichageAbo.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TAffichageAbo_MouseDoubleClick);
             // 
             // tableLayoutPanel7
             // 
