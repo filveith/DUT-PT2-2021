@@ -38,7 +38,7 @@ namespace WindowsFormsApp1
 
         private void valider_Click(object sender, EventArgs e)
         {
-            if(newPassBox.TextLength > 0 && newPassBox.Text.Equals(confirmerPassBox.Text) )
+            if(newPassBox.TextLength > 0 )
             {
                 abonne.PASSWORD_ABONNÉ = Utils.ComputeSha256Hash(newPassBox.Text);
                 Utils.Connexion.SaveChanges();
