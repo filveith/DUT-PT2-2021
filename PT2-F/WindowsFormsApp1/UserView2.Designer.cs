@@ -30,12 +30,9 @@ namespace WindowsFormsApp1
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.MenuPrincipal = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.aboLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.searchBox = new System.Windows.Forms.TextBox();
@@ -55,8 +52,11 @@ namespace WindowsFormsApp1
             this.TAffichageAbo = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.nextPage = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.MenuPrincipal = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.nextPage = new System.Windows.Forms.Button();
             this.previousPage = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -92,26 +92,6 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 71.30125F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1284, 561);
             this.tableLayoutPanel1.TabIndex = 3;
-            // 
-            // MenuPrincipal
-            // 
-            this.MenuPrincipal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.MenuPrincipal.BackColor = System.Drawing.Color.Transparent;
-            this.MenuPrincipal.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonRetourMenu;
-            this.MenuPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.MenuPrincipal.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.MenuPrincipal.FlatAppearance.BorderSize = 0;
-            this.MenuPrincipal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.MenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MenuPrincipal.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MenuPrincipal.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.MenuPrincipal.Location = new System.Drawing.Point(998, 50);
-            this.MenuPrincipal.Margin = new System.Windows.Forms.Padding(3, 50, 30, 3);
-            this.MenuPrincipal.Name = "MenuPrincipal";
-            this.MenuPrincipal.Size = new System.Drawing.Size(256, 55);
-            this.MenuPrincipal.TabIndex = 1;
-            this.MenuPrincipal.UseVisualStyleBackColor = false;
-            this.MenuPrincipal.Click += new System.EventHandler(this.mesAlbums_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -161,24 +141,6 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel12.Size = new System.Drawing.Size(348, 80);
             this.tableLayoutPanel12.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label1.Image = global::WindowsFormsApp1.Properties.Resources.logoOnly;
-            this.label1.Location = new System.Drawing.Point(49, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(168, 80);
-            this.label1.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.Image = global::WindowsFormsApp1.Properties.Resources.pngfind_com_submit_button_png_3041534;
-            this.label2.Location = new System.Drawing.Point(3, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 39);
-            this.label2.TabIndex = 4;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // aboLabel
             // 
@@ -429,6 +391,7 @@ namespace WindowsFormsApp1
             this.TAffichageAbo.Size = new System.Drawing.Size(892, 267);
             this.TAffichageAbo.TabIndex = 4;
             this.TAffichageAbo.SelectedIndexChanged += new System.EventHandler(this.TAffichageAbo_SelectedIndexChanged);
+            this.TAffichageAbo.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TAffichageAbo_MouseDoubleClick);
             // 
             // tableLayoutPanel7
             // 
@@ -455,6 +418,53 @@ namespace WindowsFormsApp1
             this.panel1.Size = new System.Drawing.Size(437, 116);
             this.panel1.TabIndex = 0;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.previousPage);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(437, 116);
+            this.panel2.TabIndex = 1;
+            // 
+            // MenuPrincipal
+            // 
+            this.MenuPrincipal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MenuPrincipal.BackColor = System.Drawing.Color.Transparent;
+            this.MenuPrincipal.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonRetourMenu;
+            this.MenuPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.MenuPrincipal.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MenuPrincipal.FlatAppearance.BorderSize = 0;
+            this.MenuPrincipal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.MenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MenuPrincipal.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MenuPrincipal.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.MenuPrincipal.Location = new System.Drawing.Point(998, 50);
+            this.MenuPrincipal.Margin = new System.Windows.Forms.Padding(3, 50, 30, 3);
+            this.MenuPrincipal.Name = "MenuPrincipal";
+            this.MenuPrincipal.Size = new System.Drawing.Size(256, 55);
+            this.MenuPrincipal.TabIndex = 1;
+            this.MenuPrincipal.UseVisualStyleBackColor = false;
+            this.MenuPrincipal.Click += new System.EventHandler(this.mesAlbums_Click);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label1.Image = global::WindowsFormsApp1.Properties.Resources.logoOnly;
+            this.label1.Location = new System.Drawing.Point(49, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(168, 80);
+            this.label1.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.Image = global::WindowsFormsApp1.Properties.Resources.pngfind_com_submit_button_png_3041534;
+            this.label2.Location = new System.Drawing.Point(3, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 39);
+            this.label2.TabIndex = 4;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
             // nextPage
             // 
             this.nextPage.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -474,15 +484,6 @@ namespace WindowsFormsApp1
             this.nextPage.TabIndex = 11;
             this.nextPage.UseVisualStyleBackColor = false;
             this.nextPage.Click += new System.EventHandler(this.nextPage_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.previousPage);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(437, 116);
-            this.panel2.TabIndex = 1;
             // 
             // previousPage
             // 
