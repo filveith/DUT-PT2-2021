@@ -1,5 +1,10 @@
 <!--> Ceci doit être le fichier README.md à la racine de votre dépôt <-->
 
+#IMPORTANT
+
+Pour permettre d'avoir plusieurs admins en softcode et pour voir les abonnés qui n'ont jamais emprunté depuis plus d'un an, nous avons modifié la table ABONNÉS. Pour vous permettre de bien tester, nous avons fournis dans le répertoire git le script de création de la BDD qu'on a utilisé.
+Le reste de la base est identique à la BDD de base.
+
 # Informations générales
 
 ## Equipe
@@ -87,8 +92,8 @@ Cas limite et détails:
 - [x] US implémentée
 
 Cas limite et détails:
-- [ ] Vois-je suffisamment d’infos par emprunt (nom de l'emprunteur, dates, album...) ?
-- [ ] Est-ce qu'ils sont triés par date ?
+- [x] Vois-je suffisamment d’infos par emprunt (nom de l'emprunteur, dates, album...) ?
+- [x] Est-ce qu'ils sont triés par date ?
 
 ## US6: En tant qu'administrateur de la discothèque en ligne, j'aimerais pouvoir purger les abonnés n'ayant pas emprunté depuis plus d'un an.
 - [x] US implémentée
