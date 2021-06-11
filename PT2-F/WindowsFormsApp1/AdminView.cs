@@ -224,6 +224,11 @@ namespace WindowsFormsApp1
                 AlbumInfo albumInfo = new AlbumInfo(al);
                 albumInfo.Show();
             }
+            if(log.SelectedItem != null && log.SelectedItem is ABONNÉS a)
+            {
+                AbonneInfo aboInfo = new AbonneInfo(a);
+                aboInfo.Show();
+            }
         }
     }
 }
