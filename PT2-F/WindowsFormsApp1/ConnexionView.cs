@@ -100,24 +100,10 @@ namespace WindowsFormsApp1
         /// <returns>Vrai si le login est correct</returns>
         private static bool LoginValide(string login)
         {
-            bool loginValide = false;
 
-            var logQuery = (from ab in Utils.Connexion.ABONNÉS
-                            select ab.LOGIN_ABONNÉ).ToList();
+            var logQuery = Utils.GetABONNÉ(login);
 
-            List<string> logins = logQuery;
-
-            foreach (string s in logins)
-            {
-
-                if (login.Equals(s.Trim()))
-                {
-                    loginValide = true;
-
-                }
-            }
-
-            return loginValide;
+            return logQuery != null;
         }
 
 
@@ -141,25 +127,12 @@ namespace WindowsFormsApp1
 
         private static bool isAdmin(string login)
         {
-            bool admin = false;
 
             var adminQuery = (from ab in Utils.Connexion.ABONNÉS
-                              where ab.isAdmin == true
-                              select ab.LOGIN_ABONNÉ).ToList();
+                              where ab.isAdmin == true && ab.LOGIN_ABONNÉ == login
+                              select ab).FirstOrDefault();
 
-            List<string> admins = adminQuery;
-
-            foreach (string s in admins)
-            {
-
-                if (login.Equals(s.Trim()))
-                {
-                    admin = true;
-                    break;
-                }
-            }
-
-            return admin;
+            return adminQuery != null;
         }
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)

@@ -207,9 +207,6 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BDDModele.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="..\.editorconfig">
-      <Link>.editorconfig</Link>
-    </None>
     <None Include="BDDModele.edmx.diagram">
       <DependentUpon>BDDModele.edmx</DependentUpon>
     </None>

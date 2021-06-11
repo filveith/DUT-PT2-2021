@@ -28,10 +28,7 @@ namespace WindowsFormsApp1
         {
             try
             {
-                int delai = (from al in Utils.Connexion.ALBUMS
-                             join genre in Utils.Connexion.GENRES on al.CODE_GENRE equals genre.CODE_GENRE
-                             where al.CODE_ALBUM == a.CODE_ALBUM
-                             select genre.DÉLAI).First();
+                int delai = a.GENRES.DÉLAI;
                 DateTime retour = DateTime.Now.AddDays(delai);
                 EMPRUNTER e = new EMPRUNTER { CODE_ABONNÉ = this.CODE_ABONNÉ, CODE_ALBUM = a.CODE_ALBUM, DATE_EMPRUNT = DateTime.Now, DATE_RETOUR_ATTENDUE = retour };
                 Utils.Connexion.EMPRUNTER.Add(e);
@@ -41,9 +38,7 @@ namespace WindowsFormsApp1
             catch (DbUpdateException)
             {
                 Utils.RefreshDatabase();
-                EMPRUNTER e = (from emp in Utils.Connexion.EMPRUNTER
-                               where emp.CODE_ABONNÉ == this.CODE_ABONNÉ && emp.CODE_ALBUM == a.CODE_ALBUM
-                               select emp).FirstOrDefault();
+                EMPRUNTER e = EMPRUNTER.FirstOrDefault(emp => emp.ALBUMS == a); ;
                 if (e.DATE_RETOUR != null)
                 {
                     e.DATE_EMPRUNT = DateTime.Now;
@@ -63,9 +58,7 @@ namespace WindowsFormsApp1
         /// <param name="album">L'album</param>
         public bool Rendre(ALBUMS album)
         {
-            EMPRUNTER emprunt = (from emp in Utils.Connexion.EMPRUNTER
-                                 where emp.CODE_ABONNÉ == this.CODE_ABONNÉ && emp.CODE_ALBUM == album.CODE_ALBUM
-                                 select emp).FirstOrDefault();
+            EMPRUNTER emprunt = EMPRUNTER.FirstOrDefault(emp => emp.ALBUMS == album);
 
             if (emprunt != null)
             {
@@ -79,10 +72,7 @@ namespace WindowsFormsApp1
         public IEnumerable<EMPRUNTER> ProlongerTousEmprunts()
         {
             int i = 0;
-            var allEmprunts = (from emp in Utils.Connexion.EMPRUNTER
-                               where emp.CODE_ABONNÉ == this.CODE_ABONNÉ
-                               select emp).ToList();
-            var emprunts = allEmprunts.Where(emp => emp.nbRallongements == 0);
+            var emprunts = EMPRUNTER.Where(emp => emp.nbRallongements == 0 && emp.DATE_RETOUR == null);
 
             foreach (EMPRUNTER e in emprunts)
             {
@@ -101,18 +91,10 @@ namespace WindowsFormsApp1
         public Dictionary<EMPRUNTER, ALBUMS> ConsulterEmprunts()
         {
             Dictionary<EMPRUNTER, ALBUMS> emprunts = new Dictionary<EMPRUNTER, ALBUMS>();
-            var emprunt = from alb in Utils.Connexion.ALBUMS
-                          join emp in Utils.Connexion.EMPRUNTER on alb.CODE_ALBUM equals emp.CODE_ALBUM
-                          join abo in Utils.Connexion.ABONNÉS on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
-                          where abo.CODE_ABONNÉ == this.CODE_ABONNÉ
-                          orderby emp.DATE_RETOUR_ATTENDUE ascending
-                          select new { emprunt = emp, album = alb };
-
-
-
+            var emprunt = EMPRUNTER.Where(emp => emp.DATE_RETOUR == null);
             foreach (var al in emprunt)
             {
-                emprunts.Add(al.emprunt, al.album);
+                emprunts.Add(al, al.ALBUMS);
             }
             return emprunts;
         }
@@ -123,19 +105,10 @@ namespace WindowsFormsApp1
         public Dictionary<ALBUMS, GENRES> ConsulterGenresEmprunts()
         {
             Dictionary<ALBUMS, GENRES> emprunts = new Dictionary<ALBUMS, GENRES>();
-            var emprunt = from alb in Utils.Connexion.ALBUMS
-                          join emp in Utils.Connexion.EMPRUNTER on alb.CODE_ALBUM equals emp.CODE_ALBUM
-                          join abo in Utils.Connexion.ABONNÉS on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
-                          join gen in Utils.Connexion.GENRES on alb.CODE_GENRE equals gen.CODE_GENRE
-                          where abo.CODE_ABONNÉ == this.CODE_ABONNÉ
-                          orderby emp.DATE_RETOUR_ATTENDUE ascending
-                          select new { album = alb, genre = gen };
-
-
-
+            var emprunt = ConsulterEmprunts();
             foreach (var al in emprunt)
             {
-                emprunts.Add(al.album, al.genre);
+                emprunts.Add(al.Value, al.Value.GENRES);
             }
             return emprunts;
         }
@@ -147,9 +120,7 @@ namespace WindowsFormsApp1
         /// <returns></returns>
         public bool ProlongerEmprunt(ALBUMS al)
         {
-            EMPRUNTER emprunt = (from emp in Utils.Connexion.EMPRUNTER
-                                 where emp.CODE_ABONNÉ == this.CODE_ABONNÉ && emp.CODE_ALBUM == al.CODE_ALBUM
-                                 select emp).FirstOrDefault();
+            EMPRUNTER emprunt = EMPRUNTER.FirstOrDefault(emp => emp.ALBUMS == al);
             if (emprunt != null)
             {
                 if (emprunt.nbRallongements == 0)
@@ -177,12 +148,9 @@ namespace WindowsFormsApp1
             // On crée d'abord un dictionnaire qui associe une string (un genre de musique)
             // à un int (combien d'album de ce genre ont été emprunté par l'abonné)
             Dictionary<GENRES, double> preferences = new Dictionary<GENRES, double>();
-            var emprunts = (from emp in Utils.Connexion.EMPRUNTER
-                            join gen in Utils.Connexion.GENRES on emp.ALBUMS.CODE_GENRE equals gen.CODE_GENRE
-                            where emp.CODE_ABONNÉ == this.CODE_ABONNÉ
-                            select new { emprunt = emp, genre = gen });
+            var emprunts = EMPRUNTER;
             int Count = emprunts.Count();
-            var GroupedEmprunts = emprunts.GroupBy(x => x.genre);
+            var GroupedEmprunts = emprunts.GroupBy(x => x.ALBUMS.GENRES);
 
             // Pour chaque emprunt :
             foreach (var e in GroupedEmprunts)

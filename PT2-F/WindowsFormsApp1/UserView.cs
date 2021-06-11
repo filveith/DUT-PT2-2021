@@ -37,8 +37,9 @@ namespace WindowsFormsApp1
             filtres.Items.Clear();
             filtres.Items.Add("genre");
             filtres.Items.Add("titre");
+            filtres.SelectedIndex = 1;
 
-            this.recherche();
+            this.suggestions();
         }
 
         /// <summary>
@@ -85,26 +86,20 @@ namespace WindowsFormsApp1
             AffichageAbo.Clear();
             if (filtre.Equals("titre"))
             {
-                var recherce = from t in Utils.Connexion.ALBUMS
+                var recherce = (from t in Utils.Connexion.ALBUMS
                                where t.TITRE_ALBUM.Contains(objet)
-                               select t;
+                               select t).ToList();
 
-                foreach (var a in recherce)
-                {
-                    AffichageAbo.Add(a);
-                }
+                AffichageAbo.AddRange(recherce);
             }
             else if (filtre.Equals("genre"))
             {
-                var recherche = from t in Utils.Connexion.ALBUMS
+                var recherche = (from t in Utils.Connexion.ALBUMS
                                 join g in Utils.Connexion.GENRES on t.CODE_GENRE equals g.CODE_GENRE
                                 where g.LIBELLÉ_GENRE.Contains(objet)
-                                select t;
+                                select t).ToList();
 
-                foreach (var a in recherche)
-                {
-                    AffichageAbo.Add(a);
-                }
+                AffichageAbo.AddRange(recherche);
             }
             else
             {
