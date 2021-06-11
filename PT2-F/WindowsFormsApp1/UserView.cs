@@ -132,6 +132,7 @@ namespace WindowsFormsApp1
                 if (!dejaEmprunté(al))
                 {
                     Abo.Emprunter(al);
+                    u2.TousEmpruntsProlonges = false;
                     ConnexionView.Pop("Emprunt Réussi !", "Attention");
                 }
                 else
