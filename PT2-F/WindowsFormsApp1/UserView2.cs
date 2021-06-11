@@ -33,7 +33,7 @@ namespace WindowsFormsApp1
             filtres.Items.Clear();
             filtres.Items.Add("titre");
             filtres.Items.Add("genre");
-            filtres.SelectedItem = 0;
+            filtres.SelectedIndex = 0;
 
             this.recherche();
         }
