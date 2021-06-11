@@ -29,13 +29,18 @@ namespace WindowsFormsApp1
         private void ValiderInscription_Click(object sender, EventArgs e)
         {
             // les contrôles sont remplis ?
-            if (textBoxNom.TextLength != 0 && textBoxPrenom.TextLength != 0 && textBoxID.TextLength != 0 && textBoxMdp.TextLength != 0 && textBoxCoMdp.TextLength != 0 && comboBoxPays.SelectedItem != null)
+            string nom = textBoxNom.Text.Trim();
+            string prenom = textBoxPrenom.Text.Trim();
+            string login = textBoxID.Text.Trim();
+            if (nom.Length != 0 && prenom.Length != 0 && login.Length != 0
+                && textBoxID.TextLength != 0 && textBoxMdp.TextLength != 0 
+                && textBoxCoMdp.TextLength != 0 && comboBoxPays.SelectedItem != null)
             {
                 if (textBoxCoMdp.Text == textBoxMdp.Text)
                 {
-                    if (Utils.RegisterAbo(textBoxNom.Text, textBoxPrenom.Text, textBoxID.Text, textBoxMdp.Text, comboBoxPays.SelectedIndex) != null)
+                    if (Utils.RegisterAbo(nom, prenom, login, textBoxMdp.Text, comboBoxPays.SelectedIndex) != null)
                     {
-                        Console.WriteLine("ok");
+                        PopupErreurOK("Vous venez de vous inscrire avec le login \"" + login + "\"", "Bravo");
                         this.Close();
                     }
                     else
