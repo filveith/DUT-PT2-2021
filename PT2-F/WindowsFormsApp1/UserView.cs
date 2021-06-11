@@ -114,6 +114,11 @@ namespace WindowsFormsApp1
 
         }
 
+        /// <summary>
+        /// Valide si la touche Entrée est pressée
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void userView_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
@@ -204,6 +209,11 @@ namespace WindowsFormsApp1
             previousPage.Visible = AffichageAbo?.CurrentPage > 0;
         }
 
+        /// <summary>
+        /// Affiche la pochette de l'album sélectionné
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TAffichageAbo_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (TAffichageAbo.SelectedItem is ALBUMS alb)
@@ -229,18 +239,33 @@ namespace WindowsFormsApp1
             }
         }
 
+        /// <summary>
+        /// Affiche la fenêtre permettant de changer de mot de passe
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void changerMdp_Click(object sender, EventArgs e)
         {
             ChangePassword changeMdp = new ChangePassword(Abo);
             changeMdp.Show();
         }
 
+        /// <summary>
+        /// Déconnecte
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void label2_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
+        /// <summary>
+        /// Quitte si la touche Echap est pressée
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UserView_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)

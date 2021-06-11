@@ -22,6 +22,11 @@ namespace WindowsFormsApp1
             abonne = a;
         }
 
+        /// <summary>
+        /// Permet d'afficher ou pas le mot de passe
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void eyeButton_Click(object sender, EventArgs e)
         {
             isHidden = !isHidden;
@@ -37,6 +42,11 @@ namespace WindowsFormsApp1
             }
         }
 
+        /// <summary>
+        /// Valide le nouveau mot de passe
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void valider_Click(object sender, EventArgs e)
         {
             if(newPassBox.TextLength > 0 )
@@ -50,17 +60,17 @@ namespace WindowsFormsApp1
             MessageBox.Show("Veuillez rentrer un nouveau mot de passe pour l'utilisateur!", "Erreur");
         }
 
+        /// <summary>
+        /// Valide si la touche Entrée est pressée
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AdminChangePassword_KeyPress(object sender, KeyPressEventArgs e)
         {
             if(e.KeyChar == 13)
             {
                 valider_Click(this, null);
             }
-        }
-
-        private void AdminChangePassword_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

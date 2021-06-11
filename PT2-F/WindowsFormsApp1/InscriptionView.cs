@@ -22,7 +22,7 @@ namespace WindowsFormsApp1
         }
 
         /// <summary>
-        /// Vérifie que toutes les inforamtions nécessaires sont données et valides
+        /// Vérifie que toutes les informations nécessaires sont données et valides
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -78,6 +78,10 @@ namespace WindowsFormsApp1
             comboBoxPays.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Affiche ou pas les mots de passe
+        /// </summary>
+        #region Yeux
         private void button1_Click(object sender, EventArgs e)
         {
             isFirstHidden = !isFirstHidden;
@@ -107,7 +111,13 @@ namespace WindowsFormsApp1
                 textBoxCoMdp.PasswordChar = (char)0;
             }
         }
+        #endregion
 
+        /// <summary>
+        /// Valide si la touche Entrée est pressée
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void InscriptionView_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
@@ -116,6 +126,11 @@ namespace WindowsFormsApp1
             }
         }
 
+        /// <summary>
+        /// Quitte la fenêtre si la touche Echap est pressée
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void InscriptionView_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)

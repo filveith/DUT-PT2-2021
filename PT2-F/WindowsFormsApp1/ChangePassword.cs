@@ -25,6 +25,10 @@ namespace WindowsFormsApp1
             abonne = a;
         }
 
+        /// <summary>
+        /// Gère les clics sur les boutons por visualiser les mots de passe
+        /// </summary>
+        #region Yeux
         private void button1_Click(object sender, EventArgs e)
         {
             isFirstHidden = !isFirstHidden;
@@ -69,7 +73,13 @@ namespace WindowsFormsApp1
                 textBox3.PasswordChar = (char)0;
             }
         }
+#endregion
 
+        /// <summary>
+        /// Permet de valider le nouveau mot de passe
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void valider_Click(object sender, EventArgs e)
         {
             if (textBox2.TextLength > 0)
@@ -99,11 +109,10 @@ namespace WindowsFormsApp1
 
         }
 
-        private void ChangePassword_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Valide les entrées si la touche Espace est pressée
+        /// </summary>
+        #region Validations
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
@@ -127,7 +136,13 @@ namespace WindowsFormsApp1
                 valider_Click(this, null);
             }
         }
+        #endregion
 
+        /// <summary>
+        /// Quitte la page si la touche Entrée est pressée
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ChangePassword_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.Escape)
