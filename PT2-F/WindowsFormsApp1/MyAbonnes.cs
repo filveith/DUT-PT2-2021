@@ -91,7 +91,7 @@ namespace WindowsFormsApp1
         public Dictionary<EMPRUNTER, ALBUMS> ConsulterEmprunts()
         {
             Dictionary<EMPRUNTER, ALBUMS> emprunts = new Dictionary<EMPRUNTER, ALBUMS>();
-            var emprunt = EMPRUNTER.Where(emp => emp.DATE_RETOUR == null);
+            var emprunt = EMPRUNTER.Where(emp => emp.DATE_RETOUR == null).OrderByDescending(emp => emp.DATE_EMPRUNT);
             foreach (var al in emprunt)
             {
                 emprunts.Add(al, al.ALBUMS);
