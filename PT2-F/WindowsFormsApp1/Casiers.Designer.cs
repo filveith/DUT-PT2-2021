@@ -113,7 +113,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 158F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(488, 158);
             this.tableLayoutPanel4.TabIndex = 3;
             // 
@@ -207,6 +207,7 @@ namespace WindowsFormsApp1
             this.button12.TabIndex = 11;
             this.button12.Text = "Casier n°12";
             this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // button11
             // 
@@ -222,6 +223,7 @@ namespace WindowsFormsApp1
             this.button11.TabIndex = 10;
             this.button11.Text = "Casier n°11";
             this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button10
             // 
@@ -237,6 +239,7 @@ namespace WindowsFormsApp1
             this.button10.TabIndex = 9;
             this.button10.Text = "Casier n°10";
             this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button9
             // 
@@ -252,6 +255,7 @@ namespace WindowsFormsApp1
             this.button9.TabIndex = 8;
             this.button9.Text = "Casier n°9";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button8
             // 
@@ -267,6 +271,7 @@ namespace WindowsFormsApp1
             this.button8.TabIndex = 7;
             this.button8.Text = "Casier n°8";
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button7
             // 
@@ -282,6 +287,7 @@ namespace WindowsFormsApp1
             this.button7.TabIndex = 6;
             this.button7.Text = "Casier n°7";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button6
             // 
@@ -297,6 +303,7 @@ namespace WindowsFormsApp1
             this.button6.TabIndex = 5;
             this.button6.Text = "Casier n°6";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button5
             // 
@@ -312,6 +319,7 @@ namespace WindowsFormsApp1
             this.button5.TabIndex = 4;
             this.button5.Text = "Casier n°5";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
@@ -327,6 +335,7 @@ namespace WindowsFormsApp1
             this.button4.TabIndex = 3;
             this.button4.Text = "Casier n°4";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -342,6 +351,7 @@ namespace WindowsFormsApp1
             this.button3.TabIndex = 2;
             this.button3.Text = "Casier n°3";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -357,6 +367,7 @@ namespace WindowsFormsApp1
             this.button2.TabIndex = 1;
             this.button2.Text = "Casier n°2";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -372,6 +383,7 @@ namespace WindowsFormsApp1
             this.button1.TabIndex = 0;
             this.button1.Text = "Casier n°1";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // affichageMinia
             // 
