@@ -67,6 +67,7 @@ namespace WindowsFormsApp1
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
+            this.tableLayoutPanel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -191,6 +192,16 @@ namespace WindowsFormsApp1
             this.filtres.Size = new System.Drawing.Size(154, 29);
             this.filtres.TabIndex = 2;
             this.filtres.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.userView_KeyPress);
+            // 
+            // textSugg
+            // 
+            this.textSugg.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textSugg.AutoSize = true;
+            this.textSugg.Location = new System.Drawing.Point(3, 53);
+            this.textSugg.Name = "textSugg";
+            this.textSugg.Size = new System.Drawing.Size(233, 13);
+            this.textSugg.TabIndex = 3;
+            this.textSugg.Text = "Voici des suggestions qui devraient vous plaire :";
             // 
             // textSugg
             // 
@@ -494,6 +505,7 @@ namespace WindowsFormsApp1
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.tableLayoutPanel8.ResumeLayout(false);
+            this.tableLayoutPanel9.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
