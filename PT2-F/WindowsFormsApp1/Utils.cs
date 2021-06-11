@@ -12,7 +12,7 @@ using System.Text;
 
 namespace WindowsFormsApp1
 {
-    public class Utils
+    public static class Utils
     {
         /// <summary>
         /// Permet de se connecter à la base de donnée MusquePT2_F
@@ -87,15 +87,28 @@ namespace WindowsFormsApp1
         /// Permet d'avoir une liste des albums qui n'ont pas été emprunté depuis 1 an
         /// </summary>
         /// <returns> Retourne les albums qui n'ont pas été emprunté depuis 1 an</returns>
-        public static IQueryable<ALBUMS> AvoirAlbumsPasEmprunteDepuisUnAn()
+        public static IEnumerable<ALBUMS> AvoirAlbumsPasEmprunteDepuisUnAn()
         {
-            var liste = (from a in Connexion.ALBUMS
+            var liste = (from a in CachedElements.allAlbums
                          join e in Connexion.EMPRUNTER
                          on a.CODE_ALBUM equals e.CODE_ALBUM into empDept
                          from ed in empDept.DefaultIfEmpty()
                          where empDept.Count() == 0 || DbFunctions.DiffDays(ed.DATE_EMPRUNT, DateTime.Now) > 365
                          select a).GroupBy(x => x.CODE_ALBUM).Select(y => y.FirstOrDefault());
 
+            return liste;
+        }
+
+        public static IEnumerable<ALBUMS> AvoirAlbumsDispo()
+        {
+            var albums = CachedElements.allAlbums;
+            var emprunts = Connexion.EMPRUNTER.Where(em => em.DATE_RETOUR == null).Select(em => em.ALBUMS);
+            return albums.Except(emprunts);
+        }
+
+        public static IEnumerable<ALBUMS> AvoirAlbumsEmpruntes()
+        {
+            var liste = Connexion.ALBUMS.Where(al => al.EMPRUNTER.Count > 0 && al.EMPRUNTER.Any(em => em.DATE_RETOUR == null));
             return liste;
         }
 

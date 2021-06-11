@@ -70,6 +70,7 @@
     <Compile Include="AdminView.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CachedElements.cs" />
     <Compile Include="ChangePassword.cs">
       <SubType>Form</SubType>
     </Compile>

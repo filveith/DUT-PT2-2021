@@ -29,36 +29,18 @@ namespace WindowsFormsApp1
 
         private void afficherAlbums()
         {
-            var toutAlbums = (from alb in Utils.Connexion.ALBUMS
-                              join emp in Utils.Connexion.EMPRUNTER on alb.CODE_ALBUM equals emp.CODE_ALBUM
-                              select new
-                              {
-                                  emprunt = emp,
-                                  album = alb
-                              });
+            var toutAlbums = Utils.AvoirAlbumsEmpruntes();
 
-            foreach (var a in toutAlbums)
-            {
-
-                pagedListbox.Add(a.album);
-                nextPage.Visible = pagedListbox?.isOnLastPage == false;
-                previousPage.Visible = pagedListbox?.CurrentPage > 0;
-            }
+            pagedListbox.AddRange(toutAlbums);
+            nextPage.Visible = pagedListbox?.isOnLastPage == false;
+            previousPage.Visible = pagedListbox?.CurrentPage > 0;
         }
         private void AfficherAlbumsSelonCasier(int numéroDeCasier)
         {
             pagedListbox.Clear();
-            List<ALBUMS> albumsManquantsParCasier = (from alb in Utils.Connexion.ALBUMS
-                                                     join emp in Utils.Connexion.EMPRUNTER on alb.CODE_ALBUM equals emp.CODE_ALBUM
-                                                     where alb.CASIER_ALBUM == numéroDeCasier && emp.DATE_EMPRUNT != null
-                                                     select alb).ToList();
+            IEnumerable<ALBUMS> albumsManquantsParCasier = Utils.AvoirAlbumsEmpruntes().Where(al => al.CASIER_ALBUM == numéroDeCasier);
 
-            foreach (ALBUMS a in albumsManquantsParCasier)
-            {
-                pagedListbox.Add(a);
-                nextPage.Visible = pagedListbox?.isOnLastPage == false;
-                previousPage.Visible = pagedListbox?.CurrentPage > 0;
-            }
+            pagedListbox.AddRange(albumsManquantsParCasier);
             nextPage.Visible = pagedListbox?.isOnLastPage == false;
             previousPage.Visible = pagedListbox?.CurrentPage > 0;
         }
@@ -153,16 +135,22 @@ namespace WindowsFormsApp1
         {
             if (listCasiers.SelectedItem is ALBUMS a)
             {
-                if (a.POCHETTE == null)
+                Image pochette = a.getPochette();
+                if (pochette != null)
                 {
-                    affichageMinia.Image = null;
-                    affichageMinia.Text = "Cet album ne possède pas de pochette.";
-                } else
-                {
-                    affichageMinia.Text = null;
-                    Image pochette = Utils.byteArrayToImage(a.POCHETTE);
                     affichageMinia.Image = Utils.ResizeImage(pochette, 200, 200);
                 }
+                else {
+                    affichageMinia.Image = null;
+                }
+            }
+        }
+
+        private void Casiers_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
             }
         }
     }

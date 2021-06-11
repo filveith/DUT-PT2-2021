@@ -352,6 +352,7 @@ namespace WindowsFormsApp1
             this.Name = "InscriptionView";
             this.Text = "RegisterView2";
             this.Load += new System.EventHandler(this.RegisterView2_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InscriptionView_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.InscriptionView_KeyPress);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);

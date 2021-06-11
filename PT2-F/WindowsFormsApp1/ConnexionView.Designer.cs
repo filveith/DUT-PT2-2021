@@ -160,18 +160,6 @@ namespace WindowsFormsApp1
             this.idTextBox.TabIndex = 1;
             this.idTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Miriam Libre", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(137)))));
-            this.label4.Location = new System.Drawing.Point(114, 27);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(120, 25);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Identifiant";
-            // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -244,6 +232,7 @@ namespace WindowsFormsApp1
             this.MinimumSize = new System.Drawing.Size(600, 500);
             this.Name = "ConnexionView";
             this.Text = "ConnexionView";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ConnexionView_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();

@@ -182,11 +182,23 @@ namespace WindowsFormsApp1
                 {
                     List<ALBUMS> AlbumsOfGenre = v.Key.ALBUMS.ToList();
                     int numAlbums = Round(v.Value / 10f);
-                    for (int n = 0; n < numAlbums && i < 10; i++)
+                    int cpt = 0;
+                    for (int n = 0; n < numAlbums && i < 10 && cpt < AlbumsOfGenre.Count; i++)
                     {
                         int ind = r.Next(AlbumsOfGenre.Count);
-                        suggestions.Add(AlbumsOfGenre[ind]);
-                        AlbumsOfGenre.RemoveAt(ind);
+                        ALBUMS al = AlbumsOfGenre[ind];
+                        ICollection<EMPRUNTER> emprunts = al.EMPRUNTER;
+                        if(emprunts.Count == 0 || emprunts.All(emp => emp.DATE_RETOUR != null))
+                        {
+                            suggestions.Add(AlbumsOfGenre[ind]);
+                            AlbumsOfGenre.RemoveAt(ind);
+                        }
+                        else
+                        {
+                            i--;
+                            cpt++;
+                        }
+                        
                     }
                 }
             }

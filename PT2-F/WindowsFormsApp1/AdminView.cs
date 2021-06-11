@@ -173,5 +173,13 @@ namespace WindowsFormsApp1
             }
 
         }
+
+        private void AdminView_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }
