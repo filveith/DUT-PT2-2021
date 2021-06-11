@@ -37,6 +37,7 @@ namespace WindowsFormsApp1
             filtres.Items.Clear();
             filtres.Items.Add("titre");
             filtres.Items.Add("genre");
+            filtres.Text = "titre";
             filtres.SelectedIndex = 0;
 
             this.suggestions();
