@@ -32,9 +32,9 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.valider = new System.Windows.Forms.Button();
-            this.eyeButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.newPassBox = new System.Windows.Forms.TextBox();
+            this.eyeButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,35 +76,21 @@ namespace WindowsFormsApp1
             // valider
             // 
             this.valider.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.valider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
+            this.valider.BackColor = System.Drawing.Color.Transparent;
+            this.valider.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.valider.Cursor = System.Windows.Forms.Cursors.Hand;
             this.valider.FlatAppearance.BorderSize = 0;
+            this.valider.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.valider.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.valider.Font = new System.Drawing.Font("Miriam Libre", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valider.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(235)))), ((int)(((byte)(237)))));
-            this.valider.Location = new System.Drawing.Point(395, 346);
+            this.valider.ForeColor = System.Drawing.Color.Transparent;
+            this.valider.Image = global::WindowsFormsApp1.Properties.Resources.buttonValider1;
+            this.valider.Location = new System.Drawing.Point(380, 346);
             this.valider.Name = "valider";
-            this.valider.Size = new System.Drawing.Size(116, 57);
+            this.valider.Size = new System.Drawing.Size(146, 57);
             this.valider.TabIndex = 2;
-            this.valider.Text = "Valider";
             this.valider.UseVisualStyleBackColor = false;
             this.valider.Click += new System.EventHandler(this.valider_Click);
-            // 
-            // eyeButton
-            // 
-            this.eyeButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.eyeButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.eyeButton.FlatAppearance.BorderSize = 0;
-            this.eyeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.eyeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.eyeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.eyeButton.Image = global::WindowsFormsApp1.Properties.Resources.eyeClosed_Icon;
-            this.eyeButton.Location = new System.Drawing.Point(748, 213);
-            this.eyeButton.Name = "eyeButton";
-            this.eyeButton.Size = new System.Drawing.Size(23, 23);
-            this.eyeButton.TabIndex = 5;
-            this.eyeButton.TabStop = false;
-            this.eyeButton.UseVisualStyleBackColor = true;
-            this.eyeButton.Click += new System.EventHandler(this.eyeButton_Click);
             // 
             // label3
             // 
@@ -122,10 +108,29 @@ namespace WindowsFormsApp1
             // newPassBox
             // 
             this.newPassBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.newPassBox.Location = new System.Drawing.Point(190, 215);
+            this.newPassBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.newPassBox.Font = new System.Drawing.Font("Miriam Libre", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newPassBox.Location = new System.Drawing.Point(190, 216);
             this.newPassBox.Name = "newPassBox";
-            this.newPassBox.Size = new System.Drawing.Size(527, 20);
+            this.newPassBox.Size = new System.Drawing.Size(527, 18);
             this.newPassBox.TabIndex = 1;
+            // 
+            // eyeButton
+            // 
+            this.eyeButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.eyeButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.eyeButton.FlatAppearance.BorderSize = 0;
+            this.eyeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.eyeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.eyeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.eyeButton.Image = global::WindowsFormsApp1.Properties.Resources.eyeClosed_Icon;
+            this.eyeButton.Location = new System.Drawing.Point(748, 213);
+            this.eyeButton.Name = "eyeButton";
+            this.eyeButton.Size = new System.Drawing.Size(23, 23);
+            this.eyeButton.TabIndex = 5;
+            this.eyeButton.TabStop = false;
+            this.eyeButton.UseVisualStyleBackColor = true;
+            this.eyeButton.Click += new System.EventHandler(this.eyeButton_Click);
             // 
             // AdminChangePassword
             // 

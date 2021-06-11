@@ -331,7 +331,7 @@ namespace WindowsFormsApp1
             this.prolongerAllEmpruntButton.Name = "prolongerAllEmpruntButton";
             this.prolongerAllEmpruntButton.Size = new System.Drawing.Size(174, 83);
             this.prolongerAllEmpruntButton.TabIndex = 3;
-            this.prolongerAllEmpruntButton.Text = "prolonger tout les emprunts";
+            this.prolongerAllEmpruntButton.Text = "Prolonger tout les emprunts";
             this.prolongerAllEmpruntButton.UseVisualStyleBackColor = false;
             this.prolongerAllEmpruntButton.Click += new System.EventHandler(this.prolongerToutEmprunt_Click);
             // 
@@ -349,7 +349,7 @@ namespace WindowsFormsApp1
             this.prolongerEmprunt.Name = "prolongerEmprunt";
             this.prolongerEmprunt.Size = new System.Drawing.Size(167, 75);
             this.prolongerEmprunt.TabIndex = 4;
-            this.prolongerEmprunt.Text = "prolonger l\'emprunt";
+            this.prolongerEmprunt.Text = "Prolonger l\'emprunt";
             this.prolongerEmprunt.UseVisualStyleBackColor = false;
             this.prolongerEmprunt.Click += new System.EventHandler(this.prolongerEmprunt_Click_1);
             // 
@@ -433,6 +433,7 @@ namespace WindowsFormsApp1
             this.nextPage.BackColor = System.Drawing.Color.Transparent;
             this.nextPage.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonPageSuivante;
             this.nextPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.nextPage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.nextPage.FlatAppearance.BorderSize = 0;
             this.nextPage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.nextPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -461,6 +462,7 @@ namespace WindowsFormsApp1
             this.previousPage.BackColor = System.Drawing.Color.Transparent;
             this.previousPage.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonPagePrécédente;
             this.previousPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.previousPage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.previousPage.FlatAppearance.BorderSize = 0;
             this.previousPage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.previousPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

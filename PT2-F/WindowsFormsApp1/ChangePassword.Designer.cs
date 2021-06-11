@@ -152,6 +152,7 @@ namespace WindowsFormsApp1
             this.valider.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.valider.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonValider1;
             this.valider.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.valider.Cursor = System.Windows.Forms.Cursors.Hand;
             this.valider.FlatAppearance.BorderSize = 0;
             this.valider.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.valider.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

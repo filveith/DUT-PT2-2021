@@ -119,6 +119,7 @@ namespace WindowsFormsApp1
             // 
             this.changePassword.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.changePassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
+            this.changePassword.Cursor = System.Windows.Forms.Cursors.Hand;
             this.changePassword.FlatAppearance.BorderSize = 0;
             this.changePassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.changePassword.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -135,6 +136,7 @@ namespace WindowsFormsApp1
             // 
             this.notEmprunterSinceAYear.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.notEmprunterSinceAYear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
+            this.notEmprunterSinceAYear.Cursor = System.Windows.Forms.Cursors.Hand;
             this.notEmprunterSinceAYear.FlatAppearance.BorderSize = 0;
             this.notEmprunterSinceAYear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.notEmprunterSinceAYear.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -151,6 +153,7 @@ namespace WindowsFormsApp1
             // 
             this.top10Button.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.top10Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
+            this.top10Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.top10Button.FlatAppearance.BorderSize = 0;
             this.top10Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.top10Button.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -167,6 +170,7 @@ namespace WindowsFormsApp1
             // 
             this.suppIdleUsersButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.suppIdleUsersButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
+            this.suppIdleUsersButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.suppIdleUsersButton.FlatAppearance.BorderSize = 0;
             this.suppIdleUsersButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.suppIdleUsersButton.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -183,6 +187,7 @@ namespace WindowsFormsApp1
             // 
             this.listerAbonner.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.listerAbonner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
+            this.listerAbonner.Cursor = System.Windows.Forms.Cursors.Hand;
             this.listerAbonner.FlatAppearance.BorderSize = 0;
             this.listerAbonner.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.listerAbonner.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -199,6 +204,7 @@ namespace WindowsFormsApp1
             // 
             this.listEmpruntsProlongButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.listEmpruntsProlongButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
+            this.listEmpruntsProlongButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.listEmpruntsProlongButton.FlatAppearance.BorderSize = 0;
             this.listEmpruntsProlongButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.listEmpruntsProlongButton.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -215,6 +221,7 @@ namespace WindowsFormsApp1
             // 
             this.listRetardButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.listRetardButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
+            this.listRetardButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.listRetardButton.FlatAppearance.BorderSize = 0;
             this.listRetardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.listRetardButton.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -231,6 +238,7 @@ namespace WindowsFormsApp1
             // 
             this.showLockersButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.showLockersButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
+            this.showLockersButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.showLockersButton.FlatAppearance.BorderSize = 0;
             this.showLockersButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.showLockersButton.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -314,6 +322,7 @@ namespace WindowsFormsApp1
             this.previousPage.BackColor = System.Drawing.Color.Transparent;
             this.previousPage.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonPagePrécédente;
             this.previousPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.previousPage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.previousPage.FlatAppearance.BorderSize = 0;
             this.previousPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.previousPage.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -340,6 +349,7 @@ namespace WindowsFormsApp1
             this.nextPage.BackColor = System.Drawing.Color.Transparent;
             this.nextPage.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonPageSuivante;
             this.nextPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.nextPage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.nextPage.FlatAppearance.BorderSize = 0;
             this.nextPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.nextPage.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
