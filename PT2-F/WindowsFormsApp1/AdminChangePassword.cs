@@ -27,20 +27,20 @@ namespace WindowsFormsApp1
             if (isHidden)
             {
                 eyeButton.Image = Utils.ResizeImage(Properties.Resources.eyeClosed_Icon, 20, 20);
-                passTextBox.PasswordChar = '*';
+                newPassBox.PasswordChar = '*';
             }
             else
             {
                 eyeButton.Image = Utils.ResizeImage(Properties.Resources.eyeIcon, 20, 20);
-                passTextBox.PasswordChar = (char)0;
+                newPassBox.PasswordChar = (char)0;
             }
         }
 
         private void valider_Click(object sender, EventArgs e)
         {
-            if(passTextBox.TextLength > 0)
+            if(newPassBox.TextLength > 0 && newPassBox.Text.Equals(confirmerPassBox.Text) )
             {
-                abonne.PASSWORD_ABONNÉ = Utils.ComputeSha256Hash(passTextBox.Text);
+                abonne.PASSWORD_ABONNÉ = Utils.ComputeSha256Hash(newPassBox.Text);
                 Utils.Connexion.SaveChanges();
                 MessageBox.Show("Vous avez bien changé le mot de passe de l'utilisateur \"" + abonne.NOM_ABONNÉ.Trim() + " " + abonne.PRÉNOM_ABONNÉ.Trim() + "\"");
                 this.Close();
@@ -55,6 +55,11 @@ namespace WindowsFormsApp1
             {
                 valider_Click(this, null);
             }
+        }
+
+        private void AdminChangePassword_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
