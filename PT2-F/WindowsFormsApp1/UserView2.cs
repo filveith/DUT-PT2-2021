@@ -108,6 +108,11 @@ namespace WindowsFormsApp1
             string filtre = filtres.Text;
             string objet = searchBox.Text;
             AffichageAbo.Clear();
+            if(objet.Length == 0)
+            {
+                this.Emprunts();
+                return;
+            }
             if (filtre.Equals("titre"))
             {
                 Dictionary<EMPRUNTER, ALBUMS> emprunts = UserView.Abo.ConsulterEmprunts();

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace WindowsFormsApp1
 {
 
-    
+
     public partial class UserView : Form
     {
         public static ABONNÉS Abo;
@@ -84,20 +84,26 @@ namespace WindowsFormsApp1
             string filtre = filtres.Text;
             string objet = searchBox.Text;
             AffichageAbo.Clear();
+            if (objet.Length == 0)
+            {
+                AffichageAbo.AddRange(Utils.Connexion.ALBUMS.ToList());
+                return;
+            }
             if (filtre.Equals("titre"))
             {
                 var recherche = (from t in Utils.Connexion.ALBUMS
-                               where t.TITRE_ALBUM.ToLower().Contains(objet.ToLower())
-                               select t).ToList();
+                                 where t.TITRE_ALBUM.ToLower().Contains(objet.ToLower())
+                                 select t).ToList();
 
                 AffichageAbo.AddRange(recherche);
             }
             else if (filtre.Equals("genre"))
             {
-                var recherche = (from t in Utils.Connexion.ALBUMS
-                                join g in Utils.Connexion.GENRES on t.CODE_GENRE equals g.CODE_GENRE
-                                where g.LIBELLÉ_GENRE.ToLower().Contains(objet.ToLower())
-                                select t).ToList();
+                List<ALBUMS> recherche;
+                recherche = (from t in Utils.Connexion.ALBUMS
+                             join g in Utils.Connexion.GENRES on t.CODE_GENRE equals g.CODE_GENRE
+                             where g.LIBELLÉ_GENRE.ToLower().Contains(objet.ToLower())
+                             select t).ToList();
 
                 AffichageAbo.AddRange(recherche);
             }
@@ -203,19 +209,21 @@ namespace WindowsFormsApp1
         {
             if (TAffichageAbo.SelectedItem is ALBUMS alb)
             {
-                
+
                 if (alb.POCHETTE == null)
                 {
                     imageLabel.Image = null;
                     imageLabel.Text = "Cet album ne possède pas de pochette.";
-                } else
+                }
+                else
                 {
                     Image image = alb.getPochette();
                     imageLabel.AutoSize = false;
                     imageLabel.Size = image.Size;
                     imageLabel.Image = Utils.ResizeImage(image, 200, 200);
                 }
-            } else
+            }
+            else
             {
                 imageLabel.Image = null;
             }
