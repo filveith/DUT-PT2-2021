@@ -95,14 +95,14 @@ namespace WindowsFormsApp1
             this.buttons.ColumnCount = 2;
             this.buttons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.buttons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.buttons.Controls.Add(this.changePassword, 0, 0);
-            this.buttons.Controls.Add(this.notEmprunterSinceAYear, 1, 1);
             this.buttons.Controls.Add(this.top10Button, 1, 2);
             this.buttons.Controls.Add(this.suppIdleUsersButton, 0, 3);
-            this.buttons.Controls.Add(this.listerAbonner, 1, 3);
             this.buttons.Controls.Add(this.listEmpruntsProlongButton, 0, 2);
             this.buttons.Controls.Add(this.listRetardButton, 0, 1);
-            this.buttons.Controls.Add(this.showLockersButton, 1, 0);
+            this.buttons.Controls.Add(this.changePassword, 1, 0);
+            this.buttons.Controls.Add(this.listerAbonner, 0, 0);
+            this.buttons.Controls.Add(this.notEmprunterSinceAYear, 1, 3);
+            this.buttons.Controls.Add(this.showLockersButton, 1, 1);
             this.buttons.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttons.Location = new System.Drawing.Point(3, 3);
             this.buttons.Name = "buttons";
@@ -121,13 +121,13 @@ namespace WindowsFormsApp1
             this.changePassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
             this.changePassword.FlatAppearance.BorderSize = 0;
             this.changePassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.changePassword.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.changePassword.Font = new System.Drawing.Font("Miriam Libre", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.changePassword.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.changePassword.Location = new System.Drawing.Point(35, 29);
+            this.changePassword.Location = new System.Drawing.Point(223, 29);
             this.changePassword.Name = "changePassword";
             this.changePassword.Size = new System.Drawing.Size(116, 103);
             this.changePassword.TabIndex = 9;
-            this.changePassword.Text = "Changer le mot de passe";
+            this.changePassword.Text = "Changer le mot de passe de l\'abonné selectionné";
             this.changePassword.UseVisualStyleBackColor = false;
             this.changePassword.Click += new System.EventHandler(this.changePassword_Click);
             // 
@@ -139,7 +139,7 @@ namespace WindowsFormsApp1
             this.notEmprunterSinceAYear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.notEmprunterSinceAYear.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.notEmprunterSinceAYear.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.notEmprunterSinceAYear.Location = new System.Drawing.Point(221, 191);
+            this.notEmprunterSinceAYear.Location = new System.Drawing.Point(221, 516);
             this.notEmprunterSinceAYear.Name = "notEmprunterSinceAYear";
             this.notEmprunterSinceAYear.Size = new System.Drawing.Size(120, 104);
             this.notEmprunterSinceAYear.TabIndex = 4;
@@ -187,7 +187,7 @@ namespace WindowsFormsApp1
             this.listerAbonner.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.listerAbonner.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listerAbonner.ForeColor = System.Drawing.SystemColors.Control;
-            this.listerAbonner.Location = new System.Drawing.Point(223, 520);
+            this.listerAbonner.Location = new System.Drawing.Point(36, 33);
             this.listerAbonner.Name = "listerAbonner";
             this.listerAbonner.Size = new System.Drawing.Size(115, 96);
             this.listerAbonner.TabIndex = 8;
@@ -235,7 +235,7 @@ namespace WindowsFormsApp1
             this.showLockersButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.showLockersButton.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.showLockersButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.showLockersButton.Location = new System.Drawing.Point(223, 29);
+            this.showLockersButton.Location = new System.Drawing.Point(223, 191);
             this.showLockersButton.Name = "showLockersButton";
             this.showLockersButton.Size = new System.Drawing.Size(116, 103);
             this.showLockersButton.TabIndex = 3;
