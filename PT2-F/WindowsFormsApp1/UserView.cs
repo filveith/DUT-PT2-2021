@@ -14,7 +14,7 @@ namespace WindowsFormsApp1
 
     public partial class UserView : Form
     {
-        public static ABONNÉS Abo;
+        public ABONNÉS Abo;
         public UserView2 u2;
         PagedListbox AffichageAbo;
         public UserView(ABONNÉS a)
@@ -24,7 +24,7 @@ namespace WindowsFormsApp1
             AffichageAbo = new PagedListbox(TAffichageAbo);
             nextPage.Visible = AffichageAbo?.isOnLastPage == false;
             previousPage.Visible = AffichageAbo?.CurrentPage > 0;
-            u2 = new UserView2();
+            u2 = new UserView2(this);
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace WindowsFormsApp1
         /// </summary>
         /// <param name="alb">L'album</param>
         /// <returns>Vrai si l'album a déjà été emprunté</returns>
-        private static bool dejaEmprunté(ALBUMS alb)
+        private bool dejaEmprunté(ALBUMS alb)
         {
             var mesEmprunts = Abo.ConsulterEmprunts();
 

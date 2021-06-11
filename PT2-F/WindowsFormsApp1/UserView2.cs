@@ -12,13 +12,17 @@ namespace WindowsFormsApp1
 {
     public partial class UserView2 : Form
     {
+        private UserView previousWindow;
         private PagedListbox AffichageAbo;
         public bool TousEmpruntsProlonges { get; set; } = false;
 
-        public UserView2()
+        public UserView2(UserView v)
         {
             InitializeComponent();
             AffichageAbo = new PagedListbox(TAffichageAbo);
+            var emprunts = v.Abo.EMPRUNTER.Where(emp => emp.nbRallongements == 0);
+            prolongerAllEmpruntButton.Enabled = emprunts.Count() > 0;
+            previousWindow = v;
             rendreButton.Enabled = false;
 
         }
@@ -36,13 +40,14 @@ namespace WindowsFormsApp1
             filtres.Items.Add("genre");
             filtres.SelectedIndex = 0;
             prolongerAllEmpruntButton.Enabled = !TousEmpruntsProlonges;
+            prolongerEmprunt.Enabled = false;
 
             this.recherche();
         }
 
         private void Emprunts()
         {
-            Dictionary<EMPRUNTER, ALBUMS> emprunts = UserView.Abo.ConsulterEmprunts();
+            Dictionary<EMPRUNTER, ALBUMS> emprunts = previousWindow.Abo.ConsulterEmprunts();
             if (emprunts.Count > 0)
             {
                 foreach (KeyValuePair<EMPRUNTER, ALBUMS> emprunt in emprunts)
@@ -76,8 +81,10 @@ namespace WindowsFormsApp1
         /// <param name="e"></param>
         private void prolongerToutEmprunt_Click(object sender, EventArgs e)
         {
-            UserView.Abo.ProlongerTousEmprunts();
+            previousWindow.Abo.ProlongerTousEmprunts();
             prolongerAllEmpruntButton.Enabled = false;
+            TousEmpruntsProlonges = true;
+            prolongerEmprunt.Enabled = false;
             ConnexionView.Pop("Tous vos emprunts ont bien étés prolongés !", "Attention");
         }
 
@@ -118,7 +125,7 @@ namespace WindowsFormsApp1
             }
             if (filtre.Equals("titre"))
             {
-                Dictionary<EMPRUNTER, ALBUMS> emprunts = UserView.Abo.ConsulterEmprunts();
+                Dictionary<EMPRUNTER, ALBUMS> emprunts = previousWindow.Abo.ConsulterEmprunts();
 
                 foreach (KeyValuePair<EMPRUNTER, ALBUMS> keyValuePair in emprunts)
                 {
@@ -132,7 +139,7 @@ namespace WindowsFormsApp1
             }
             else if (filtre == "genre")
             {
-                Dictionary<EMPRUNTER, ALBUMS> emprunts = UserView.Abo.ConsulterEmprunts();
+                Dictionary<EMPRUNTER, ALBUMS> emprunts = previousWindow.Abo.ConsulterEmprunts();
                 foreach (var v in emprunts.Where(v => v.Value.GENRES.LIBELLÉ_GENRE.ToLower().Contains(objet.ToLower())))
                 {
                     AffichageAbo.Add(v.Value);
@@ -159,7 +166,7 @@ namespace WindowsFormsApp1
             if (AffichageAbo.SelectedItem is ALBUMS obtAlbum)
             {
                 var emprunt = (from em in Utils.Connexion.EMPRUNTER
-                               where em.CODE_ABONNÉ == UserView.Abo.CODE_ABONNÉ && em.DATE_RETOUR == null
+                               where em.CODE_ABONNÉ == previousWindow.Abo.CODE_ABONNÉ && em.DATE_RETOUR == null
                                where em.CODE_ALBUM == obtAlbum.CODE_ALBUM
                                select em).FirstOrDefault();
                 var pochette = obtAlbum.POCHETTE;
@@ -174,7 +181,7 @@ namespace WindowsFormsApp1
         {
             if (AffichageAbo.SelectedItem is ALBUMS obtAlbum)
             {
-                UserView.Abo.Rendre(obtAlbum);
+                previousWindow.Abo.Rendre(obtAlbum);
                 AffichageAbo.Remove(obtAlbum);
             }
         }
@@ -183,11 +190,11 @@ namespace WindowsFormsApp1
         {
             if (AffichageAbo.SelectedItem is ALBUMS al)
             {
-                EMPRUNTER emp = UserView.Abo.ProlongerEmprunt(al);
+                EMPRUNTER emp = previousWindow.Abo.ProlongerEmprunt(al);
                 ConnexionView.Pop("Emprunt prolongé de 1 mois !", "Attention");
                 dateRetour.Text = "Date de retour: " + emp.DATE_RETOUR_ATTENDUE.ToString();
                 prolongerEmprunt.Enabled = false;
-                TousEmpruntsProlonges = true;
+                
             }
             else
             {
