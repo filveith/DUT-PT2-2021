@@ -115,17 +115,17 @@ namespace WindowsFormsApp1
                 foreach (KeyValuePair<EMPRUNTER, ALBUMS> keyValuePair in emprunts)
                 {
                     ALBUMS val = keyValuePair.Value;
-                    if (val.TITRE_ALBUM.Contains(objet))
+                    if (val.TITRE_ALBUM.ToLower().Contains(objet.ToLower()))
                     {
                         AffichageAbo.Add(val);
                     }
                 }
-                
+
             }
             else if (filtre == "genre")
             {
                 Dictionary<EMPRUNTER, ALBUMS> emprunts = UserView.Abo.ConsulterEmprunts();
-                foreach(var v in emprunts.Where(v => v.Value.GENRES.LIBELLÉ_GENRE.Contains(objet)))
+                foreach (var v in emprunts.Where(v => v.Value.GENRES.LIBELLÉ_GENRE.ToLower().Contains(objet.ToLower())))
                 {
                     AffichageAbo.Add(v.Value);
                 }
@@ -148,31 +148,27 @@ namespace WindowsFormsApp1
 
         private void TAffichageAbo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string titreAlbum = AffichageAbo.SelectedItem.ToString();
-
-            ALBUMS obtAlbum = (from a in Utils.Connexion.ALBUMS
-                               where a.TITRE_ALBUM.ToString() == titreAlbum
-                               select a).FirstOrDefault();
-            var emprunt = (from em in Utils.Connexion.EMPRUNTER
-                           where em.CODE_ABONNÉ == UserView.Abo.CODE_ABONNÉ && em.DATE_RETOUR == null
-                           where em.CODE_ALBUM == obtAlbum.CODE_ALBUM
-                           select em).FirstOrDefault();
-            var pochette = obtAlbum.POCHETTE;
-            prolongerEmprunt.Enabled = emprunt.nbRallongements == 0;
-            afficherMiniature.Image = Utils.ResizeImage(Utils.byteArrayToImage(pochette), 200, 200);
-            dateEmprunt.Text = "Date d'emprunt: " + emprunt.DATE_EMPRUNT.ToString();
-            dateRetour.Text = "Date de retour: " + emprunt.DATE_RETOUR_ATTENDUE.ToString();
+            if (AffichageAbo.SelectedItem is ALBUMS obtAlbum)
+            {
+                var emprunt = (from em in Utils.Connexion.EMPRUNTER
+                               where em.CODE_ABONNÉ == UserView.Abo.CODE_ABONNÉ && em.DATE_RETOUR == null
+                               where em.CODE_ALBUM == obtAlbum.CODE_ALBUM
+                               select em).FirstOrDefault();
+                var pochette = obtAlbum.POCHETTE;
+                prolongerEmprunt.Enabled = emprunt.nbRallongements == 0;
+                afficherMiniature.Image = Utils.ResizeImage(Utils.byteArrayToImage(pochette), 200, 200);
+                dateEmprunt.Text = "Date d'emprunt: " + emprunt.DATE_EMPRUNT.ToString();
+                dateRetour.Text = "Date de retour: " + emprunt.DATE_RETOUR_ATTENDUE.ToString();
+            }
         }
 
         private void rendreButton_Click(object sender, EventArgs e)
         {
-            string titreAlbum = AffichageAbo.SelectedItem.ToString();
-
-            ALBUMS obtAlbum = (from a in Utils.Connexion.ALBUMS
-                               where a.TITRE_ALBUM.ToString() == titreAlbum
-                               select a).FirstOrDefault();
-
-            UserView.Abo.Rendre(obtAlbum);
+            if (AffichageAbo.SelectedItem is ALBUMS obtAlbum)
+            {
+                UserView.Abo.Rendre(obtAlbum);
+                AffichageAbo.Remove(obtAlbum);
+            }
         }
 
         private void prolongerEmprunt_Click_1(object sender, EventArgs e)
@@ -180,8 +176,6 @@ namespace WindowsFormsApp1
             if (AffichageAbo.SelectedItem is ALBUMS al)
             {
                 EMPRUNTER emp = UserView.Abo.ProlongerEmprunt(al);
-
-
                 ConnexionView.Pop("Emprunt prolongé de 1 mois !", "Attention");
                 dateRetour.Text = "Date de retour: " + emp.DATE_RETOUR_ATTENDUE.ToString();
                 prolongerEmprunt.Enabled = false;
