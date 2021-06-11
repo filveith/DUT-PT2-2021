@@ -223,5 +223,11 @@ namespace WindowsFormsApp1
                 imageLabel.Image = null;
             }
         }
+
+        private void changerMdp_Click(object sender, EventArgs e)
+        {
+            ChangePassword changeMdp = new ChangePassword(Abo);
+            changeMdp.ShowDialog();
+        }
     }
 }

@@ -229,6 +229,7 @@
       <DependentUpon>BDDModele.edmx</DependentUpon>
       <LastGenOutput>BDDModele.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\images\buttonChangerMdp.png" />
     <None Include="Resources\eyeClosed_Icon.png" />
     <None Include="Resources\eyeIcon.png" />
     <None Include="Resources\logos\logoOnly.png" />
