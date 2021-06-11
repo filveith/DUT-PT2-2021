@@ -64,6 +64,7 @@ namespace WindowsFormsApp1
                            join abo in Connexion.ABONNÉS on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
                            where emp.DATE_RETOUR == null && DbFunctions.DiffDays(emp.DATE_RETOUR_ATTENDUE, DateTime.Now) > 10
                            select abo).GroupBy(x => x.CODE_ABONNÉ).Select(y => y.FirstOrDefault());
+
             return emprunt;
         }
 
