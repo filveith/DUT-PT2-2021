@@ -1,8 +1,8 @@
 <!--> Ceci doit être le fichier README.md à la racine de votre dépôt <-->
 
-#IMPORTANT
+# IMPORTANT
 
-Pour permettre d'avoir plusieurs admins en softcode et pour voir les abonnés qui n'ont jamais emprunté depuis plus d'un an, nous avons modifié la table ABONNÉS. Pour vous permettre de bien tester, nous avons fournis dans le répertoire git le script de création de la BDD qu'on a utilisé.
+Pour permettre d'avoir plusieurs admins en softcode et pour voir les abonnés qui n'ont jamais emprunté depuis plus d'un an, nous avons modifié la table ABONNÉS. Pour vous permettre de bien tester, nous avons fournis dans le répertoire git le script de création de la table ABONNÉS qu'on a utilisé.
 Le reste de la base est identique à la BDD de base.
 
 # Informations générales
