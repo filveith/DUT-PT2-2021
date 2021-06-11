@@ -9,7 +9,6 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
@@ -56,7 +55,7 @@ namespace WindowsFormsApp1
 
 
         /// <summary>
-        /// Pemret d'avoir une liste des abonnés avec des emprunts en retard de plus de 10 jours
+        /// Permet d'avoir une liste des abonnés avec des emprunts en retard de plus de 10 jours
         /// </summary>
         /// <returns> Retourne une liste des abonnés en retard de plus de 10 jours </returns>
         public static IQueryable<ABONNÉS> AvoirAbonneAvecEmpruntRetardDe10Jours()

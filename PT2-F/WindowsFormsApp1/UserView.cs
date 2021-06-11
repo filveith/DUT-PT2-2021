@@ -212,6 +212,7 @@ namespace WindowsFormsApp1
                     imageLabel.Text = "Cet album ne possède pas de pochette.";
                 } else
                 {
+                    imageLabel.Text = null;
                     Image image = Utils.byteArrayToImage(alb.POCHETTE);
                     imageLabel.AutoSize = false;
                     imageLabel.Size = image.Size;

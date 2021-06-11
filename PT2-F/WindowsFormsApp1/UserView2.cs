@@ -120,7 +120,7 @@ namespace WindowsFormsApp1
             string filtre = filtres.Text;
             string objet = searchBox.Text;
             AffichageAbo.Clear();
-            if(objet.Length == 0)
+            if (objet.Length == 0)
             {
                 this.Emprunts();
                 return;
@@ -167,13 +167,23 @@ namespace WindowsFormsApp1
         {
             if (AffichageAbo.SelectedItem is ALBUMS obtAlbum)
             {
-                var emprunt = (from em in Utils.Connexion.EMPRUNTER
-                               where em.CODE_ABONNÉ == previousWindow.Abo.CODE_ABONNÉ && em.DATE_RETOUR == null
-                               where em.CODE_ALBUM == obtAlbum.CODE_ALBUM
-                               select em).FirstOrDefault();
-                var pochette = obtAlbum.POCHETTE;
-                prolongerEmprunt.Enabled = emprunt.nbRallongements == 0;
-                afficherMiniature.Image = Utils.ResizeImage(Utils.byteArrayToImage(pochette), 200, 200);
+                EMPRUNTER emprunt = (from em in Utils.Connexion.EMPRUNTER
+                           where em.CODE_ABONNÉ == previousWindow.Abo.CODE_ABONNÉ && em.DATE_RETOUR == null
+                           where em.CODE_ALBUM == obtAlbum.CODE_ALBUM
+                           select em).FirstOrDefault();
+
+                if (obtAlbum.POCHETTE == null)
+                {
+                    afficherMiniature.Image = null;
+                    afficherMiniature.Text = "Cet album ne possède pas de pochette.";
+                }
+                else
+                {
+                    afficherMiniature.Text = null;
+                    var pochette = obtAlbum.POCHETTE;
+                    prolongerEmprunt.Enabled = emprunt.nbRallongements == 0;
+                    afficherMiniature.Image = Utils.ResizeImage(Utils.byteArrayToImage(pochette), 200, 200);
+                }
                 dateEmprunt.Text = "Date d'emprunt: " + emprunt.DATE_EMPRUNT.ToString();
                 dateRetour.Text = "Date de retour: " + emprunt.DATE_RETOUR_ATTENDUE.ToString();
                 if (emprunt.DATE_RETOUR == null)
@@ -200,7 +210,7 @@ namespace WindowsFormsApp1
                 ConnexionView.Pop("Emprunt prolongé de 1 mois !", "Attention");
                 dateRetour.Text = "Date de retour: " + emp.DATE_RETOUR_ATTENDUE.ToString();
                 prolongerEmprunt.Enabled = false;
-                
+
             }
             else
             {

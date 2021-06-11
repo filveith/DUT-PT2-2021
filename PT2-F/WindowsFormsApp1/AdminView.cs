@@ -145,11 +145,18 @@ namespace WindowsFormsApp1
 
                 if (obtAlbum != null)
                 {
-                    var pochette = obtAlbum.POCHETTE;
-                    afficheMiniature.Image = Utils.ResizeImage(Utils.byteArrayToImage(pochette), afficheMiniature.Width, afficheMiniature.Height);
+                    if (obtAlbum.POCHETTE == null)
+                    {
+                        afficheMiniature.Image = null;
+                        afficheMiniature.Text = "Cet album ne possède pas de pochette.";
+                    } else
+                    {
+                        afficheMiniature.Text = null;
+                        var pochette = obtAlbum.POCHETTE;
+                        afficheMiniature.Image = Utils.ResizeImage(Utils.byteArrayToImage(pochette), afficheMiniature.Width, afficheMiniature.Height);
+                    }
                 }
             }
-
         }
 
         private void tableLayoutPanel5_Paint(object sender, PaintEventArgs e)
