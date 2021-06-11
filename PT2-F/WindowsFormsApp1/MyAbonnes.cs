@@ -118,7 +118,7 @@ namespace WindowsFormsApp1
         /// </summary>
         /// <param name="album">L'album</param>
         /// <returns></returns>
-        public bool ProlongerEmprunt(ALBUMS al)
+        public EMPRUNTER ProlongerEmprunt(ALBUMS al)
         {
             EMPRUNTER emprunt = EMPRUNTER.FirstOrDefault(emp => emp.ALBUMS == al);
             if (emprunt != null)
@@ -128,15 +128,15 @@ namespace WindowsFormsApp1
                     emprunt.DATE_RETOUR_ATTENDUE = emprunt.DATE_RETOUR_ATTENDUE.AddMonths(1);
                     Utils.Connexion.SaveChanges();
                     Console.WriteLine("Rallongement effectué");
-                    return true;
+                    return emprunt;
                 }
                 else
                 {
                     Console.WriteLine("Vous avez déjà rallonger cet emprunt :/");
-                    return false;
+                    return null;
                 }
             }
-            return false;
+            return null;
         }
 
         /// <summary>

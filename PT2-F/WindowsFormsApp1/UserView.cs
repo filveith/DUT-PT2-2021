@@ -35,8 +35,8 @@ namespace WindowsFormsApp1
         private void UserView_Load(object sender, EventArgs e)
         {
             filtres.Items.Clear();
-            filtres.Items.Add("genre");
             filtres.Items.Add("titre");
+            filtres.Items.Add("genre");
             filtres.SelectedIndex = 1;
 
             this.suggestions();
