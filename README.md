@@ -22,6 +22,18 @@ Vous pouvez également préciser ici quelques éléments qui pourraient nous aid
 - des jeux de données à appliquer sur la base avant de lancer l'application ou les tests
 - ...
 
+Dédisclasik est une application permettant de faciliter la gestion d'une discothèque, grâce à une interface graphique intelligente et révolutionnaire, elle est simple d'utilisation et riche en fonctionnalités. 
+Elle permet de consulter les disques disponibles ainsi que de les emprunter et de les rendre. 
+
+L'application possède deux interfaces principales :
+- une pour l'administrateur, qui lui permettra d'avoir une vision plus claire de l'état de la discothèque (liste des abonnés, albums empruntés, retards de rendus, etc.)
+- une pour les abonnés, permettant d'emprunter des albums (qu'il a cherché ou qui lui sont suggérés), de facilement voir ce qu'il a emprunté, de prolonger un emprunt et de rendre.
+
+![<application>](https://steemitimages.com/identifiant-hash/image.png)
+
+
+
+
 # User Stories
 
 ## US1: En tant que futur client de la discothèque, je souhaite pouvoir être abonné afin de pouvoir emprunter des albums.
