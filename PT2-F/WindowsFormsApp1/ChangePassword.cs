@@ -98,5 +98,10 @@ namespace WindowsFormsApp1
             ConnexionView.Pop("Erreur, veuillez rentrer un mot de passe!", "Erreur");
 
         }
+
+        private void ChangePassword_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
