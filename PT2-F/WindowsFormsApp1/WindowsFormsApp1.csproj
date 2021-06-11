@@ -70,6 +70,12 @@
     <Compile Include="AdminView.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="AlbumInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AlbumInfo.Designer.cs">
+      <DependentUpon>AlbumInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="CachedElements.cs" />
     <Compile Include="ChangePassword.cs">
       <SubType>Form</SubType>
@@ -83,6 +89,7 @@
     <Compile Include="Casiers.Designer.cs">
       <DependentUpon>Casiers.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyEditeur.cs" />
     <Compile Include="MyPays.cs" />
     <Compile Include="PagedListbox.cs">
       <SubType>Component</SubType>
@@ -158,6 +165,9 @@
     <Compile Include="Utils.cs" />
     <EmbeddedResource Include="AdminChangePassword.resx">
       <DependentUpon>AdminChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AlbumInfo.resx">
+      <DependentUpon>AlbumInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChangePassword.resx">
       <DependentUpon>ChangePassword.cs</DependentUpon>
