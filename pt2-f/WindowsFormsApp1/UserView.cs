@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace WindowsFormsApp1
 {
 
-
+    
     public partial class UserView : Form
     {
         public ABONNÉS Abo;
@@ -24,7 +24,7 @@ namespace WindowsFormsApp1
             AffichageAbo = new PagedListbox(TAffichageAbo);
             nextPage.Visible = AffichageAbo?.isOnLastPage == false;
             previousPage.Visible = AffichageAbo?.CurrentPage > 0;
-            u2 = new UserView2();
+            u2 = new UserView2(this);
         }
 
         /// <summary>
@@ -85,26 +85,20 @@ namespace WindowsFormsApp1
             string filtre = filtres.Text;
             string objet = searchBox.Text;
             AffichageAbo.Clear();
-            if (objet.Length == 0)
-            {
-                AffichageAbo.AddRange(Utils.Connexion.ALBUMS.ToList());
-                return;
-            }
             if (filtre.Equals("titre"))
             {
-                var recherche = (from t in Utils.Connexion.ALBUMS
-                                 where t.TITRE_ALBUM.ToLower().Contains(objet.ToLower())
-                                 select t).ToList();
+                var recherce = (from t in Utils.Connexion.ALBUMS
+                               where t.TITRE_ALBUM.Contains(objet)
+                               select t).ToList();
 
-                AffichageAbo.AddRange(recherche);
+                AffichageAbo.AddRange(recherce);
             }
             else if (filtre.Equals("genre"))
             {
-                List<ALBUMS> recherche;
-                recherche = (from t in Utils.Connexion.ALBUMS
-                             join g in Utils.Connexion.GENRES on t.CODE_GENRE equals g.CODE_GENRE
-                             where g.LIBELLÉ_GENRE.ToLower().Contains(objet.ToLower())
-                             select t).ToList();
+                var recherche = (from t in Utils.Connexion.ALBUMS
+                                join g in Utils.Connexion.GENRES on t.CODE_GENRE equals g.CODE_GENRE
+                                where g.LIBELLÉ_GENRE.Contains(objet)
+                                select t).ToList();
 
                 AffichageAbo.AddRange(recherche);
             }
@@ -138,7 +132,6 @@ namespace WindowsFormsApp1
                 if (!dejaEmprunté(al))
                 {
                     Abo.Emprunter(al);
-                    u2.TousEmpruntsProlonges = false;
                     ConnexionView.Pop("Emprunt Réussi !", "Attention");
                 }
                 else
@@ -211,21 +204,19 @@ namespace WindowsFormsApp1
         {
             if (TAffichageAbo.SelectedItem is ALBUMS alb)
             {
-
+                
                 if (alb.POCHETTE == null)
                 {
                     imageLabel.Image = null;
                     imageLabel.Text = "Cet album ne possède pas de pochette.";
-                }
-                else
+                } else
                 {
-                    Image image = alb.getPochette();
+                    Image image = Utils.byteArrayToImage(alb.POCHETTE);
                     imageLabel.AutoSize = false;
                     imageLabel.Size = image.Size;
                     imageLabel.Image = Utils.ResizeImage(image, 200, 200);
                 }
-            }
-            else
+            } else
             {
                 imageLabel.Image = null;
             }
