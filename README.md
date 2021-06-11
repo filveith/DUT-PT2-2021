@@ -61,7 +61,7 @@ Cas limite et détails:
 - [x] Qu’est-ce qui se passe si j’emprunte, je retourne, et que je ré-emprunte le même album ?
 - [x] Est-ce que la date de retour est bien basée sur les délais de la table "Genre" ?
 - [x] Est-ce que je distingue bien les albums disponibles des empruntés dans l'affichage ?
-- [ ] Est-ce que je vois bien toutes les informations sur les albums (casier, rangée, éditeur, pays de l'éditeur, année d'édition...)
+- [x] Est-ce que je vois bien toutes les informations sur les albums (casier, rangée, éditeur, pays de l'éditeur, année d'édition...)
 
 ## US3: En tant qu’abonné, je souhaite prolonger l'emprunt d'un album pour un mois supplémentaire (cette opération n’est possible qu’une fois par emprunt).
 - [x] US implémentée
@@ -80,7 +80,7 @@ Cas limite et détails:
 - [x] US implémentée
 
 Cas limite et détails:
-- [ ] Vois-je suffisamment d’infos par emprunt (nom de l'emprunteur, dates, album...) ?
+- [x] Vois-je suffisamment d’infos par emprunt (nom de l'emprunteur, dates, album...) ?
 - [ ] Est-ce qu'ils sont triés par date ?
 
 ## US5: En tant qu’administrateur de la discothèque en ligne, je souhaite lister les abonnés ayant des emprunts non rapportés en retard de 10 jours.
@@ -153,7 +153,7 @@ Cas limite et détails:
   - On s’attend à voir “Mozart Verdi: Requiem” (deux mots clés mais séparés dans le titre trouvé)
 - [x]  Qu’est-ce qui se passe si on tape "bach flute" ou "bach flûte"
   - On s’attend à voir "Bach: Sonates pour flûte” (accent sur le û)
-- [ ]  Qu’est-ce qui se passe si on tape "violoncelles bach"
+- [x]  Qu’est-ce qui se passe si on tape "violoncelles bach"
   - On s’attend à voir “Bach: Suites pour violoncelles” (les mots ne sont pas dans l’ordre)
 
 # US15: En tant qu'abonné et administrateur, on souhaite voir les pochettes d'album dans l'IHM lorsqu'ils sont mentionnés
