@@ -40,7 +40,7 @@ namespace WindowsFormsApp1
             this.filtres = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.prolongerAllEmpruntButton = new System.Windows.Forms.Button();
-            this.prolongerEmpruntButton = new System.Windows.Forms.Button();
+            this.rendreButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.dateEmprunt = new System.Windows.Forms.Label();
@@ -53,6 +53,9 @@ namespace WindowsFormsApp1
             this.nextPage = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.previousPage = new System.Windows.Forms.Button();
+            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -64,6 +67,8 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel7.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.tableLayoutPanel10.SuspendLayout();
+            this.tableLayoutPanel11.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -204,16 +209,15 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel5.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel5.ColumnCount = 1;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Controls.Add(this.prolongerAllEmpruntButton, 0, 1);
-            this.tableLayoutPanel5.Controls.Add(this.prolongerEmpruntButton, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel8, 0, 2);
+            this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel8, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel10, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(901, 163);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 3;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.89239F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.89239F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.21521F));
+            this.tableLayoutPanel5.RowCount = 2;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.66053F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.33947F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(380, 395);
             this.tableLayoutPanel5.TabIndex = 4;
             // 
@@ -226,32 +230,32 @@ namespace WindowsFormsApp1
             this.prolongerAllEmpruntButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.prolongerAllEmpruntButton.Font = new System.Drawing.Font("Miriam Libre", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.prolongerAllEmpruntButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(137)))));
-            this.prolongerAllEmpruntButton.Location = new System.Drawing.Point(97, 105);
+            this.prolongerAllEmpruntButton.Location = new System.Drawing.Point(3, 3);
             this.prolongerAllEmpruntButton.Margin = new System.Windows.Forms.Padding(0);
             this.prolongerAllEmpruntButton.Name = "prolongerAllEmpruntButton";
-            this.prolongerAllEmpruntButton.Size = new System.Drawing.Size(185, 83);
+            this.prolongerAllEmpruntButton.Size = new System.Drawing.Size(174, 83);
             this.prolongerAllEmpruntButton.TabIndex = 3;
             this.prolongerAllEmpruntButton.Text = "prolonger tout les emprunts";
             this.prolongerAllEmpruntButton.UseVisualStyleBackColor = false;
             this.prolongerAllEmpruntButton.Click += new System.EventHandler(this.prolongerToutEmprunt_Click);
             // 
-            // prolongerEmpruntButton
+            // rendreButton
             // 
-            this.prolongerEmpruntButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.prolongerEmpruntButton.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.prolongerEmpruntButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.prolongerEmpruntButton.FlatAppearance.BorderSize = 0;
-            this.prolongerEmpruntButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.prolongerEmpruntButton.Font = new System.Drawing.Font("Miriam Libre", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.prolongerEmpruntButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(137)))));
-            this.prolongerEmpruntButton.Location = new System.Drawing.Point(97, 7);
-            this.prolongerEmpruntButton.Margin = new System.Windows.Forms.Padding(0);
-            this.prolongerEmpruntButton.Name = "prolongerEmpruntButton";
-            this.prolongerEmpruntButton.Size = new System.Drawing.Size(185, 83);
-            this.prolongerEmpruntButton.TabIndex = 2;
-            this.prolongerEmpruntButton.Text = "prolonger un emprunt";
-            this.prolongerEmpruntButton.UseVisualStyleBackColor = false;
-            this.prolongerEmpruntButton.Click += new System.EventHandler(this.prolongerEmprunt_Click);
+            this.rendreButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rendreButton.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.rendreButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rendreButton.FlatAppearance.BorderSize = 0;
+            this.rendreButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rendreButton.Font = new System.Drawing.Font("Miriam Libre", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rendreButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(137)))));
+            this.rendreButton.Location = new System.Drawing.Point(194, 51);
+            this.rendreButton.Margin = new System.Windows.Forms.Padding(0);
+            this.rendreButton.Name = "rendreButton";
+            this.rendreButton.Size = new System.Drawing.Size(173, 83);
+            this.rendreButton.TabIndex = 2;
+            this.rendreButton.Text = "Rendre un album";
+            this.rendreButton.UseVisualStyleBackColor = false;
+            this.rendreButton.Click += new System.EventHandler(this.rendreButton_Click);
             // 
             // tableLayoutPanel8
             // 
@@ -262,7 +266,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.37433F));
             this.tableLayoutPanel8.Controls.Add(this.tableLayoutPanel9, 1, 0);
             this.tableLayoutPanel8.Controls.Add(this.afficherMiniature, 0, 0);
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 199);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 195);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -421,6 +425,53 @@ namespace WindowsFormsApp1
             this.previousPage.UseVisualStyleBackColor = false;
             this.previousPage.Click += new System.EventHandler(this.previousPage_Click);
             // 
+            // tableLayoutPanel10
+            // 
+            this.tableLayoutPanel10.ColumnCount = 2;
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel11, 0, 0);
+            this.tableLayoutPanel10.Controls.Add(this.rendreButton, 1, 0);
+            this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel10.Name = "tableLayoutPanel10";
+            this.tableLayoutPanel10.RowCount = 1;
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(374, 186);
+            this.tableLayoutPanel10.TabIndex = 5;
+            // 
+            // tableLayoutPanel11
+            // 
+            this.tableLayoutPanel11.ColumnCount = 1;
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel11.Controls.Add(this.prolongerAllEmpruntButton, 0, 0);
+            this.tableLayoutPanel11.Controls.Add(this.button1, 0, 1);
+            this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
+            this.tableLayoutPanel11.RowCount = 2;
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(181, 180);
+            this.tableLayoutPanel11.TabIndex = 4;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Miriam Libre", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(137)))));
+            this.button1.Location = new System.Drawing.Point(7, 97);
+            this.button1.Margin = new System.Windows.Forms.Padding(0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(167, 75);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "prolonger tout les emprunts";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // UserView2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -448,6 +499,8 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel7.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.tableLayoutPanel10.ResumeLayout(false);
+            this.tableLayoutPanel11.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -463,7 +516,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Button prolongerAllEmpruntButton;
-        private System.Windows.Forms.Button prolongerEmpruntButton;
+        private System.Windows.Forms.Button rendreButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.ListBox TAffichageAbo;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
@@ -478,5 +531,8 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label dateEmprunt;
         private System.Windows.Forms.Label dateRetour;
         private System.Windows.Forms.ComboBox filtres;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
+        private System.Windows.Forms.Button button1;
     }
 }

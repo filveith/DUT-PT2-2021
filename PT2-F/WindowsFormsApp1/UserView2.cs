@@ -19,7 +19,7 @@ namespace WindowsFormsApp1
             InitializeComponent();
             AffichageAbo = new PagedListbox(TAffichageAbo);
             AffichageAbo.page.SelectedIndexChanged += Page_SelectedIndexChanged;
-            prolongerEmpruntButton.Enabled = false;
+            rendreButton.Enabled = false;
 
         }
 
@@ -40,11 +40,10 @@ namespace WindowsFormsApp1
                            where em.CODE_ABONNÉ == UserView.Abo.CODE_ABONNÉ && em.DATE_RETOUR == null
                            where em.CODE_ALBUM == obtAlbum.CODE_ALBUM
                            select em).FirstOrDefault();
-            prolongerEmpruntButton.Enabled = emprunt.nbRallongements == 0;
             var pochette = obtAlbum.POCHETTE;
             afficherMiniature.Image = Utils.ResizeImage(Utils.byteArrayToImage(pochette), 200, 200);
             dateEmprunt.Text = "Date d'emprunt: " + emprunt.DATE_EMPRUNT.ToString();
-            dateRetour.Text = "Date de retour: " + emprunt.DATE_RETOUR_ATTENDUE.ToString(); ;
+            dateRetour.Text = "Date de retour: " + emprunt.DATE_RETOUR_ATTENDUE.ToString();
         }
 
         /// <summary>
@@ -88,25 +87,6 @@ namespace WindowsFormsApp1
 
         private void prolongerEmprunt_Click(object sender, EventArgs e)
         {
-            string titreAlbum = AffichageAbo.SelectedItem.ToString().Trim();
-
-            ALBUMS obtAlbum = (from a in Utils.Connexion.ALBUMS
-                               where a.TITRE_ALBUM.ToString() == titreAlbum
-                               select a).FirstOrDefault();
-
-            if (obtAlbum is ALBUMS al)
-            {
-                UserView.Abo.ProlongerEmprunt(Utils.GetALBUM(al.CODE_ALBUM));
-
-
-                ConnexionView.Pop("Emprunt prolongé de 1 mois !", "Attention");
-                prolongerEmpruntButton.Enabled = false;
-            }
-            else
-            {
-                ConnexionView.Pop("ce n'est pas un album", "Erreur");
-            }
-
 
         }
 
@@ -192,6 +172,17 @@ namespace WindowsFormsApp1
         private void TAffichageAbo_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void rendreButton_Click(object sender, EventArgs e)
+        {
+            string titreAlbum = AffichageAbo.SelectedItem.ToString();
+
+            ALBUMS obtAlbum = (from a in Utils.Connexion.ALBUMS
+                               where a.TITRE_ALBUM.ToString() == titreAlbum
+                               select a).FirstOrDefault();
+
+            UserView.Abo.Rendre(obtAlbum);
         }
     }
 }
