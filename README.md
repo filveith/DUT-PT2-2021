@@ -81,7 +81,7 @@ Cas limite et détails:
 
 Cas limite et détails:
 - [x] Vois-je suffisamment d’infos par emprunt (nom de l'emprunteur, dates, album...) ?
-- [ ] Est-ce qu'ils sont triés par date ?
+- [x] Est-ce qu'ils sont triés par date ?
 
 ## US5: En tant qu’administrateur de la discothèque en ligne, je souhaite lister les abonnés ayant des emprunts non rapportés en retard de 10 jours.
 - [x] US implémentée
@@ -136,7 +136,7 @@ Cas limite et détails:
 - [x] US implémentée
 
 Cas limite et détails:
-- [ ] Est-ce qu'on affiche bien toutes les informations ?
+- [x] Est-ce qu'on affiche bien toutes les informations ?
 - [x] Quel critère de tri ? Par date de création 
 
 # US13: En tant qu’utilisateur du logiciel, je souhaite que les résultats soient paginés dès que la liste est trop longue pour un meilleur confort d’utilisation.
