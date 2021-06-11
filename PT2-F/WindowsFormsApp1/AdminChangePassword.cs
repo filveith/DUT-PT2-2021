@@ -18,6 +18,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             eyeButton.Image = Utils.ResizeImage(eyeButton.Image, 20, 20);
+            newPassBox.PasswordChar = '*';
             abonne = a;
         }
 

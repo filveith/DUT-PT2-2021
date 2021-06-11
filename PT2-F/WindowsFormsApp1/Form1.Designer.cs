@@ -53,11 +53,11 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.Controls.Add(this.connexion, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label3, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 157);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 158);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(781, 148);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(781, 149);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // inscription
@@ -72,7 +72,7 @@ namespace WindowsFormsApp1
             this.inscription.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.inscription.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inscription.ForeColor = System.Drawing.SystemColors.Control;
-            this.inscription.Location = new System.Drawing.Point(15, 49);
+            this.inscription.Location = new System.Drawing.Point(15, 50);
             this.inscription.Name = "inscription";
             this.inscription.Size = new System.Drawing.Size(184, 49);
             this.inscription.TabIndex = 0;
@@ -91,7 +91,7 @@ namespace WindowsFormsApp1
             this.connexion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.connexion.Font = new System.Drawing.Font("NSimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.connexion.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.connexion.Location = new System.Drawing.Point(585, 49);
+            this.connexion.Location = new System.Drawing.Point(585, 50);
             this.connexion.Name = "connexion";
             this.connexion.Size = new System.Drawing.Size(175, 49);
             this.connexion.TabIndex = 1;
@@ -128,12 +128,12 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel3.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.label4, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 311);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 313);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 126F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(781, 151);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 149F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(781, 149);
             this.tableLayoutPanel3.TabIndex = 4;
             // 
             // label2
@@ -142,7 +142,7 @@ namespace WindowsFormsApp1
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("NSimSun", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(167)))), ((int)(((byte)(194)))));
-            this.label2.Location = new System.Drawing.Point(92, 66);
+            this.label2.Location = new System.Drawing.Point(92, 65);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(449, 19);
             this.label2.TabIndex = 0;
@@ -152,7 +152,7 @@ namespace WindowsFormsApp1
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.Image = global::WindowsFormsApp1.Properties.Resources.logoOnly;
-            this.label4.Location = new System.Drawing.Point(669, 34);
+            this.label4.Location = new System.Drawing.Point(669, 33);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 82);
             this.label4.TabIndex = 1;
@@ -186,6 +186,7 @@ namespace WindowsFormsApp1
             this.MinimumSize = new System.Drawing.Size(800, 500);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);

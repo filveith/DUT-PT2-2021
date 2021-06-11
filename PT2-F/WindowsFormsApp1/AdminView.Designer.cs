@@ -32,13 +32,13 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.buttons = new System.Windows.Forms.TableLayoutPanel();
-            this.changePassword = new System.Windows.Forms.Button();
-            this.notEmprunterSinceAYear = new System.Windows.Forms.Button();
             this.top10Button = new System.Windows.Forms.Button();
             this.suppIdleUsersButton = new System.Windows.Forms.Button();
-            this.listerAbonner = new System.Windows.Forms.Button();
             this.listEmpruntsProlongButton = new System.Windows.Forms.Button();
             this.listRetardButton = new System.Windows.Forms.Button();
+            this.changePassword = new System.Windows.Forms.Button();
+            this.listerAbonner = new System.Windows.Forms.Button();
+            this.notEmprunterSinceAYear = new System.Windows.Forms.Button();
             this.showLockersButton = new System.Windows.Forms.Button();
             this.afficheMiniature = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -115,40 +115,6 @@ namespace WindowsFormsApp1
             this.buttons.Size = new System.Drawing.Size(375, 651);
             this.buttons.TabIndex = 9;
             // 
-            // changePassword
-            // 
-            this.changePassword.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.changePassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
-            this.changePassword.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.changePassword.FlatAppearance.BorderSize = 0;
-            this.changePassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.changePassword.Font = new System.Drawing.Font("Miriam Libre", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.changePassword.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.changePassword.Location = new System.Drawing.Point(223, 29);
-            this.changePassword.Name = "changePassword";
-            this.changePassword.Size = new System.Drawing.Size(116, 103);
-            this.changePassword.TabIndex = 9;
-            this.changePassword.Text = "Changer le mot de passe de l\'abonné selectionné";
-            this.changePassword.UseVisualStyleBackColor = false;
-            this.changePassword.Click += new System.EventHandler(this.changePassword_Click);
-            // 
-            // notEmprunterSinceAYear
-            // 
-            this.notEmprunterSinceAYear.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.notEmprunterSinceAYear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
-            this.notEmprunterSinceAYear.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.notEmprunterSinceAYear.FlatAppearance.BorderSize = 0;
-            this.notEmprunterSinceAYear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.notEmprunterSinceAYear.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.notEmprunterSinceAYear.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.notEmprunterSinceAYear.Location = new System.Drawing.Point(221, 516);
-            this.notEmprunterSinceAYear.Name = "notEmprunterSinceAYear";
-            this.notEmprunterSinceAYear.Size = new System.Drawing.Size(120, 104);
-            this.notEmprunterSinceAYear.TabIndex = 4;
-            this.notEmprunterSinceAYear.Text = "Albums pas empruntés depuis 1 an";
-            this.notEmprunterSinceAYear.UseVisualStyleBackColor = false;
-            this.notEmprunterSinceAYear.Click += new System.EventHandler(this.notEmprunterSinceAYear_Click);
-            // 
             // top10Button
             // 
             this.top10Button.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -183,23 +149,6 @@ namespace WindowsFormsApp1
             this.suppIdleUsersButton.UseVisualStyleBackColor = false;
             this.suppIdleUsersButton.Click += new System.EventHandler(this.suppIdleUsersButton_Click);
             // 
-            // listerAbonner
-            // 
-            this.listerAbonner.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.listerAbonner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
-            this.listerAbonner.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.listerAbonner.FlatAppearance.BorderSize = 0;
-            this.listerAbonner.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.listerAbonner.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listerAbonner.ForeColor = System.Drawing.SystemColors.Control;
-            this.listerAbonner.Location = new System.Drawing.Point(36, 33);
-            this.listerAbonner.Name = "listerAbonner";
-            this.listerAbonner.Size = new System.Drawing.Size(115, 96);
-            this.listerAbonner.TabIndex = 8;
-            this.listerAbonner.Text = "Lister les abonnés";
-            this.listerAbonner.UseVisualStyleBackColor = false;
-            this.listerAbonner.Click += new System.EventHandler(this.listerAbonner_Click);
-            // 
             // listEmpruntsProlongButton
             // 
             this.listEmpruntsProlongButton.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -212,7 +161,7 @@ namespace WindowsFormsApp1
             this.listEmpruntsProlongButton.Location = new System.Drawing.Point(37, 355);
             this.listEmpruntsProlongButton.Name = "listEmpruntsProlongButton";
             this.listEmpruntsProlongButton.Size = new System.Drawing.Size(113, 100);
-            this.listEmpruntsProlongButton.TabIndex = 1;
+            this.listEmpruntsProlongButton.TabIndex = 5;
             this.listEmpruntsProlongButton.Text = "Lister Emprunts Prolongés";
             this.listEmpruntsProlongButton.UseVisualStyleBackColor = false;
             this.listEmpruntsProlongButton.Click += new System.EventHandler(this.listEmpruntsProlongButton_Click);
@@ -229,10 +178,61 @@ namespace WindowsFormsApp1
             this.listRetardButton.Location = new System.Drawing.Point(36, 192);
             this.listRetardButton.Name = "listRetardButton";
             this.listRetardButton.Size = new System.Drawing.Size(115, 102);
-            this.listRetardButton.TabIndex = 2;
+            this.listRetardButton.TabIndex = 3;
             this.listRetardButton.Text = "Lister Retards";
             this.listRetardButton.UseVisualStyleBackColor = false;
             this.listRetardButton.Click += new System.EventHandler(this.listRetardButton_Click);
+            // 
+            // changePassword
+            // 
+            this.changePassword.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.changePassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
+            this.changePassword.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.changePassword.FlatAppearance.BorderSize = 0;
+            this.changePassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.changePassword.Font = new System.Drawing.Font("Miriam Libre", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.changePassword.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.changePassword.Location = new System.Drawing.Point(223, 29);
+            this.changePassword.Name = "changePassword";
+            this.changePassword.Size = new System.Drawing.Size(116, 103);
+            this.changePassword.TabIndex = 2;
+            this.changePassword.Text = "Changer le mot de passe de l\'abonné selectionné";
+            this.changePassword.UseVisualStyleBackColor = false;
+            this.changePassword.Click += new System.EventHandler(this.changePassword_Click);
+            // 
+            // listerAbonner
+            // 
+            this.listerAbonner.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.listerAbonner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
+            this.listerAbonner.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.listerAbonner.FlatAppearance.BorderSize = 0;
+            this.listerAbonner.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.listerAbonner.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listerAbonner.ForeColor = System.Drawing.SystemColors.Control;
+            this.listerAbonner.Location = new System.Drawing.Point(36, 33);
+            this.listerAbonner.Name = "listerAbonner";
+            this.listerAbonner.Size = new System.Drawing.Size(115, 96);
+            this.listerAbonner.TabIndex = 1;
+            this.listerAbonner.Text = "Lister les abonnés";
+            this.listerAbonner.UseVisualStyleBackColor = false;
+            this.listerAbonner.Click += new System.EventHandler(this.listerAbonner_Click);
+            // 
+            // notEmprunterSinceAYear
+            // 
+            this.notEmprunterSinceAYear.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.notEmprunterSinceAYear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(186)))), ((int)(((byte)(195)))));
+            this.notEmprunterSinceAYear.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.notEmprunterSinceAYear.FlatAppearance.BorderSize = 0;
+            this.notEmprunterSinceAYear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.notEmprunterSinceAYear.Font = new System.Drawing.Font("Miriam Libre", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.notEmprunterSinceAYear.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.notEmprunterSinceAYear.Location = new System.Drawing.Point(221, 516);
+            this.notEmprunterSinceAYear.Name = "notEmprunterSinceAYear";
+            this.notEmprunterSinceAYear.Size = new System.Drawing.Size(120, 104);
+            this.notEmprunterSinceAYear.TabIndex = 8;
+            this.notEmprunterSinceAYear.Text = "Albums pas empruntés depuis 1 an";
+            this.notEmprunterSinceAYear.UseVisualStyleBackColor = false;
+            this.notEmprunterSinceAYear.Click += new System.EventHandler(this.notEmprunterSinceAYear_Click);
             // 
             // showLockersButton
             // 
@@ -246,7 +246,7 @@ namespace WindowsFormsApp1
             this.showLockersButton.Location = new System.Drawing.Point(223, 191);
             this.showLockersButton.Name = "showLockersButton";
             this.showLockersButton.Size = new System.Drawing.Size(116, 103);
-            this.showLockersButton.TabIndex = 3;
+            this.showLockersButton.TabIndex = 4;
             this.showLockersButton.Text = "Afficher les albums empruntés par casier";
             this.showLockersButton.UseVisualStyleBackColor = false;
             this.showLockersButton.Click += new System.EventHandler(this.showLockersButton_Click);
@@ -287,7 +287,7 @@ namespace WindowsFormsApp1
             this.log.Location = new System.Drawing.Point(3, 3);
             this.log.Name = "log";
             this.log.Size = new System.Drawing.Size(762, 651);
-            this.log.TabIndex = 11;
+            this.log.TabIndex = 9;
             this.log.SelectedIndexChanged += new System.EventHandler(this.log_SelectedIndexChanged);
             // 
             // tableLayoutPanel3
@@ -330,7 +330,7 @@ namespace WindowsFormsApp1
             this.previousPage.Location = new System.Drawing.Point(58, 71);
             this.previousPage.Name = "previousPage";
             this.previousPage.Size = new System.Drawing.Size(277, 64);
-            this.previousPage.TabIndex = 5;
+            this.previousPage.TabIndex = 10;
             this.previousPage.UseVisualStyleBackColor = false;
             this.previousPage.Click += new System.EventHandler(this.previousPage_Click);
             // 
@@ -357,7 +357,7 @@ namespace WindowsFormsApp1
             this.nextPage.Location = new System.Drawing.Point(67, 71);
             this.nextPage.Name = "nextPage";
             this.nextPage.Size = new System.Drawing.Size(241, 64);
-            this.nextPage.TabIndex = 4;
+            this.nextPage.TabIndex = 11;
             this.nextPage.UseVisualStyleBackColor = false;
             this.nextPage.Click += new System.EventHandler(this.nextPage_Click);
             // 
@@ -400,9 +400,11 @@ namespace WindowsFormsApp1
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1167, 926);
             this.Controls.Add(this.tableLayoutPanel5);
+            this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(900, 740);
             this.Name = "AdminView";
             this.Text = "AdminView";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AdminView_KeyDown);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();

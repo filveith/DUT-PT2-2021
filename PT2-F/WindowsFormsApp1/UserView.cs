@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace WindowsFormsApp1
 {
 
-    
+
     public partial class UserView : Form
     {
         public ABONNÉS Abo;
@@ -39,8 +39,9 @@ namespace WindowsFormsApp1
             filtres.Items.Add("genre");
             filtres.Text = "titre";
             filtres.SelectedIndex = 0;
-
             this.suggestions();
+
+
         }
 
         /// <summary>
@@ -52,8 +53,13 @@ namespace WindowsFormsApp1
         {
 
             this.Visible = false;
-            if(u2.ShowDialog() == DialogResult.OK) { 
+            if (u2.ShowDialog() == DialogResult.OK)
+            {
                 this.Visible = true;
+            }
+            else
+            {
+                this.Close();
             }
 
         }
@@ -86,20 +92,16 @@ namespace WindowsFormsApp1
             string filtre = filtres.Text;
             string objet = searchBox.Text;
             AffichageAbo.Clear();
+            IEnumerable<ALBUMS> albumsDispos = Utils.AvoirAlbumsDispo();
             if (filtre.Equals("titre"))
             {
-                var recherce = (from t in Utils.Connexion.ALBUMS
-                               where t.TITRE_ALBUM.Contains(objet)
-                               select t).ToList();
+                var recherche = albumsDispos.Where(al => al.TITRE_ALBUM.ToLower().Contains(objet.ToLower()));
 
-                AffichageAbo.AddRange(recherce);
+                AffichageAbo.AddRange(recherche);
             }
             else if (filtre.Equals("genre"))
             {
-                var recherche = (from t in Utils.Connexion.ALBUMS
-                                join g in Utils.Connexion.GENRES on t.CODE_GENRE equals g.CODE_GENRE
-                                where g.LIBELLÉ_GENRE.Contains(objet)
-                                select t).ToList();
+                var recherche = albumsDispos.Where(al => al.GENRES.LIBELLÉ_GENRE.ToLower().Contains(objet.ToLower()));
 
                 AffichageAbo.AddRange(recherche);
             }
@@ -206,12 +208,13 @@ namespace WindowsFormsApp1
         {
             if (TAffichageAbo.SelectedItem is ALBUMS alb)
             {
-                
+
                 if (alb.POCHETTE == null)
                 {
                     imageLabel.Image = null;
                     imageLabel.Text = "Cet album ne possède pas de pochette.";
-                } else
+                }
+                else
                 {
                     imageLabel.Text = null;
                     Image image = Utils.byteArrayToImage(alb.POCHETTE);
@@ -219,7 +222,8 @@ namespace WindowsFormsApp1
                     imageLabel.Size = image.Size;
                     imageLabel.Image = Utils.ResizeImage(image, 200, 200);
                 }
-            } else
+            }
+            else
             {
                 imageLabel.Image = null;
             }
@@ -235,6 +239,14 @@ namespace WindowsFormsApp1
         {
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void UserView_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                label2_Click(this, null);
+            }
         }
     }
 }

@@ -98,7 +98,7 @@ namespace WindowsFormsApp1
             this.listCasiers.Location = new System.Drawing.Point(3, 3);
             this.listCasiers.Name = "listCasiers";
             this.listCasiers.Size = new System.Drawing.Size(516, 486);
-            this.listCasiers.TabIndex = 2;
+            this.listCasiers.TabIndex = 12;
             this.listCasiers.SelectedIndexChanged += new System.EventHandler(this.listCasiers_SelectedIndexChanged);
             // 
             // tableLayoutPanel4
@@ -114,7 +114,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 158F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(488, 158);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(516, 158);
             this.tableLayoutPanel4.TabIndex = 3;
             // 
             // nextPage
@@ -131,7 +131,7 @@ namespace WindowsFormsApp1
             this.nextPage.Location = new System.Drawing.Point(278, 45);
             this.nextPage.Name = "nextPage";
             this.nextPage.Size = new System.Drawing.Size(235, 68);
-            this.nextPage.TabIndex = 1;
+            this.nextPage.TabIndex = 14;
             this.nextPage.UseVisualStyleBackColor = false;
             this.nextPage.Click += new System.EventHandler(this.nextPage_Click);
             // 
@@ -149,7 +149,7 @@ namespace WindowsFormsApp1
             this.previousPage.Location = new System.Drawing.Point(3, 45);
             this.previousPage.Name = "previousPage";
             this.previousPage.Size = new System.Drawing.Size(269, 68);
-            this.previousPage.TabIndex = 0;
+            this.previousPage.TabIndex = 13;
             this.previousPage.UseVisualStyleBackColor = false;
             this.previousPage.Click += new System.EventHandler(this.previousPage_Click);
             // 
@@ -420,9 +420,11 @@ namespace WindowsFormsApp1
             this.ClientSize = new System.Drawing.Size(1000, 662);
             this.Controls.Add(this.tableLayoutPanel1);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(235)))), ((int)(((byte)(237)))));
+            this.KeyPreview = true;
             this.Name = "Casiers";
             this.Text = "Casiers";
             this.Load += new System.EventHandler(this.Casiers_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Casiers_KeyDown);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);

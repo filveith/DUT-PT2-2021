@@ -225,5 +225,13 @@ namespace WindowsFormsApp1
             previousWindow.DialogResult = DialogResult.OK;
             previousWindow.Close();
         }
+
+        private void UserView2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                label2_Click(this, null);
+            }
+        }
     }
 }
