@@ -29,7 +29,7 @@ L'application possède deux interfaces principales :
 - une pour l'administrateur, qui lui permettra d'avoir une vision plus claire de l'état de la discothèque (liste des abonnés, albums empruntés, retards de rendus, etc.)
 - une pour les abonnés, permettant d'emprunter des albums (qu'il a cherché ou qui lui sont suggérés), de facilement voir ce qu'il a emprunté, de prolonger un emprunt et de rendre.
 
-![<application>](https://steemitimages.com/identifiant-hash/image.png)
+![<application>](applicat.png)
 
 
 
