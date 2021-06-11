@@ -8,7 +8,7 @@
 - Nom de la base de données : MusiquePT2_F
 - Composition de l'équipe :
   - Samuel Khalifa
-  - Anna Birancon 
+  - Anna Briançon
   - Augustin Colas
   - Roméo Tesei
   - Fil Veith
