@@ -64,6 +64,7 @@ namespace WindowsFormsApp1
                            join abo in Connexion.ABONNÉS on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
                            where emp.DATE_RETOUR == null && DbFunctions.DiffDays(emp.DATE_RETOUR_ATTENDUE, DateTime.Now) > 10
                            select abo).GroupBy(x => x.CODE_ABONNÉ).Select(y => y.FirstOrDefault());
+
             return emprunt;
         }
 
@@ -99,10 +100,6 @@ namespace WindowsFormsApp1
             return liste;
         }
 
-        /// <summary>
-        /// Récupère les albums disponibles
-        /// </summary>
-        /// <returns></returns>
         public static IEnumerable<ALBUMS> AvoirAlbumsDispo()
         {
             var albums = CachedElements.allAlbums;
@@ -110,10 +107,6 @@ namespace WindowsFormsApp1
             return albums.Except(emprunts);
         }
 
-        /// <summary>
-        /// Récupère les albums empruntés
-        /// </summary>
-        /// <returns></returns>
         public static IEnumerable<ALBUMS> AvoirAlbumsEmpruntes()
         {
             var albums = CachedElements.allAlbums;
@@ -231,11 +224,7 @@ namespace WindowsFormsApp1
                     select a).FirstOrDefault();
         }
 
-        /// <summary>
-        /// Récupère un album selon son code
-        /// </summary>
-        /// <param name="codeAlbum">Le code</param>
-        /// <returns>L'album</returns>
+
         public static ALBUMS GetALBUM(int codeAlbum)
         {
             return (from al in CachedElements.allAlbums
@@ -265,11 +254,6 @@ namespace WindowsFormsApp1
             return abos;
         }
 
-        /// <summary>
-        /// Chiffre une chaine de caractères
-        /// </summary>
-        /// <param name="rawData"></param>
-        /// <returns></returns>
         public static string ComputeSha256Hash(string rawData)
         {
             // Create a SHA256   
