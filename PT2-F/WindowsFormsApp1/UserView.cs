@@ -86,17 +86,17 @@ namespace WindowsFormsApp1
             AffichageAbo.Clear();
             if (filtre.Equals("titre"))
             {
-                var recherce = (from t in Utils.Connexion.ALBUMS
-                               where t.TITRE_ALBUM.Contains(objet)
+                var recherche = (from t in Utils.Connexion.ALBUMS
+                               where t.TITRE_ALBUM.ToLower().Contains(objet.ToLower())
                                select t).ToList();
 
-                AffichageAbo.AddRange(recherce);
+                AffichageAbo.AddRange(recherche);
             }
             else if (filtre.Equals("genre"))
             {
                 var recherche = (from t in Utils.Connexion.ALBUMS
                                 join g in Utils.Connexion.GENRES on t.CODE_GENRE equals g.CODE_GENRE
-                                where g.LIBELLÉ_GENRE.Contains(objet)
+                                where g.LIBELLÉ_GENRE.ToLower().Contains(objet.ToLower())
                                 select t).ToList();
 
                 AffichageAbo.AddRange(recherche);
@@ -210,7 +210,7 @@ namespace WindowsFormsApp1
                     imageLabel.Text = "Cet album ne possède pas de pochette.";
                 } else
                 {
-                    Image image = Utils.byteArrayToImage(alb.POCHETTE);
+                    Image image = alb.getPochette();
                     imageLabel.AutoSize = false;
                     imageLabel.Size = image.Size;
                     imageLabel.Image = Utils.ResizeImage(image, 200, 200);
