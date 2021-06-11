@@ -193,6 +193,15 @@ namespace WindowsFormsApp1
                 this.Close();
             }
         }
+
+        private void listCasiers_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (listCasiers.SelectedItem != null && listCasiers.SelectedItem is ALBUMS al)
+            {
+                AlbumInfo albumInfo = new AlbumInfo(al);
+                albumInfo.Show();
+            }
+        }
     }
 
 

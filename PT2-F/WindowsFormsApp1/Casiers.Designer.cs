@@ -100,6 +100,7 @@ namespace WindowsFormsApp1
             this.listCasiers.Size = new System.Drawing.Size(516, 486);
             this.listCasiers.TabIndex = 12;
             this.listCasiers.SelectedIndexChanged += new System.EventHandler(this.listCasiers_SelectedIndexChanged);
+            this.listCasiers.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listCasiers_MouseDoubleClick);
             // 
             // tableLayoutPanel4
             // 
