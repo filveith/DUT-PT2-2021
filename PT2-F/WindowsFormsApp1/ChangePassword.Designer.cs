@@ -118,6 +118,7 @@ namespace WindowsFormsApp1
             this.textBox3.PasswordChar = '*';
             this.textBox3.Size = new System.Drawing.Size(555, 22);
             this.textBox3.TabIndex = 2;
+            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
             // 
             // button3
             // 
@@ -153,6 +154,7 @@ namespace WindowsFormsApp1
             this.valider.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonValider1;
             this.valider.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.valider.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.valider.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.valider.FlatAppearance.BorderSize = 0;
             this.valider.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.valider.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -205,6 +207,7 @@ namespace WindowsFormsApp1
             this.textBox1.PasswordChar = '*';
             this.textBox1.Size = new System.Drawing.Size(555, 22);
             this.textBox1.TabIndex = 0;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // button1
             // 
@@ -276,6 +279,7 @@ namespace WindowsFormsApp1
             this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(555, 22);
             this.textBox2.TabIndex = 1;
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
             // button2
             // 
