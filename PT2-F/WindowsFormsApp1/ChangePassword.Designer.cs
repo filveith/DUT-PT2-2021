@@ -332,6 +332,7 @@ namespace WindowsFormsApp1
             this.Name = "ChangePassword";
             this.Text = "ChangePassword";
             this.Load += new System.EventHandler(this.ChangePassword_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ChangePassword_KeyDown);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);

@@ -24,9 +24,13 @@ namespace WindowsFormsApp1
         /// <returns>L'image de la pochette</returns>
         public Image getPochette()
         {
-            return Utils.byteArrayToImage(POCHETTE);
+            if (POCHETTE != null && POCHETTE.Length != 0)
+            {
+                return Utils.byteArrayToImage(POCHETTE);
+            }
+            return null;
         }
 
-       
+
     }
 }

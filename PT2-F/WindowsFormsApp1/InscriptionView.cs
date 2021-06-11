@@ -115,5 +115,13 @@ namespace WindowsFormsApp1
                 ValiderInscription_Click(this, null);
             }
         }
+
+        private void InscriptionView_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }

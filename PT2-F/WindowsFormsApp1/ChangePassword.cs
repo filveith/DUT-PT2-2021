@@ -127,5 +127,13 @@ namespace WindowsFormsApp1
                 valider_Click(this, null);
             }
         }
+
+        private void ChangePassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }

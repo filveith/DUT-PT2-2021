@@ -56,10 +56,22 @@ namespace WindowsFormsApp1
         {
             ConnexionView c = new ConnexionView();
             this.Visible = false;
-            c.ShowDialog();
-            this.Close();
+            if (c.ShowDialog() == DialogResult.OK)
+            {
+                this.Visible = true;
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
-        
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }

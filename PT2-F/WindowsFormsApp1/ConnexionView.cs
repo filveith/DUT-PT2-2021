@@ -62,6 +62,10 @@ namespace WindowsFormsApp1
                             {
                                 this.Visible = true;
                             }
+                            else
+                            {
+                                this.Close();
+                            }
                         }
                     }
                     else Pop("Mot de passe invalide", "Erreur");
@@ -157,6 +161,15 @@ namespace WindowsFormsApp1
             {
                 eyeButton.Image = Utils.ResizeImage(Properties.Resources.eyeIcon, 20, 20);
                 passTextBox.PasswordChar = (char)0;
+            }
+        }
+
+        private void ConnexionView_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Escape)
+            {
+                DialogResult = DialogResult.OK;
+                this.Close();
             }
         }
     }
