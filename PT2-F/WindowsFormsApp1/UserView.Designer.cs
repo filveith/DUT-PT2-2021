@@ -382,6 +382,23 @@ namespace WindowsFormsApp1
             this.mesAlbums.UseVisualStyleBackColor = false;
             this.mesAlbums.Click += new System.EventHandler(this.mesAlbums_Click);
             // 
+            // changerMdp
+            // 
+            this.changerMdp.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.changerMdp.BackColor = System.Drawing.Color.Transparent;
+            this.changerMdp.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonChangerMdp;
+            this.changerMdp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.changerMdp.FlatAppearance.BorderSize = 0;
+            this.changerMdp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.changerMdp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.changerMdp.ForeColor = System.Drawing.Color.Transparent;
+            this.changerMdp.Location = new System.Drawing.Point(64, 112);
+            this.changerMdp.Name = "changerMdp";
+            this.changerMdp.Size = new System.Drawing.Size(252, 82);
+            this.changerMdp.TabIndex = 3;
+            this.changerMdp.UseVisualStyleBackColor = false;
+            this.changerMdp.Click += new System.EventHandler(this.changerMdp_Click);
+            // 
             // textSugg
             // 
             this.textSugg.Anchor = System.Windows.Forms.AnchorStyles.Left;
