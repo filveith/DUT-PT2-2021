@@ -19,8 +19,23 @@ Donner ici le nom et une description courte du projet avec un screenshot représ
 
 Vous pouvez également préciser ici quelques éléments qui pourraient nous aider à compiler/déployer ou tester votre application :
 - l'éventuelles bibliothèques externes à installer (donner la procédure)
-- des jeux de données à appliquer sur la base avant de lancer l'application ou les tests
-- ...
+
+
+Dédisclasik est une application permettant de faciliter la gestion d'une discothèque, grâce à une interface graphique intelligente et révolutionnaire, elle est simple d'utilisation et riche en fonctionnalités. 
+Elle permet de consulter les disques disponibles ainsi que de les emprunter et de les rendre. 
+
+L'application possède deux interfaces principales :
+- une pour l'administrateur, qui lui permettra d'avoir une vision plus claire de l'état de la discothèque (liste des abonnés, albums empruntés, retards de rendus, etc.)
+- une pour les abonnés, permettant d'emprunter des albums (qu'il a cherché ou qui lui sont suggérés), de facilement voir ce qu'il a emprunté, de prolonger un emprunt et de rendre.
+
+![<application>](applicat.PNG)
+
+
+
+
+PS:
+- des jeux de données à appliquer sur la base avant de lancer l'application ou les tests : Il n'y a rien à faire les tests s'occupe de tout
+
 
 # User Stories
 
@@ -32,8 +47,8 @@ Cas limite et détails:
 - [x] Qu’est-ce qui se passe si on essaie de s’inscrire avec un login déjà existant ?
 - [x] Est-ce que le choix du pays est bien un menu déroulant ?
 - [x] Est-ce que les champs sont bien limités à 32 caractères ?  PS: Sauf le mdp qui est limité à 256 bit du au hachage sha256
-- [ ] Peut-on s'inscrire avec un nom vide ?
-- [ ] Peut-on s'inscrire avec un nom qui ne contient qu'un espace ?
+- [x] Peut-on s'inscrire avec un nom vide ?
+- [x] Peut-on s'inscrire avec un nom qui ne contient qu'un espace ?
 - [x] Est-ce qu'il est bien possible de s'inscrire sans pays (car c'est facultatif) ?
 - [x] L'ordre des champs est correct lorsqu'on appuie sur "TAB"
 - [x] Est-ce que des messages d'erreur explicitent apparaissent en cas d'erreur ? ("Le champ prénom n'a pas été rempli", "Ce login est déjà utilisé" etc.)
@@ -42,7 +57,7 @@ Cas limite et détails:
 - [x] US implémentée
 
 Cas limite et détails:
-- [ ] Qu’est-ce qui se passe si j’essaie d’emprunter un album déjà emprunté ? (Penser à essayer tous les cas, comme cliquer 2 fois sur le bouton “emprunter”)
+- [x] Qu’est-ce qui se passe si j’essaie d’emprunter un album déjà emprunté ? (Penser à essayer tous les cas, comme cliquer 2 fois sur le bouton “emprunter”)
 - [x] Qu’est-ce qui se passe si j’emprunte, je retourne, et que je ré-emprunte le même album ?
 - [x] Est-ce que la date de retour est bien basée sur les délais de la table "Genre" ?
 - [x] Est-ce que je distingue bien les albums disponibles des empruntés dans l'affichage ?
@@ -76,11 +91,11 @@ Cas limite et détails:
 - [ ] Est-ce qu'ils sont triés par date ?
 
 ## US6: En tant qu'administrateur de la discothèque en ligne, j'aimerais pouvoir purger les abonnés n'ayant pas emprunté depuis plus d'un an.
-- [ ] US implémentée
+- [x] US implémentée
 
 Cas limite et détails:
-- [ ] Vérifier qu’on a bien une confirmation qui nous indique quels utilisateurs vont être purgés
-- [ ] Vérifier que les utilisateurs qui ont des emprunts en cours ne sont de toutes façons pas purgés
+- [x] Vérifier qu’on a bien une confirmation qui nous indique quels utilisateurs vont être purgés
+- [x] Vérifier que les utilisateurs qui ont des emprunts en cours ne sont de toutes façons pas purgés
 
 ## US7: En tant qu’administrateur de la discothèque, je souhaite connaître les 10 albums les plus empruntés dans l'année.
 - [x] US implémentée
@@ -122,7 +137,7 @@ Cas limite et détails:
 
 Cas limite et détails:
 - [ ] Est-ce qu'on affiche bien toutes les informations ?
-- [ ] Quel critère de tri ?
+- [x] Quel critère de tri ? Par date de création 
 
 # US13: En tant qu’utilisateur du logiciel, je souhaite que les résultats soient paginés dès que la liste est trop longue pour un meilleur confort d’utilisation.
 - [x] US Implémentée
@@ -136,7 +151,7 @@ Cas limite et détails:
 Cas limite et détails:
 - [x]  Qu’est-ce qui se passe si on tape "mozart requiem"
   - On s’attend à voir “Mozart Verdi: Requiem” (deux mots clés mais séparés dans le titre trouvé)
-- [ ]  Qu’est-ce qui se passe si on tape "bach flute" ou "bach flûte"
+- [x]  Qu’est-ce qui se passe si on tape "bach flute" ou "bach flûte"
   - On s’attend à voir "Bach: Sonates pour flûte” (accent sur le û)
 - [ ]  Qu’est-ce qui se passe si on tape "violoncelles bach"
   - On s’attend à voir “Bach: Suites pour violoncelles” (les mots ne sont pas dans l’ordre)
