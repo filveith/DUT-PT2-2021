@@ -90,12 +90,12 @@ namespace WindowsFormsApp1
         private void recherche()
         {
             string filtre = filtres.Text;
-            string[] objet = searchBox.Text.Split(' ').Select(s => s.ToLo;
+            string objet = searchBox.Text;
             AffichageAbo.Clear();
             IEnumerable<ALBUMS> albumsDispos = Utils.AvoirAlbumsDispo();
             if (filtre.Equals("titre"))
             {
-                var recherche = albumsDispos.Where(al => objet.);
+                var recherche = albumsDispos.Where(al => al.TITRE_ALBUM.ToLower().Contains(objet.ToLower()));
 
                 AffichageAbo.AddRange(recherche);
             }
