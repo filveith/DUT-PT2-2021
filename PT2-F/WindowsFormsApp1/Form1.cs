@@ -40,11 +40,6 @@ namespace WindowsFormsApp1
         /// <param name="e"></param>
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 'd')
-            {
-                DebugWindow d = new DebugWindow();
-                d.Show();
-            }
         }
 
         /// <summary>

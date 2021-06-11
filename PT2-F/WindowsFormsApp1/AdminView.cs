@@ -67,12 +67,7 @@ namespace WindowsFormsApp1
             afficheMiniature.Image = null;
             pagedListbox.Clear();
             var albums = Utils.AvoirAlbumsPasEmprunteDepuisUnAn();
-            List<string> allStrings = new List<string>();
-            foreach (ALBUMS al in albums)
-            {
-                allStrings.Add(al.TITRE_ALBUM.Trim());
-            }
-            pagedListbox.AddRange(allStrings);
+            pagedListbox.AddRange(albums);
             nextPage.Visible = pagedListbox?.isOnLastPage == false;
             previousPage.Visible = pagedListbox?.CurrentPage > 0;
 
@@ -87,7 +82,7 @@ namespace WindowsFormsApp1
 
             foreach (ALBUMS al in top10)
             {
-                pagedListbox.Add(al.TITRE_ALBUM.Trim());
+                pagedListbox.Add(al);
             }
             nextPage.Visible = pagedListbox?.isOnLastPage == false;
             previousPage.Visible = pagedListbox?.CurrentPage > 0;
@@ -109,12 +104,9 @@ namespace WindowsFormsApp1
         {
             afficheMiniature.Image = null;
             pagedListbox.Clear();
-            IQueryable<ABONNÉS> toutLesAbonner = Utils.GetAllAbonnes();
+            List<ABONNÉS> toutLesAbonner = Utils.GetAllAbonnes();
             pagedListbox.Add("Voici la liste de tout les abonnés :");
-            foreach (ABONNÉS abo in toutLesAbonner)
-            {
-                pagedListbox.Add(abo);
-            }
+            pagedListbox.AddRange(toutLesAbonner);
             nextPage.Visible = pagedListbox?.isOnLastPage == false;
             previousPage.Visible = pagedListbox?.CurrentPage > 0;
         }
@@ -135,27 +127,20 @@ namespace WindowsFormsApp1
 
         private void log_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (pagedListbox.SelectedItem != null)
+            if (pagedListbox.SelectedItem != null && pagedListbox.SelectedItem is ALBUMS obtAlbum)
             {
-                string titreAlbum = pagedListbox.SelectedItem.ToString();
-
-                ALBUMS obtAlbum = (from a in Utils.Connexion.ALBUMS
-                                   where a.TITRE_ALBUM.ToString() == titreAlbum
-                                   select a).FirstOrDefault();
-
-                if (obtAlbum != null)
+                if (obtAlbum.POCHETTE == null)
                 {
-                    if (obtAlbum.POCHETTE == null)
-                    {
-                        afficheMiniature.Image = null;
-                        afficheMiniature.Text = "Cet album ne possède pas de pochette.";
-                    } else
-                    {
-                        afficheMiniature.Text = null;
-                        var pochette = obtAlbum.POCHETTE;
-                        afficheMiniature.Image = Utils.ResizeImage(Utils.byteArrayToImage(pochette), afficheMiniature.Width, afficheMiniature.Height);
-                    }
+                    afficheMiniature.Image = null;
+                    afficheMiniature.Text = "Cet album ne possède pas de pochette.";
                 }
+                else
+                {
+                    afficheMiniature.Text = null;
+                    var pochette = obtAlbum.POCHETTE;
+                    afficheMiniature.Image = Utils.ResizeImage(Utils.byteArrayToImage(pochette), afficheMiniature.Width, afficheMiniature.Height);
+                }
+
             }
         }
 
@@ -176,7 +161,7 @@ namespace WindowsFormsApp1
 
         private void AdminView_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Escape)
+            if (e.KeyCode == Keys.Escape)
             {
                 this.Close();
             }

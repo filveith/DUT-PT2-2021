@@ -168,10 +168,7 @@ namespace WindowsFormsApp1
         {
             if (AffichageAbo.SelectedItem is ALBUMS obtAlbum)
             {
-                EMPRUNTER emprunt = (from em in Utils.Connexion.EMPRUNTER
-                           where em.CODE_ABONNÉ == previousWindow.Abo.CODE_ABONNÉ && em.DATE_RETOUR == null
-                           where em.CODE_ALBUM == obtAlbum.CODE_ALBUM
-                           select em).FirstOrDefault();
+                EMPRUNTER emprunt = obtAlbum.EMPRUNTER.First(em => em.ABONNÉS == previousWindow.Abo);
 
                 if (obtAlbum.POCHETTE == null)
                 {

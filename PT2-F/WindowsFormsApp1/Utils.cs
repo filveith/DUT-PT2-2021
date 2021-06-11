@@ -75,7 +75,7 @@ namespace WindowsFormsApp1
         {
             var tempList = (from emp in Connexion.EMPRUNTER
                             join abo in Connexion.ABONNÉS on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
-                            join alb in Connexion.ALBUMS on emp.CODE_ALBUM equals alb.CODE_ALBUM
+                            join alb in CachedElements.allAlbums on emp.CODE_ALBUM equals alb.CODE_ALBUM
                             select emp).ToList();
 
 
@@ -108,8 +108,9 @@ namespace WindowsFormsApp1
 
         public static IEnumerable<ALBUMS> AvoirAlbumsEmpruntes()
         {
-            var liste = Connexion.ALBUMS.Where(al => al.EMPRUNTER.Count > 0 && al.EMPRUNTER.Any(em => em.DATE_RETOUR == null));
-            return liste;
+            var albums = CachedElements.allAlbums;
+            var emprunts = Connexion.EMPRUNTER.Where(em => em.DATE_RETOUR == null).Select(em => em.ALBUMS);
+            return albums.Intersect(emprunts);
         }
 
         /// <summary>
@@ -161,8 +162,7 @@ namespace WindowsFormsApp1
         /// <returns> Retourne les 10 albums les plus empruntés</returns>
         public static List<ALBUMS> AvoirTopAlbum()
         {
-            var nbEmprunt = (from emp in Connexion.EMPRUNTER
-                             select emp.CODE_ALBUM).Count();
+            var nbEmprunt = Connexion.EMPRUNTER.Count();
 
             var top = (from alb in Connexion.ALBUMS
                        join emp in Connexion.EMPRUNTER on alb.CODE_ALBUM equals emp.CODE_ALBUM
@@ -182,9 +182,9 @@ namespace WindowsFormsApp1
         /// Permet d'avoir la liste des pays 
         /// </summary>
         /// <returns> Retourne tout les pays </returns>
-        public static IQueryable<PAYS> AvoirListeDesPays()
+        public static IEnumerable<PAYS> AvoirListeDesPays()
         {
-            var pays = from p in Connexion.PAYS
+            var pays = from p in CachedElements.allPays
                        orderby p.NOM_PAYS ascending
                        select p;
             return pays;
@@ -225,7 +225,7 @@ namespace WindowsFormsApp1
 
         public static ALBUMS GetALBUM(int codeAlbum)
         {
-            return (from al in Connexion.ALBUMS
+            return (from al in CachedElements.allAlbums
                     where al.CODE_ALBUM == codeAlbum
                     select al).FirstOrDefault();
         }
@@ -246,10 +246,9 @@ namespace WindowsFormsApp1
         /// Renvoie une liste de tout les abonnés
         /// </summary>
         /// <returns>La liste de tout les abonnés</returns>
-        public static IQueryable<ABONNÉS> GetAllAbonnes()
+        public static List<ABONNÉS> GetAllAbonnes()
         {
-            var abos = from ab in Connexion.ABONNÉS
-                       select ab;
+            var abos = Connexion.ABONNÉS.ToList();
             return abos;
         }
 
