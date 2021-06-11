@@ -42,6 +42,7 @@ namespace WindowsFormsApp1
             filtres.SelectedIndex = 0;
             prolongerAllEmpruntButton.Enabled = !TousEmpruntsProlonges;
             prolongerEmprunt.Enabled = false;
+            rendreButton.Enabled = false;
 
             this.recherche();
         }
@@ -175,6 +176,10 @@ namespace WindowsFormsApp1
                 afficherMiniature.Image = Utils.ResizeImage(Utils.byteArrayToImage(pochette), 200, 200);
                 dateEmprunt.Text = "Date d'emprunt: " + emprunt.DATE_EMPRUNT.ToString();
                 dateRetour.Text = "Date de retour: " + emprunt.DATE_RETOUR_ATTENDUE.ToString();
+                if (emprunt.DATE_RETOUR == null)
+                {
+                    rendreButton.Enabled = true;
+                }
             }
         }
 
