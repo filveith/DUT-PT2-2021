@@ -32,24 +32,26 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
             this.aboLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.searchBox = new System.Windows.Forms.TextBox();
             this.filtres = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.emprunter = new System.Windows.Forms.Button();
-            this.suggest = new System.Windows.Forms.Button();
             this.imageLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.TAffichageAbo = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.previousPage = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.emprunter = new System.Windows.Forms.Button();
+            this.suggest = new System.Windows.Forms.Button();
+            this.previousPage = new System.Windows.Forms.Button();
             this.nextPage = new System.Windows.Forms.Button();
             this.mesAlbums = new System.Windows.Forms.Button();
             this.textSugg = new System.Windows.Forms.Label();
+            this.changerMdp = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -59,6 +61,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel7.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -69,7 +72,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel6, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.mesAlbums, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel8, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -112,14 +115,6 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(886, 116);
             this.tableLayoutPanel3.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.Image = global::WindowsFormsApp1.Properties.Resources.logoOnly;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(153, 116);
-            this.label1.TabIndex = 2;
             // 
             // aboLabel
             // 
@@ -195,44 +190,6 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel5.Size = new System.Drawing.Size(380, 345);
             this.tableLayoutPanel5.TabIndex = 4;
             // 
-            // emprunter
-            // 
-            this.emprunter.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.emprunter.BackColor = System.Drawing.Color.Transparent;
-            this.emprunter.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonEmprunter;
-            this.emprunter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.emprunter.FlatAppearance.BorderSize = 0;
-            this.emprunter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.emprunter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.emprunter.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emprunter.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.emprunter.Location = new System.Drawing.Point(101, 16);
-            this.emprunter.Margin = new System.Windows.Forms.Padding(0);
-            this.emprunter.Name = "emprunter";
-            this.emprunter.Size = new System.Drawing.Size(178, 50);
-            this.emprunter.TabIndex = 5;
-            this.emprunter.UseVisualStyleBackColor = false;
-            this.emprunter.Click += new System.EventHandler(this.emprunter_Click);
-            // 
-            // suggest
-            // 
-            this.suggest.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.suggest.BackColor = System.Drawing.Color.Transparent;
-            this.suggest.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonSugg;
-            this.suggest.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.suggest.FlatAppearance.BorderSize = 0;
-            this.suggest.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.suggest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.suggest.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.suggest.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.suggest.Location = new System.Drawing.Point(69, 101);
-            this.suggest.Margin = new System.Windows.Forms.Padding(0);
-            this.suggest.Name = "suggest";
-            this.suggest.Size = new System.Drawing.Size(242, 50);
-            this.suggest.TabIndex = 6;
-            this.suggest.UseVisualStyleBackColor = false;
-            this.suggest.Click += new System.EventHandler(this.suggest_Click);
-            // 
             // imageLabel
             // 
             this.imageLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -298,6 +255,76 @@ namespace WindowsFormsApp1
             this.panel1.Size = new System.Drawing.Size(437, 103);
             this.panel1.TabIndex = 0;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.nextPage);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(446, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(437, 103);
+            this.panel2.TabIndex = 1;
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 1;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel8.Controls.Add(this.mesAlbums, 0, 0);
+            this.tableLayoutPanel8.Controls.Add(this.changerMdp, 0, 1);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(901, 3);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 2;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(380, 204);
+            this.tableLayoutPanel8.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.Image = global::WindowsFormsApp1.Properties.Resources.logoOnly;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(153, 116);
+            this.label1.TabIndex = 2;
+            // 
+            // emprunter
+            // 
+            this.emprunter.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.emprunter.BackColor = System.Drawing.Color.Transparent;
+            this.emprunter.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonEmprunter;
+            this.emprunter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.emprunter.FlatAppearance.BorderSize = 0;
+            this.emprunter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.emprunter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.emprunter.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emprunter.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.emprunter.Location = new System.Drawing.Point(101, 16);
+            this.emprunter.Margin = new System.Windows.Forms.Padding(0);
+            this.emprunter.Name = "emprunter";
+            this.emprunter.Size = new System.Drawing.Size(178, 50);
+            this.emprunter.TabIndex = 5;
+            this.emprunter.UseVisualStyleBackColor = false;
+            this.emprunter.Click += new System.EventHandler(this.emprunter_Click);
+            // 
+            // suggest
+            // 
+            this.suggest.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.suggest.BackColor = System.Drawing.Color.Transparent;
+            this.suggest.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonSugg;
+            this.suggest.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.suggest.FlatAppearance.BorderSize = 0;
+            this.suggest.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.suggest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.suggest.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.suggest.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.suggest.Location = new System.Drawing.Point(69, 101);
+            this.suggest.Margin = new System.Windows.Forms.Padding(0);
+            this.suggest.Name = "suggest";
+            this.suggest.Size = new System.Drawing.Size(242, 50);
+            this.suggest.TabIndex = 6;
+            this.suggest.UseVisualStyleBackColor = false;
+            this.suggest.Click += new System.EventHandler(this.suggest_Click);
+            // 
             // previousPage
             // 
             this.previousPage.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -316,15 +343,6 @@ namespace WindowsFormsApp1
             this.previousPage.TabIndex = 10;
             this.previousPage.UseVisualStyleBackColor = false;
             this.previousPage.Click += new System.EventHandler(this.previousPage_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.nextPage);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(446, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(437, 103);
-            this.panel2.TabIndex = 1;
             // 
             // nextPage
             // 
@@ -356,11 +374,11 @@ namespace WindowsFormsApp1
             this.mesAlbums.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.mesAlbums.Font = new System.Drawing.Font("NSimSun", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mesAlbums.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.mesAlbums.Location = new System.Drawing.Point(1039, 50);
+            this.mesAlbums.Location = new System.Drawing.Point(135, 50);
             this.mesAlbums.Margin = new System.Windows.Forms.Padding(3, 50, 30, 3);
             this.mesAlbums.Name = "mesAlbums";
-            this.mesAlbums.Size = new System.Drawing.Size(215, 55);
-            this.mesAlbums.TabIndex = 1;
+            this.mesAlbums.Size = new System.Drawing.Size(215, 49);
+            this.mesAlbums.TabIndex = 2;
             this.mesAlbums.UseVisualStyleBackColor = false;
             this.mesAlbums.Click += new System.EventHandler(this.mesAlbums_Click);
             // 
@@ -373,6 +391,23 @@ namespace WindowsFormsApp1
             this.textSugg.Size = new System.Drawing.Size(233, 13);
             this.textSugg.TabIndex = 3;
             this.textSugg.Text = "Voici des suggestions qui devraient vous plaire :";
+            // 
+            // changerMdp
+            // 
+            this.changerMdp.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.changerMdp.BackColor = System.Drawing.Color.Transparent;
+            this.changerMdp.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.buttonChangerMdp;
+            this.changerMdp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.changerMdp.FlatAppearance.BorderSize = 0;
+            this.changerMdp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.changerMdp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.changerMdp.ForeColor = System.Drawing.Color.Transparent;
+            this.changerMdp.Location = new System.Drawing.Point(64, 112);
+            this.changerMdp.Name = "changerMdp";
+            this.changerMdp.Size = new System.Drawing.Size(252, 82);
+            this.changerMdp.TabIndex = 3;
+            this.changerMdp.UseVisualStyleBackColor = false;
+            this.changerMdp.Click += new System.EventHandler(this.changerMdp_Click);
             // 
             // UserView
             // 
@@ -400,12 +435,12 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel7.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.tableLayoutPanel8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Button mesAlbums;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
@@ -426,5 +461,8 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label imageLabel;
         private System.Windows.Forms.Label textSugg;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private System.Windows.Forms.Button mesAlbums;
+        private System.Windows.Forms.Button changerMdp;
     }
 }
