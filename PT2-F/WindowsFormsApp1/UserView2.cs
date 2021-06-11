@@ -12,9 +12,10 @@ namespace WindowsFormsApp1
 {
     public partial class UserView2 : Form
     {
-        PagedListbox AffichageAbo;
+        private PagedListbox AffichageAbo;
+        public bool TousEmpruntsProlonges { get; set; } = false;
 
-        public UserView2(UserView v)
+        public UserView2()
         {
             InitializeComponent();
             AffichageAbo = new PagedListbox(TAffichageAbo);
@@ -34,6 +35,7 @@ namespace WindowsFormsApp1
             filtres.Items.Add("titre");
             filtres.Items.Add("genre");
             filtres.SelectedIndex = 0;
+            prolongerAllEmpruntButton.Enabled = !TousEmpruntsProlonges;
 
             this.recherche();
         }
@@ -75,6 +77,7 @@ namespace WindowsFormsApp1
         private void prolongerToutEmprunt_Click(object sender, EventArgs e)
         {
             UserView.Abo.ProlongerTousEmprunts();
+            prolongerAllEmpruntButton.Enabled = false;
             ConnexionView.Pop("Tous vos emprunts ont bien étés prolongés !", "Attention");
         }
 
@@ -184,6 +187,7 @@ namespace WindowsFormsApp1
                 ConnexionView.Pop("Emprunt prolongé de 1 mois !", "Attention");
                 dateRetour.Text = "Date de retour: " + emp.DATE_RETOUR_ATTENDUE.ToString();
                 prolongerEmprunt.Enabled = false;
+                TousEmpruntsProlonges = true;
             }
             else
             {
