@@ -153,8 +153,16 @@ namespace WindowsFormsApp1
         {
             if (listCasiers.SelectedItem is ALBUMS a)
             {
-                Image pochette = Utils.byteArrayToImage(a.POCHETTE);
-                affichageMinia.Image = Utils.ResizeImage(pochette, 200, 200);
+                if (a.POCHETTE == null)
+                {
+                    affichageMinia.Image = null;
+                    affichageMinia.Text = "Cet album ne possède pas de pochette.";
+                } else
+                {
+                    affichageMinia.Text = null;
+                    Image pochette = Utils.byteArrayToImage(a.POCHETTE);
+                    affichageMinia.Image = Utils.ResizeImage(pochette, 200, 200);
+                }
             }
         }
     }
